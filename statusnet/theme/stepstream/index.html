@@ -21,15 +21,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   <link rel="alternate" href="http://www.stephealth.org/index.php/rss" type="application/rdf+xml" title="Public Timeline Feed (RSS 1.0)"/>
   <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.rss" type="application/rss+xml" title="Public Timeline Feed (RSS 2.0)"/>
   <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.atom" type="application/atom+xml" title="Public Timeline Feed (Atom)"/>
-  <meta http-equiv="X-XRDS-Location" content="http://www.stephealth.org/index.php/main/xrds"/>
-  <link rel="EditURI" type="application/rsd+xml" href="http://www.stephealth.org/index.php/rsd.xml"/>
 </head>
  <body id="public" class="user_in">
   <div id="wrap">
    <div id="header">
     <address id="site_contact" class="vcard">
      <a class="url home bookmark" href="http://www.stephealth.org/index.php/admin/all">
-      <img class="logo photo" src="images/stepstreamlogo.png" alt="StepStream"/>
+      <img class="logo photo" src="http://www.stephealth.org/theme/stepstream/logo.png" alt="StepStream"/>
        <span class="fn org">StepStream</span>
 </a>
 </address>
@@ -126,10 +124,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 </div>
 </div>
          <div class="input_form" id="input_form_status">
-          <form id="form_notice_1327535141" class="form_notice ajax-notice" method="post" action="http://www.stephealth.org/index.php/notice/new">
+          <form id="form_notice_1327631491" class="form_notice ajax-notice" method="post" action="http://www.stephealth.org/index.php/notice/new">
            <fieldset>
             <legend>Send a notice</legend>
-            <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+            <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
             <label for="notice_data-text" id="notice_data-text-label">What's up, admin?</label>
             <textarea class="notice_data-text" cols="35" rows="4" name="status_textarea"></textarea>
             <input name="returnto" type="hidden" id="notice_return-to" value="public"/>
@@ -144,16 +142,6 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                <label class="checkbox" for="notice_private">Private?</label>
  </span>
 </div>
-            <input name="lat" type="hidden" id="notice_data-lat" value=""/>
-            <input name="lon" type="hidden" id="notice_data-lon" value=""/>
-            <input name="location_id" type="hidden" id="notice_data-location_id" value=""/>
-            <input name="location_ns" type="hidden" id="notice_data-location_ns" value=""/>
-            <div class="notice_data-geo_wrap" data-api="http://www.stephealth.org/index.php/main/geocode">
-             <label class="notice_data-geo">
-              <input name="notice_data-geo" type="checkbox" class="checkbox" id="form_notice_1327535141-notice_data-geo" checked="1"/>
- Share my location</label>
-</div>
-            <script type="text/javascript">/*<![CDATA[*/  var NoticeDataGeo_text = {ShareDisable: "Do not share my location",ErrorTimeout: "Sorry, retrieving your geo location is taking longer than expected, please try again later"} /*]]>*/</script>
             <input id="notice_action-submit" class="submit" name="status_submit" type="submit" value="Send"/>
 </fieldset>
 </form>
@@ -161,7 +149,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          <div class="input_form" id="input_form_bookmark">
           <form id="form_initial_bookmark" class="form_settings ajax" method="post" action="http://www.stephealth.org/index.php/main/bookmark/forurl">
            <fieldset>
-            <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+            <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
             <fieldset id="initial_bookmark_data">
              <ul class="form_data">
               <li>
@@ -177,7 +165,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          <div class="input_form" id="input_form_event">
           <form id="form_new_event" class="form_settings ajax-notice" method="post" action="http://www.stephealth.org/index.php/main/event/new">
            <fieldset>
-            <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+            <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
             <fieldset id="new_event_data">
              <input name="timelist_action_url" type="hidden" id="timelist_action_url" value="http://www.stephealth.org/index.php/main/event/updatetimes"/>
              <ul class="form_data">
@@ -188,7 +176,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 </li>
               <li>
                <label for="event-startdate">Start date</label>
-               <input type="text" id="event-startdate" name="startdate" value="01/25/2012"/>
+               <input type="text" id="event-startdate" name="startdate" value="01/26/2012"/>
                <p class="form_guide">Date the event starts.</p>
 </li>
               <li>
@@ -232,75 +220,75 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                 <option value="5:30pm">5:30pm</option>
                 <option value="6:00pm">6:00pm</option>
                 <option value="6:30pm">6:30pm</option>
-                <option value="7:00pm" selected="selected">7:00pm</option>
+                <option value="7:00pm">7:00pm</option>
                 <option value="7:30pm">7:30pm</option>
                 <option value="8:00pm">8:00pm</option>
                 <option value="8:30pm">8:30pm</option>
                 <option value="9:00pm">9:00pm</option>
                 <option value="9:30pm">9:30pm</option>
-                <option value="10:00pm">10:00pm</option>
+                <option value="10:00pm" selected="selected">10:00pm</option>
                 <option value="10:30pm">10:30pm</option>
                 <option value="11:00pm">11:00pm</option>
 </select>
                <p class="form_guide">Time the event starts (EST).</p>
                <input name="tz" type="hidden" id="tz" value="EST"/>
-               <input name="now" type="hidden" id="now" value="January 25, 2012 18:45:41 EST"/>
+               <input name="now" type="hidden" id="now" value="January 26, 2012 21:31:31 EST"/>
 </li>
               <li>
                <label for="event-enddate">End date</label>
-               <input type="text" id="event-enddate" name="enddate" value="01/25/2012"/>
+               <input type="text" id="event-enddate" name="enddate" value="01/26/2012"/>
                <p class="form_guide">Date the event ends.</p>
 </li>
               <li>
                <label for="event-endtime">End time</label>
                <select id="event-endtime" name="event-endtime">
-                <option value="7:00pm">7:00pm (0 min)</option>
-                <option value="7:30pm">7:30pm (30 min)</option>
-                <option value="8:00pm">8:00pm (1 hour)</option>
-                <option value="8:30pm">8:30pm (1.5 hours)</option>
-                <option value="9:00pm">9:00pm (2 hours)</option>
-                <option value="9:30pm">9:30pm (2.5 hours)</option>
-                <option value="10:00pm">10:00pm (3 hours)</option>
-                <option value="10:30pm">10:30pm (3.5 hours)</option>
-                <option value="11:00pm">11:00pm (4 hours)</option>
-                <option value="11:30pm">11:30pm (4.5 hours)</option>
-                <option value="12:00am">12:00am (5 hours)</option>
-                <option value="12:30am">12:30am (5.5 hours)</option>
-                <option value="1:00am">1:00am (6 hours)</option>
-                <option value="1:30am">1:30am (6.5 hours)</option>
-                <option value="2:00am">2:00am (7 hours)</option>
-                <option value="2:30am">2:30am (7.5 hours)</option>
-                <option value="3:00am">3:00am (8 hours)</option>
-                <option value="3:30am">3:30am (8.5 hours)</option>
-                <option value="4:00am">4:00am (9 hours)</option>
-                <option value="4:30am">4:30am (9.5 hours)</option>
-                <option value="5:00am">5:00am (10 hours)</option>
-                <option value="5:30am">5:30am (10.5 hours)</option>
-                <option value="6:00am">6:00am (11 hours)</option>
-                <option value="6:30am">6:30am (11.5 hours)</option>
-                <option value="7:00am">7:00am (12 hours)</option>
-                <option value="7:30am">7:30am (12.5 hours)</option>
-                <option value="8:00am">8:00am (13 hours)</option>
-                <option value="8:30am">8:30am (13.5 hours)</option>
-                <option value="9:00am">9:00am (14 hours)</option>
-                <option value="9:30am">9:30am (14.5 hours)</option>
-                <option value="10:00am">10:00am (15 hours)</option>
-                <option value="10:30am">10:30am (15.5 hours)</option>
-                <option value="11:00am">11:00am (16 hours)</option>
-                <option value="11:30am">11:30am (16.5 hours)</option>
-                <option value="12:00pm">12:00pm (17 hours)</option>
-                <option value="12:30pm">12:30pm (17.5 hours)</option>
-                <option value="1:00pm">1:00pm (18 hours)</option>
-                <option value="1:30pm">1:30pm (18.5 hours)</option>
-                <option value="2:00pm">2:00pm (19 hours)</option>
-                <option value="2:30pm">2:30pm (19.5 hours)</option>
-                <option value="3:00pm">3:00pm (20 hours)</option>
-                <option value="3:30pm">3:30pm (20.5 hours)</option>
-                <option value="4:00pm">4:00pm (21 hours)</option>
-                <option value="4:30pm">4:30pm (21.5 hours)</option>
-                <option value="5:00pm">5:00pm (22 hours)</option>
-                <option value="5:30pm">5:30pm (22.5 hours)</option>
-                <option value="6:00pm">6:00pm (23 hours)</option>
+                <option value="10:00pm">10:00pm (0 min)</option>
+                <option value="10:30pm">10:30pm (30 min)</option>
+                <option value="11:00pm">11:00pm (1 hour)</option>
+                <option value="11:30pm">11:30pm (1.5 hours)</option>
+                <option value="12:00am">12:00am (2 hours)</option>
+                <option value="12:30am">12:30am (2.5 hours)</option>
+                <option value="1:00am">1:00am (3 hours)</option>
+                <option value="1:30am">1:30am (3.5 hours)</option>
+                <option value="2:00am">2:00am (4 hours)</option>
+                <option value="2:30am">2:30am (4.5 hours)</option>
+                <option value="3:00am">3:00am (5 hours)</option>
+                <option value="3:30am">3:30am (5.5 hours)</option>
+                <option value="4:00am">4:00am (6 hours)</option>
+                <option value="4:30am">4:30am (6.5 hours)</option>
+                <option value="5:00am">5:00am (7 hours)</option>
+                <option value="5:30am">5:30am (7.5 hours)</option>
+                <option value="6:00am">6:00am (8 hours)</option>
+                <option value="6:30am">6:30am (8.5 hours)</option>
+                <option value="7:00am">7:00am (9 hours)</option>
+                <option value="7:30am">7:30am (9.5 hours)</option>
+                <option value="8:00am">8:00am (10 hours)</option>
+                <option value="8:30am">8:30am (10.5 hours)</option>
+                <option value="9:00am">9:00am (11 hours)</option>
+                <option value="9:30am">9:30am (11.5 hours)</option>
+                <option value="10:00am">10:00am (12 hours)</option>
+                <option value="10:30am">10:30am (12.5 hours)</option>
+                <option value="11:00am">11:00am (13 hours)</option>
+                <option value="11:30am">11:30am (13.5 hours)</option>
+                <option value="12:00pm">12:00pm (14 hours)</option>
+                <option value="12:30pm">12:30pm (14.5 hours)</option>
+                <option value="1:00pm">1:00pm (15 hours)</option>
+                <option value="1:30pm">1:30pm (15.5 hours)</option>
+                <option value="2:00pm">2:00pm (16 hours)</option>
+                <option value="2:30pm">2:30pm (16.5 hours)</option>
+                <option value="3:00pm">3:00pm (17 hours)</option>
+                <option value="3:30pm">3:30pm (17.5 hours)</option>
+                <option value="4:00pm">4:00pm (18 hours)</option>
+                <option value="4:30pm">4:30pm (18.5 hours)</option>
+                <option value="5:00pm">5:00pm (19 hours)</option>
+                <option value="5:30pm">5:30pm (19.5 hours)</option>
+                <option value="6:00pm">6:00pm (20 hours)</option>
+                <option value="6:30pm">6:30pm (20.5 hours)</option>
+                <option value="7:00pm">7:00pm (21 hours)</option>
+                <option value="7:30pm">7:30pm (21.5 hours)</option>
+                <option value="8:00pm">8:00pm (22 hours)</option>
+                <option value="8:30pm">8:30pm (22.5 hours)</option>
+                <option value="9:00pm">9:00pm (23 hours)</option>
 </select>
                <p class="form_guide">Time the event ends.</p>
 </li>
@@ -336,7 +324,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          <div class="input_form" id="input_form_poll">
           <form id="newpoll-form" class="form_settings ajax-notice" method="post" action="http://www.stephealth.org/index.php/main/poll/new">
            <fieldset>
-            <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+            <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
             <fieldset id="newpoll-data">
              <ul class="form_data">
               <li>
@@ -381,7 +369,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          <div class="input_form" id="input_form_question">
           <form id="newquestion-form" class="form_settings ajax-notice" method="post" action="http://www.stephealth.org/index.php/main/qna/newquestion">
            <fieldset>
-            <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+            <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
             <fieldset id="newquestion-data">
              <ul class="form_data">
               <li>
@@ -414,6 +402,206 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          <div id="notices_primary">
           <h2>Notices</h2>
           <ol class="notices threaded-notices xoxo">
+           <li class="hentry notice notice-source-web" id="notice-7">
+            <div class="entry-title">
+             <div class="author">
+              <span class="vcard author">
+               <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                 <span class="fn">admin</span>
+</a>
+</span>
+</div>
+             <p class="entry-content">trying this again</p>
+</div>
+            <div class="entry-content">
+             <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/7">
+              <abbr class="published" title="2012-01-26T16:14:55-05:00">about 5 hours ago</abbr>
+</a>
+              <span class="source">from               <span class="device">web</span>
+</span>
+</div>
+            <div class="notice-options">
+             <form id="favor-7" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+              <fieldset>
+               <legend>Favor this notice</legend>
+               <input name="token-7" type="hidden" id="token-7" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+               <input name="notice" type="hidden" id="notice-n7" value="7"/>
+               <input type="submit" id="favor-submit-7" name="favor-submit-7" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+              <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=7" class="notice_reply" title="Reply to this notice.">Reply               <span class="notice_id">7</span>
+</a>
+              <a href="http://www.stephealth.org/index.php/notice/delete/7" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+            <ul class="notices threaded-replies xoxo">
+             <li class="hentry notice notice-source-web" id="notice-8">
+              <div class="entry-title">
+               <div class="author">
+                <span class="vcard author">
+                 <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                  <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                   <span class="fn">admin</span>
+</a>
+</span>
+</div>
+               <p class="entry-content">a reply</p>
+</div>
+              <div class="entry-content">
+               <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/8">
+                <abbr class="published" title="2012-01-26T16:20:14-05:00">about 5 hours ago</abbr>
+</a>
+</div>
+              <div class="notice-options">
+               <form id="favor-8" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+                <fieldset>
+                 <legend>Favor this notice</legend>
+                 <input name="token-8" type="hidden" id="token-8" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+                 <input name="notice" type="hidden" id="notice-n8" value="8"/>
+                 <input type="submit" id="favor-submit-8" name="favor-submit-8" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+                <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=8" class="notice_reply" title="Reply to this notice.">Reply                 <span class="notice_id">8</span>
+</a>
+                <a href="http://www.stephealth.org/index.php/notice/delete/8" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+</li>
+             <li class="hentry notice notice-source-web" id="notice-9">
+              <div class="entry-title">
+               <div class="author">
+                <span class="vcard author">
+                 <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                  <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                   <span class="fn">admin</span>
+</a>
+</span>
+</div>
+               <p class="entry-content">yay</p>
+</div>
+              <div class="entry-content">
+               <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/9">
+                <abbr class="published" title="2012-01-26T16:41:45-05:00">about 5 hours ago</abbr>
+</a>
+</div>
+              <div class="notice-options">
+               <form id="favor-9" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+                <fieldset>
+                 <legend>Favor this notice</legend>
+                 <input name="token-9" type="hidden" id="token-9" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+                 <input name="notice" type="hidden" id="notice-n9" value="9"/>
+                 <input type="submit" id="favor-submit-9" name="favor-submit-9" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+                <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=9" class="notice_reply" title="Reply to this notice.">Reply                 <span class="notice_id">9</span>
+</a>
+                <a href="http://www.stephealth.org/index.php/notice/delete/9" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+</li>
+             <li class="notice-reply-placeholder">
+              <input class="placeholder" value="Write a reply..."/>
+</li>
+</ul>
+</li>
+           <li class="hentry notice notice-source-web" id="notice-4">
+            <div class="entry-title">
+             <div class="author">
+              <span class="vcard author">
+               <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                 <span class="fn">admin</span>
+</a>
+</span>
+</div>
+             <p class="entry-content">hello!</p>
+</div>
+            <div class="entry-content">
+             <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/4">
+              <abbr class="published" title="2012-01-26T14:39:31-05:00">about 7 hours ago</abbr>
+</a>
+              <span class="source">from               <span class="device">web</span>
+</span>
+</div>
+            <div class="notice-options">
+             <form id="favor-4" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+              <fieldset>
+               <legend>Favor this notice</legend>
+               <input name="token-4" type="hidden" id="token-4" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+               <input name="notice" type="hidden" id="notice-n4" value="4"/>
+               <input type="submit" id="favor-submit-4" name="favor-submit-4" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+              <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=4" class="notice_reply" title="Reply to this notice.">Reply               <span class="notice_id">4</span>
+</a>
+              <a href="http://www.stephealth.org/index.php/notice/delete/4" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+            <ul class="notices threaded-replies xoxo">
+             <li class="hentry notice notice-source-web" id="notice-5">
+              <div class="entry-title">
+               <div class="author">
+                <span class="vcard author">
+                 <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                  <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                   <span class="fn">admin</span>
+</a>
+</span>
+</div>
+               <p class="entry-content">this is pretty awesome.</p>
+</div>
+              <div class="entry-content">
+               <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/5">
+                <abbr class="published" title="2012-01-26T14:44:45-05:00">about 7 hours ago</abbr>
+</a>
+</div>
+              <div class="notice-options">
+               <form id="favor-5" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+                <fieldset>
+                 <legend>Favor this notice</legend>
+                 <input name="token-5" type="hidden" id="token-5" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+                 <input name="notice" type="hidden" id="notice-n5" value="5"/>
+                 <input type="submit" id="favor-submit-5" name="favor-submit-5" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+                <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=5" class="notice_reply" title="Reply to this notice.">Reply                 <span class="notice_id">5</span>
+</a>
+                <a href="http://www.stephealth.org/index.php/notice/delete/5" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+</li>
+             <li class="hentry notice notice-source-web" id="notice-6">
+              <div class="entry-title">
+               <div class="author">
+                <span class="vcard author">
+                 <a href="http://www.stephealth.org/index.php/admin" class="url" title="admin">
+                  <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-stream.png&amp;size=48" class="avatar photo" width="48" height="48" alt="admin"/>
+                   <span class="fn">admin</span>
+</a>
+</span>
+</div>
+               <p class="entry-content">one more level deeper</p>
+</div>
+              <div class="entry-content">
+               <a rel="bookmark" class="timestamp" href="http://www.stephealth.org/index.php/notice/6">
+                <abbr class="published" title="2012-01-26T14:46:59-05:00">about 7 hours ago</abbr>
+</a>
+</div>
+              <div class="notice-options">
+               <form id="favor-6" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
+                <fieldset>
+                 <legend>Favor this notice</legend>
+                 <input name="token-6" type="hidden" id="token-6" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+                 <input name="notice" type="hidden" id="notice-n6" value="6"/>
+                 <input type="submit" id="favor-submit-6" name="favor-submit-6" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
+</fieldset>
+</form>
+                <a href="http://www.stephealth.org/index.php/notice/new?replyto=admin&amp;inreplyto=6" class="notice_reply" title="Reply to this notice.">Reply                 <span class="notice_id">6</span>
+</a>
+                <a href="http://www.stephealth.org/index.php/notice/delete/6" class="notice_delete" title="Delete this notice from the timeline.">Delete</a>
+</div>
+</li>
+             <li class="notice-reply-placeholder">
+              <input class="placeholder" value="Write a reply..."/>
+</li>
+</ul>
+</li>
            <li class="hentry notice notice-source-web" id="notice-2">
             <div class="entry-title">
              <div class="author">
@@ -440,14 +628,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                <span class="description">event description</span>
 </div>
               <div class="event-rsvps">Attending:               <ul class="attending-list">
-                <li class="rsvp-list">Yes:                 <ul class="entities users xoxo">
-                  <li class="vcard">
-                   <a href="http://www.stephealth.org/index.php/admin" class="url" rel="contact member" title="admin">
-                    <img src="https://secure.gravatar.com/avatar.php?gravatar_id=fe860ad12f9445417b75a28434532fa6&amp;default=http%3A%2F%2Fwww.stephealth.org%2Ftheme%2Fstepstream%2Fdefault-avatar-mini.png&amp;size=24" width="24" height="24" class="avatar photo" alt="admin"/>
-                    <span class="fn nickname">admin</span>
-</a>
-</li>
-</ul>
+                <li class="rsvp-list">Yes:                 <ul class="entities users xoxo"></ul>
 </li>
                 <li class="rsvp-list">No:                 <ul class="entities users xoxo"></ul>
 </li>
@@ -455,13 +636,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 </li>
 </ul>
 </div>
-              <form id="form_event_rsvp" class="ajax" method="post" action="http://www.stephealth.org/index.php/main/event/rsvp/cancel">
+              <form id="form_event_rsvp" class="ajax" method="post" action="http://www.stephealth.org/index.php/main/event/rsvp">
                <fieldset>
-                <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
-                <fieldset id="new_rsvp_data">
-                 <input name="rsvp" type="hidden" id="rsvp-id" value="194d775b-d3c1-46f3-912f-3e44ef2946d1"/>
-You will attend this event.</fieldset>
-                <input type="submit" id="rsvp-cancel" name="rsvp-cancel" class="submit" value="Cancel" title=""/>
+                <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
+                <fieldset id="new_rsvp_data">RSVP:                 <input name="event" type="hidden" id="event-id" value="9fb9d714-d842-4e78-bff1-2cbb242fac52"/>
+                 <input name="submitvalue" type="hidden" id="submitvalue" value=""/>
+</fieldset>
+                <input type="submit" id="rsvp-submit" name="yes" class="submit" value="Yes" title="Yes" onClick="this.form.submitvalue.value = this.name; return true;"/>
+                <input type="submit" id="rsvp-submit" name="no" class="submit" value="No" title="No" onClick="this.form.submitvalue.value = this.name; return true;"/>
+                <input type="submit" id="rsvp-submit" name="maybe" class="submit" value="Maybe" title="Maybe" onClick="this.form.submitvalue.value = this.name; return true;"/>
 </fieldset>
 </form>
 </div>
@@ -477,7 +660,7 @@ You will attend this event.</fieldset>
              <form id="favor-2" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
               <fieldset>
                <legend>Favor this notice</legend>
-               <input name="token-2" type="hidden" id="token-2" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+               <input name="token-2" type="hidden" id="token-2" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
                <input name="notice" type="hidden" id="notice-n2" value="2"/>
                <input type="submit" id="favor-submit-2" name="favor-submit-2" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
 </fieldset>
@@ -511,7 +694,7 @@ You will attend this event.</fieldset>
              <form id="favor-1" class="form_favor ajax" method="post" action="http://www.stephealth.org/index.php/main/favor">
               <fieldset>
                <legend>Favor this notice</legend>
-               <input name="token-1" type="hidden" id="token-1" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+               <input name="token-1" type="hidden" id="token-1" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
                <input name="notice" type="hidden" id="notice-n1" value="1"/>
                <input type="submit" id="favor-submit-1" name="favor-submit-1" class="submit" value="Favor" title="Add this notice to your list of favorite notices."/>
 </fieldset>
@@ -550,7 +733,7 @@ You will attend this event.</fieldset>
             <form method="post" class="form_tag_user" name="tagprofile" action="http://www.stephealth.org/index.php/main/tagprofile/1">
              <fieldset>
               <legend>Edit lists</legend>
-              <input name="token" type="hidden" id="token" value="f34f416808f04924babb58702803f2bda4794d66f5cbbd0fff19c9adeb1a5272fc4a3855262f50a0a776c608e78a2827494dd00823df56d8ab60c6721c6ecbd9"/>
+              <input name="token" type="hidden" id="token" value="72ea2e31895f006511b859b506b692c15414a1b1ff1708c965be0057086be26e5b4758d991eb3e33bc782ce487f078ca81c0a00f3fc1ee100c1b97b7888900d5"/>
               <input name="id" type="hidden" id="id" value="1"/>
               <label for="tags">Tags</label>
               <input type="text" id="tags" name="tags" value=""/>
@@ -622,9 +805,6 @@ You will attend this event.</fieldset>
 <p><strong>StepStream</strong> is a microblogging service. It runs the <a href="http://status.net/">StatusNet</a> microblogging software, version 1.0.1, available under the <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">GNU Affero General Public License</a>.</p>
     <p>Content and data of StepStream are private and confidential.</p>
     <p>Content and data copyright by contributors. All rights reserved.</p>
-    <p>
-     <a href="#" id="mobile-toggle-enable">Switch to mobile site layout.</a>
-</p>
 </div>
 </div>
   <script type="text/javascript" src="http://www.stephealth.org/js/jquery.min.js?version=1.0.1"> </script>
@@ -643,25 +823,6 @@ You will attend this event.</fieldset>
   <script type="text/javascript">/*<![CDATA[*/ var maxUrlLength = 25 /*]]>*/</script>
   <script type="text/javascript" src="http://www.stephealth.org/plugins/ClientSideShorten/shorten.js?version=1.0.1"> </script>
   <script type="text/javascript" src="http://www.stephealth.org/plugins/Event/event.js"> </script>
-  <script type="text/javascript">/*<![CDATA[*/ 
-            $(function() {
-                $("#mobile-toggle-disable").click(function() {
-                    $.cookie("MobileOverride", "0", {path: "/"});
-                    window.location.reload();
-                    return false;
-                });
-                $("#mobile-toggle-enable").click(function() {
-                    $.cookie("MobileOverride", "1", {path: "/"});
-                    window.location.reload();
-                    return false;
-                });
-                $("#navtoggle").click(function () {
-                          $("#site_nav_local_views").fadeToggle();
-                          var text = $("#navtoggle").text();
-                          $("#navtoggle").text(
-                          text == "Show Navigation" ? "Hide Navigation" : "Show Navigation");
-                });
-            }); /*]]>*/</script>
   <script type="text/javascript" src="http://www.stephealth.org/plugins/QnA/js/qna.js"> </script>
 </body>
-<!-- 10398ms --></html>
+<!-- 2969ms --></html>

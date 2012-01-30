@@ -1,0 +1,139 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>Login - StepStream</title>
+  <link rel="stylesheet" type="text/css" href="css/display.css" media="screen, projection, tv, print"/>
+  <link rel="stylesheet" type="text/css" href="jquery-ui/css/custom-theme/jquery-ui-1.8.17.custom.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/js/css/smoothness/jquery-ui.css" media=""/>
+  
+  <!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css?version=1.0.1" /><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css?version=1.0.1" /><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css?version=1.0.1" /><![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css?version=1.0.1" /><![endif]-->
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Bookmark/bookmark.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Event/event.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Poll/poll.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/QnA/css/qna.css" media=""/>
+  <link rel="search" type="application/opensearchdescription+xml" href="http://www.stephealth.org/index.php/opensearch/people" title="StepStream People Search"/>
+  <link rel="search" type="application/opensearchdescription+xml" href="http://www.stephealth.org/index.php/opensearch/notice" title="StepStream Notice Search"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.as" type="application/stream+json" title="Public Timeline Feed (Activity Streams JSON)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/rss" type="application/rdf+xml" title="Public Timeline Feed (RSS 1.0)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.rss" type="application/rss+xml" title="Public Timeline Feed (RSS 2.0)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.atom" type="application/atom+xml" title="Public Timeline Feed (Atom)"/>
+</head>
+ <body id="login">
+  <div id="wrap">
+   <div id="header">
+    <address id="site_contact" class="vcard">
+     <a class="url home bookmark" href="http://www.stephealth.org/index.php/">
+      <img class="logo photo" src="http://www.stephealth.org/theme/stepstream/logo.png" alt="StepStream"/>
+       <span class="fn org">StepStream</span>
+</a>
+</address>
+    <div id="site_nav_global_primary">
+     <ul class="nav">
+      <li id="nav_login">
+       <a href="http://www.stephealth.org/index.php/main/login" title="Login to the site.">Login</a>
+</li>
+</ul>
+</div>
+</div>
+   <div id="core">
+    <div id="aside_primary_wrapper">
+     <div id="content_wrapper">
+      <div id="site_nav_local_views_wrapper">
+       <div id="site_nav_local_views">
+        <ul class="nav navbuttons">
+         <li class="current">
+          <a href="http://www.stephealth.org/index.php/main/login" title="Login with a username and password">Login</a>
+</li>
+         <li>
+          <a href="http://www.stephealth.org/index.php/main/openid" title="Login or register with OpenID.">OpenID</a>
+</li>
+</ul>
+</div>
+       <div id="content">
+        <h1>Login</h1>
+        <div id="page_notice" class="system_notice"><p>Login with your username and password.</p>
+<p>(Have an <a href="http://openid.net/">OpenID</a>? Try our <a href="http://www.stephealth.org/index.php/main/openid">OpenID login</a>!)</p>
+</div>
+        <div id="content_inner">
+         <form method="post" id="form_login" class="form_settings" action="http://www.stephealth.org/index.php/main/login">
+          <fieldset>
+           <legend>Login to site</legend>
+           <ul class="form_data">
+            <li>
+             <label for="nickname">Username or email address</label>
+             <input type="text" id="nickname" name="nickname"/>
+</li>
+            <li>
+             <label for="password">Password</label>
+             <input name="password" type="password" class="password" id="password"/>
+</li>
+            <li>
+             <input name="rememberme" type="checkbox" class="checkbox" id="rememberme" value="true"/>
+              <label class="checkbox" for="rememberme">Remember me</label>
+              <p class="form_guide">Automatically login in the future; not for shared computers!</p>
+</li>
+</ul>
+           <input type="submit" id="submit" name="submit" class="submit" value="Login" title=""/>
+</fieldset>
+</form>
+         <p>
+          <a href="http://www.stephealth.org/index.php/main/recoverpassword">Lost or forgotten password?</a>
+</p>
+</div>
+</div>
+       <div id="aside_primary" class="aside"></div>
+</div>
+</div>
+</div>
+</div>
+   <div id="footer">
+    <ul class="nav" id="site_nav_global_secondary">
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/help">Help</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/about">About</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/faq">FAQ</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/privacy">Privacy</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/source">Source</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/main/version">Version</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/contact">Contact</a>
+</li>
+</ul>
+<p><strong>StepStream</strong> is a microblogging service. It runs the <a href="http://status.net/">StatusNet</a> microblogging software, version 1.0.1, available under the <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">GNU Affero General Public License</a>.</p>
+    <p>Content and data of StepStream are private and confidential.</p>
+    <p>Content and data copyright by contributors. All rights reserved.</p>
+</div>
+</div>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.form.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery-ui.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.cookie.min.js?version=1.0.1"> </script>
+  <script type="text/javascript">/*<![CDATA[*/ if (typeof window.JSON !== "object") { $.getScript("http://www.stephealth.org/js/json2.min.js"); } /*]]>*/</script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.joverlay.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.infieldlabel.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/util.min.js?version=1.0.1"> </script>
+  <script type="text/javascript">/*<![CDATA[*/ var _peopletagAC = "http://www.stephealth.org/index.php/main/peopletagautocomplete"; /*]]>*/</script>
+  <script type="text/javascript">/*<![CDATA[*/ SN.messages={"showmore_tooltip":"Show more","reply_submit":"Reply","reply_placeholder":"Write a reply..."} /*]]>*/</script>
+  <script type="text/javascript">/*<![CDATA[*/ if (window.top !== window.self) { document.write = ""; window.top.location = window.self.location; setTimeout(function () { document.body.innerHTML = ""; }, 1); window.self.onload = function () { document.body.innerHTML = ""; }; } /*]]>*/</script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/Bookmark/js/bookmark.js"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/Event/event.js"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/QnA/js/qna.js"> </script>
+  <script type="text/javascript">/*<![CDATA[*/  $(document).ready(function() { var el = $("#nickname"); if (el.length) { el.focus(); } }); /*]]>*/</script>
+</body>
+<!-- 4378ms --></html>

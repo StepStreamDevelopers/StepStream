@@ -125,7 +125,7 @@ option {
 }
 
 .form_notice { 
-    width:740px;
+    width:80%;
     margin-top: 10px;
     margin-bottom:10px;
     padding:20px;
@@ -172,7 +172,7 @@ option {
     clear: left;
     float: left;
     position: relative;
-    width: 483px;
+    width: 300px;
     height: 42px;
     padding: 6px 5px 18px 5px;
     border: 1px solid #a6a6a6;
@@ -287,9 +287,8 @@ option {
 }
 
 .input_form .form_settings fieldset fieldset {
-    width: 400px;
+    width: 500px;
     float: left;
-    background: none;
     border: none;
     margin-bottom: 0px;
     padding: 0px;
@@ -470,22 +469,24 @@ option {
 }
 
 .notice {
-	width:672px;
-	min-height:100px;
+	width:84%;
 	background:#FFFFFF;
 	margin-bottom:10px;
 	padding:10px;
 	border-top: 12px solid #FFE01D;
 	border-bottom: 2px solid #CCCCCC;
 	list-style-type: none;
+	font-size:.9em;
+}
+
+.hentry {
 }
 
 .notice, .profile, .application, #content .peopletag {
     position:relative;
     clear:both;
     float:left;
-    left: 50%;
-    margin-left: -336px;
+    left: 8%;
 }
 
 .notice .author {
@@ -742,9 +743,9 @@ content: ":";
 /* threaded replies */
 
 .threaded-replies {
+	width:600px;
     clear: both;
     float: left;
-    width: 458px;
     margin-left: 59px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -755,6 +756,10 @@ content: ":";
     font-size: 1em;
 }
 
+.notice-options fieldset {
+	padding:0px;
+}
+
 .threaded-replies:empty {
     margin-bottom: 0px; 
 }
@@ -763,18 +768,17 @@ content: ":";
     margin-top: 0px;
 }
 
-#content .notice .threaded-replies .notice,
+/* #content .notice .threaded-replies .notice,
 #content .notice .threaded-replies .notice-data { 
     width: 440px;
     padding-bottom: 14px;
     padding-top: 5px;
-    border-bottom: 2px dotted #eee;
     line-height: 1.36em;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 10px;
     background: none;
-}
+} */
 
 #content .notice .threaded-replies .entry-title {
     min-height: 1px;
@@ -1327,7 +1331,6 @@ font-weight:bold;
 .form_tag_user_wrap form,
 .form_tag_user_wrap label,
 .form_tag_user_wrap legend {
-display:none;
 }
 
 .form_tag_user_wrap {
@@ -2439,7 +2442,7 @@ display:inline;
 }
 .profiles li,
 .notices li {
-margin-bottom:18px;
+margin-bottom:5px;
 }
 
 }/*end of @media print*/
