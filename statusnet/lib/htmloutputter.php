@@ -106,7 +106,7 @@ class HTMLOutputter extends XMLOutputter
             }
         }
 
-//        header('Content-Type: '.$type);
+        header('Content-Type: '.$type);
 
 	// Output anti-framing headers to prevent clickjacking (respected by newer
         // browsers).
