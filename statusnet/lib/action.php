@@ -96,7 +96,8 @@ class Action extends HTMLOutputter // lawsuit
      *
      * @return nothing
      */
-    function showPage($pageType)
+//    function showPage($pageType)
+	function showPage()
     {
         if (Event::handle('StartShowHTML', array($this))) {
             $this->startHTML();
