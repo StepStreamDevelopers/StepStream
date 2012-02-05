@@ -17,7 +17,7 @@ $config['mail']['params'] = array(
 'port' => 587,
 'auth' => true,
 'username' => 'register@stephealth.org',
-'password' => 'tsrbecl'
+'password' => 'password'
 );
 $config['mail']['appname'] = 'StepStream';
 $config['mail']['check_domain'] = true;
