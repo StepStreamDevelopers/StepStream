@@ -60,9 +60,12 @@ class DefaultLocalNav extends Menu
                 $this->submenu(_m('MENU','Home'), $pn);
             }  
 
-            $bn = new PublicGroupNav($this->action);
-            // TRANS: Menu item in default local navigation panel.
-            $this->submenu(_m('MENU','Public'), $bn);
+		if ($user->hasRight(Right::MAKEGROUPADMIN)) {
+                $bn = new PublicGroupNav($this->action);
+                // TRANS: Menu item in default local navigation panel.
+                // Only shown to admins
+                $this->submenu(_m('MENU','Public'), $bn);
+            }
 
             if (!empty($user)) {
                 $sn = new GroupsNav($this->action, $user);

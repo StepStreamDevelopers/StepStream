@@ -104,7 +104,7 @@ option {
 }
 
 .input_form_nav_tab.current a {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .input_form { 

@@ -100,7 +100,7 @@ class PersonalGroupNav extends Menu
                                      _m('MENU','Me'),
                                      // TRANS: Menu item title in personal group navigation menu.
                                      _('Your profile information'),
-                                     $mine && $action =='myprofile');
+                                     $mine && $action =='myprofile', 'nav_profile');
             }
 
             Event::handle('EndPersonalGroupNav', array($this));
