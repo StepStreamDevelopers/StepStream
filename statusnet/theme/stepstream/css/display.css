@@ -83,24 +83,33 @@ a {
 	float:left;
 	z-index:100;
 	margin-right:0px;
-
-	
+	font-size:1.6em;
 }
 
 #site_nav_local_views li{
+	margin:0px;
+	padding:0px;
+}
+
+#nav_local_default li {
 	margin:0px;
 	display: inline;
 	list-style-type: none;
 	text-decoration:none;
 }
 
-.current a{
+#nav_local_default li a{
 	text-decoration:none;
-	}
+	float:left;
+}
 
+
+.current a{
+	font-weight:bold;
+}
 
 /* Stream */
-#nav_timeline_personal a:hover, #nav_timeline_personal .current a {
+#nav_timeline_personal a:hover, #nav_timeline_personal.current a{
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
@@ -108,12 +117,10 @@ a {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
     -moz-border-radius: 8px 0px 0px 8px;
-border-radius: 8px 0px 0px 8px;
-	padding-right:5px;
-
+	border-radius: 8px 0px 0px 8px;  
 }
 
-#nav_timeline_personal a {
+#nav_timeline_personal a{
     color: #333333;
     text-decoration: none;
     background: #CCCCCC;
@@ -121,26 +128,27 @@ border-radius: 8px 0px 0px 8px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
     word-wrap: break-word;
-    padding-left:5px;
-    padding-right:0px;
-    padding-top:1px;
-    padding-bottom:1px;
-    font-size:1.5em;
-    -moz-border-radius: 8px 0px 0px 8px;
-	border-radius: 8px 0px 0px 8px;
-	padding-right:5px;
+    padding-top:3px;
+    padding-bottom:3px;
+   -moz-border-radius: 8px 0px 0px 8px;
+	border-radius: 8px 0px 0px 8px;  
+	padding-right:10px;
+	padding-left:10px;
+	border-style: none solid none none;
+	border-width:2px;
+	border-color:#888888;
 }
 
 /*Tips & Game */
-#nav_timeline_tips a:hover, #nav_timeline_tips .current a {
+#nav_timeline_tips a:hover, #nav_timeline_tips.current a {
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
     background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-	padding-right:5px;
-
+	padding-right:10px;
+	padding-left:10px;
 }
 
 #nav_timeline_tips a {
@@ -151,16 +159,17 @@ border-radius: 8px 0px 0px 8px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
     word-wrap: break-word;
-    padding-left:5px;
-    padding-right:0px;
-    padding-top:1px;
-    padding-bottom:1px;
-    font-size:1.5em;
-	padding-right:5px;
+    padding-top:3px;
+    padding-bottom:3px;
+	padding-right:10px;
+	padding-left:10px;
+	border-style: none solid none none;
+	border-width:2px;
+	border-color:#888888;
 }
 
 /* Me */
-#nav_profile a:hover, #nav_profile .current a {
+#nav_profile a:hover, #nav_profile.current a {
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
@@ -168,8 +177,7 @@ border-radius: 8px 0px 0px 8px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
     -moz-border-radius: 0px 8px 8px 0px;
-border-radius: 0px 8px 8px 0px;
-	padding-right:5px;
+border-radius: 0px 8px 8px 0px;  
 
 }
 
@@ -181,14 +189,13 @@ border-radius: 0px 8px 8px 0px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
     word-wrap: break-word;
-    padding-left:5px;
-    padding-right:0px;
-    padding-top:1px;
-    padding-bottom:1px;
-    font-size:1.5em;
+    padding-top:3px;
+    padding-bottom:3px;
     -moz-border-radius: 0px 8px 8px 0px;
-	border-radius: 0px 8px 8px 0px;
-	padding-right:5px;
+	border-radius: 0px 8px 8px 0px;  
+	padding-right:10px;
+	padding-left:10px;
+
 }
 
 
@@ -284,7 +291,7 @@ border-radius: 0px 8px 8px 0px;
 .input_forms li {
 	display:inline;
 	list-style-type: none;
-	padding-right:5px;
+	padding-right:10px;
 }
 
 
