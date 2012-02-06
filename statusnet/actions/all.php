@@ -140,18 +140,17 @@ class AllAction extends ProfileAction
     function showEmptyListMessage()
     {
         // TRANS: Empty list message. %s is a user nickname.
-        $message = sprintf(_('This is the timeline for %s and friends but no one has posted anything yet.'), $this->user->nickname) . ' ';
+        $message = sprintf(_('Welcome! Nobody has said anything yet. '), $this->user->nickname) . ' ';
 
         if (common_logged_in()) {
             $current_user = common_current_user();
             if ($this->user->id === $current_user->id) {
                 // TRANS: Encouragement displayed on logged in user's empty timeline.
                 // TRANS: This message contains Markdown links. Keep "](" together.
-                $message .= _('Try subscribing to more people, [join a group](%%action.groups%%) or post something yourself.');
+                $message .= _('Use one of the options above to set your status, add a tip for how to get steps, or enter in how many steps you got today.');
             } else {
                 // TRANS: %1$s is user nickname, %2$s is user nickname, %2$s is user nickname prefixed with "@".
                 // TRANS: This message contains Markdown links. Keep "](" together.
-                $message .= sprintf(_('You can try to [nudge %1$s](../%2$s) from their profile or [post something to them](%%%%action.newnotice%%%%?status_textarea=%3$s).'), $this->user->nickname, $this->user->nickname, '@' . $this->user->nickname);
             }
         } else {
             // TRANS: Encouragement displayed on empty timeline user pages for anonymous users.
