@@ -685,7 +685,7 @@ $this->script('graphs.js');
         $this->elementStart('div', 'input_forms');
 
         if (Event::handle('StartShowEntryForms', array(&$tabs))) {
-            $this->elementStart('div', array('class' => 'nav',
+            $this->elementStart('ul', array('class' => 'nav',
                                             'id' => 'input_form_nav'));
          if($pageType != 'Stream' && $pageType != 'Me' && $pageType != 'Tips')
           {
@@ -699,12 +699,12 @@ $this->script('graphs.js');
                     // it were a small version of it.
                     $attrs['class'] .= ' current';
                 }
-                $this->elementStart('span', $attrs);
+                $this->elementStart('li', $attrs);
 
                 $this->element('a',
                                array('href' => 'javascript:SN.U.switchInputFormTab("'.$tag.'")'),
                                $title);
-                $this->elementEnd('span');
+                $this->elementEnd('li');
 
 
 
