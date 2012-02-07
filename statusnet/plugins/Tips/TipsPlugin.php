@@ -238,10 +238,10 @@ class TipsPlugin extends MicroappPlugin
         case Tips::OBJECT_TYPE:
             return new TipsListItem($nli);
             break;
-        case Susbcribe::POSITIVE:
-        case Susbcribe::NEGATIVE:
-        case Susbcribe::POSSIBLE:
-            return new SusbcribeListItem($nli);
+//        case Susbcribe::POSITIVE:
+//        case Susbcribe::NEGATIVE:
+//        case Susbcribe::POSSIBLE:
+//            return new SusbcribeListItem($nli);
             break;
         }
         return null;

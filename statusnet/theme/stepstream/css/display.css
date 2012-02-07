@@ -17,7 +17,7 @@ body {
 	padding:0;
 	height:100%;
 	background-color:#8CD6EA;
-	background-image:url('../images/hill-trees.jpg');
+	background-image:url('../images/hill-trees_smaller.jpg');
 	background-repeat:no-repeat;
 	background-position:center;
 	background-attachment:fixed;
@@ -115,6 +115,25 @@ a {
     -moz-border-radius: 8px 0px 0px 8px;
 	border-radius: 8px 0px 0px 8px;  
 }
+
+
+.me_block {
+	float:left;
+	width:770px;
+	background-color:#ffffff;
+	/* Fallback for web browsers that don't support RGBa */
+	background-color: rgb(255, 255, 255);
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(255, 255, 255, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top: 45px;
+	padding-bottom:15px;
+	}
 
 #nav_left a{
     color: #333333;
@@ -331,3 +350,9 @@ border-radius: 0px 8px 8px 0px;
 .legend {
 	display:none;
 	}
+	
+.section legend {
+	display:none;
+}
+
+	
