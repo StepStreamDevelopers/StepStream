@@ -1,6 +1,6 @@
 jQuery(document).ready()
 {
-alert("inside");
+// alert("inside");
 var user_id_graph = document.getElementById('user_id_graph').value;	
 
 alert(user_id_graph);

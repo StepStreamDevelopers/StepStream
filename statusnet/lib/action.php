@@ -692,7 +692,6 @@ $this->script('graphs.js');
            foreach ($tabs as $tag => $title) {
                 $attrs = array('id' => 'input_form_nav_'.$tag,
                                'class' => 'input_form_nav_tab');
-
                 if ($tag == 'status') {
                     // We're actually showing the placeholder form,
                     // but we special-case the 'Status' tab as if

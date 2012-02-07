@@ -89,16 +89,12 @@ a {
 #site_nav_local_views li{
 	margin:0px;
 	padding:0px;
-}
-
-#nav_local_default li {
-	margin:0px;
 	display: inline;
 	list-style-type: none;
 	text-decoration:none;
 }
 
-#nav_local_default li a{
+#site_nav_local_views a{
 	text-decoration:none;
 	float:left;
 }
@@ -108,8 +104,8 @@ a {
 	font-weight:bold;
 }
 
-/* Stream */
-#nav_timeline_personal a:hover, #nav_timeline_personal.current a{
+/* left button */
+#nav_left a:hover, #nav_left.current a{
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
@@ -120,7 +116,7 @@ a {
 	border-radius: 8px 0px 0px 8px;  
 }
 
-#nav_timeline_personal a{
+#nav_left a{
     color: #333333;
     text-decoration: none;
     background: #CCCCCC;
@@ -139,8 +135,8 @@ a {
 	border-color:#888888;
 }
 
-/*Tips & Game */
-#nav_timeline_tips a:hover, #nav_timeline_tips.current a {
+/*middle buttons*/
+#nav_middle a:hover, #nav_middle.current a {
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
@@ -151,7 +147,7 @@ a {
 	padding-left:10px;
 }
 
-#nav_timeline_tips a {
+#nav_middle a {
     color: #333333;
     text-decoration: none;
     background: #CCCCCC;
@@ -168,8 +164,8 @@ a {
 	border-color:#888888;
 }
 
-/* Me */
-#nav_profile a:hover, #nav_profile.current a {
+/* right button*/
+#nav_right a:hover, #nav_right.current a {
     color: #333333;
     text-decoration: none;
     background: #EAEAEA;
@@ -181,7 +177,7 @@ border-radius: 0px 8px 8px 0px;
 
 }
 
-#nav_profile a {
+#nav_right a {
     color: #333333;
     text-decoration: none;
     background: #CCCCCC;
@@ -332,3 +328,6 @@ border-radius: 0px 8px 8px 0px;
 	clear:both;
 	display:none;
 }
+.legend {
+	display:none;
+	}

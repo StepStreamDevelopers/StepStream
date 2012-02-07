@@ -63,7 +63,7 @@ class SettingsNav extends Menu
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in settings navigation panel.
-        $this->action->element('h3', null, _m('HEADER','Home'));
+//        $this->action->element('h3', null, _m('HEADER','Home'));
         $this->action->elementStart('ul', 'nav');
         $this->out->menuItem(common_local_url('all', array('nickname' =>
                                                            $nickname)),
