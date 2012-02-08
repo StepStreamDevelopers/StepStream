@@ -100,10 +100,10 @@ class EventForm extends Form
         $this->li();
         $this->out->input('event-step_count',
                           // TRANS: Field label on event form.
-                          _m('LABEL','Enter the number of steps taken per day'),
+                          _m('LABEL','# of steps'),
                           null,
                           // TRANS: Field title on event form.
-                          _m('Number of steps taken per day'),
+                          _m('How many steps did you take?'),
                           'step_count');
         $this->unli();
 
@@ -115,9 +115,9 @@ class EventForm extends Form
         $this->out->input('event-step_date',
                           // TRANS: Field label on event form.
                           _m('LABEL','Step Date'),
-                          $today->format('m/d/Y'),
+                          date("m/d/y", strtotime("-1 day")),
                           // TRANS: Field title on event form.
-                          _m('Day the steps were taken'),
+                          _m('When did you take the steps?'),
                           'step_date');
         $this->unli();
 
@@ -146,7 +146,7 @@ class EventForm extends Form
                           _m('LABEL','Description'),
                           null,
                           // TRANS: Field title on event form.
-                          _m('Description of the event.'),
+                          _m('Did you do anything fun to get these steps?'),
                           'description');
         $this->unli();
 
@@ -169,5 +169,6 @@ class EventForm extends Form
     {
         // TRANS: Button text to save an event..
         $this->out->submit('event-submit', _m('BUTTON', 'Save'), 'submit', 'submit');
+
     }
 }
