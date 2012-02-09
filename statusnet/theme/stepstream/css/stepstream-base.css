@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 15px;
 }
 
-h1 {font-size: 2.2em;}
+h1 {font-size: 1.5em;}
 h2 {font-size: 1.8em;}
 h3 {font-size: 1.6em;}
 h4 {font-size: 1.4em;}
@@ -124,7 +124,7 @@ option {
     padding-bottom: 50px;
 }
 
-.form_notice { 
+.form_notice, #new_tips_data, #new_event_data { 
     width:80%;
     margin-top: 10px;
     margin-bottom:10px;
@@ -382,7 +382,8 @@ option {
 .checkbox-wrapper.unchecked label.checkbox {
     padding-left: 20px;
     background: url(../images/icons/lock_open.png) no-repeat 0px 0px;
-    opacity: 0.6;
+	color: #DDDDDD;
+	opacity:1;
 }
 
 .checkbox-wrapper.unchecked label.checkbox:hover {
@@ -416,9 +417,9 @@ option {
     position: relative;
     top: 0;
     right: 0;
-    float: right;   
-    width: 100px;
-    height: 26px;
+    float: left;   
+    width: 130px;
+    height: 40px;
     line-height: 26px;
     padding: 0px 10px;
     margin: 0px;
@@ -830,7 +831,7 @@ content: ":";
     clear: left;
     position: relative;
     padding: 10px;
-    padding-bottom: 44px;
+    padding-bottom: 0px;
 }
 
 .threaded-replies .form_notice textarea {

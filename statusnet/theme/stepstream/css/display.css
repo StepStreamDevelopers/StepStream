@@ -278,22 +278,16 @@ border-radius: 0px 8px 8px 0px;
 }
 
 
-
-
 .system_notice a{
 	color: #DDDDDD;
 }
 
-#form_login fieldset{
+#form_login fieldset, #content_inner fieldset {
 	position:relative;
 	background-color:#ffffff;
-	/* Fallback for web browsers that don't support RGBa */
 	background-color: rgb(255, 255, 255);
-	/* RGBa with 0.6 opacity */
 	background-color: rgba(255, 255, 255, 0.6);
-	/* For IE 5.5 - 7*/
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	padding-left: 15px;
 	padding-right:15px;
@@ -301,9 +295,12 @@ border-radius: 0px 8px 8px 0px;
 	padding-bottom:15px;
 }
 
-#content_inner fieldset legend {
-	position:absolute;
-	top:5px;
+
+ legend {
+	position:relative;
+	clear:both;
+	top:30px;
+	padding-bottom:10px;
 }
 
 /* plugins details */
@@ -330,7 +327,7 @@ border-radius: 0px 8px 8px 0px;
 .org {
 	display:none;
 }
-
+/*
 #header-search {
 	display:none;
 }
@@ -347,16 +344,10 @@ border-radius: 0px 8px 8px 0px;
 .form_notice_placeholder {
 	display:none;
 }
+*/
 #footer {
 	clear:both;
 	display:none;
 }
-.legend {
-	display:none;
-	}
 	
-.section legend {
-	display:none;
-}
-
 	

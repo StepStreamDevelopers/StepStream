@@ -1443,14 +1443,14 @@ var SN = { // StatusNet
          *  - file upload events
          */
         NoticeForm: function() {
-            if ($('body.user_in').length > 0) {
+//            if ($('body.user_in').length > 0) {
                 // SN.Init.NoticeFormSetup() will get run
                 // when forms get displayed for the first time...
 
                 // Hack to initialize the placeholder at top
-                $('#input_form_placeholder input.placeholder').focus(function() {
-                    SN.U.switchInputFormTab("status");
-                });
+//                $('#input_form_placeholder input.placeholder').focus(function() {
+//                    SN.U.switchInputFormTab("event");
+//                });
 
                 // Make inline reply forms self-close when clicking out.
                 $('body').bind('click', function(e) {

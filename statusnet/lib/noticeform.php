@@ -223,7 +223,7 @@ class NoticeForm extends Form
 
             if (common_config('attachments', 'uploads')) {
                 $this->out->hidden('MAX_FILE_SIZE', common_config('attachments', 'file_quota'));
-                $this->out->elementStart('label', array('class' => 'notice_data-attach'));
+/*                $this->out->elementStart('label', array('class' => 'notice_data-attach'));
                 // TRANS: Input label in notice form for adding an attachment.
                 $this->out->text(_('Attach'));
                 $this->out->element('input', array('class' => 'notice_data-attach',
@@ -232,6 +232,7 @@ class NoticeForm extends Form
                                                    // TRANS: Title for input field to attach a file to a notice.
                                                    'title' => _('Attach a file.')));
                 $this->out->elementEnd('label');
+  */
             }
             if (!empty($this->actionName)) {
                 $this->out->hidden('notice_return-to', $this->actionName, 'returnto');
@@ -245,7 +246,7 @@ class NoticeForm extends Form
 
             $toWidget->show();
             $this->out->elementEnd('div');
-
+/*
             if ($this->user->shareLocation()) {
                 $this->out->hidden('notice_data-lat', empty($this->lat) ? (empty($this->profile->lat) ? null : $this->profile->lat) : $this->lat, 'lat');
                 $this->out->hidden('notice_data-lon', empty($this->lon) ? (empty($this->profile->lon) ? null : $this->profile->lon) : $this->lon, 'lon');
@@ -281,7 +282,7 @@ class NoticeForm extends Form
                     'ErrorTimeout: ' .json_encode($error_timeout_text).
                     '}');
             }
-
+*/
             Event::handle('EndShowNoticeFormData', array($this));
         }
     }
