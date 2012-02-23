@@ -476,9 +476,11 @@ option {
 	background:#FFFFFF;
 	margin-bottom:10px;
 	padding:10px;
-	border-bottom: 2px solid #CCCCCC;
 	list-style-type: none;
 	font-size:.9em;
+	box-shadow: #666 1px 1px 5px;
+	behavior: url(../pie/PIE.htc);
+
 }
 
 .notice-type-tips {
