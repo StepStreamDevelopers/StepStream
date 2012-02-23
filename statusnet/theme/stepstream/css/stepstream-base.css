@@ -463,6 +463,8 @@ option {
 #notices_primary {
     padding-top: 3px;
     clear: both;
+    margin-left:60px;
+    width:780px;
 }
 
 #notices_primary h2 {
@@ -474,11 +476,32 @@ option {
 	background:#FFFFFF;
 	margin-bottom:10px;
 	padding:10px;
-	border-top: 12px solid #FFE01D;
 	border-bottom: 2px solid #CCCCCC;
 	list-style-type: none;
 	font-size:.9em;
 }
+
+.notice-type-tips {
+	border-top: 12px solid #FFE01D;
+}
+
+.notice-type-event {
+	border-top: 12px solid #F84094;
+}
+
+.notice-type-comment {
+	border: 1px solid #CCCCCC;
+    position:relative;
+    clear:both;
+    float:left;
+	left: 10px;
+}
+
+.notice-type-note, .notice-type-sub-yes {
+	border-top: 12px solid #66CCFF;
+}
+
+
 
 .hentry {
 }
@@ -487,7 +510,7 @@ option {
     position:relative;
     clear:both;
     float:left;
-    left: 8%;
+//    left: 8%;
 }
 
 .notice .author {
@@ -744,7 +767,7 @@ content: ":";
 /* threaded replies */
 
 .threaded-replies {
-	width:600px;
+	width:550px;
     clear: both;
     float: left;
     margin-left: 59px;
@@ -816,13 +839,13 @@ content: ":";
 }
 
 .threaded-replies .notice-reply-comments {
-    margin: 2px 0px 4px 10px;
+    margin: 2px 0px 4px 0px;
 }
 
 .threaded-replies .placeholder {
     margin: 10px;
     width: 426px;
-    padding: 4px 4px 4px 6px;
+    padding: 0px;
     border: 1px solid #a6a6a6;
     color: #888;
 }

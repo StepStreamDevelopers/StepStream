@@ -840,10 +840,10 @@ $this->showProfileBlock();
                 Event::handle('EndShowNoticeForm', array($this));
             }
         }
-        if (Event::handle('StartShowPageTitle', array($this))) {
-            $this->showPageTitle();
-            Event::handle('EndShowPageTitle', array($this));
-        }
+//        if (Event::handle('StartShowPageTitle', array($this))) {
+//            $this->showPageTitle();
+//            Event::handle('EndShowPageTitle', array($this));
+//        }
         $this->showPageNoticeBlock();
         $this->elementStart('div', array('id' => 'content_inner'));
         // show the actual content (forms, lists, whatever)

@@ -167,8 +167,8 @@ class NoticeListItem extends Widget
             if ($this->notice->scope != 0 && $this->notice->scope != 1) {
                 $class .= ' limited-scope';
             }
-            if (!empty($this->notice->source)) {
-                $class .= ' notice-source-'.$this->notice->source;
+            if (!empty($this->notice->object_type)) {
+                $class .= ' notice-type-'.substr($this->notice->object_type, 35);
             }
             $this->out->elementStart('li', array('class' => $class,
                                                  'id' => 'notice-' . $id));

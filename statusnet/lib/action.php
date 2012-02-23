@@ -1061,11 +1061,11 @@ $this->script('graphs.js');
                 Event::handle('EndShowNoticeForm', array($this));
             }
         }
-        if (Event::handle('StartShowPageTitle', array($this))) {
+/*        if (Event::handle('StartShowPageTitle', array($this))) {
             $this->showPageTitle();
             Event::handle('EndShowPageTitle', array($this));
         }
-        $this->showPageNoticeBlock();
+*/        $this->showPageNoticeBlock();
         $this->elementStart('div', array('id' => 'content_inner'));
         // show the actual content (forms, lists, whatever)
         $this->showContent();
