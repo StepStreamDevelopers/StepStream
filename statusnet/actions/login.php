@@ -230,11 +230,11 @@ class LoginAction extends Action
                                           'action' => common_local_url('login')));
         $this->elementStart('fieldset');
         // TRANS: Form legend on login page.
-        $this->element('legend', null, _('Login to site'));
+        $this->element('legend', null, _('Login'));
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on login page.
-        $this->input('nickname', _('Username or email address'));
+        $this->input('nickname', _('Username or email'));
         $this->elementEnd('li');
         $this->elementStart('li');
         // TRANS: Field label on login page.

@@ -288,7 +288,7 @@ a {
 	color: #DDDDDD;
 }
 
-#form_login fieldset, #content_inner fieldset {
+#content_inner fieldset {
 	position:relative;
 	background-color:#ffffff;
 	background-color: rgb(255, 255, 255);
@@ -300,6 +300,7 @@ a {
 	padding-top: 45px;
 	padding-bottom:15px;
 }
+
 
 
  legend {
@@ -330,41 +331,42 @@ a {
 
 /* Login Stuff */
 .form_login {
-    margin-left: 10px;
-	margin-bottom:0;
     line-height: 1em;
 	width:100px;
 	float:right;
-	margin-top:20px;
-	margin-right: 20px;
-
+	margin-top:-12px;
+	margin-right:101px;
 }
 
-.form_login p {
-margin-bottom:11px;
+.form_login legend {
+//	top:0px;
 }
 
-.form_login {
-padding:0 7px;
+.form_login fieldset {
+	position:relative;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top: 15px;
+	padding-bottom:15px;
 }
 
-.form_login {
-    margin-top: 10px;
-}
-
-.form_login input {
-    margin-right: 20px;
-}
 
 .welcome_content {
-	width:750px;
+	width:800px;
+	float:left;
+	clear:both;
+	margin-top:20px;
 }
 
 .welcome{
-	width:590px;
+	width:580px;
 	background-color:red;
 	float:left;
-	margin-top:22px;
 	padding: 5px;
 	background-color:#000000;
 	/* Fallback for web browsers that don't support RGBa */
