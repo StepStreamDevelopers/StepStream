@@ -327,6 +327,62 @@ a {
 
 
 
+
+/* Login Stuff */
+.form_login {
+    margin-left: 10px;
+	margin-bottom:0;
+    line-height: 1em;
+	width:100px;
+	float:right;
+	margin-top:20px;
+	margin-right: 20px;
+
+}
+
+.form_login p {
+margin-bottom:11px;
+}
+
+.form_login {
+padding:0 7px;
+}
+
+.form_login {
+    margin-top: 10px;
+}
+
+.form_login input {
+    margin-right: 20px;
+}
+
+.welcome_content {
+	width:750px;
+}
+
+.welcome{
+	width:590px;
+	background-color:red;
+	float:left;
+	margin-top:22px;
+	padding: 5px;
+	background-color:#000000;
+	/* Fallback for web browsers that don't support RGBa */
+	background-color: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	color: #DDDDDD;
+	behavior: url(../pie/PIE.htc);
+
+}
+
 /* ========================= hidden ========================= */
 
 
