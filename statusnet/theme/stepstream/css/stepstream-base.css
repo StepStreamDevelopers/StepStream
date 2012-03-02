@@ -657,8 +657,8 @@ left:0;
 .notice-options input.submit, .notice-options a, .notice-options .repeated {
     display: block;
     border: 0;
-    height: 16px;
-    width: 16px;
+    height: 30px;
+    width: 30px;
 }
 
 .notice-options input.submit, .notice-options a {
@@ -2348,16 +2348,16 @@ background-position:0 -2770px;
 background:none;
 }
 .notice-options .notice_reply {
-background-position:0 -592px;
+background-image:url(../images/icons/reply.png);
 }
 .notice-options form.form_favor input.submit {
-background-position:0 -460px;
+background-image:url(../images/icons/heart.png);
 }
 .notice-options form.form_disfavor input.submit {
 background-position:0 -526px;
 }
 .notice-options .notice_delete {
-background-position:0 -658px;
+background-image:url(../images/icons/delete.png);
 }
 .notice-options .form_repeat.processing {
 background-image:none;

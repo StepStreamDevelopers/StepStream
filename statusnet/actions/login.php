@@ -224,7 +224,6 @@ class LoginAction extends Action
         $this->element('h2', null, _('Welcome'));
         $this->element('span', 'welcome-text', 'StepStream will help you and your friends get and stay fit!');
     	$this->elementEnd('div');
-//    	print("<div class='welcome'><h2>Welcome</h2> <p>Let's get fit and have fun together!</p></div>");
         $this->elementStart('form', array('method' => 'post',
                                           'class' => 'form_login',
                                           'action' => common_local_url('login')));
