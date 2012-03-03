@@ -552,7 +552,11 @@ option {
 
 #content .notice .entry-title {
     margin: 2px 7px 0px 59px;
-    min-height: 35px;
+    min-height: 15px;
+}
+
+.published {
+	font-size:0.8em;
 }
 
 .vcard .url {
@@ -631,9 +635,7 @@ left:0;
 
 .notice-options {
     float: right;    
-    margin-top: 12px;
-    margin-right: -6px;
-    margin-bottom: 10px;
+
 }
 
 .notice-options fieldset {
@@ -662,11 +664,11 @@ left:0;
 }
 
 .notice-options input.submit, .notice-options a {
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .notice-options input.submit:hover, .notice-options a:hover {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .notice .attachment {
@@ -1234,6 +1236,8 @@ display:none;
     margin-top: 10px;
     margin-bottom: 30px;
     border: none;
+    padding-top: 45px;
+
 }
 
 .form_settings fieldset fieldset {
@@ -2353,8 +2357,14 @@ background-image:url(../images/icons/reply.png);
 .notice-options form.form_favor input.submit {
 background-image:url(../images/icons/heart.png);
 }
+.notice-options fieldset {
+	margin:0px;
+	padding:0px;
+	height: 28px;
+}
+
 .notice-options form.form_disfavor input.submit {
-background-position:0 -526px;
+background-image:url(../images/icons/heart-cancel.png);
 }
 .notice-options .notice_delete {
 background-image:url(../images/icons/delete.png);

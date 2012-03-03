@@ -499,7 +499,7 @@ class NoticeListItem extends Widget
     {
         $ns = $this->notice->getSource();
 
-        if ($ns) {
+ /*       if ($ns) {
             // TRANS: A possible notice source (web interface).
             $source_name = (empty($ns->name)) ? ($ns->code ? _($ns->code) : _m('SOURCE','web')) : _($ns->name);
             $this->out->text(' ');
@@ -541,6 +541,7 @@ class NoticeListItem extends Widget
 
             $this->out->elementEnd('span');
         }
+*/
     }
 
     /**
@@ -668,7 +669,7 @@ class NoticeListItem extends Widget
      *
      * @return void
      */
-    function showRepeatForm()
+/*    function showRepeatForm()
     {
         if ($this->notice->scope == Notice::PUBLIC_SCOPE ||
             $this->notice->scope == Notice::SITE_SCOPE) {
@@ -690,7 +691,7 @@ class NoticeListItem extends Widget
             }
         }
     }
-
+*/
     /**
      * finish the notice
      *
