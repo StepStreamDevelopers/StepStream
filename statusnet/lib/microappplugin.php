@@ -270,10 +270,10 @@ abstract class MicroAppPlugin extends Plugin
         $adapter = $this->adaptNoticeListItem($nli);
 
         if (!empty($adapter)) {
+            $adapter->showNoticeOptions();
             $adapter->showNotice();
             $adapter->showNoticeAttachments();
             $adapter->showNoticeInfo();
-            $adapter->showNoticeOptions();
         } else {
             $this->oldShowNotice($nli);
         }

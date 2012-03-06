@@ -635,7 +635,8 @@ left:0;
 
 .notice-options {
     float: right;    
-
+    margin-right:-12px;
+	vertical-align: top;
 }
 
 .notice-options fieldset {
@@ -659,8 +660,8 @@ left:0;
 .notice-options input.submit, .notice-options a, .notice-options .repeated {
     display: block;
     border: 0;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
 }
 
 .notice-options input.submit, .notice-options a {
@@ -1234,7 +1235,7 @@ display:none;
 
 .form_settings fieldset {
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: none;
     padding-top: 45px;
 
@@ -2368,6 +2369,7 @@ background-image:url(../images/icons/heart-cancel.png);
 }
 .notice-options .notice_delete {
 background-image:url(../images/icons/delete.png);
+padding:0px;
 }
 .notice-options .form_repeat.processing {
 background-image:none;
