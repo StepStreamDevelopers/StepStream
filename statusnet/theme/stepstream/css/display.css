@@ -227,6 +227,28 @@ a {
 	padding-bottom:5px;
 }
 
+.subnav {
+	margin:0px;
+	padding:20px 0px 0px 0px;
+}
+
+.subnav li{
+	display: inline;
+	list-style-type: none;
+	padding-right:10px;
+}
+
+.subnav ul{
+	margin:0px; 
+	padding:0px;
+}
+
+.subnav a {
+	color:black;
+	text-decoration:underline;
+	font-size:1.6em;
+}
+
 .nav li{
 	display: inline;
 	list-style-type: none;
