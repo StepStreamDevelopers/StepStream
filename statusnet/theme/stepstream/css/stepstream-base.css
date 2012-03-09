@@ -672,6 +672,16 @@ left:0;
     opacity: 0.8;
 }
 
+.nav_next a, .nav_prev a {
+    opacity: 0.6;
+    color:#000000;
+    vertical-align:middle;
+}
+
+.nav_next a:hover, .nav_prev a:hover {
+    opacity: 0.8;
+}
+
 .notice .attachment {
     position:relative;
     padding-left:16px;
@@ -2187,8 +2197,6 @@ body.realtime-popup {
 .notice-options .notice_delete,
 .notice-options form.form_repeat input.submit,
 #new_group a,
-#pagination .nav_prev a,
-#pagination .nav_next a,
 button.close,
 .form_group_leave input.submit,
 .form_user_unsubscribe input.submit,
@@ -2395,13 +2403,11 @@ background-position:0 -1054px;
 
 #pagination .nav_prev a {
     padding-top: 8px;
-    padding-left: 25px;
-    background-position:0 -187px;
+    padding-left: 2px;
 }
 #pagination .nav_next a { 
     padding-top: 9px;
-    padding-right: 25px;
-    background-position: 115% -252px;
+    padding-right: 2px;
 }
 
 #usergroups #new_group {

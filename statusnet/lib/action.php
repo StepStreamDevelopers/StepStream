@@ -1690,21 +1690,48 @@ $this->script('graphs.js');
         if ($have_before) {
             $pargs   = array('page' => $page-1);
             $this->elementStart('li', array('class' => 'nav_prev'));
-            $this->element('a', array('href' => common_local_url($action, $args, $pargs),
+
+            $this->elementStart('a', array('href' => common_local_url($action, $args, $pargs),
                                       'rel' => 'prev'),
                            // TRANS: Pagination message to go to a page displaying information more in the
                            // TRANS: present than the currently displayed information.
-                           _('After'));
+                           _('newer posts'));
+            $this->element(
+            'img',
+            array(
+                'src'    => '../theme/stepstream/images/icons/arrow-left.png',
+                'class'  => 'nav_next_img',
+                'width'  => '20px',
+                'height' => '20px',
+                'alt'    => 'next'
+            )
+        	); 
+
+			$this->text('newer posts');
+			$this->elementEnd('a');
             $this->elementEnd('li');
         }
         if ($have_after) {
             $pargs   = array('page' => $page+1);
             $this->elementStart('li', array('class' => 'nav_next'));
-            $this->element('a', array('href' => common_local_url($action, $args, $pargs),
+
+            $this->elementStart('a', array('href' => common_local_url($action, $args, $pargs),
                                       'rel' => 'next'),
                            // TRANS: Pagination message to go to a page displaying information more in the
                            // TRANS: past than the currently displayed information.
-                           _('Before'));
+                           _('older posts'));
+			$this->text('older posts');
+            $this->element(
+            'img',
+            array(
+                'src'    => '../theme/stepstream/images/icons/arrow-right.png',
+                'class'  => 'nav_next_img',
+                'width'  => '20px',
+                'height' => '20px',
+                'alt'    => 'next'
+            )
+        	); 
+        	$this->elementEnd('a');
             $this->elementEnd('li');
         }
         if ($have_before || $have_after) {
