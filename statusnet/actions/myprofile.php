@@ -94,24 +94,18 @@ class MyProfileAction extends ProfileAction
 
         header('X-XRDS-Location: '. common_local_url('xrds', array('nickname' =>
                                                                    $this->user->nickname)));
-        $this->script('my_gpm.js');
+
         $this->showPageMe();
     }
 
     function showContent()
     {
-
         $this->showNotices();
     }
 
-
-
     function showProfileBlock()
     {
-
-
-
-$block = new AccountProfileBlock($this, $this->profile);
+        $block = new AccountProfileBlock($this, $this->profile);
         $block->show();
     }
 
