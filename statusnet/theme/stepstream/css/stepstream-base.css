@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 15px;
 }
 
-h1 {font-size: 1.5em;}
+h1 {font-size: 2.2em;}
 h2 {font-size: 1.8em;}
 h3 {font-size: 1.6em;}
 h4 {font-size: 1.4em;}
@@ -104,7 +104,7 @@ option {
 }
 
 .input_form_nav_tab.current a {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .input_form { 
@@ -124,8 +124,8 @@ option {
     padding-bottom: 50px;
 }
 
-.form_notice, #new_tips_data, #new_event_data { 
-    width:80%;
+.form_notice { 
+    width:740px;
     margin-top: 10px;
     margin-bottom:10px;
     padding:20px;
@@ -172,7 +172,7 @@ option {
     clear: left;
     float: left;
     position: relative;
-    width: 300px;
+    width: 483px;
     height: 42px;
     padding: 6px 5px 18px 5px;
     border: 1px solid #a6a6a6;
@@ -287,8 +287,9 @@ option {
 }
 
 .input_form .form_settings fieldset fieldset {
-    width: 500px;
+    width: 400px;
     float: left;
+    background: none;
     border: none;
     margin-bottom: 0px;
     padding: 0px;
@@ -382,8 +383,7 @@ option {
 .checkbox-wrapper.unchecked label.checkbox {
     padding-left: 20px;
     background: url(../images/icons/lock_open.png) no-repeat 0px 0px;
-	color: #DDDDDD;
-	opacity:1;
+    opacity: 0.6;
 }
 
 .checkbox-wrapper.unchecked label.checkbox:hover {
@@ -417,9 +417,9 @@ option {
     position: relative;
     top: 0;
     right: 0;
-    float: left;   
-    width: 130px;
-    height: 40px;
+    float: right;   
+    width: 100px;
+    height: 26px;
     line-height: 26px;
     padding: 0px 10px;
     margin: 0px;
@@ -463,8 +463,6 @@ option {
 #notices_primary {
     padding-top: 3px;
     clear: both;
-    margin-left:60px;
-    width:780px;
 }
 
 #notices_primary h2 {
@@ -472,47 +470,22 @@ option {
 }
 
 .notice {
-	width:84%;
+	width:672px;
+	min-height:100px;
 	background:#FFFFFF;
 	margin-bottom:10px;
 	padding:10px;
-	list-style-type: none;
-	font-size:.9em;
-	box-shadow: #666 1px 1px 5px;
-	behavior: url(../pie/PIE.htc);
-
-}
-
-.notice-type-tips {
 	border-top: 12px solid #FFE01D;
-}
-
-.notice-type-event {
-	border-top: 12px solid #9CE548;
-}
-
-.notice-type-comment {
-	border: 1px solid #CCCCCC;
-    position:relative;
-    clear:both;
-    float:left;
-	left: 10px;
-}
-
-.notice-type-note, .notice-type-sub-yes {
-	border-top: 12px solid #66CCFF;
-}
-
-
-
-.hentry {
+	border-bottom: 2px solid #CCCCCC;
+	list-style-type: none;
 }
 
 .notice, .profile, .application, #content .peopletag {
     position:relative;
     clear:both;
     float:left;
-//    left: 8%;
+    left: 50%;
+    margin-left: -336px;
 }
 
 .notice .author {
@@ -552,11 +525,7 @@ option {
 
 #content .notice .entry-title {
     margin: 2px 7px 0px 59px;
-    min-height: 15px;
-}
-
-.published {
-	font-size:0.8em;
+    min-height: 35px;
 }
 
 .vcard .url {
@@ -635,8 +604,9 @@ left:0;
 
 .notice-options {
     float: right;    
-    margin-right:-12px;
-	vertical-align: top;
+    margin-top: 12px;
+    margin-right: -6px;
+    margin-bottom: 10px;
 }
 
 .notice-options fieldset {
@@ -660,26 +630,16 @@ left:0;
 .notice-options input.submit, .notice-options a, .notice-options .repeated {
     display: block;
     border: 0;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
 }
 
 .notice-options input.submit, .notice-options a {
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 .notice-options input.submit:hover, .notice-options a:hover {
-    opacity: 0.8;
-}
-
-.nav_next a, .nav_prev a {
-    opacity: 0.6;
-    color:#000000;
-    vertical-align:middle;
-}
-
-.nav_next a:hover, .nav_prev a:hover {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .notice .attachment {
@@ -782,9 +742,9 @@ content: ":";
 /* threaded replies */
 
 .threaded-replies {
-	width:550px;
     clear: both;
     float: left;
+    width: 458px;
     margin-left: 59px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -795,10 +755,6 @@ content: ":";
     font-size: 1em;
 }
 
-.notice-options fieldset {
-	padding:0px;
-}
-
 .threaded-replies:empty {
     margin-bottom: 0px; 
 }
@@ -807,17 +763,18 @@ content: ":";
     margin-top: 0px;
 }
 
-/* #content .notice .threaded-replies .notice,
+#content .notice .threaded-replies .notice,
 #content .notice .threaded-replies .notice-data { 
     width: 440px;
     padding-bottom: 14px;
     padding-top: 5px;
+    border-bottom: 2px dotted #eee;
     line-height: 1.36em;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 10px;
     background: none;
-} */
+}
 
 #content .notice .threaded-replies .entry-title {
     min-height: 1px;
@@ -854,13 +811,13 @@ content: ":";
 }
 
 .threaded-replies .notice-reply-comments {
-    margin: 2px 0px 4px 0px;
+    margin: 2px 0px 4px 10px;
 }
 
 .threaded-replies .placeholder {
     margin: 10px;
     width: 426px;
-    padding: 0px;
+    padding: 4px 4px 4px 6px;
     border: 1px solid #a6a6a6;
     color: #888;
 }
@@ -869,7 +826,7 @@ content: ":";
     clear: left;
     position: relative;
     padding: 10px;
-    padding-bottom: 0px;
+    padding-bottom: 44px;
 }
 
 .threaded-replies .form_notice textarea {
@@ -1245,10 +1202,8 @@ display:none;
 
 .form_settings fieldset {
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border: none;
-    padding-top: 45px;
-
 }
 
 .form_settings fieldset fieldset {
@@ -1372,6 +1327,7 @@ font-weight:bold;
 .form_tag_user_wrap form,
 .form_tag_user_wrap label,
 .form_tag_user_wrap legend {
+display:none;
 }
 
 .form_tag_user_wrap {
@@ -2197,6 +2153,8 @@ body.realtime-popup {
 .notice-options .notice_delete,
 .notice-options form.form_repeat input.submit,
 #new_group a,
+#pagination .nav_prev a,
+#pagination .nav_next a,
 button.close,
 .form_group_leave input.submit,
 .form_user_unsubscribe input.submit,
@@ -2361,23 +2319,16 @@ background-position:0 -2770px;
 background:none;
 }
 .notice-options .notice_reply {
-background-image:url(../images/icons/reply.png);
+background-position:0 -592px;
 }
 .notice-options form.form_favor input.submit {
-background-image:url(../images/icons/heart.png);
+background-position:0 -460px;
 }
-.notice-options fieldset {
-	margin:0px;
-	padding:0px;
-	height: 28px;
-}
-
 .notice-options form.form_disfavor input.submit {
-background-image:url(../images/icons/heart-cancel.png);
+background-position:0 -526px;
 }
 .notice-options .notice_delete {
-background-image:url(../images/icons/delete.png);
-padding:0px;
+background-position:0 -658px;
 }
 .notice-options .form_repeat.processing {
 background-image:none;
@@ -2403,11 +2354,13 @@ background-position:0 -1054px;
 
 #pagination .nav_prev a {
     padding-top: 8px;
-    padding-left: 2px;
+    padding-left: 25px;
+    background-position:0 -187px;
 }
 #pagination .nav_next a { 
     padding-top: 9px;
-    padding-right: 2px;
+    padding-right: 25px;
+    background-position: 115% -252px;
 }
 
 #usergroups #new_group {
@@ -2486,7 +2439,7 @@ display:inline;
 }
 .profiles li,
 .notices li {
-margin-bottom:5px;
+margin-bottom:18px;
 }
 
 }/*end of @media print*/

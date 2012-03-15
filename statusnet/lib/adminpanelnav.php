@@ -63,7 +63,7 @@ class AdminPanelNav extends Menu
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in administrator navigation panel.
-//        $this->action->element('h3', null, _m('HEADER','Home'));
+        $this->action->element('h3', null, _m('HEADER','Home'));
         $this->action->elementStart('ul', 'nav');
         $this->out->menuItem(common_local_url('all', array('nickname' =>
                                                            $nickname)),
@@ -81,7 +81,7 @@ class AdminPanelNav extends Menu
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in administrator navigation panel.
- //       $this->action->element('h3', null, _m('HEADER','Admin'));
+        $this->action->element('h3', null, _m('HEADER','Admin'));
         $this->action->elementStart('ul', array('class' => 'nav'));
 
         if (Event::handle('StartAdminPanelNav', array($this))) {

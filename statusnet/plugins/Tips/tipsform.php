@@ -74,7 +74,6 @@ class TipsForm extends Form
                                    null);
         $toWidget->show();
 
-
         $this->out->elementEnd('fieldset');
     }
 

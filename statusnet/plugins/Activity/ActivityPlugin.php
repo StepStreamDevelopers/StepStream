@@ -145,7 +145,7 @@ class ActivityPlugin extends Plugin
 
     function onEndFavorNotice($profile, $notice)
     {
-/*        //  Only do this if config is enabled
+        //  Only do this if config is enabled
         if(!$this->StartLike) return true;
         
         $user = $profile->getUser();
@@ -179,12 +179,11 @@ class ActivityPlugin extends Plugin
                                       						 $notice->object_type : ActivityObject::ACTIVITY)));
         }
         return true;
-*/
     }
 
     function onEndDisfavorNotice($profile, $notice)
     {
-/*        // Only do this if config is enabled
+        // Only do this if config is enabled
         if(!$this->StopLike) return true;
         $user = User::staticGet('id', $profile->id);
 
@@ -216,10 +215,8 @@ class ActivityPlugin extends Plugin
                                       		'verb' => ActivityVerb::UNFAVORITE,
                                       		'object_type' => (($notice->verb == ActivityVerb::POST) ?
                                       						 $notice->object_type : ActivityObject::ACTIVITY)));
- 
         }
         return true;
- */
     }
 
     function onEndJoinGroup($group, $profile)

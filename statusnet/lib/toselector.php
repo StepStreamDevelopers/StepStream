@@ -90,7 +90,7 @@ class ToSelector extends Widget
         // XXX: better name...?
         // TRANS: Option in drop-down of potential addressees.
         // TRANS: %s is a StatusNet sitename.
-        $choices['public:site'] = sprintf(_('Everyone'), common_config('site', 'name'));
+        $choices['public:site'] = sprintf(_('My colleagues at %s'), common_config('site', 'name'));
 
         $groups = $this->user->getGroups();
 
@@ -110,7 +110,6 @@ class ToSelector extends Widget
             $choices[$value] = $this->to->getBestName();
         }
 
-/*
         $this->out->dropdown($this->id,
                              // TRANS: Label for drop-down of potential addressees.
                              _m('LABEL','To:'),
@@ -118,7 +117,7 @@ class ToSelector extends Widget
                              null,
                              false,
                              $default);
-*/
+
         $this->out->elementStart('span', 'checkbox-wrapper');
         $this->out->checkbox('notice_private',
                              // TRANS: Checkbox label in widget for selecting potential addressees to mark the notice private.

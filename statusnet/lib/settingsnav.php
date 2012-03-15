@@ -63,65 +63,24 @@ class SettingsNav extends Menu
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in settings navigation panel.
-//        $this->action->element('h3', null, _m('HEADER','Home'));
+        $this->action->element('h3', null, _m('HEADER','Home'));
         $this->action->elementStart('ul', 'nav');
-               $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
-               // TRANS: Menu item title in search group navigation panel.
-                _('Public timeline'), $this->actionName == 'public', 'nav_left');
-       
-            $this->out->menuItem(common_local_url('replies', array('nickname' =>
-                                                                   $nickname)),
-                                 // TRANS: Menu item in personal group navigation menu.
-                                 _m('MENU','Tips'),
-                                 // TRANS: Menu item title in personal group navigation menu.
-                                 // TRANS: %s is a username.
-                                 sprintf(_('Replies to %s'), $name),
-                                 $mine && $action =='replies', 'nav_middle');
-      
-
-            $cur = common_current_user();
-
-            if ($cur && $cur->id == $user->id &&
-                !common_config('singleuser', 'enabled')) {
-
-         
-
-   $this->out->menuItem(common_local_url('myprofile', array('nickname' =>
-                                                                     $nickname)),
-                                     // TRANS: Menu item in personal group navigation menu.
-                                     _m('MENU','Me'),
-                                     // TRANS: Menu item title in personal group navigation menu.
-                                     _('Your profile information'),
-                                     $mine && $action =='myprofile', 'nav_right');
-            }
-
-
+        $this->out->menuItem(common_local_url('all', array('nickname' =>
+                                                           $nickname)),
+                             // TRANS: Menu item in settings navigation panel.
+                             _m('MENU','Home'),
+                             // TRANS: Menu item title in settings navigation panel.
+                             // TRANS: %s is a username.
+                             sprintf(_('%s and friends'), $name),
+                             $this->action == 'all', 'nav_timeline_personal');
         $this->action->elementEnd('ul');
         $this->action->elementEnd('li');
         $this->action->elementEnd('ul');
-    }
-}
 
-class SettingsSubNav extends Menu
-{
-    /**
-     * Show the menu
-     *
-     * @return void
-     */
-    function show()
-    {
-        $actionName = $this->action->trimmed('action');
-        $user = common_current_user();
-        $nickname = $user->nickname;
-        $name = $user->getProfile()->getBestName();
-
-
-	$this->action->elementStart('div', array('class' => 'subnav'));
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in settings navigation panel.
-//        $this->action->element('h3', null, _m('HEADER','Settings'));
+        $this->action->element('h3', null, _m('HEADER','Settings'));
         $this->action->elementStart('ul', array('class' => 'nav'));
 
         if (Event::handle('StartAccountSettingsNav', array(&$this->action))) {
@@ -134,9 +93,9 @@ class SettingsSubNav extends Menu
 
             $this->action->menuItem(common_local_url('avatarsettings'),
                                     // TRANS: Menu item in settings navigation panel.
-                                    _m('MENU','Your Picture'),
+                                    _m('MENU','Avatar'),
                                     // TRANS: Menu item title in settings navigation panel.
-                                    _('Upload a picture of you'),
+                                    _('Upload an avatar'),
                                     $actionName == 'avatarsettings');
 
             $this->action->menuItem(common_local_url('passwordsettings'),
@@ -153,13 +112,13 @@ class SettingsSubNav extends Menu
                                     _('Change email handling'),
                                     $actionName == 'emailsettings');
 
-/*            $this->action->menuItem(common_local_url('urlsettings'),
+            $this->action->menuItem(common_local_url('urlsettings'),
                                     // TRANS: Menu item in settings navigation panel.
                                     _m('MENU','URL'),
                                     // TRANS: Menu item title in settings navigation panel.
                                     _('URL shorteners'),
                                     $actionName == 'urlsettings');
-*/
+
             Event::handle('EndAccountSettingsNav', array(&$this->action));
 
             if (common_config('xmpp', 'enabled')) {
@@ -180,19 +139,18 @@ class SettingsSubNav extends Menu
                                         $actionName == 'smssettings');
             }
 
- /*           $this->action->menuItem(common_local_url('oauthconnectionssettings'),
+            $this->action->menuItem(common_local_url('oauthconnectionssettings'),
                                     // TRANS: Menu item in settings navigation panel.
                                     _m('MENU','Connections'),
                                     // TRANS: Menu item title in settings navigation panel.
                                     _('Authorized connected applications'),
                                     $actionName == 'oauthconnectionsettings');
-*/
+
             Event::handle('EndConnectSettingsNav', array(&$this->action));
         }
 
         $this->action->elementEnd('ul');
         $this->action->elementEnd('li');
         $this->action->elementEnd('ul');
-    $this->action->elementEnd('div');
     }
 }

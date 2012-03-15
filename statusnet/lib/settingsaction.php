@@ -50,7 +50,6 @@ class SettingsAction extends Action
      */
 
     var $msg = null;
-    
 
     /**
      * Whether the message is a good one or a bad one.
@@ -113,8 +112,8 @@ class SettingsAction extends Action
     {
         $this->msg     = $msg;
         $this->success = $success;
+
         $this->showPage();
-        
     }
 
     /**
@@ -174,13 +173,10 @@ class SettingsAction extends Action
 
     function showNoticeForm()
     {
-        $menu = new SettingsSubNav($this);
-        $menu->show();
         return;
     }
 
     function showProfileBlock()
     {
-    
     }
 }

@@ -64,7 +64,7 @@ class LoginGroupNav extends Menu
                                     _m('MENU','Login'),
                                     // TRANS: Title for menu item for logging in to the StatusNet site.
                                     _('Login with a username and password'),
-                                    $action_name === 'login','nav_left');
+                                    $action_name === 'login');
 
             if (!common_logged_in() &&
                 !(common_config('site','closed') || common_config('site','inviteonly'))) {
@@ -73,7 +73,7 @@ class LoginGroupNav extends Menu
                                         _m('MENU','Register'),
                                         // TRANS: Title for menu item for registering with the StatusNet site.
                                         _('Sign up for a new account'),
-                                        $action_name === 'register','nav_right');
+                                        $action_name === 'register');
             }
 
             Event::handle('EndLoginGroupNav', array($this->action));

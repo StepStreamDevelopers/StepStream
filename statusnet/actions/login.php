@@ -197,7 +197,7 @@ class LoginAction extends Action
      *
      * @return void
      */
-/*    function showPageNotice()
+    function showPageNotice()
     {
         if ($this->error) {
             $this->element('p', 'error', $this->error);
@@ -208,7 +208,6 @@ class LoginAction extends Action
             $this->raw($output);
         }
     }
-*/
 
     /**
      * Core of the display code
@@ -219,21 +218,17 @@ class LoginAction extends Action
      */
     function showContent()
     {
-    	$this->elementStart('div', array('class' => 'welcome_content'));
-    	$this->elementStart('div', array('class' => 'welcome'));
-        $this->element('h2', null, _('Welcome'));
-        $this->element('span', 'welcome-text', 'StepStream will help you and your friends get and stay fit!');
-    	$this->elementEnd('div');
         $this->elementStart('form', array('method' => 'post',
-                                          'class' => 'form_login',
+                                          'id' => 'form_login',
+                                          'class' => 'form_settings',
                                           'action' => common_local_url('login')));
         $this->elementStart('fieldset');
         // TRANS: Form legend on login page.
-        $this->element('legend', null, _('Login'));
+        $this->element('legend', null, _('Login to site'));
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on login page.
-        $this->input('nickname', _('Username or email'));
+        $this->input('nickname', _('Username or email address'));
         $this->elementEnd('li');
         $this->elementStart('li');
         // TRANS: Field label on login page.
@@ -241,26 +236,21 @@ class LoginAction extends Action
         $this->elementEnd('li');
         $this->elementStart('li');
         // TRANS: Checkbox label label on login page.
-/*
         $this->checkbox('rememberme', _('Remember me'), false,
                         // TRANS: Checkbox title on login page.
                         _('Automatically login in the future; ' .
                           'not for shared computers!'));
-*/
         $this->elementEnd('li');
         $this->elementEnd('ul');
         // TRANS: Button text for log in on login page.
         $this->submit('submit', _m('BUTTON','Login'));
-        $this->elementStart('br');
-        $this->elementStart('br');
-//        $this->elementStart('p');
+        $this->elementEnd('fieldset');
+        $this->elementEnd('form');
+        $this->elementStart('p');
         $this->element('a', array('href' => common_local_url('recoverpassword')),
                        // TRANS: Link text for link to "reset password" on login page.
                        _('Lost or forgotten password?'));
-//        $this->elementEnd('p');
-        $this->elementEnd('fieldset');
-        $this->elementEnd('form');
-		$this->elementEnd('div');
+        $this->elementEnd('p');
     }
 
     /**

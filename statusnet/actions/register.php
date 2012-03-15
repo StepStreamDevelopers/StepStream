@@ -198,11 +198,11 @@ class RegisterAction extends Action
             }
             $email    = common_canonical_email($email);
 
-            /*if (!$this->boolean('license')) {
+            if (!$this->boolean('license')) {
                 // TRANS: Form validation error displayed when trying to register without agreeing to the site license.
                 $this->showForm(_('You cannot register if you do not '.
                                   'agree to the license.'));
-            } else */ if ($email && !Validate::email($email, common_config('email', 'check_domain'))) {
+            } else if ($email && !Validate::email($email, common_config('email', 'check_domain'))) {
                 // TRANS: Form validation error displayed when trying to register without a valid e-mail address.
                 $this->showForm(_('Not a valid email address.'));
             } else if ($this->nicknameExists($nickname)) {
@@ -473,17 +473,14 @@ class RegisterAction extends Action
                      // TRANS: Field title on account registration page.
                      _('Longer name, preferably your "real" name.'));
             $this->elementEnd('li');
-/*
             $this->elementStart('li');
             // TRANS: Field label on account registration page.
-           $this->input('homepage', _('Homepage'),
+            $this->input('homepage', _('Homepage'),
                          $this->trimmed('homepage'),
                          // TRANS: Field title on account registration page.
                          _('URL of your homepage, blog, '.
                            'or profile on another site.'));
-
             $this->elementEnd('li');
-
             $this->elementStart('li');
             $maxBio = Profile::maxBio();
             if ($maxBio > 0) {
@@ -520,7 +517,6 @@ class RegisterAction extends Action
                             _('Automatically login in the future; '.
                               'not for shared computers!'));
             $this->elementEnd('li');
-*/
             $attrs = array('type' => 'checkbox',
                            'id' => 'license',
                            'class' => 'checkbox',
@@ -622,7 +618,22 @@ class RegisterAction extends Action
             // TRANS: and variables in the form %%%%variable%%%%. Please mind the syntax.
             $instr = sprintf(_('Congratulations, %1$s! And welcome to %%%%site.name%%%%. '.
                                'From here, you may want to...'. "\n\n" .
-								'More goes here later'),
+                               '* Go to [your profile](%2$s) '.
+                               'and post your first message.' .  "\n" .
+                               '* Add a [Jabber/GTalk address]'.
+                               '(%%%%action.imsettings%%%%) '.
+                               'so you can send notices '.
+                               'through instant messages.' . "\n" .
+                               '* [Search for people](%%%%action.peoplesearch%%%%) '.
+                               'that you may know or '.
+                               'that share your interests. ' . "\n" .
+                               '* Update your [profile settings]'.
+                               '(%%%%action.profilesettings%%%%)'.
+                               ' to tell others more about you. ' . "\n" .
+                               '* Read over the [online docs](%%%%doc.help%%%%)'.
+                               ' for features you may have missed. ' . "\n\n" .
+                               'Thanks for signing up and we hope '.
+                               'you enjoy using this service.'),
                              $nickname, $profileurl);
 
             $this->raw(common_markup_to_html($instr));
@@ -630,9 +641,9 @@ class RegisterAction extends Action
             $have_email = $this->trimmed('email');
             if ($have_email) {
                 // TRANS: Instruction text on how to deal with the e-mail address confirmation e-mail.
-                $emailinstr = _('(Check your email '.
-                                'and click on the link ' .
-                                'to confirm '.
+                $emailinstr = _('(You should receive a message by email '.
+                                'momentarily, with ' .
+                                'instructions on how to confirm '.
                                 'your email address.)');
                 $this->raw(common_markup_to_html($emailinstr));
             }

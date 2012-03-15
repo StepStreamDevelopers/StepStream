@@ -10,22 +10,19 @@
 /* all the tangled wires from StatusNet */
 @import url("stepstream-base.css");
 
+
 /* major StepStream styles */
 body {
 	margin:0;
 	padding:0;
 	height:100%;
 	background-color:#8CD6EA;
-	background-image:url('../images/hill-trees_smaller.jpg');
+	background-image:url('../images/hill-trees.jpg');
 	background-repeat:no-repeat;
 	background-position:center;
 	background-attachment:fixed;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
-
-a {
-	text-decoration:none;
-	}
 
 #wrap {
 }
@@ -81,177 +78,28 @@ a {
 	margin-left:-160px; 
 	float:left;
 	z-index:100;
-	margin-right:0px;
-	font-size:1.6em;
+	height:2em;
+	overflow:hidden;
+	
 }
 
-#site_nav_local_views li{
-	margin:0px;
-	padding:0px;
-	display: inline;
-	list-style-type: none;
-	text-decoration:none;
+#site_nav_local_views a {
+	color: #DDDDDD;
+	text-decoration: underline;
+	font-size: 1.5em;
 }
 
-#site_nav_local_views a{
-	text-decoration:none;
-	float:left;
-}
-
-
-.current a{
-	font-weight:bold;
-}
-
-.me_block {
-	float:left;
-	width:770px;
-	background-color:#ffffff;
-	/* Fallback for web browsers that don't support RGBa */
-	background-color: rgb(255, 255, 255);
-	/* RGBa with 0.6 opacity */
-	background-color: rgba(255, 255, 255, 0.6);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	padding-left: 15px;
-	padding-right:15px;
-	padding-top: 45px;
-	padding-bottom:15px;
-}
-
-
-/* left button */
-#nav_left a:hover, #nav_left.current a{
-    color: #333333;
-    text-decoration: none;
-    background: #EAEAEA;
-    background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-    -moz-border-radius: 8px 0px 0px 8px;
-	border-radius: 8px 0px 0px 8px;  
-	behavior: url(../pie/PIE.htc);
-}
-
-
-#nav_left a{
-    color: #333333;
-    text-decoration: none;
-    background: #CCCCCC;
-    background: -moz-linear-gradient(top, #EAEAEA , #CCCCCC);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
-    word-wrap: break-word;
-    padding-top:3px;
-    padding-bottom:3px;
-   -moz-border-radius: 8px 0px 0px 8px;
-	border-radius: 8px 0px 0px 8px;  
-	padding-right:10px;
-	padding-left:10px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
-	behavior: url(../pie/PIE.htc);
-
-}
-
-/*middle buttons*/
-#nav_middle a:hover, #nav_middle.current a {
-    color: #333333;
-    text-decoration: none;
-    background: #EAEAEA;
-    background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-	padding-right:10px;
-	padding-left:10px;
-}
-
-#nav_middle a {
-    color: #333333;
-    text-decoration: none;
-    background: #CCCCCC;
-    background: -moz-linear-gradient(top, #EAEAEA , #CCCCCC);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
-    word-wrap: break-word;
-    padding-top:3px;
-    padding-bottom:3px;
-	padding-right:10px;
-	padding-left:10px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
-}
-
-/* right button*/
-#nav_right a:hover, #nav_right.current a {
-    color: #333333;
-    text-decoration: none;
-    background: #EAEAEA;
-    background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-    -moz-border-radius: 0px 8px 8px 0px;
-	border-radius: 0px 8px 8px 0px;  
-	behavior: url(../pie/PIE.htc);
-}
-
-#nav_right a {
-    color: #333333;
-    text-decoration: none;
-    background: #CCCCCC;
-    background: -moz-linear-gradient(top, #EAEAEA , #CCCCCC);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
-    word-wrap: break-word;
-    padding-top:3px;
-    padding-bottom:3px;
-    -moz-border-radius: 0px 8px 8px 0px;
-	border-radius: 0px 8px 8px 0px;  
-	padding-right:10px;
-	padding-left:10px;
-	behavior: url(../pie/PIE.htc);
-}
-
-
-#site_nav_local_views ul{
+#nav_local_default li{
 	margin:0px;
 	display: inline;
 	list-style-type: none;
-}
-
-.nav {
-	padding-bottom:5px;
-}
-
-.subnav {
-	margin:0px;
-	padding:20px 0px 0px 0px;
-}
-
-.subnav li{
-	display: inline;
-	list-style-type: none;
-	padding-right:10px;
-}
-
-.subnav ul{
-	margin:0px; 
-	padding:0px;
-}
-
-.subnav a {
-	color:black;
-	text-decoration:underline;
-	font-size:1.6em;
+	padding-right: 5px;
 }
 
 .nav li{
 	display: inline;
 	list-style-type: none;
+	padding-right: 5px;
 }
 
 /* plugins wrapper */
@@ -273,74 +121,17 @@ a {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-    -moz-border-radius: 0px 0px 8px 8px;
-	border-radius: 0px 0px 8px 8px;  
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
 	clear:both;
-	behavior: url(../pie/PIE.htc);
 }
 
-.system_notice {
-	width:790px;
-	position:relative;
-	top:0px;
-	padding:5px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-top:10px;
-	background-color:#000000;
-	/* Fallback for web browsers that don't support RGBa */
-	background-color: rgb(0, 0, 0);
-	/* RGBa with 0.6 opacity */
-	background-color: rgba(0, 0, 0, 0.4);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	-moz-border-radius: 8px 8px 8px 8px;
-	border-radius: 8px 8px 8px 8px;
-	clear:both;
-	color: #DDDDDD;
-	behavior: url(../pie/PIE.htc);
-
-}
-
-
-.system_notice a{
-	color: #DDDDDD;
-}
-
-#content_inner fieldset {
-	position:relative;
-	background-color:#ffffff;
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0.6);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-/*	padding-left: 15px;
-	padding-right:15px;
-	padding-top: 45px;
-	padding-bottom:15px;
-*/
-}
-
-.notice-options fieldset {
-	margin:0px;
-	padding:0px;
-}
-
- legend {
-	position:relative;
-	clear:both;
-	top:30px;
-	padding-bottom:10px;
-}
 
 /* plugins details */
 .input_forms li {
 	display:inline;
 	list-style-type: none;
-	padding-right:10px;
+	padding-right:5px;
 }
 
 
@@ -354,75 +145,18 @@ a {
 
 
 
-
-/* Login Stuff */
-.form_login {
-    line-height: 1em;
-	width:100px;
-	float:right;
-	margin-top:-12px;
-	margin-right:101px;
-}
-
-.form_login legend {
-//	top:0px;
-}
-
-.form_login fieldset {
-	position:relative;
-	background-color:#ffffff;
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0.6);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	padding-left: 15px;
-	padding-right:15px;
-	padding-top: 45px;
-	padding-bottom:15px;
-}
-
-
-.welcome_content {
-	width:800px;
-	float:left;
-	clear:both;
-	margin-top:20px;
-}
-
-.welcome{
-	width:580px;
-	background-color:red;
-	float:left;
-	padding: 5px;
-	background-color:#000000;
-	/* Fallback for web browsers that don't support RGBa */
-	background-color: rgb(0, 0, 0);
-	/* RGBa with 0.6 opacity */
-	background-color: rgba(0, 0, 0, 0.4);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	-moz-border-radius: 8px 8px 8px 8px;
-	border-radius: 8px 8px 8px 8px;
-	clear:both;
-	color: #DDDDDD;
-	behavior: url(../pie/PIE.htc);
-
-}
-
 /* ========================= hidden ========================= */
 
 
 .org {
 	display:none;
 }
-/*
+
 #header-search {
 	display:none;
 }
 
-#content h1 {
+h1,h2,h3 {
 	display:none;
 }
 
@@ -434,10 +168,7 @@ a {
 .form_notice_placeholder {
 	display:none;
 }
-*/
 #footer {
 	clear:both;
 	display:none;
 }
-	
-	
