@@ -328,7 +328,7 @@ class Subscribe extends Managed_DataObject
             // TRANS: HTML version of an Subscribe ("please respond") status for a user.
             // TRANS: %1$s is a profile URL, %2$s a profile name,
             // TRANS: %3$s is an tip URL, %4$s an tip title.
-            $fmt = _m("<span class='automatic event-rsvp'><a href='%1\$s'>%2\$s</a> may use the tip : <a href='%3\$s'>%4\$s</a>.</span>");
+            $fmt = _m("<span class='automatic event-rsvp'><a href='%1\$s'>%2\$s</a> might do : <a href='%3\$s'>%4\$s</a>.</span>");
             break;
         default:
             // TRANS: Exception thrown when requesting a user's Subscribe status for a non-existing response code.

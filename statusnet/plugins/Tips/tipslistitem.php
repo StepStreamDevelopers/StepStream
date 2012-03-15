@@ -57,7 +57,7 @@ class TipsListItem extends NoticeListItemAdapter
         $out->element('span', 'tip-subscribes',
                       // TRANS: RSVP counts.
                       // TRANS: %1$d, %2$d and %3$d are numbers of RSVPs.
-                      sprintf(_m('Used: %1$d Dislikes: %2$d May Use: %3$d'),
+                      sprintf(_m('Used by: %1$d  To-do: %3$d'),
                               count($subscribes[Subscribe::POSITIVE]),
                               count($subscribes[Subscribe::NEGATIVE]),
                               count($subscribes[Subscribe::POSSIBLE])));

@@ -88,11 +88,9 @@ class SubscribeTipForm extends Form
     function formActions()
     {
 
-        $this->submitButton('yes', _m('BUTTON', 'Used'));
+        $this->submitButton('yes', _m('BUTTON', 'I did this!'));
 
-        $this->submitButton('no', _m('BUTTON', 'Dislike'));
-
-        $this->submitButton('maybe', _m('BUTTON', 'May Use'));
+        $this->submitButton('maybe', _m('BUTTON', 'Do this later'));
     }
 
     function submitButton($id, $label)
