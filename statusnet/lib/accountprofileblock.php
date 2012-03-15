@@ -129,8 +129,9 @@ class AccountProfileBlock extends ProfileBlock
                 $this->out->elementEnd('div');
                 return;
             }
-
-                $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '100%' , 'height' => '300px', 'src' => 'http://localhost/statusnet/graph.php?profile_id=' . $this->user->id));
+//				$url = str_replace ("index.php", "", common_local_url());
+				$url = local_url();
+                $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '100%' , 'height' => '300px', 'src' => $url . 'graph.php?profile_id=' . $this->user->id));
 
                 $this->out->elementEnd('iframe');
 

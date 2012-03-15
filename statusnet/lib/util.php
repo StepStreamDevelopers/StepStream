@@ -1250,6 +1250,20 @@ function common_local_url($action, $args=null, $params=null, $fragment=null, $ad
     return $url;
 }
 
+function local_url($action, $args=null, $params=null, $fragment=null, $addSession=true)
+{
+    if (Event::handle('StartLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url))) {
+        $r = Router::get();
+        $path = $r->build($action, $args, $params, $fragment);
+
+        $ssl = common_is_sensitive($action);
+        $url = common_path(mb_substr($path, 1), $ssl, $addSession);
+        Event::handle('EndLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url));
+    }
+    return $url;
+}
+
+
 function common_is_sensitive($action)
 {
     static $sensitive = array(
