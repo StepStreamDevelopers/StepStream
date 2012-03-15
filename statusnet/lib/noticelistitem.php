@@ -106,10 +106,10 @@ class NoticeListItem extends Widget
 
         $this->showStart();
         if (Event::handle('StartShowNoticeItem', array($this))) {
+            $this->showNoticeOptions();
             $this->showNotice();
             $this->showNoticeAttachments();
             $this->showNoticeInfo();
-            $this->showNoticeOptions();
             Event::handle('EndShowNoticeItem', array($this));
         }
         $this->showEnd();
@@ -167,8 +167,8 @@ class NoticeListItem extends Widget
             if ($this->notice->scope != 0 && $this->notice->scope != 1) {
                 $class .= ' limited-scope';
             }
-            if (!empty($this->notice->source)) {
-                $class .= ' notice-source-'.$this->notice->source;
+            if (!empty($this->notice->object_type)) {
+                $class .= ' notice-type-'.substr($this->notice->object_type, 35);
             }
             $this->out->elementStart('li', array('class' => $class,
                                                  'id' => 'notice-' . $id));
@@ -499,7 +499,7 @@ class NoticeListItem extends Widget
     {
         $ns = $this->notice->getSource();
 
-        if ($ns) {
+ /*       if ($ns) {
             // TRANS: A possible notice source (web interface).
             $source_name = (empty($ns->name)) ? ($ns->code ? _($ns->code) : _m('SOURCE','web')) : _($ns->name);
             $this->out->text(' ');
@@ -541,6 +541,7 @@ class NoticeListItem extends Widget
 
             $this->out->elementEnd('span');
         }
+*/
     }
 
     /**
@@ -668,7 +669,7 @@ class NoticeListItem extends Widget
      *
      * @return void
      */
-    function showRepeatForm()
+/*    function showRepeatForm()
     {
         if ($this->notice->scope == Notice::PUBLIC_SCOPE ||
             $this->notice->scope == Notice::SITE_SCOPE) {
@@ -690,7 +691,7 @@ class NoticeListItem extends Widget
             }
         }
     }
-
+*/
     /**
      * finish the notice
      *

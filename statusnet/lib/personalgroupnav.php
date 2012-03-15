@@ -68,23 +68,18 @@ class PersonalGroupNav extends Menu
         $this->out->elementStart('ul', array('class' => 'nav')); 
 
        if (Event::handle('StartPersonalGroupNav', array($this))) {
-            $this->out->menuItem(common_local_url('all', array('nickname' =>
-                                                               $nickname)),
-                                 // TRANS: Menu item in personal group navigation menu.
-                                 _m('MENU','Stream'),
-                                 // TRANS: Menu item title in personal group navigation menu.
-                                 // TRANS: %s is a username.
-                                 sprintf(_('%s and friends'), $name),
-                                 $mine && $action =='all', 'nav_timeline_personal');
-          
+               $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
+               // TRANS: Menu item title in search group navigation panel.
+                _('Public timeline'), $this->actionName == 'public', 'nav_left');
+       
             $this->out->menuItem(common_local_url('replies', array('nickname' =>
                                                                    $nickname)),
                                  // TRANS: Menu item in personal group navigation menu.
                                  _m('MENU','Tips'),
                                  // TRANS: Menu item title in personal group navigation menu.
                                  // TRANS: %s is a username.
-                                 sprintf(_('Tips for %s'), $name),
-                                 $mine && $action =='replies', 'nav_timeline_tips');
+                                 sprintf(_('Replies to %s'), $name),
+                                 $mine && $action =='replies', 'nav_middle');
       
 
             $cur = common_current_user();
@@ -100,7 +95,7 @@ class PersonalGroupNav extends Menu
                                      _m('MENU','Me'),
                                      // TRANS: Menu item title in personal group navigation menu.
                                      _('Your profile information'),
-                                     $mine && $action =='myprofile');
+                                     $mine && $action =='myprofile', 'nav_right');
             }
 
             Event::handle('EndPersonalGroupNav', array($this));

@@ -840,10 +840,10 @@ $this->showProfileBlock();
                 Event::handle('EndShowNoticeForm', array($this));
             }
         }
-        if (Event::handle('StartShowPageTitle', array($this))) {
-            $this->showPageTitle();
-            Event::handle('EndShowPageTitle', array($this));
-        }
+//        if (Event::handle('StartShowPageTitle', array($this))) {
+//            $this->showPageTitle();
+//            Event::handle('EndShowPageTitle', array($this));
+//        }
         $this->showPageNoticeBlock();
         $this->elementStart('div', array('id' => 'content_inner'));
         // show the actual content (forms, lists, whatever)
@@ -1437,7 +1437,7 @@ $this->showProfileBlock();
                                       'rel' => 'prev'),
                            // TRANS: Pagination message to go to a page displaying information more in the
                            // TRANS: present than the currently displayed information.
-                           _('After'));
+                           _('newer posts'));
             $this->elementEnd('li');
         }
         if ($have_after) {
@@ -1447,8 +1447,8 @@ $this->showProfileBlock();
                                       'rel' => 'next'),
                            // TRANS: Pagination message to go to a page displaying information more in the
                            // TRANS: past than the currently displayed information.
-                           _('Before'));
-            $this->elementEnd('li');
+                           _('older posts'));           
+        $this->elementEnd('li');
         }
         if ($have_before || $have_after) {
             $this->elementEnd('ul');

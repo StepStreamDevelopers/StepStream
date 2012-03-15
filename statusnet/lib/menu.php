@@ -91,14 +91,14 @@ class Menu extends Widget
 
         if (Event::handle('StartNav', array($this, &$tag, &$items))) {
 
-            $this->out->elementStart('ul', $attrs);
+            $this->out->elementStart('ol', $attrs);
 
             foreach ($items as $item) {
                 list($actionName, $args, $label, $description, $id) = $item;
                 $this->item($actionName, $args, $label, $description, $id);
             }
         
-            $this->out->elementEnd('ul');
+            $this->out->elementEnd('ol');
             
             Event::handle('EndNav', array($this, $tag, $items));
         }
@@ -150,9 +150,15 @@ class Menu extends Widget
 
     function submenu($label, $menu)
     {
-        $this->action->elementStart('li');
-        $this->action->element('h3', null, $label);
-        $menu->show();
-        $this->action->elementEnd('li');
+        if ($label=='Home'){
+ 	        $this->action->elementStart('li');
+        	$menu->show();
+	        $this->action->elementEnd('li');
+        }
+        else {
+            $this->action->elementStart('li');
+	        $menu->show();
+	        $this->action->elementEnd('li');
+	    }
     }
 }

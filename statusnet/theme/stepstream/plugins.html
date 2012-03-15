@@ -1,0 +1,458 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>Plugins - StepStream</title>
+<link rel="stylesheet" type="text/css" href="css/display.css" media="screen, projection, tv, print"/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/js/css/smoothness/jquery-ui.css" media=""/>
+  
+  <!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css?version=1.0.1" /><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css?version=1.0.1" /><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css?version=1.0.1" /><![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css?version=1.0.1" /><![endif]-->
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Bookmark/bookmark.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Event/event.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/Poll/poll.css" media=""/>
+  <link rel="stylesheet" type="text/css" href="http://www.stephealth.org/plugins/QnA/css/qna.css" media=""/>
+  <link rel="search" type="application/opensearchdescription+xml" href="http://www.stephealth.org/index.php/opensearch/people" title="StepStream People Search"/>
+  <link rel="search" type="application/opensearchdescription+xml" href="http://www.stephealth.org/index.php/opensearch/notice" title="StepStream Notice Search"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.as" type="application/stream+json" title="Public Timeline Feed (Activity Streams JSON)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/rss" type="application/rdf+xml" title="Public Timeline Feed (RSS 1.0)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.rss" type="application/rss+xml" title="Public Timeline Feed (RSS 2.0)"/>
+  <link rel="alternate" href="http://www.stephealth.org/index.php/api/statuses/public_timeline.atom" type="application/atom+xml" title="Public Timeline Feed (Atom)"/>
+</head>
+ <body id="pluginsadminpanel" class="user_in">
+  <div id="wrap">
+   <div id="header">
+    <address id="site_contact" class="vcard">
+     <a class="url home bookmark" href="http://www.stephealth.org/index.php/admin/all">
+      <img class="logo photo" src="http://www.stephealth.org/theme/stepstream/logo.png" alt="StepStream"/>
+       <span class="fn org">StepStream</span>
+</a>
+</address>
+    <div id="site_nav_global_primary">
+     <form id="header-search" class="form" method="get" action="http://www.stephealth.org/index.php/search/notice">
+      <fieldset>
+       <input name="q" size="20" id="search-q"/>
+       <input type="submit" value="Search"/>
+</fieldset>
+</form>
+     <ul class="nav">
+      <li id="nav_account">
+       <a href="http://www.stephealth.org/index.php/settings/profile" title="Change your personal settings.">Settings</a>
+</li>
+      <li id="nav_admin">
+       <a href="http://www.stephealth.org/index.php/panel/site" title="Site configuration.">Admin</a>
+</li>
+      <li id="nav_logout">
+       <a href="http://www.stephealth.org/index.php/main/logout" title="Logout from the site.">Logout</a>
+</li>
+</ul>
+</div>
+</div>
+   <div id="core">
+    <div id="aside_primary_wrapper">
+     <div id="content_wrapper">
+      <div id="site_nav_local_views_wrapper">
+       <div id="site_nav_local_views">
+        <ul>
+         <li>
+          <h3>Home</h3>
+          <ul class="nav">
+           <li id="nav_timeline_personal">
+            <a href="http://www.stephealth.org/index.php/admin/all" title="admin and friends">Home</a>
+</li>
+</ul>
+</li>
+</ul>
+        <ul>
+         <li>
+          <h3>Admin</h3>
+          <ul class="nav">
+           <li id="nav_site_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/site" title="Basic site configuration">Site</a>
+</li>
+           <li id="nav_user_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/user" title="User configuration">User</a>
+</li>
+           <li id="nav_access_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/access" title="Access configuration">Access</a>
+</li>
+           <li id="nav_paths_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/paths" title="Paths configuration">Paths</a>
+</li>
+           <li id="nav_sessions_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/sessions" title="Sessions configuration">Sessions</a>
+</li>
+           <li id="nav_sitenotice_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/sitenotice" title="Edit site notice">Site notice</a>
+</li>
+           <li id="nav_license_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/license" title="Set site license">License</a>
+</li>
+           <li class="current" id="nav_plugin_admin_panel">
+            <a href="http://www.stephealth.org/index.php/panel/plugins" title="Plugins configuration">Plugins</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+       <div id="content" class="admin">
+        <h1>Plugins</h1>
+        <div id="page_notice" class="system_notice">
+         <div class="instructions"><p>Additional plugins can be enabled and configured manually. See the <a href="http://status.net/wiki/Plugins">online plugin documentation</a> for more details.</p>
+</div>
+</div>
+        <div id="content_inner">
+         <fieldset id="settings_plugins_default">
+          <legend>Default plugins</legend>
+          <table class="plugin_list">
+           <tr id="plugin-Activity">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Activity">Activity</a>
+</div>
+             <form id="plugin-disable-Activity" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Activity">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>0.1</div>
+             <div>Evan Prodromou</div>
+</td>
+            <td>Emits notices when social activities happen.</td>
+</tr>
+           <tr id="plugin-Bookmark">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Bookmark">Bookmark</a>
+</div>
+             <form id="plugin-disable-Bookmark" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Bookmark">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>0.1</div>
+             <div>Evan Prodromou</div>
+</td>
+            <td></td>
+</tr>
+           <tr id="plugin-ClientSideShorten">
+            <td>
+             <div>ClientSideShorten</div>
+             <form id="plugin-disable-ClientSideShorten" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/ClientSideShorten">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td></td>
+            <td>(The plugin description is unavailable when a plugin has been disabled.)</td>
+</tr>
+           <tr id="plugin-Directory">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Directory">Directory</a>
+</div>
+             <form id="plugin-disable-Directory" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Directory">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Zach Copley</div>
+</td>
+            <td>Add a user directory.</td>
+</tr>
+           <tr id="plugin-EmailRegistration">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:EmailRegistration">EmailRegistration</a>
+</div>
+             <form id="plugin-disable-EmailRegistration" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/EmailRegistration">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Evan Prodromou</div>
+</td>
+            <td>Use email only for registration.</td>
+</tr>
+           <tr id="plugin-Event">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Event">Event</a>
+</div>
+             <form id="plugin-disable-Event" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Event">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Evan Prodromou</div>
+</td>
+            <td></td>
+</tr>
+           <tr id="plugin-ExtendedProfile">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:ExtendedProfile">ExtendedProfile</a>
+</div>
+             <form id="plugin-disable-ExtendedProfile" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/ExtendedProfile">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Brion Vibber, Samantha Doherty, Zach Copley</div>
+</td>
+            <td>UI extensions for additional profile fields.</td>
+</tr>
+           <tr id="plugin-Geonames">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Geonames">Geonames</a>
+</div>
+             <form id="plugin-disable-Geonames" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Geonames">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Evan Prodromou</div>
+</td>
+            <td>Uses <a href="http://geonames.org/">Geonames</a> service to get human-readable names for locations based on user-provided lat/long pairs.</td>
+</tr>
+           <tr id="plugin-Gravatar">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Gravatar">Gravatar</a>
+</div>
+             <form id="plugin-disable-Gravatar" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Gravatar">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Eric Helgeson, Evan Prodromou</div>
+</td>
+            <td>The Gravatar plugin allows users to use their <a href="http://www.gravatar.com/">Gravatar</a> with StatusNet.</td>
+</tr>
+           <tr id="plugin-MobileProfile">
+            <td>
+             <div>MobileProfile</div>
+             <form id="plugin-enable-MobileProfile" class="form_plugin_enable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/enable/MobileProfile">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Enable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td></td>
+            <td>(The plugin description is unavailable when a plugin has been disabled.)</td>
+</tr>
+           <tr id="plugin-NewMenu">
+            <td>
+             <div>NewMenu</div>
+             <form id="plugin-disable-NewMenu" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/NewMenu">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td></td>
+            <td>(The plugin description is unavailable when a plugin has been disabled.)</td>
+</tr>
+           <tr id="plugin-OpenID">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:OpenID">OpenID</a>
+</div>
+             <form id="plugin-disable-OpenID" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/OpenID">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Evan Prodromou, Craig Andrews</div>
+</td>
+            <td>Use <a href="http://openid.net/">OpenID</a> to login to the site.</td>
+</tr>
+           <tr id="plugin-Poll">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:Poll">Poll</a>
+</div>
+             <form id="plugin-disable-Poll" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/Poll">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>0.1</div>
+             <div>Brion Vibber</div>
+</td>
+            <td>Simple extension for supporting basic polls.</td>
+</tr>
+           <tr id="plugin-QnA">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:QnA">QnA</a>
+</div>
+             <form id="plugin-disable-QnA" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/QnA">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Zach Copley</div>
+</td>
+            <td></td>
+</tr>
+           <tr id="plugin-SearchSub">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:SearchSub">SearchSub</a>
+</div>
+             <form id="plugin-disable-SearchSub" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/SearchSub">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>0.1</div>
+             <div>Brion Vibber</div>
+</td>
+            <td>Plugin to allow following all messages with a given search.</td>
+</tr>
+           <tr id="plugin-StrictTransportSecurity">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:StrictTransportSecurity">StrictTransportSecurity</a>
+</div>
+             <form id="plugin-disable-StrictTransportSecurity" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/StrictTransportSecurity">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>1.0.1</div>
+             <div>Craig Andrews</div>
+</td>
+            <td>The Strict Transport Security plugin implements the Strict Transport Security header, improving the security of HTTPS only sites.</td>
+</tr>
+           <tr id="plugin-TagSub">
+            <td>
+             <div>
+              <a href="http://status.net/wiki/Plugin:TagSub">TagSub</a>
+</div>
+             <form id="plugin-disable-TagSub" class="form_plugin_disable" method="post" action="http://www.stephealth.org/index.php/panel/plugins/disable/TagSub">
+              <fieldset>
+               <input name="token" type="hidden" id="token" value="7b628a91adf587f71fc257e7f46114944c6580f590427789bdc5fcb542ba0fd00186eac284d2efffc7fbc41247666ddcd6959fa574e0b6c0dc8e563b2504be4c"/>
+               <input type="submit" id="submit" name="submit" class="submit" value="Disable" title=""/>
+</fieldset>
+</form>
+</td>
+            <td>
+             <div>0.1</div>
+             <div>Brion Vibber</div>
+</td>
+            <td>Plugin to allow following all messages with a given tag.</td>
+</tr>
+</table>
+</fieldset>
+</div>
+</div>
+       <div id="aside_primary" class="aside"></div>
+</div>
+</div>
+</div>
+</div>
+   <div id="footer">
+    <ul class="nav" id="site_nav_global_secondary">
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/help">Help</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/about">About</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/faq">FAQ</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/privacy">Privacy</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/source">Source</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/main/version">Version</a>
+</li>
+     <li>
+      <a href="http://www.stephealth.org/index.php/doc/contact">Contact</a>
+</li>
+</ul>
+<p><strong>StepStream</strong> is a microblogging service. It runs the <a href="http://status.net/">StatusNet</a> microblogging software, version 1.0.1, available under the <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">GNU Affero General Public License</a>.</p>
+    <p>Content and data of StepStream are private and confidential.</p>
+    <p>Content and data copyright by contributors. All rights reserved.</p>
+</div>
+</div>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.form.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery-ui.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.cookie.min.js?version=1.0.1"> </script>
+  <script type="text/javascript">/*<![CDATA[*/ if (typeof window.JSON !== "object") { $.getScript("http://www.stephealth.org/js/json2.min.js"); } /*]]>*/</script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.joverlay.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/jquery.infieldlabel.min.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/js/util.min.js?version=1.0.1"> </script>
+  <script type="text/javascript">/*<![CDATA[*/ var _peopletagAC = "http://www.stephealth.org/index.php/main/peopletagautocomplete"; /*]]>*/</script>
+  <script type="text/javascript">/*<![CDATA[*/ SN.messages={"showmore_tooltip":"Show more","reply_submit":"Reply","reply_placeholder":"Write a reply..."} /*]]>*/</script>
+  <script type="text/javascript">/*<![CDATA[*/ if (window.top !== window.self) { document.write = ""; window.top.location = window.self.location; setTimeout(function () { document.body.innerHTML = ""; }, 1); window.self.onload = function () { document.body.innerHTML = ""; }; } /*]]>*/</script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/Bookmark/js/bookmark.js"> </script>
+  <script type="text/javascript">/*<![CDATA[*/ var maxNoticeLength = 0 /*]]>*/</script>
+  <script type="text/javascript">/*<![CDATA[*/ var maxUrlLength = 25 /*]]>*/</script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/ClientSideShorten/shorten.js?version=1.0.1"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/Event/event.js"> </script>
+  <script type="text/javascript" src="http://www.stephealth.org/plugins/QnA/js/qna.js"> </script>
+</body>
+<!-- 1631ms --></html>
