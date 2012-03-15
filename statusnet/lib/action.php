@@ -1699,7 +1699,7 @@ $this->script('graphs.js');
             $this->element(
             'img',
             array(
-                'src'    => '../theme/stepstream/images/icons/arrow-left.png',
+                'src'    => local_url() . '/theme/stepstream/images/icons/arrow-left.png',
                 'class'  => 'nav_next_img',
                 'width'  => '20px',
                 'height' => '20px',
@@ -1724,7 +1724,7 @@ $this->script('graphs.js');
             $this->element(
             'img',
             array(
-                'src'    => '../theme/stepstream/images/icons/arrow-right.png',
+                'src'    => local_url() . '/theme/stepstream/images/icons/arrow-right.png',
                 'class'  => 'nav_next_img',
                 'width'  => '20px',
                 'height' => '20px',

@@ -1,6 +1,13 @@
 <?php
   include 'jpgraph.php';
   include 'jpgraph_bar.php';
+
+if (!defined('STATUSNET')) {
+    // This check helps protect against security problems;
+    // your code file can't be executed directly from the web.
+    exit(1);
+}
+
 $my_conn = mysql_connect("statusnet", "statusnet", "PASSWORD") or die(mysql_error());
 mysql_select_db("statusnet", $my_conn ) or die(mysql_error());
 
