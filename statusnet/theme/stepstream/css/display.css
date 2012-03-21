@@ -229,24 +229,24 @@ a {
 
 .subnav {
 	margin:0px;
-	padding:20px 0px 0px 0px;
+	padding: 0px 0px 80px 60px;
+	
 }
 
 .subnav li{
 	display: inline;
 	list-style-type: none;
-	padding-right:10px;
+	padding:0px;
+	margin:0px;
+	float:left;
 }
 
-.subnav ul{
-	margin:0px; 
-	padding:0px;
-}
+
 
 .subnav a {
 	color:black;
 	text-decoration:underline;
-	font-size:1.6em;
+	font-size:1.1em;
 }
 
 .nav li{

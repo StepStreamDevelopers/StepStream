@@ -73,19 +73,20 @@ class EventListItem extends NoticeListItemAdapter
 
         $out->elementStart('div', 'vevent event'); // VEVENT IN
 
+/*
         $out->elementStart('h3');  // VEVENT/H3 IN
 
-       /* if (!empty($event->url)) {
+        if (!empty($event->url)) {
             $out->element('a',
                           array('href' => $event->url,
                                 'class' => 'event-title entry-title summary'),
                           $event->title);
         } else {
             $out->text($event->title);
-        } */
+        } 
 
         $out->elementEnd('h3'); // VEVENT/H3 OUT
-
+*/
         $now       = new DateTime();
         $stepDate = new DateTime($event->step_date);
 //        $endDate   = new DateTime($event->end_time);
@@ -100,7 +101,8 @@ class EventListItem extends NoticeListItemAdapter
         $startYear = $stepDate->format('Y');
        // $endYear   = $endDate->format('Y');
 
-        $dateFmt = 'D, F j, Y'; // e.g.: Mon, Aug 31
+		$dateFmt = 'l, F jS'; //e.g. Monday, August 1st
+       //$dateFmt = 'D, F j, Y'; // e.g.: Mon, Aug 31
 
     /*    if ($startYear != $thisYear || $endYear != $thisYear) {
             $dateFmt .= 'Y,'; // append year if we need to think about years
@@ -114,30 +116,31 @@ class EventListItem extends NoticeListItemAdapter
         //$startTimeStr = $stepDate->format($timeFmt);
        // $endTimeStr = $endDate->format("{$timeFmt} (T)");
 
-        $out->elementStart('div', 'event-times'); // VEVENT/EVENT-TIMES IN
 
-        // TRANS: Field label for event description.
-        $out->element('strong', null, _m('Time:'));
-        //$temp_step_date = common_date_iso8601($event->step_date);
-       $out->element('span', array('class' => 'dtend',
-                                    'title' => common_date_iso8601($event->step_date)),
-                       $stepDateStr); 
-       
-
-        $out->elementEnd('div'); // VEVENT/EVENT-TIMES OUT
 
     
         if (!empty($event->points_earned)) {
             $out->elementStart('div', 'event-points_earned');
             // TRANS: Field label for event description.
-            $out->element('strong', null, _m($profile->nickname . ' got '));
+            // $out->element('strong', null, _m($profile->nickname . ' got '));
 
             $out->element('strong', 'points_earned', $event->points_earned);
-            $out->element('strong', null, _m(' points!'));
+            $out->element('span', null, _m(' points!'));
             $out->elementEnd('div');
         }
 
+        $out->elementStart('div', 'event-times'); // VEVENT/EVENT-TIMES IN
 
+        // TRANS: Field label for event description.
+        //$out->element('strong', null, _m('Time:'));
+        //$temp_step_date = common_date_iso8601($event->step_date);
+  	   $out->element('i', null, 'earned on ');
+       $out->element('i', array('class' => 'dtend',
+                                    'title' => common_date_iso8601($event->step_date)),
+                       $stepDateStr); 
+       
+
+        $out->elementEnd('div'); // VEVENT/EVENT-TIMES OUT
 
         if (!empty($event->description)) {
             $out->elementStart('div', 'event-description');

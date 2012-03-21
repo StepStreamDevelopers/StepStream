@@ -122,7 +122,7 @@ class NewtipsAction extends Action
 
             $tip = Tips::fromNotice($saved);
 
-            Subscribe::saveNew($profile, $tip, Subscribe::POSITIVE);
+            Subscribe::saveNew($profile, $tip, Subscribe::NEGATIVE);
 
         } catch (ClientException $ce) {
             if ($this->boolean('ajax')) {

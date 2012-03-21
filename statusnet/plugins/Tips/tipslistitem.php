@@ -44,7 +44,7 @@ class TipsListItem extends NoticeListItemAdapter
         if (!empty($tip->description)) {
             $out->elementStart('div', 'tip-description');
             // TRANS: Field label for tip description.
-            $out->element('strong', null, _m('Description:'));
+            $out->element('strong', null, _m('Tip:'));
             $out->element('span', 'description', $tip->description);
             $out->elementEnd('div');
         }

@@ -756,20 +756,26 @@ $this->script('graphs.js');
 
         $this->elementEnd('div');
  		if ($pageType == 'Tips'){
- 			$this->elementStart('ul', array('class' => 'nav',
-                                            'id' => 'nav'));
+ 			$this->elementStart('ul', array('class' => 'subnav',
+                                            'id' => 'tips_nav'));
 
 			$this->elementStart('li', array('id' => 'nav_left'));
             $this->element('a',
                                array('href' => common_local_url('replies', array('nickname' =>
                                                                    $nickname))),
-                               "All Tips");
+                               "Everyone's tips");
             $this->elementEnd('li');
 			$this->elementStart('li', array('id' => 'nav_middle'));
             $this->element('a',
                                array('href' => common_local_url('replies', array('nickname' =>
                                                                    $nickname))),
-                               "My Tips");
+                               "My tips");
+            $this->elementEnd('li');
+
+			$this->elementStart('li', array('id' => 'nav_middle'));
+            $this->element('a',
+                               array('href' => 'to-do'),
+                               "To-do");
             $this->elementEnd('li');
 
 			$this->elementStart('li', array('id'=> 'nav_right'));
