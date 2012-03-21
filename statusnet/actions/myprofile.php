@@ -95,7 +95,7 @@ class MyProfileAction extends ProfileAction
         header('X-XRDS-Location: '. common_local_url('xrds', array('nickname' =>
                                                                    $this->user->nickname)));
 
-        $this->showPageMe();
+        $this->showPageMe("Me");
     }
 
     function showContent()

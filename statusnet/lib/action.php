@@ -96,8 +96,7 @@ class Action extends HTMLOutputter // lawsuit
      *
      * @return nothing
      */
-//    function showPage($pageType)
-	function showPage()
+    function showPage($pageType)
     {
         if (Event::handle('StartShowHTML', array($this))) {
             $this->startHTML();
@@ -120,7 +119,7 @@ class Action extends HTMLOutputter // lawsuit
     }
 
 
-    function showPageMe()
+    function showPageMe($pageType)
     {
         if (Event::handle('StartShowHTML', array($this))) {
             $this->startHTML();
@@ -133,7 +132,7 @@ class Action extends HTMLOutputter // lawsuit
             Event::handle('EndShowHead', array($this));
         }
         if (Event::handle('StartShowBody', array($this))) {
-            $this->showBodyMe();
+            $this->showBodyMe($pageType);
             Event::handle('EndShowBody', array($this));
         }
         if (Event::handle('StartEndHTML', array($this))) {
@@ -525,7 +524,7 @@ $this->script('graphs.js');
 
 
 
-   function showBodyMe()
+   function showBodyMe($pageType)
     {
         $this->elementStart('body', (common_current_user()) ? array('id' => strtolower($this->trimmed('action')),
                                                                     'class' => 'user_in')
@@ -536,7 +535,7 @@ $this->script('graphs.js');
             $this->flush();
             Event::handle('EndShowHeader', array($this));
         }
-        $this->showCoreMe();
+        $this->showCoreMe($pageType);
         $this->flush();
         if (Event::handle('StartShowFooter', array($this))) {
             $this->showFooter();
@@ -687,27 +686,16 @@ $this->script('graphs.js');
         if (Event::handle('StartShowEntryForms', array(&$tabs))) {
             $this->elementStart('ul', array('class' => 'nav',
                                             'id' => 'input_form_nav'));
-         /*                                   
-         if($pageType != 'Stream' && $pageType != 'Me' && $pageType != 'Tips') {
-           foreach ($tabs as $tag => $title) {
-                $attrs = array('id' => 'input_form_nav_'.$tag,
-                               'class' => 'input_form_nav_tab');
-                if ($tag == 'status') {
-                    // We're actually showing the placeholder form,
-                    // but we special-case the 'Status' tab as if
-                    // it were a small version of it.
-                    $attrs['class'] .= ' current';
-                }
-                $this->elementStart('li', $attrs);
 
-                $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("'.$tag.'")'),
-                               $title);
-                $this->elementEnd('li');
-            } 
-		}
-		*/
-		if ($pageType == 'Stream') {
+		/*
+		$this->elementStart('li');
+            $this->element('a',
+                               array('href' => 'index.php'),
+                               (string)$pageType);
+        $this->elementEnd('li');
+        */
+        
+		
 			$attrs_stream = array('id' => 'input_form_nav_event',
                                'class' => 'input_form_nav_tab');
 
@@ -737,77 +725,8 @@ $this->script('graphs.js');
                                array('href' => 'javascript:SN.U.switchInputFormTab("status")'),
                                "Update Status");
             $this->elementEnd('li');
-		}
- 		elseif ($pageType == 'Tips'){
-			$attrs_tips = array('id' => 'input_form_nav_tips',
-                               'class' => 'input_form_nav_tab');
-
-			$this->elementStart('li', $attrs_tips);
-
-            $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("tips")'),
-                               "Add a tip");
-            $this->elementEnd('li');
-			$this->elementStart('li', $attrs_tips);
-            $this->element('a',
-                               array('href' => common_local_url('replies', array('nickname' =>
-                                                                   $nickname))),
-                               "My Tips");
-            $this->elementEnd('li');
-
-			$this->elementStart('li', $attrs_tips);
-
-        	$this->element('a',
-                               array('href' => common_local_url('showfavorites', array('nickname' =>
-                                                                   $nickname))),
-                               "Tips I have used");
-            $this->elementEnd('li');
-		}
-		else {
-//			$attrs_me = array('class' => 'input_form current',
-//                           'id' => 'input_form_placeholder');
-		    $this->elementStart('li', $attrs_stream);
-
-            $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("event")'),
-                               "Add steps");
-            $this->elementEnd('li');
-
-			$attrs_tips = array('id' => 'input_form_nav_tips',
-                               'class' => 'input_form_nav_tab');
-
-			$this->elementStart('li', $attrs_tips);
-
-            $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("tips")'),
-                               "Add a tip");
-            $this->elementEnd('li');
-
-			$attrs_status = array('id' => 'input_form_nav_status',
-                               'class' => 'input_form_nav_tab');
-
-			$this->elementStart('li', $attrs_status);
-
-            $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("status")'),
-                               "Update Status");
-            $this->elementEnd('li');
-/*
-            $form = new NoticePlaceholderForm($this);
-            $form->show();
- 			$this->elementStart('div',array('id' => 'steps_graph_div',
-                               'class'=>'graph' , 'style'=>'width: 370px; height: 200px;'));
-            $this->elementEnd('div');
- 			$this->showProfileBlock();
- 			$this->elementStart('input',array('id' => 'user_id_graph' ,'type' => 'hidden', 'value' => $user->id));
-            $this->elementEnd('div');
-            $this->elementEnd('div');
-*/
-		}        
-        
+		       
         $this->elementEnd('ul');
-
-
             foreach ($tabs as $tag => $title) {
                 $attrs = array('class' => 'input_form',
                                'id' => 'input_form_'.$tag);
@@ -836,6 +755,33 @@ $this->script('graphs.js');
         }
 
         $this->elementEnd('div');
+ 		if ($pageType == 'Tips'){
+ 			$this->elementStart('ul', array('class' => 'nav',
+                                            'id' => 'nav'));
+
+			$this->elementStart('li', array('id' => 'nav_left'));
+            $this->element('a',
+                               array('href' => common_local_url('replies', array('nickname' =>
+                                                                   $nickname))),
+                               "All Tips");
+            $this->elementEnd('li');
+			$this->elementStart('li', array('id' => 'nav_middle'));
+            $this->element('a',
+                               array('href' => common_local_url('replies', array('nickname' =>
+                                                                   $nickname))),
+                               "My Tips");
+            $this->elementEnd('li');
+
+			$this->elementStart('li', array('id'=> 'nav_right'));
+
+        	$this->element('a',
+                               array('href' => common_local_url('showfavorites', array('nickname' =>
+                                                                   $nickname))),
+                               "Tips I have used");
+            $this->elementEnd('li');
+            $this->elementEnd('ul');
+        
+		}
     }
 
 
@@ -944,7 +890,7 @@ $this->script('graphs.js');
 
 
 
-  function showCoreMe()
+  function showCoreMe($pageType)
     {
         $this->elementStart('div', array('id' => 'core'));
         $this->elementStart('div', array('id' => 'aside_primary_wrapper'));
@@ -956,7 +902,7 @@ $this->script('graphs.js');
             Event::handle('EndShowLocalNavBlock', array($this));
         } 
         if (Event::handle('StartShowContentBlock', array($this))) {
-            $this->showContentBlockMe();
+            $this->showContentBlockMe($pageType);
             $this->flush();
             Event::handle('EndShowContentBlock', array($this));
         }
@@ -1077,7 +1023,7 @@ $this->script('graphs.js');
 
 
 
-    function showContentBlockMe()
+    function showContentBlockMe($pageType)
     {
         $this->elementStart('div', array('id' => 'content'));
         if (common_logged_in()) {
