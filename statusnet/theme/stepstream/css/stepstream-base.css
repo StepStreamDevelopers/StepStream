@@ -893,8 +893,8 @@ content: ":";
 }
 
 .threaded-replies .form_notice #notice_action-submit {
-    left: 10px;
-    margin-top: -44px;
+    left: 0px;
+    margin-top: 0px;
 }
 
 .threaded-replies .form_notice .error,

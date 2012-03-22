@@ -8,7 +8,7 @@ if (!defined('STATUSNET')) {
     exit(1);
 }
 
-$my_conn = mysql_connect("statusnet", "statusnet", "PASSWORD") or die(mysql_error());
+$my_conn = mysql_connect("127.0.0.1/statusnet", "root", "celloman") or die(mysql_error());
 mysql_select_db("statusnet", $my_conn ) or die(mysql_error());
 
 $profile_id = $_GET['profile_id'];
