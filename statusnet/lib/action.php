@@ -723,7 +723,7 @@ $this->script('graphs.js');
 
             $this->element('a',
                                array('href' => 'javascript:SN.U.switchInputFormTab("status")'),
-                               "Update Status");
+                               "Say something");
             $this->elementEnd('li');
 		       
         $this->elementEnd('ul');

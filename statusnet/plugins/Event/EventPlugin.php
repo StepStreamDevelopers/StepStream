@@ -114,22 +114,22 @@ class EventPlugin extends MicroappPlugin
      */
     function onRouterInitialized($m)
     {
-        $m->connect('main/event/new',
+        $m->connect('main/stepcount/new',
                     array('action' => 'newevent'));
 
-$m->connect('test/twilio',
+		$m->connect('test/twilio',
                     array('action' => 'twilio'));
-        $m->connect('main/event/rsvp',
+        $m->connect('main/stepcount/rsvp',
                     array('action' => 'newrsvp'));
-        $m->connect('main/event/rsvp/cancel',
+        $m->connect('main/stepcount/rsvp/cancel',
                     array('action' => 'cancelrsvp'));
-        $m->connect('event/:id',
+        $m->connect('stepcount/:id',
                     array('action' => 'showevent'),
                     array('id' => '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'));
         $m->connect('rsvp/:id',
                     array('action' => 'showrsvp'),
                     array('id' => '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'));
-        $m->connect('main/event/updatetimes',
+        $m->connect('main/stepcount/updatetimes',
                     array('action' => 'timelist'));
 
     }

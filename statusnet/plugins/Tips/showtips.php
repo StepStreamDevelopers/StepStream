@@ -15,7 +15,7 @@ if (!defined('STATUSNET')) {
 /**
  * Show a single tip, with associated information
  */
-class ShowtipAction extends ShownoticeAction
+class ShowtipsAction extends ShownoticeAction
 {
     protected $id    = null;
     protected $tip = null;

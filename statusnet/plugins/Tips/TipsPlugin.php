@@ -78,7 +78,7 @@ class TipsPlugin extends MicroappPlugin
                     array('action' => 'newsubscribe'));
         $m->connect('main/tips/subscribe/cancel',
                     array('action' => 'cancelsubscribe'));
-        $m->connect('tips/:id',
+        $m->connect('main/tips/:id',
                     array('action' => 'showtips'),
                     array('id' => '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'));
         $m->connect('subscribe/:id',
