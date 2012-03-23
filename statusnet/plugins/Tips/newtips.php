@@ -12,7 +12,7 @@ if (!defined('STATUSNET')) {
 }
 
 /**
- * Add a new t‬ip
+ * Add a new tip
  */
 class NewtipsAction extends Action
 {
