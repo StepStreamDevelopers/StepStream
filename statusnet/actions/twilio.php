@@ -84,7 +84,7 @@ $input_message = $_REQUEST['Body'];
   //      $ev->profile_id  = $_REQUEST['user_id'];
 //        $ev->step_count  = $_REQUEST['step_count'];
         $ev->description = $description;
-$points_obj = UserPoints::getPoints($this->user_id);
+        $points_obj = UserPoints::getPoints($this->user_id);
         if($points_obj != null)
         $points_index = pow(10,($points_obj->points_index - 1));
         else
@@ -93,8 +93,8 @@ $points_obj = UserPoints::getPoints($this->user_id);
         $ev->points_earned = $points_earned; 
 
 
-                              $ev->step_date    = "02/07/2012";
-            $ev->created = common_sql_now();
+        $ev->step_date    = date("m/d/Y"); //"02/07/2012";
+        $ev->created = common_sql_now();
         $ev->uri = common_local_url('showevent',
                                         array('id' => $ev->id));
 
