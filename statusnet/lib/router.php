@@ -207,7 +207,7 @@ class Router
 
             $main = array('login', 'logout', 'register', 'subscribe',
                           'unsubscribe', 'cancelsubscription', 'approvesub',
-                          'confirmaddress', 'recoverpassword',
+                          'confirmaddress', 'recoverpassword','twilio',
                           'invite', 'favor', 'disfavor', 'sup',
                           'block', 'unblock', 'subedit',
                           'groupblock', 'groupunblock',
@@ -251,7 +251,7 @@ class Router
 
             // these take a code
 
-            foreach (array('register', 'confirmaddress', 'recoverpassword') as $c) {
+            foreach (array('register', 'confirmaddress', 'recoverpassword' ,'twilio') as $c) {
                 $m->connect('main/'.$c.'/:code', array('action' => $c));
             }
 
