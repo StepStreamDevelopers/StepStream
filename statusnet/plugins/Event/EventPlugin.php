@@ -57,7 +57,7 @@ class EventPlugin extends MicroappPlugin
         $schema->ensureTable('stepcount', Happening::schemaDef());
         $schema->ensureTable('rsvp', RSVP::schemaDef());
         $schema->ensureTable('user_points', UserPoints::schemaDef());
-
+        $schema->ensureTable('weekly_points', WeeklyPoints::schemaDef());
         return true;
     }
 
@@ -97,6 +97,7 @@ class EventPlugin extends MicroappPlugin
             break;
         case 'Happening':
         case 'UserPoints':
+        case 'WeeklyPoints':
         case 'RSVP':
             include_once $dir . '/'.$cls.'.php';
             return false;
