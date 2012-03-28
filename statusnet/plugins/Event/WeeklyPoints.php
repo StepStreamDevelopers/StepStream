@@ -31,6 +31,7 @@ if (!defined('STATUSNET')) {
     exit(1);
 }
 
+
 /**
  * Data class for Weekly Points
  *

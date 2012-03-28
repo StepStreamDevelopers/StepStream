@@ -28,8 +28,6 @@
  * @link      http://status.net/
  */
 
-
-
 /**
  * Event plugin
  *
