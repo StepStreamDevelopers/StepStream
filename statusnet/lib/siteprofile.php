@@ -19,7 +19,6 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
  * @category  Installation
  * @package   StatusNet
  * @author    Zach Copley <zach@status.net>
@@ -48,7 +47,7 @@ class SiteProfile
         $sprofileClass = ucfirst($name) . "Site";
 
         if (class_exists($sprofileClass)) {
-            return $sprofileClass::getSettings();
+            return call_user_func(array($sprofileClass, 'getSettings'));
         } else {
             common_log(
                 LOG_ERR,
@@ -87,11 +86,16 @@ class PublicSite extends SiteProfileSettings
      * @return type array   an array of settings
      */
     static function getSettings() {
+        global $config;
         return array(
-            'site' => array(
-                'inviteonly' => false,
-                'private'    => false
-                ),
+            // We only want to change these values, not replace entire 'site' array
+            'site' => array_merge(
+                $config['site'], array(
+                    'inviteonly' => false,
+                    'private'    => false,
+                    'closed'     => false
+                )
+            ),
             'plugins' => array(
                 'default' => array(
                     'Activity'                => null,
@@ -109,10 +113,9 @@ class PublicSite extends SiteProfileSettings
                     'SearchSub'               => null,
                     'StrictTransportSecurity' => null,
                     'TagSub'                  => null
-                ),
-            'discovery' =>
-                array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
-            )
+                )
+            ),
+            'discovery' => array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
         );
     }
 }
@@ -130,11 +133,15 @@ class PrivateSite extends SiteProfileSettings
      * @return type array  an array of settings
      */
     static function getSettings() {
+        global $config;
         return array(
-            'site' => array(
-                'inviteonly' => true,
-                'private'    => true
-                ),
+            // We only want to change these values, not replace entire 'site' array
+            'site' => array_merge(
+                $config['site'], array(
+                    'inviteonly' => true,
+                    'private'    => true,
+                )
+            ),
             'plugins' => array(
                 'default' => array(
                     'Activity'                => null,
@@ -189,11 +196,15 @@ class CommunitySite extends SiteProfileSettings
      * @return type array  an array of settings
      */
     static function getSettings() {
+        global $config;
         return array(
-            'site' => array(
-                'inviteonly' => true,
-                'private'    => false
-                ),
+            // We only want to change these values, not replace entire 'site' array
+            'site' => array_merge(
+                $config['site'], array(
+                    'private'    => false,
+                    'closed'     => false
+                )
+            ),
             'plugins' => array(
                 'default' => array(
                     'Activity'                => null,
@@ -210,10 +221,9 @@ class CommunitySite extends SiteProfileSettings
                     'SearchSub'               => null,
                     'StrictTransportSecurity' => null,
                     'TagSub'                  => null
-                ),
-            'discovery' =>
-                array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
-            )
+                )
+            ),
+            'discovery' => array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
         );
     }
 
@@ -230,12 +240,16 @@ class SingleuserSite extends SiteProfileSettings
      * @return type array  an array of settings
      */
     static function getSettings() {
+        global $config;
         return array(
             'singleuser' => array('enabled' => true),
-            'site' => array(
-                'private'    => false,
-                'closed'     => true,
-                ),
+            // We only want to change these values, not replace entire 'site' array
+            'site' => array_merge(
+                $config['site'], array(
+                    'private'    => false,
+                    'closed'     => true,
+                )
+            ),
             'plugins' => array(
                 'default' => array(
                     'Activity'                => null,
@@ -253,11 +267,10 @@ class SingleuserSite extends SiteProfileSettings
                     'StrictTransportSecurity' => null,
                     'TagSub'                  => null,
                     'TwitterBridge'           => null,
-                    'FacebookBridge'          => null
-                ),
-            'discovery' =>
-                array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
-            )
+                    'FacebookBridge'          => null,
+                )
+            ),
+            'discovery' => array('cors' => true) // Allow Cross-Origin Resource Sharing for service discovery (host-meta, XRD, etc.)
         );
     }
 
