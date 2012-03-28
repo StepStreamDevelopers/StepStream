@@ -32,6 +32,9 @@ class Profile extends Managed_DataObject
     public $__table = 'profile';                         // table name
     public $id;                              // int(4)  primary_key not_null
     public $nickname;                        // varchar(64)  multiple_key not_null
+  /* Added by GP */
+    public $phone_num;
+    /* Added by GP */
     public $fullname;                        // varchar(255)  multiple_key
     public $profileurl;                      // varchar(255)
     public $homepage;                        // varchar(255)  multiple_key
@@ -43,6 +46,7 @@ class Profile extends Managed_DataObject
     public $location_ns;                     // int(4)
     public $created;                         // datetime()   not_null
     public $modified;                        // timestamp()   not_null default_CURRENT_TIMESTAMP
+  
 
     /* Static get */
     function staticGet($k,$v=NULL) {
@@ -57,6 +61,7 @@ class Profile extends Managed_DataObject
                 'id' => array('type' => 'serial', 'not null' => true, 'description' => 'unique identifier'),
                 'nickname' => array('type' => 'varchar', 'length' => 64, 'not null' => true, 'description' => 'nickname or username'),
                 'fullname' => array('type' => 'varchar', 'length' => 255, 'description' => 'display name'),
+                'phone_num' => array('type' => 'varchar', 'length' => 64, 'description' => 'Phone Number'),
                 'profileurl' => array('type' => 'varchar', 'length' => 255, 'description' => 'URL, cached so we dont regenerate'),
                 'homepage' => array('type' => 'varchar', 'length' => 255, 'description' => 'identifying URL'),
                 'bio' => array('type' => 'text', 'description' => 'descriptive biography'),
@@ -65,7 +70,6 @@ class Profile extends Managed_DataObject
                 'lon' => array('type' => 'numeric', 'precision' => 10, 'scale' => 7, 'description' => 'longitude'),
                 'location_id' => array('type' => 'int', 'description' => 'location id if possible'),
                 'location_ns' => array('type' => 'int', 'description' => 'namespace for location'),
-
                 'created' => array('type' => 'datetime', 'not null' => true, 'description' => 'date this record was created'),
                 'modified' => array('type' => 'timestamp', 'not null' => true, 'description' => 'date this record was modified'),
             ),
