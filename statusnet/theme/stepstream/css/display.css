@@ -242,11 +242,30 @@ a {
 }
 
 
+.settingsnav {
+	margin:0px;
+	padding: 0px 0px 0px 60px;
+	
+}
 
-.subnav a {
+.settingsnav ul{
+	padding:0px;
+	float:left;
+	margin:0px;
+}
+
+.settingsnav li{
+	display: inline;
+	list-style-type: none;
+	padding:5px;
+	margin:0px;
+	float:left;
+}
+
+.settingsnav a {
 	color:black;
 	text-decoration:underline;
-	font-size:1.1em;
+	font-size:1.5em;
 }
 
 .nav li{
@@ -300,7 +319,7 @@ a {
 	-moz-border-radius: 8px 8px 8px 8px;
 	border-radius: 8px 8px 8px 8px;
 	clear:both;
-	color: #DDDDDD;
+	color: #333333;
 	behavior: url(../pie/PIE.htc);
 
 }

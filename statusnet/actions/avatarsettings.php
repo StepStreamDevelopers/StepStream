@@ -119,16 +119,16 @@ class AvatarsettingsAction extends SettingsAction
                                           common_local_url('avatarsettings')));
         $this->elementStart('fieldset');
         // TRANS: Avatar upload page form legend.
-        $this->element('legend', null, _('Avatar settings'));
+        $this->element('legend', null, _('Your picture'));
         $this->hidden('token', common_session_token());
 
         if (Event::handle('StartAvatarFormData', array($this))) {
-            $this->elementStart('ul', 'form_data');
+            $this->elementStart('ul', 'form_data_avatar');
             if ($original) {
                 $this->elementStart('li', array('id' => 'avatar_original',
                                                 'class' => 'avatar_view'));
                 // TRANS: Header on avatar upload page for thumbnail of originally uploaded avatar (h2).
-                $this->element('h2', null, _("Original"));
+                $this->element('h4', null, _("Original"));
                 $this->elementStart('div', array('id'=>'avatar_original_view'));
                 $this->element('img', array('src' => $original->url,
                                             'width' => $original->width,
@@ -144,7 +144,7 @@ class AvatarsettingsAction extends SettingsAction
                 $this->elementStart('li', array('id' => 'avatar_preview',
                                                 'class' => 'avatar_view'));
                 // TRANS: Header on avatar upload page for thumbnail of to be used rendition of uploaded avatar (h2).
-                $this->element('h2', null, _("Preview"));
+                $this->element('h4', null, _("Preview"));
                 $this->elementStart('div', array('id'=>'avatar_preview_view'));
                 $this->element('img', array('src' => $avatar->url,
                                             'width' => AVATAR_PROFILE_SIZE,

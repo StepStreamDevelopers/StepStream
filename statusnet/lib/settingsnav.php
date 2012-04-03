@@ -117,12 +117,12 @@ class SettingsSubNav extends Menu
         $name = $user->getProfile()->getBestName();
 
 
-	$this->action->elementStart('div', array('class' => 'subnav'));
+	$this->action->elementStart('div', array('class' => 'settingsnav'));
         $this->action->elementStart('ul');
         $this->action->elementStart('li');
         // TRANS: Header in settings navigation panel.
 //        $this->action->element('h3', null, _m('HEADER','Settings'));
-        $this->action->elementStart('ul', array('class' => 'nav'));
+        $this->action->elementStart('ul', array('class' => 'settingsnav'));
 
         if (Event::handle('StartAccountSettingsNav', array(&$this->action))) {
             $this->action->menuItem(common_local_url('profilesettings'),

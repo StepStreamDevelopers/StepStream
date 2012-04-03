@@ -242,7 +242,7 @@ select {
 }
 
 #avatarfile {
-    width: 100%;
+    width: 200px;
 }
 
 .form_settings .checkbox-wrapper label.checkbox {
