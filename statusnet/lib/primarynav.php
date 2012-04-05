@@ -51,7 +51,7 @@ class PrimaryNav extends Menu
     {
         $user = common_current_user();
         $name = $user->getProfile()->getBestName();
-        $this->action->elementStart('ul', array('class' => 'nav'));
+        $this->action->elementStart('ul', array('class' => 'nav', 'id'=>'navtop'));
         if (Event::handle('StartPrimaryNav', array($this->action))) {
             if (!empty($user)) {
                 $this->action->menuItem(common_local_url('profilesettings'),

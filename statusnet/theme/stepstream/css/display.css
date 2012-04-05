@@ -225,11 +225,15 @@ a {
 
 .nav {
 	padding-bottom:5px;
-	text-align:right;
 }
 
 .navitalics {
 	padding-right:10px;
+}
+
+#navtop {
+	text-align:right;
+
 }
 
 .subnav {
