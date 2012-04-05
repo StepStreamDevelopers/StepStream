@@ -119,7 +119,8 @@ class MyProfileAction extends ProfileAction
         if (!empty($this->tag)) {
             return array(new Feed(Feed::RSS1,
                                   common_local_url('userrss',
-                                                   array('nickname' => $this->user->nickname,
+                                                   array('nickname' => $this->user->nick
+                                                   ,
                                                          'tag' => $this->tag)),
                                   // TRANS: Title for link to notice feed.
                                   // TRANS: %1$s is a user nickname, %2$s is a hashtag.

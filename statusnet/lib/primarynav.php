@@ -50,6 +50,7 @@ class PrimaryNav extends Menu
     function show()
     {
         $user = common_current_user();
+        $name = $user->getProfile()->getBestName();
         $this->action->elementStart('ul', array('class' => 'nav'));
         if (Event::handle('StartPrimaryNav', array($this->action))) {
             if (!empty($user)) {
@@ -76,6 +77,12 @@ class PrimaryNav extends Menu
                                 _('Logout from the site.'),
                                 false,
                                 'nav_logout');
+                $this->out->element('br');
+                $this->out->elementStart('i');
+                $this->out->element('span',array('class' => 'navitalics'),
+                            'Hello, ' . $name . '!');
+                $this->out->elementEnd('i');
+
             } else {
                 $this->action->menuItem(common_local_url('login'),
                                 // TRANS: Menu item in primary navigation panel.
