@@ -372,7 +372,6 @@ class NewnoticeAction extends Action
         );
 
         $notice_form->show();
-
         $this->elementEnd('div');
         $this->elementEnd('div');
     }

@@ -139,8 +139,10 @@ option {
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	border-radius:8px;
-	clear:both;
 	color: #DDDDDD;
+display:inline;
+float:left;
+clear:none;
 }
 
 .form_notice a {
@@ -169,9 +171,8 @@ option {
 }
 
 .form_notice textarea {
-    clear: left;
+    clear: both;
     float: left;
-    position: relative;
     width: 300px;
     height: 42px;
     padding: 6px 5px 18px 5px;
@@ -343,8 +344,10 @@ option {
 }
 
 .form_notice .to-selector { 
-    clear: left;
-    padding-top: 15px;
+    display:inline;
+    float: left;
+    clear:both;
+    padding-top: 5px;
     z-index: 99;
 }
 
@@ -372,7 +375,8 @@ option {
     margin-top: 6px;
     line-height: 1.2em;
     left: -3px;
-    float: none;
+    float: left;
+    display:inline;
 }
 
 .checkbox-wrapper #notice_private {
@@ -403,12 +407,11 @@ option {
 }
 
 .form_notice input.submit {
-    position: absolute;
     top: 100%;
-    left: 0px;
-    margin-top: -49px;
-    float: left;
-    width: 100px;
+	display:inline;
+	float:left;
+	clear:left;
+    width: 130px;
     padding: 0px;
     z-index: 99;
 }
@@ -1240,7 +1243,10 @@ display:none;
 }
 
 .form_settings {
-    clear:both;
+/*clear:both;*/
+display:inline;
+float:left;
+clear:none;
 }
 
 .form_settings fieldset {
@@ -1248,7 +1254,9 @@ display:none;
     margin-bottom: 20px;
     border: none;
     padding-top: 45px;
-
+display:inline;
+float:left;
+clear:none;
 }
 
 .form_settings fieldset fieldset {

@@ -246,6 +246,7 @@ class NoticeForm extends Form
 
             $toWidget->show();
             $this->out->elementEnd('div');
+            
 /*
             if ($this->user->shareLocation()) {
                 $this->out->hidden('notice_data-lat', empty($this->lat) ? (empty($this->profile->lat) ? null : $this->profile->lat) : $this->lat, 'lat');
@@ -284,6 +285,7 @@ class NoticeForm extends Form
             }
 */
             Event::handle('EndShowNoticeFormData', array($this));
+            
         }
     }
 
@@ -300,6 +302,8 @@ class NoticeForm extends Form
                                            'name' => 'status_submit',
                                            'type' => 'submit',
                                            // TRANS: Button text for sending notice.
-                                           'value' => _m('BUTTON', 'Send')));
+                                           'value' => _m('BUTTON', 'Submit')));
+                $this->out->element('a',array('href' => 'javascript:SN.U.switchInputFormTab("null")', 'id' => 'closestatus' ,'class' => 'closebutton'),
+                            'Close');
     }
 }

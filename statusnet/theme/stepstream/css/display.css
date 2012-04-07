@@ -250,6 +250,13 @@ a {
 	float:left;
 }
 
+.closebutton {
+	color:#DDDDDD;
+	clear:none;
+	text-decoration:underline;
+	float:left;
+	padding-left:5px;
+}
 
 .settingsnav {
 	margin:0px;

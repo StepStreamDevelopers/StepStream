@@ -76,6 +76,7 @@ class TipsForm extends Form
 
 
         $this->out->elementEnd('fieldset');
+
     }
 
     /**
@@ -87,5 +88,7 @@ class TipsForm extends Form
     {
         // TRANS: Button text to save an tip..
         $this->out->submit('tips-submit', _m('BUTTON', 'Save'), 'submit', 'submit');
+                $this->out->element('a',array('href' => 'javascript:SN.U.switchInputFormTab("null")', 'id' => 'closetips' ,'class' => 'closebutton'),
+                            'Close');
     }
 }

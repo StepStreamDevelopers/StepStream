@@ -156,8 +156,8 @@ class EventForm extends Form
                                    common_current_user(),
                                    null);
         $toWidget->show();
-
         $this->out->elementEnd('fieldset');
+
     }
 
     /**
@@ -169,6 +169,8 @@ class EventForm extends Form
     {
         // TRANS: Button text to save an event..
         $this->out->submit('event-submit', _m('BUTTON', 'Save'), 'submit', 'submit');
+        $this->out->element('a',array('href' => 'javascript:SN.U.switchInputFormTab("null")', 'id' => 'closesteps' ,'class' => 'closebutton'),
+                            'Close');
 
     }
 }
