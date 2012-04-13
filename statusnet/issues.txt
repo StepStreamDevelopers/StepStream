@@ -1,1 +1,49 @@
-Issues / to-dos
+Fixes / to-dos
+
+
+Fixes
+===========
+
+Navigation: 
+ - Tips links to a user's own tips, should show the list of all tips
+ - Clicking the logo links to a user's own status messages, should show the public timeline
+ - Tips screen should have 2nd menu for tips
+ - Me page should have the graph in the main area, not the status area
+ - Page labels should not be showing up 
+ - main navigation labels are incorrect. they should read "Add steps // Share a tip // Say something"
+
+Tips:
+ - Marking a tip to-do or have-done is broken
+ - the /alltips timeline show's a user's tips should show everyone's tips
+ 
+ Graph:
+ - This should use the existing database connection, so we don't have to customize it for each install
+ 
+ 
+To-do
+===========
+
+Me page
+ - Show total points, available points, personal steps baseline
+
+Settings
+ - Add SMS settings page
+ - Add SMS preference: Send daily reminder
+
+Twilio
+ - Send daily reminder at 8pm. "How many steps did you get today? -stephealth.org"
+ - If user just sends 1 integer, 
+ 	after 8pm, mark it as today
+ 	before 8pm, mark it as yesterday
+ - Otherwise, expect date [space] step number. prefer month-day but accept others. ignore ","
+ 	4-2 10000 => 10,000 steps on April 2nd
+ 	4-02
+ 	04-02
+ 	4-2-12
+ 	4-02-12
+ 	04-02-12
+ 	0402
+ 	040212
+ - After processing, reply to user:
+ 	success: "Got it. 10,000 steps on 4/2/12. visit stephealth.org to see how your friends are doing!"
+ 	failure: "Whoops! Try it this way: If you took 10,000 steps on April 2nd, send '0402 10000' -stephealth.org"
