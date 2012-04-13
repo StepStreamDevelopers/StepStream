@@ -205,9 +205,9 @@ class Router
 
             // main stuff is repetitive
 
-            $main = array('login', 'logout', 'register', 'subscribe',
+            $main = array('login', 'logout', 'register', 'subscribe','twilio',
                           'unsubscribe', 'cancelsubscription', 'approvesub',
-                          'confirmaddress', 'recoverpassword','twilio',
+                          'confirmaddress', 'recoverpassword',
                           'invite', 'favor', 'disfavor', 'sup',
                           'block', 'unblock', 'subedit',
                           'groupblock', 'groupunblock',
@@ -251,7 +251,7 @@ class Router
 
             // these take a code
 
-            foreach (array('register', 'confirmaddress', 'recoverpassword' ,'twilio') as $c) {
+            foreach (array('register', 'confirmaddress', 'recoverpassword', 'twilio') as $c) {
                 $m->connect('main/'.$c.'/:code', array('action' => $c));
             }
 
@@ -890,7 +890,7 @@ class Router
                 $nickname = User::singleUserNickname();
 
                 foreach (array('subscriptions', 'subscribers',
-                               'all', 'foaf', 'replies',
+                               'all', 'foaf', 'replies','mytips','usedtips','todotips', 'alltips',
                                'microsummary', 'hcard') as $a) {
                     $m->connect($a,
                                 array('action' => $a,
@@ -914,7 +914,7 @@ class Router
                                       'nickname' => $nickname));
                 }
 
-                foreach (array('all', 'replies', 'favorites') as $a) {
+                foreach (array('all', 'replies', 'favorites','mytips','usedtips', 'todotips' , 'alltips') as $a) {
                     $m->connect($a.'/rss',
                                 array('action' => $a.'rss',
                                       'nickname' => $nickname));
@@ -968,7 +968,7 @@ class Router
 
 
  foreach (array('subscriptions', 'subscribers',
-                               'nudge', 'all', 'foaf', 'replies',
+                               'nudge', 'all', 'foaf', 'replies','mytips','usedtips','todotips','alltips',
                                'inbox','myprofile', 'outbox', 'microsummary', 'hcard') as $a) {
                     $m->connect(':nickname/'.$a,
                                 array('action' => $a),

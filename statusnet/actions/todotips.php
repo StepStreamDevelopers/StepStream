@@ -43,7 +43,7 @@ require_once INSTALLDIR.'/lib/personalgroupnav.php';
 require_once INSTALLDIR.'/lib/noticelist.php';
 require_once INSTALLDIR.'/lib/feedlist.php';
 
-class UsedtipsAction extends ProfileAction
+class TodotipsAction extends ProfileAction
 {
     var $notice;
 
@@ -56,7 +56,7 @@ class UsedtipsAction extends ProfileAction
     {
         parent::prepare($args);
 
-        $stream = new UsedTipsNoticeStream($this->user, Profile::current());
+        $stream = new TodotipsNoticeStream($this->user, Profile::current());
 
         $this->notice = $stream->getNotices(($this->page-1)*NOTICES_PER_PAGE,
                                             NOTICES_PER_PAGE + 1);
@@ -219,20 +219,20 @@ class UsedtipsAction extends ProfileAction
 
 
 
-class UsedTipsNoticeStream extends ScopingNoticeStream
+class TodoTipsNoticeStream extends ScopingNoticeStream
 {
     function __construct($profile, $userProfile = -1)
     {
         if (is_int($userProfile) && $userProfile == -1) {
             $userProfile = Profile::current();
         }
-        parent::__construct(new CachingNoticeStream(new RawUsedTipsNoticeStream($profile),
+        parent::__construct(new CachingNoticeStream(new RawTodoTipsNoticeStream($profile),
                                                     'profile:notice_ids:' . $profile->id),
                             $userProfile);
     }
 }
 
-class RawUsedTipsNoticeStream extends NoticeStream
+class RawTodoTipsNoticeStream extends NoticeStream
 {
     protected $profile;
     
@@ -246,7 +246,7 @@ class RawUsedTipsNoticeStream extends NoticeStream
         $notice = new Notice();
 
         $notice->profile_id = $this->profile->id;
-        $notice->object_type = 'http://activitystrea.ms/schema/1.0/sub-yes';
+        $notice->object_type = 'http://activitystrea.ms/schema/1.0/sub-maybe';
         $notice->selectAdd();
         $notice->selectAdd('id');
 
