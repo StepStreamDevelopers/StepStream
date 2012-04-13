@@ -116,9 +116,11 @@ class NeweventAction extends Action
 
         */
 
-            $step_date_time = $step_date . ' ' .  '00:00';
-            $this->step_date = strtotime($step_date_time);
-            common_debug("Event start: '$step_date_time'");
+            /* $step_date_time = $step_date . ' ' .  '00:00';
+            $this->step_date = strtotime($step_date_time); */
+
+            $this->step_date = $step_date; 
+            common_debug("Event start: '$step_date'");
 
       /*     
 

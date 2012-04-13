@@ -60,19 +60,8 @@ class Happening extends Managed_DataObject
     public $description;           // text
     public $created;               // datetime
 
-    /**
-     * Get an instance by key
-     *
-     * @param string $k Key to use to lookup (usually 'id' for this class)
-     * @param mixed  $v Value to lookup
-     *
-     * @return Happening object found, or null for no hits
-     *
-     */
-    function staticGet($k, $v=null)
-    {
-        return Memcached_DataObject::staticGet('Happening', $k, $v);
-    }
+ 
+ 
 
 /** GP **/
  public static function pkeyGetStepCount($kv)
@@ -100,7 +89,10 @@ class Happening extends Managed_DataObject
                 'profile_id' => array('type' => 'int', 'not null' => true),
                 'step_count' => array('type' => 'int', 'not null' => true),
                 'points_earned' => array('type' => 'int', 'not null' => true),
-                'step_date' => array('type' => 'datetime', 'not null' => true),
+                // 'step_date' => array('type' => 'date', 'not null' => true),
+                'step_date' => array('type' => 'varchar',
+                               'length' => 255,
+                               'not null' => true),
                 //'step_time' => array('type' => 'datetime', 'not null' => true),
               
                 'description' => array('type' => 'text'),
@@ -110,10 +102,10 @@ class Happening extends Managed_DataObject
             'primary key' => array('id'),
             'unique keys' => array(
                 'happening_uri_key' => array('uri'),
+                'happening_profile_event_key' => array('profile_id', 'step_count'),
             ),
             'foreign keys' => array('happening_profile_id__key' => array('profile', array('profile_id' => 'id'))),
-            'indexes' => array('happening_created_idx' => array('created'),
-                               'happening_date_time_idx' => array('step_date')),
+            'indexes' => array('happening_created_idx' => array('created')),
         );
     }
 
@@ -131,7 +123,12 @@ class Happening extends Managed_DataObject
 
         $ev->id          = UUID::gen();
         $ev->profile_id  = $profile->id;
-        $ev->step_count  = $step_count;
+        $ev->step_count  = $step_count;         
+
+      
+
+
+
         //Formula to calculate points earned
         $points_obj = UserPoints::getPoints($profile->id);
         if($points_obj != null)
@@ -140,12 +137,13 @@ class Happening extends Managed_DataObject
         $points_index = 1;
         $points_earned = ($step_count / $points_index ) + ($step_count % $points_index);
         $ev->points_earned = $points_earned;
-        $ev->step_date    = common_sql_date($step_date);
+        $ev->step_date    = $step_date;
 
         //$ev->step_date = date('Y-m-d',strtotime(str_replace('/','-',$step_date)));
        // $ev->step_time    = common_sql_date($step_time);
         $ev->description = $description;
 
+        
 
         if (array_key_exists('created', $options)) {
             $ev->created = $options['created'];
@@ -160,15 +158,23 @@ class Happening extends Managed_DataObject
                                         array('id' => $ev->id));
         }
 
-        $ev->insert();
+        $step_prev =  Happening::pkeyGet(array('profile_id' =>$profile->id,'step_date' => $step_date));
+        if(empty($step_prev))
+	   $ev->insert();
+        else
+         {
+           $step_prev->delete();
+           $ev->insert();
+         }
 
+      
         // XXX: does this get truncated?
 
         // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
 	// TRANS: %4$s is location, %5$s is a description.
         $content = sprintf(_m('"%1$s" %2$s %3$s %4$s'),
                            $description,
-                           common_exact_date($ev->step_date), $step_count,$points_earned
+                           $ev->step_date, $step_count,$points_earned
                            );
 
         // TRANS: Rendered event description. %1$s is a title, %2$s is start time, %3$s is start time,
@@ -203,7 +209,12 @@ class Happening extends Managed_DataObject
 
   function pkeyGet($kv)
     {
-        return Memcached_DataObject::pkeyGet('RSVP', $kv);
+        return Memcached_DataObject::pkeyGet('Happening', $kv);
+    }
+
+   function staticGet($k, $v=null)
+    {
+        return Memcached_DataObject::staticGet('Happening', $k, $v);
     }
 
     static function fromNotice($notice)

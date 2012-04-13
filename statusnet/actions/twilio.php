@@ -71,20 +71,19 @@ class TwilioAction extends Action
     {
         parent::handle($argarray);
 
-       $ev = new Happening();
-$description = "Sent from twilio";
+        $ev = new Happening();
+        //$description = "Sent from twilio";
         $ev->id          = UUID::gen();
 
-$input_message = $_REQUEST['Body'];
+        $input_message = $_REQUEST['Body'];
 	$input_arr = explode(' ' , $input_message);
 	$ev->profile_id = $input_arr[0];
-	$ev->step_count = $input_arr[1];
+        $step_count =  $input_arr[1];
+	$ev->step_count = $step_count;
 
 
-  //      $ev->profile_id  = $_REQUEST['user_id'];
-//        $ev->step_count  = $_REQUEST['step_count'];
-        $ev->description = $description;
-        $points_obj = UserPoints::getPoints($this->user_id);
+        //$ev->description = $description;
+        $points_obj = UserPoints::getPoints($input_arr[0]);
         if($points_obj != null)
         $points_index = pow(10,($points_obj->points_index - 1));
         else
@@ -93,50 +92,56 @@ $input_message = $_REQUEST['Body'];
         $ev->points_earned = $points_earned; 
 
 
-        $ev->step_date    = date("m/d/Y"); //"02/07/2012";
+        $ev->step_date    = date("m/d/Y");
         $ev->created = common_sql_now();
         $ev->uri = common_local_url('showevent',
                                         array('id' => $ev->id));
 
-       
+        $step_prev =  Happening::pkeyGet(array('profile_id' =>$ev->profile_id,'step_date' => $ev->step_date));
+        if(empty($step_prev))
+	   $ev->insert();
+        else
+         {
+           $step_prev->delete();
+           $ev->insert();
+         }
 
-        $ev->insert();
-
-        // XXX: does this get truncated?
+    // XXX: does this get truncated?
 
         // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
 	// TRANS: %4$s is location, %5$s is a description.
-        $content = sprintf(_m('"%1$s" %2$s %3$s'),
-                           $description,
-                           common_exact_date($ev->step_date),$ev->step_count
-                           );
+        $content = sprintf(_m('"%1$s" %2$s %3$s'),$ev->step_date, $step_count,$points_earned);
 
         // TRANS: Rendered event description. %1$s is a title, %2$s is start time, %3$s is start time,
 	// TRANS: %4$s is end time, %5$s is end time, %6$s is location, %7$s is description.
 	// TRANS: Class names should not be translated.
-        $rendered = sprintf(_m('<span class="vevent">'),
+        /* $rendered = sprintf(_m('<span class="vevent">'),
                             htmlspecialchars($description)
-                           );
-
+                            ); */
+        
+        $options=array();
         $options = array_merge(array('object_type' => Happening::OBJECT_TYPE),
                                $options);
 
-        
+        if (!array_key_exists('uri', $options)) {
+            $options['uri'] = $ev->uri;
+        }
 
-       
 
-        $saved = Notice::saveNew($ev->profile_id,
+
+        $saved = Notice::saveNew($input_arr[0],
                                  $content,
                                  array_key_exists('source', $options) ?
-                                 $options['source'] : 'web',
-                                 $options); 
+                                 $options['source'] : 'twilio',
+                                 $options);
 
 
-        return;
+        return $saved;
     }
 
    
     function showContent()
+
     {
     
 
