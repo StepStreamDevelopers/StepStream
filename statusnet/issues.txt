@@ -46,10 +46,13 @@ Twilio:
  	040212
  - After processing, reply to user:
  	success: "Got it. 10,000 steps on 4/2/12. visit stephealth.org to see how your friends are doing!"
- 	failure: "Whoops! Try it this way: If you took 10,000 steps on April 2nd, send '0402 10000' -stephealth.org"
+ 	failure - known phone#, unknown entry: "Whoops! Try it this way: If you took 10,000 steps on April 2nd, send '0402 10000' -stephealth.org"
+ 	failure - unknown phone#: "Whoops! We don't recognize this phone number. Log in to stephealth.org and set this as your number in SMS settings."
  	
+ - phone numbers should be unique, and we should check when the user sets his phone number.
+ 
 Moments:
- - Each day, create an "award" type notice for any person who has:
+ - Each day, create an "award" type notice from user "Awards Central" for any person who has:
  	- not gotten an award notice in the last 7 days
  	AND
  	either:
