@@ -11,7 +11,7 @@ StepStream will help you and your friends get and stay fit!
  * Wear your pedometer everywhere you go
  * Enter your steps each day via SMS or web
  * Share your activity with friends!
- 
+
  
 Register
 ------------
@@ -24,6 +24,13 @@ With this form you can create a new account. You can then post notices and link 
 
 [Full Name] Longer name, preferably your "real" name.
 */
+To use StepStream, you need to create an account. Then you can share your activity with friends and classmates. Only registered users can see what you say, so be nice!
+
+[ ] I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.
+
+[Email] Used to reset your password and to send you any updates
+
+[Full Name] This is so your friends know who you are!
 
 /*
 [Registration successful]
