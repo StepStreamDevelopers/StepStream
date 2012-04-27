@@ -131,13 +131,52 @@ class AccountProfileBlock extends ProfileBlock
             }
 //				$url = str_replace ("index.php", "", common_local_url());
 				$url = local_url();
-                $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '100%' , 'height' => '300px', 'src' => $url . 'graph.php'));
+				$cur = common_current_user();
 
+                    if ($cur->id == $this->profile->id) { // your own page
+
+// beginning of profile block
+        $this->element('h1', null, $this->title());
+
+        $this->elementStart('div', array('id' => 'profile-section',
+                                            'class' => 'profile-section'));
+        $this->elementStart('div', array('id' => 'avatarbig',
+                                            'class' => 'avatarbig'));		
+        $size = $this->avatarSize();
+        $this->out->element(
+            'img',
+            array(
+                'src'  => $this->avatar(),
+                'class'  => 'ur_face',
+                'alt'    => $this->name(),
+                'width'  => $size,
+                'height' => $size
+            )
+        );
+		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
+                                       // TRANS: Link text for link on user profile.
+                                       'Edit profile');
+        $this->element('br');          
+        $this->element('br');          
+        $this->element('span', array('class' => 'stats'), 'Total points:');
+        $this->element('span', array('class' => 'statnum'), '1212');          
+        $this->element('span', array('class' => 'stats'), 'Available points:');
+        $this->element('span', array('class' => 'statnum'), '1212');
+        $this->element('span', array('class' => 'stats'), 'Average steps/day:');
+        $this->element('span', array('class' => 'statnum'), '1212');
+        $this->element('span', array('class' => 'stats'), 'Baseline:');
+        $this->element('span', array('class' => 'statnum'), '1212');
+    
+        $this->out->elementEnd('div');
+                $this->elementStart('div', array('id' => 'stepgraph',
+                                            'class' => 'stepgraph'));		
+          $this->element('span', array('class' => 'profilesub'), 'Your steps');
+              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '500px' , 'height' => '300px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php'));
                 $this->out->elementEnd('iframe');
+                $this->out->elementEnd('div');
+}
 
 
-
-            $cur = common_current_user();
 
             $this->out->elementStart('div', 'entity_actions');
             // TRANS: H2 for entity actions in a profile.
@@ -154,13 +193,8 @@ class AccountProfileBlock extends ProfileBlock
                     }
                 } else {
                     if ($cur->id == $this->profile->id) { // your own page
-                        $this->out->elementStart('li', 'entity_edit');
-                        $this->out->element('a', array('href' => common_local_url('profilesettings'),
-                                                  // TRANS: Link title for link on user profile.
-                                                  'title' => _('Edit profile settings.')),
-                                       // TRANS: Link text for link on user profile.
-                                       _m('BUTTON','Edit'));
-                        $this->out->elementEnd('li');
+
+                        $this->out->elementEnd('div');
                     } else { // someone else's page
 
                         // subscribe/unsubscribe button
@@ -321,9 +355,15 @@ class AccountProfileBlock extends ProfileBlock
     {
         $this->out->elementStart('div', 'profile_block account_profile_block section');
         if (Event::handle('StartShowAccountProfileBlock', array($this->out, $this->profile))) {
-            parent::show();
+
+       $this->showActions();
+
             Event::handle('EndShowAccountProfileBlock', array($this->out, $this->profile));
         }
         $this->out->elementEnd('div');
     }
 }
+    function showAvatar()
+    {
+
+    }

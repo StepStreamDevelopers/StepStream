@@ -388,6 +388,58 @@ a {
 }
 
 
+/* Profile Stuff */
+.profile-section {
+	position:relative;
+	float:left;
+	width:770px;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top: 15px;
+	padding-bottom:5px;
+	margin-bottom: 10px;
+
+}
+.stats {
+	font-weight:bold;
+	font-size:.95em;
+	line-height:1em;
+}
+
+.statnum {
+	font-size:.95em;
+	display:block;
+	line-height:1.2em;
+}
+
+.profilesub {
+	font-size:1.2em;
+	display:block;
+	font-weight:bold;
+}
+
+.ur_face {
+	display:block;
+}
+.avatarbig {
+
+ 	width:150px;
+ 	padding-right:10px;
+	float:left;
+}
+
+.stepgraph {
+	float:left;
+	padding-left:10px;
+	border-left-width:1px;
+    border-left-style:solid;
+    border-left-color:#444444;
+}
 
 
 /* Login Stuff */

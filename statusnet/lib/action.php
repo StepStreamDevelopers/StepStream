@@ -1044,15 +1044,8 @@ $this->script('graphs.js');
         $this->showPageNoticeBlock();
         $this->elementStart('div', array('id' => 'content_inner'));
         // show the actual content (forms, lists, whatever)
-        $this->element('h1', null, $this->title());
 		$this->showProfileBlock();
-         $this->elementStart('div',array('id' => 'steps_graph_div',
-                               'class'=>'graph' , 'style'=>'width: 370px; height: 200px;'));
-            $this->elementEnd('div');
- 
- 		$this->elementStart('input',array('id' => 'user_id_graph' ,'type' => 'hidden', 'value' => $user->id));
-            $this->elementEnd('div');
-            $this->elementEnd('div');
+
         $this->showContent();
         $this->elementEnd('div');
         $this->elementEnd('div');

@@ -56,13 +56,13 @@ abstract class ProfileBlock extends Widget
 
     function show()
     {
-        $this->showActions();
-        $this->showAvatar();
-        $this->showName();
- //       $this->showLocation();
-        $this->showHomepage();
-        $this->showDescription();
-//        $this->showTags();
+      $this->showAvatar();
+      $this->showActions();
+      $this->showName();
+      $this->showLocation();
+      $this->showHomepage();
+      $this->showDescription();
+      $this->showTags();
     }
 
     function showAvatar()

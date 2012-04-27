@@ -106,6 +106,7 @@ class MyProfileAction extends ProfileAction
     function showProfileBlock()
     {
         $block = new AccountProfileBlock($this, $this->profile);
+
         $block->show();
     }
 
