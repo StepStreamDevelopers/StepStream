@@ -135,6 +135,8 @@ class LoginAction extends Action
             return;
         }
 
+        error_log($nickname . " logged in successfully on " . date('m.d.Y h:i:s') . "\n", 3, INSTALLDIR . "/login_info.log");
+
         common_real_login(true);
 
         if ($this->boolean('rememberme')) {
