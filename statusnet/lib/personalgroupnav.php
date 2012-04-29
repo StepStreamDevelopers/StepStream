@@ -70,7 +70,7 @@ class PersonalGroupNav extends Menu
        if (Event::handle('StartPersonalGroupNav', array($this))) {
                $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
                // TRANS: Menu item title in search group navigation panel.
-                _('Public timeline'), $this->actionName == 'public', 'nav_left');
+                _('Steps stream'), $this->actionName == 'public', 'nav_left');
        
             $this->out->menuItem(common_local_url('replies', array('nickname' =>
                                                                    $nickname)),
@@ -78,7 +78,7 @@ class PersonalGroupNav extends Menu
                                  _m('MENU','Tips'),
                                  // TRANS: Menu item title in personal group navigation menu.
                                  // TRANS: %s is a username.
-                                 sprintf(_('Replies to %s'), $name),
+                                 sprintf(_('Tips for %s'), $name),
                                  $mine && $action =='replies', 'nav_middle');
       
 

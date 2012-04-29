@@ -245,14 +245,9 @@ class RawTipsNoticeStream extends NoticeStream
     {
         $notice = new Notice();
 
-        $notice->profile_id = $this->profile->id;
-
         $notice->object_type = 'http://activitystrea.ms/schema/1.0/tips';
         $notice->selectAdd();
         $notice->selectAdd('id');
-
-        Notice::addWhereSinceId($notice, $since_id);
-        Notice::addWhereMaxId($notice, $max_id);
 
         $notice->orderBy('created DESC, id DESC');
 

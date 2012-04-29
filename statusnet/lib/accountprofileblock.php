@@ -157,15 +157,16 @@ class AccountProfileBlock extends ProfileBlock
                                        // TRANS: Link text for link on user profile.
                                        'Edit profile');
         $this->element('br');          
-        $this->element('br');          
+        $this->element('br');
+        $points_obj = UserPoints::getPoints($this->profile->id);          
         $this->element('span', array('class' => 'stats'), 'Total points:');
-        $this->element('span', array('class' => 'statnum'), '1212');          
+        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
-        $this->element('span', array('class' => 'statnum'), '1212');
+        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Average steps/day:');
         $this->element('span', array('class' => 'statnum'), '1212');
         $this->element('span', array('class' => 'stats'), 'Baseline:');
-        $this->element('span', array('class' => 'statnum'), '1212');
+        $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
     
         $this->out->elementEnd('div');
                 $this->elementStart('div', array('id' => 'stepgraph',
