@@ -755,7 +755,9 @@ $this->script('graphs.js');
         }
 
         $this->elementEnd('div');
+        
  		if ($pageType == 'Tips'){
+/*
  			$this->elementStart('ul', array('class' => 'subnav',
                                             'id' => 'tips_nav'));
 
@@ -783,8 +785,12 @@ $this->script('graphs.js');
                                "Tips I have used");
             $this->elementEnd('li');
             $this->elementEnd('ul');
-        
+*/
+           $this->showTipsNavBlock();
+      
+
 		}
+        
     }
 
 
@@ -936,6 +942,17 @@ $this->script('graphs.js');
         $this->elementEnd('div');
     }
 
+    function showTipsNavBlock()
+    {
+        // Need to have this ID for CSS; I'm too lazy to add it to
+        // all menus
+        $this->elementStart('ul', array('class' => 'subnav','id' => 'tips_nav'));
+        // Cheat cheat cheat!
+        $this->showTipsNav();
+        $this->elementEnd('ul');
+    }
+
+
     /**
      * If there's a logged-in user, show a bit of login context
      *
@@ -959,6 +976,19 @@ $this->script('graphs.js');
     function showLocalNav()
     {
         $nav = new DefaultLocalNav($this);
+        $nav->show();
+    }
+
+    /**
+     * Show tips navigation.
+     *
+     * SHOULD overload
+     *
+     * @return nothing
+     */
+    function showTipsNav()
+    {
+        $nav = new TipsNav($this);
         $nav->show();
     }
 
@@ -1696,5 +1726,42 @@ $this->script('graphs.js');
     function isPost()
     {
         return ($_SERVER['REQUEST_METHOD'] == 'POST');
+    }
+}
+
+
+class TipsNav extends Menu
+{
+    /**
+     * Show the menu
+     *
+     * @return void
+     */
+    function show()
+    {
+        $user         = common_current_user();
+
+        if (empty($user)) {
+            throw new ServerException('Cannot show personal group navigation without a current user.');
+        }
+
+        $user_profile = $user->getProfile();
+        $nickname     = $user->nickname;
+        $name         = $user_profile->getBestName();
+
+        $action = $this->actionName;
+        $mine = ($this->action->arg('nickname') == $nickname); // @fixme kinda vague
+
+        $this->out->menuItem(common_local_url('alltips', array('nickname' => $nickname)), _m('MENU',"Everyone's tips"), 
+                _(''), $this->actionName == 'alltips', 'nav_left');
+                
+        $this->out->menuItem(common_local_url('mytips', array('nickname' => $nickname)), _m('MENU',"My tips"), 
+                _(''), $this->actionName == 'mytips', 'nav_middle');
+                 
+        $this->out->menuItem(common_local_url('todotips', array('nickname' => $nickname)), _m('MENU',"To-do"), 
+                _(''), $this->actionName == 'todotips', 'nav_middle');
+                                
+        $this->out->menuItem(common_local_url('usedtips', array('nickname' => $nickname)), _m('MENU',"Tips I have used"), 
+                _(''), $this->actionName == 'usedtips', 'nav_right');               
     }
 }
