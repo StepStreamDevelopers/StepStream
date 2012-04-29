@@ -46,7 +46,7 @@ class NewsubscribeAction extends Action
             StatusNet::setApi(true); // short error results!
         }
 
-        $tipId = $this->trimmed('tips');
+        $tipId = $this->trimmed('tips-id');
 
         if (empty($tipId)) {
             // TRANS: Client exception thrown when referring to a non-existing tip.
@@ -73,9 +73,7 @@ class NewsubscribeAction extends Action
         case 'yes':
             $this->verb = Subscribe::POSITIVE;
             break;
-        case 'no':
-            $this->verb = Subscribe::NEGATIVE;
-            break;
+        	
         case 'maybe':
             $this->verb = Subscribe::POSSIBLE;
             break;

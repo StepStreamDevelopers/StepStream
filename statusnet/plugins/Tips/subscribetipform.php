@@ -72,7 +72,7 @@ class SubscribeTipForm extends Form
 
         // TRANS: Field label on form to Subscribe for a tip.
         $this->out->text(_m('Subscribe:'));
-        $this->out->hidden('tips-id', $this->tip->id, 'tips');
+        $this->out->hidden('tips-id', $this->tip->id, 'tips-id');
      
         $this->out->hidden('submitvalue', '');
 
