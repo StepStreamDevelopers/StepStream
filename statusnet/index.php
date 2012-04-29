@@ -223,7 +223,7 @@ function checkMirror($action_obj, $args)
 
 function isLoginAction($action)
 {
-    static $loginActions =  array('login', 'recoverpassword','twilio', 'api', 'doc', 'register', 'publicxrds', 'otp', 'opensearch', 'rsd', 'hostmeta');
+    static $loginActions =  array('login', 'recoverpassword','twilio','dailyreminder', 'api', 'doc', 'register', 'publicxrds', 'otp', 'opensearch', 'rsd', 'hostmeta');
 
     $login = null;
 

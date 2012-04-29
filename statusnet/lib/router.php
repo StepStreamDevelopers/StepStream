@@ -890,7 +890,7 @@ class Router
                 $nickname = User::singleUserNickname();
 
                 foreach (array('subscriptions', 'subscribers',
-                               'all', 'foaf', 'replies','mytips','usedtips','todotips', 'alltips',
+                               'all', 'foaf', 'replies','mytips','usedtips','todotips', 'alltips','dailyreminder',
                                'microsummary', 'hcard') as $a) {
                     $m->connect($a,
                                 array('action' => $a,
@@ -914,7 +914,7 @@ class Router
                                       'nickname' => $nickname));
                 }
 
-                foreach (array('all', 'replies', 'favorites','mytips','usedtips', 'todotips' , 'alltips') as $a) {
+                foreach (array('all', 'replies', 'favorites','mytips','usedtips', 'todotips' , 'alltips','dailyreminder') as $a) {
                     $m->connect($a.'/rss',
                                 array('action' => $a.'rss',
                                       'nickname' => $nickname));
@@ -968,7 +968,7 @@ class Router
 
 
  foreach (array('subscriptions', 'subscribers',
-                               'nudge', 'all', 'foaf', 'replies','mytips','usedtips','todotips','alltips',
+                               'nudge', 'all', 'foaf', 'replies','mytips','usedtips','todotips','alltips','dailyreminder',
                                'inbox','myprofile', 'outbox', 'microsummary', 'hcard') as $a) {
                     $m->connect(':nickname/'.$a,
                                 array('action' => $a),

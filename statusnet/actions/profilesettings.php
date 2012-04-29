@@ -112,14 +112,24 @@ class ProfilesettingsAction extends SettingsAction
                          ($this->arg('fullname')) ? $this->arg('fullname') : $profile->fullname);
             $this->elementEnd('li');
 
-	    $this->elementStart('li');
+	    
             /* Added by GP */
+	    $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('phone_num', _('Phone Number'),
                          ($this->arg('phone_num')) ? $this->arg('phone_num') : $profile->phone_num);
+            $this->elementEnd('li');
+
             $this->elementStart('li');
+            $this->checkbox('dailyreminder',
+                            // TRANS: Checkbox label in form for profile settings.
+                            _('Send me daily reminders for step updates'),
+                            ($this->arg('dailyreminder')) ?
+                            $this->boolean('dailyreminder') : $user->dailyreminder);
+            $this->elementEnd('li');
             /* Added by GP */
 
+            $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('homepage', _('Homepage'),
                          ($this->arg('homepage')) ? $this->arg('homepage') : $profile->homepage,
@@ -266,6 +276,7 @@ class ProfilesettingsAction extends SettingsAction
             $tagstring = $this->trimmed('tags');
             /* Added by GP */
             $phone_num = $this->trimmed('phone_num');
+            $dailyreminder = $this->boolean('dailyreminder');
             /* Added by GP */
 
             // Some validation
@@ -370,6 +381,7 @@ class ProfilesettingsAction extends SettingsAction
 
             // XXX: XOR
             if (($user->autosubscribe ^ $autosubscribe) ||
+                ($user->dailyreminder ^ $dailyreminder) ||
                 ($user->private_stream ^ $private_stream) ||
                 ($user->subscribe_policy != $subscribe_policy)) {
 
@@ -378,7 +390,7 @@ class ProfilesettingsAction extends SettingsAction
                 $user->autosubscribe    = $autosubscribe;
                 $user->private_stream   = $private_stream;
                 $user->subscribe_policy = $subscribe_policy;
-
+                $user->dailyreminder = $dailyreminder;
                 $result = $user->update($original);
 
                 if ($result === false) {
@@ -400,7 +412,7 @@ class ProfilesettingsAction extends SettingsAction
             $profile->bio = $bio;
             $profile->location = $location;
             /*  Added by GP */
-            $profile->phone_num = $phone_num;
+            //$profile->phone_num = $phone_num;
             /*  Added by GP */
 
             $loc = Location::fromName($location);
