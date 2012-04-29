@@ -70,20 +70,24 @@ class TwilioAction extends Action
     function handle($argarray=null)
     {
         parent::handle($argarray);
+   
 
         $ev = new Happening();
-        //$description = "Sent from twilio";
         $ev->id          = UUID::gen();
-
-        $input_message = $_REQUEST['Body'];
-	$input_arr = explode(' ' , $input_message);
-	$ev->profile_id = $input_arr[0];
-        $step_count =  $input_arr[1];
+        $phone_num = $_REQUEST['From'];
+        $user_tw = User::staticGet('phone_num',$phone_num);
+        $phone_num_invalid = false;
+        if($user_tw != null)
+        {   
+        $ev->profile_id = $user_tw->id;
+        $sms_body = explode(" ", $_REQUEST['Body']);
+        $input_count = count($sms_body);
+        $step_count =  $sms_body[$input_count - 1];
 	$ev->step_count = $step_count;
-
+        $error_flag = false;
 
         //$ev->description = $description;
-        $points_obj = UserPoints::getPoints($input_arr[0]);
+        $points_obj = UserPoints::getPoints($ev->profile_id);
         if($points_obj != null)
         $points_index = pow(10,($points_obj->points_index - 1));
         else
@@ -91,8 +95,31 @@ class TwilioAction extends Action
         $points_earned = ($step_count / $points_index ) + ($step_count % $points_index);
         $ev->points_earned = $points_earned; 
 
+        $base_time_init = "200000";
+        $base_time   =  strtotime($base_time_init);
+        $cur_time   =   strtotime(now);
+        $step_date="null";
+        if($input_count == 1)
+        {
+        if($cur_time < $base_time)
+          $step_date    = date("m/d/Y" ,strtotime("yesterday"));
 
-        $ev->step_date    = date("m/d/Y");
+        else
+          $step_date    = date("m/d/Y");
+         }
+
+         else
+         {
+ 		if (date("m/d/Y", strtotime($sms_body[0])) == $sms_body[0]) {
+	        $step_date = $sms_body[0];
+    	          } else {
+        	$error_flag = true;
+                 }
+	  }         
+          
+       if($error_flag == false)
+       {
+        $ev->step_date = $step_date;
         $ev->created = common_sql_now();
         $ev->uri = common_local_url('showevent',
                                         array('id' => $ev->id));
@@ -129,17 +156,33 @@ class TwilioAction extends Action
 
 
 
-        $saved = Notice::saveNew($input_arr[0],
+        $saved = Notice::saveNew($user_tw->id,
                                  $content,
                                  array_key_exists('source', $options) ?
                                  $options['source'] : 'twilio',
                                  $options);
+        }
+
+        }
+
+        else
+           $phone_num_invalid = true;
+
+        $parameter_string="";
+        if($saved != null && $error_flag == false)
+         	$parameter_string = "error_flag=$error_flag&step_count=$step_count&step_date=$step_date&phone_number=$phone_num&phone_num_invalid=$phone_num_invalid";
+	
+        else
+		$parameter_string = "error_flag=$error_flag&phone_number=$phone_num&phone_num_invalid=$phone_num_invalid";
+	
+        ob_start();
+        header("Location: http://salute.cc.gt.atl.ga.us/statusnet/Twilio/sendnotifications.php?$parameter_string");
+        exit();
 
 
-        return $saved;
     }
 
-   
+
     function showContent()
 
     {
@@ -164,3 +207,4 @@ class TwilioAction extends Action
     }
 
 }
+?>

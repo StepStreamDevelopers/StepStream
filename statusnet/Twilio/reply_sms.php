@@ -8,5 +8,5 @@
 ?>
 
 <Response>
-	<Sms>Hello. Your username was : <?php echo $username; ?> and You had taken <?php $steps ?> steps</Sms>
+	<Sms>Hello, Mobile Monkey . Your username was : <?php echo $username; ?> and You had taken <?php $steps ?> steps</Sms>
 </Response>
