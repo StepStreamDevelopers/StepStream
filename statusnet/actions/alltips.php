@@ -140,14 +140,14 @@ class AlltipsAction extends ProfileAction
     function showEmptyListMessage()
     {
         // TRANS: Empty list message. %s is a user nickname.
-        $message = sprintf(_('This is the timeline for %s and friends but no one has posted anything yet.'), $this->user->nickname) . ' ';
+        $message = sprintf(_("Here's where you'll see everyone's tips for how to get more steps."), $this->user->nickname) . ' ';
 
         if (common_logged_in()) {
             $current_user = common_current_user();
             if ($this->user->id === $current_user->id) {
                 // TRANS: Encouragement displayed on logged in user's empty timeline.
                 // TRANS: This message contains Markdown links. Keep "](" together.
-                $message .= _('Try subscribing to more people, [join a group](%%action.groups%%) or post something yourself.');
+                $message .= _('Add a tip to get started!');
             } else {
                 // TRANS: %1$s is user nickname, %2$s is user nickname, %2$s is user nickname prefixed with "@".
                 // TRANS: This message contains Markdown links. Keep "](" together.

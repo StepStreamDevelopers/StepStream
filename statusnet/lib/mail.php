@@ -169,17 +169,17 @@ function mail_confirm_address($user, $code, $nickname, $address, $url=null)
     }
 
     // TRANS: Subject for address confirmation email.
-    $subject = _('Email address confirmation');
+    $subject = _('Welcome to StepStream! Confirm your email address.');
 
     // TRANS: Body for address confirmation email.
     // TRANS: %1$s is the addressed user's nickname, %2$s is the StatusNet sitename,
     // TRANS: %3$s is the URL to confirm at.
     $body = sprintf(_("Hey, %1\$s.\n\n".
-                      "Someone just entered this email address on %2\$s.\n\n" .
-                      "If it was you, and you want to confirm your entry, ".
-                      "use the URL below:\n\n\t%3\$s\n\n" .
-                      "If not, just ignore this message.\n\n".
-                      "Thanks for your time, \n%2\$s\n"),
+                      "You're almost set up. Just click the link below to confirm your email address." .
+                      "\n\n\t%3\$s\n\n" .
+                      "Thanks, \n%2\$s\n\n\n".
+                      "Note: If you didn't sign up for a %2$s account, just ignore this message.\n\n"
+                      ),
                     $nickname,
                     common_config('site', 'name'),
                     $url);

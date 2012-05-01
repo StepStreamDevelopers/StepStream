@@ -57,7 +57,7 @@ class EmailsettingsAction extends SettingsAction
     function title()
     {
         // TRANS: Title for e-mail settings.
-        return _('Email settings');
+        return _('SMS & Email settings');
     }
 
     /**
@@ -207,31 +207,38 @@ class EmailsettingsAction extends SettingsAction
         $this->elementStart('ul', 'form_data');
 
         if (Event::handle('StartEmailFormData', array($this))) {
-            $this->elementStart('li');
+/*            $this->elementStart('li');
             $this->checkbox('emailnotifysub',
                             // TRANS: Checkbox label in e-mail preferences form.
                             _('Send me notices of new subscriptions through email.'),
                             $user->emailnotifysub);
             $this->elementEnd('li');
+*/
+
             $this->elementStart('li');
             $this->checkbox('emailnotifyfav',
                             // TRANS: Checkbox label in e-mail preferences form.
-                            _('Send me email when someone '.
-                              'adds my notice as a favorite.'),
+                            _('Send me email when people heart my posts.'),
                             $user->emailnotifyfav);
             $this->elementEnd('li');
+            
+/*
             $this->elementStart('li');
             $this->checkbox('emailnotifymsg',
                             // TRANS: Checkbox label in e-mail preferences form.
                             _('Send me email when someone sends me a private message.'),
                             $user->emailnotifymsg);
             $this->elementEnd('li');
+*/
+
             $this->elementStart('li');
             $this->checkbox('emailnotifyattn',
                             // TRANS: Checkbox label in e-mail preferences form.
-                            _('Send me email when someone sends me an "@-reply".'),
+                            _('Send me email when people reply to my posts.'),
                             $user->emailnotifyattn);
             $this->elementEnd('li');
+
+/*
             $this->elementStart('li');
             $this->checkbox('emailnotifynudge',
                             // TRANS: Checkbox label in e-mail preferences form.
@@ -244,6 +251,7 @@ class EmailsettingsAction extends SettingsAction
                             _('Publish a MicroID for my email address.'),
                             $user->emailmicroid);
             $this->elementEnd('li');
+*/
             Event::handle('EndEmailFormData', array($this));
         }
         $this->elementEnd('ul');

@@ -354,10 +354,7 @@ class RegisterAction extends Action
         } else {
             $instr =
               // TRANS: Page notice on registration page.
-              common_markup_to_html(_('With this form you can create '.
-                                      'a new account. ' .
-                                      'You can then post notices and '.
-                                      'link up to friends and colleagues.'));
+              common_markup_to_html(_("To use StepStream, you need to create an account. Then you can share your activity with friends and classmates. Only registered users can see what you say, so be nice!"));
 
             $this->elementStart('div', 'instructions');
             $this->raw($instr);
@@ -456,14 +453,12 @@ class RegisterAction extends Action
                 // TRANS: Field label on account registration page.
                 $this->input('email', _m('LABEL','Email'), $this->invite->address,
                              // TRANS: Field title on account registration page.
-                             _('Used only for updates, announcements, '.
-                               'and password recovery.'));
+                             _('Used to reset your password and to send you any updates'));
             } else {
                 // TRANS: Field label on account registration page.
                 $this->input('email', _m('LABEL','Email'), $this->trimmed('email'),
                              // TRANS: Field title on account registration page.
-                             _('Used only for updates, announcements, '.
-                               'and password recovery.'));
+                             _('Used to reset your password and to send you any updates'));
             }
             $this->elementEnd('li');
             $this->elementStart('li');
@@ -471,7 +466,7 @@ class RegisterAction extends Action
             $this->input('fullname', _('Full name'),
                          $this->trimmed('fullname'),
                      // TRANS: Field title on account registration page.
-                     _('Longer name, preferably your "real" name.'));
+                     _('This is so your friends know who you are!'));
             $this->elementEnd('li');
 /*
             $this->elementStart('li');
@@ -551,7 +546,7 @@ class RegisterAction extends Action
             $out .= htmlspecialchars(sprintf(
                 // TRANS: Copyright checkbox label in registration dialog, for private sites.
                 // TRANS: %1$s is the StatusNet sitename.
-                _('I understand that content and data of %1$s are private and confidential.'),
+                _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'),
                 common_config('site', 'name')));
             // fall through
         case 'allrightsreserved':
@@ -562,11 +557,11 @@ class RegisterAction extends Action
                 $out .= htmlspecialchars(sprintf(
                     // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with a specified copyright owner.
                     // TRANS: %1$s is the license owner.
-                    _('My text and files are copyright by %1$s.'),
+                    _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'),
                     common_config('license', 'owner')));
             } else {
                 // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with ownership left to contributors.
-                $out .= htmlspecialchars(_('My text and files remain under my own copyright.'));
+                $out .= htmlspecialchars(_('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'));
             }
             // TRANS: Copyright checkbox label in registration dialog, for all rights reserved.
             $out .= ' ' . _('All rights reserved.');
@@ -574,9 +569,7 @@ class RegisterAction extends Action
         case 'cc': // fall through
         default:
             // TRANS: Copyright checkbox label in registration dialog, for Creative Commons-style licenses.
-            $message = _('My text and files are available under %s ' .
-                         'except this private data: password, ' .
-                         'email address, IM address, and phone number.');
+            $message = _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.');
             $link = '<a href="' .
                     htmlspecialchars(common_config('license', 'url')) .
                     '">' .
@@ -620,9 +613,19 @@ class RegisterAction extends Action
             // TRANS: %1$s is the registered nickname, %2$s is the profile URL.
             // TRANS: This message contains Markdown links in the form [link text](link)
             // TRANS: and variables in the form %%%%variable%%%%. Please mind the syntax.
-            $instr = sprintf(_('Congratulations, %1$s! And welcome to %%%%site.name%%%%. '.
-                               'From here, you may want to...'. "\n\n" .
-								'More goes here later'),
+            $instr = sprintf(_('Congratulations, %1$s! Welcome to %%%%site.name%%%%. '."\n\n".
+                               "Things to do:". "\n\n" .
+								"<li> Add your phone number if you want to SMS your steps from your phone"."\n\n".
+								"<li> Say hello by clicking on 'Say something'"."\n\n".
+								"<li> Add a tip for how to get steps by clicking on 'Add a tip'"."\n\n".
+								"<li> Add your steps by cliking on 'Add steps'"."\n\n".
+								"<li> Start getting exercise!"."\n\n"."\n\n".
+								" If you gave us your email address, check your email to confirm your address."."\n\n"
+								
+								
+								),
+
+													
                              $nickname, $profileurl);
 
             $this->raw(common_markup_to_html($instr));

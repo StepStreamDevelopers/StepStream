@@ -148,9 +148,9 @@ class SettingsSubNav extends Menu
 
             $this->action->menuItem(common_local_url('emailsettings'),
                                     // TRANS: Menu item in settings navigation panel.
-                                    _m('MENU','Email'),
+                                    _m('MENU','SMS & Email'),
                                     // TRANS: Menu item title in settings navigation panel.
-                                    _('Change email handling'),
+                                    _('Change SMS & email handling'),
                                     $actionName == 'emailsettings');
 
 /*            $this->action->menuItem(common_local_url('urlsettings'),

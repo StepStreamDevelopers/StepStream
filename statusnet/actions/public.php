@@ -185,7 +185,7 @@ class PublicAction extends Action
     function showEmptyList()
     {
         // TRANS: Text displayed for public feed when there are no public notices.
-        $message = _('This is the public timeline for %%site.name%% but no one has posted anything yet.') . ' ';
+        $message = _("Here's where you'll see your friends' tips, step counts, and comments!") . ' ';
 
         if (common_logged_in()) {
             // TRANS: Additional text displayed for public feed when there are no public notices for a logged in user.

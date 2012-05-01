@@ -46,9 +46,9 @@ More goes here later
 Congratulations, andrewmillergt! Welcome to StepStream. Things to do:
 
  - Add your phone number if you want to SMS your steps from your phone
- - Say hello by clicking on "Say something" above
- - Add a tip for how to get steps by clicking on "Add a tip" above
- - Add your steps by cliking on "Add steps" above
+ - Say hello by clicking on 'Say something' above
+ - Add a tip for how to get steps by clicking on 'Add a tip' above
+ - Add your steps by cliking on 'Add steps' above
  - Start getting exercise!
  
  If you gave us your email address, check your email to confirm your address.
@@ -70,7 +70,7 @@ Tips
 This is the timeline for testuser1 and friends but no one has posted anything yet. Try subscribing to more people, join a group or post something yourself.
 */
 
-Here's where you'll see tips for how to get more steps!
+Here's where you'll see tips for how to get more steps. Add a tip to get started!
 
 
 Me
@@ -79,7 +79,7 @@ Me
 This is the timeline for testuser1, but testuser1 hasn't posted anything yet. Seen anything interesting recently? You haven't posted any notices yet, now would be a good time to start :)
 */
 
-Here's where you'll see everything you've posted.
+Here's where you'll see everything you've posted. Say something, add steps or add a tip to get started!
 
 '
 
@@ -97,6 +97,7 @@ Publish a MicroID for my email address.
 
 [Email preferences]
 Send me email when people heart my posts.
+Send me email when people reply to my posts.
 
 Emails
 -------------
@@ -147,7 +148,7 @@ Faithfully yours,
 StepStream.
 
 ----
-Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+Change your email address or notification options at http://salute.cc.gt.atl.ga.us/index.php/settings/email
 */
 
 [StepStream: Roger C sends good vibes!]
@@ -165,7 +166,7 @@ Thanks,
 StepStream
 
 ----
-Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+Change your email address or notification options at http://stepstream.us/index.php/settings/email
 
 '
 //type?
@@ -198,7 +199,7 @@ Faithfully yours,
 StepStream.
 
 ----
-Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+Change your email address or notification options at http://stepstream.us/index.php/settings/email
 */
 
 [StepStream: Roger C left you a comment!]
@@ -215,5 +216,5 @@ Thanks,
 StepStream
 
 ----
-Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+Change your email address or notification options at http://stepstream.us/index.php/settings/email
 
