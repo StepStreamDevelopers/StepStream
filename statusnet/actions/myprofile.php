@@ -117,7 +117,7 @@ class MyProfileAction extends ProfileAction
 
     function getFeeds()
     {
-        if (!empty($this->tag)) {
+/*        if (!empty($this->tag)) {
             return array(new Feed(Feed::RSS1,
                                   common_local_url('userrss',
                                                    array('nickname' => $this->user->nick
@@ -169,6 +169,7 @@ class MyProfileAction extends ProfileAction
                               // TRANS: Title for link to notice feed. FOAF stands for Friend of a Friend.
                               // TRANS: More information at http://www.foaf-project.org. %s is a user nickname.
                               sprintf(_('FOAF for %s'), $this->user->nickname)));
+    */
     }
 
     function extraHead()

@@ -171,7 +171,7 @@ class Action extends HTMLOutputter // lawsuit
             $this->showShortcutIcon();
             $this->showStylesheets();
             $this->showOpenSearch();
-            $this->showFeeds();
+//            $this->showFeeds();
             $this->showDescription();
             $this->extraHead();
             Event::handle('EndShowHeadElements', array($this));
@@ -1146,11 +1146,13 @@ $this->script('graphs.js');
      */
     function showExportData()
     {
+    /*
         $feeds = $this->getFeeds();
         if ($feeds) {
             $fl = new FeedList($this);
             $fl->show($feeds);
         }
+    */
     }
 
     /**

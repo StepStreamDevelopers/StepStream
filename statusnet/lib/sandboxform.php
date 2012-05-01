@@ -73,6 +73,6 @@ class SandboxForm extends ProfileActionForm
     function description()
     {
         // TRANS: Description of form to sandbox a user.
-        return _('Sandbox this user');
+        return _("Nobody else can see this user's posts");
     }
 }

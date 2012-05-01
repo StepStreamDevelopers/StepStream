@@ -42,23 +42,46 @@ More goes here later
 (Check your email and click on the link to confirm your email address.)
 */
 
+[Registration successful]
+Congratulations, andrewmillergt! Welcome to StepStream. Things to do:
+
+ - Add your phone number if you want to SMS your steps from your phone
+ - Say hello by clicking on "Say something" above
+ - Add a tip for how to get steps by clicking on "Add a tip" above
+ - Add your steps by cliking on "Add steps" above
+ - Start getting exercise!
+ 
+ If you gave us your email address, check your email to confirm your address.
+
+
 Stream
 ------------
 /*
 This is the public timeline for StepStream but no one has posted anything yet. Be the first to post!
 */
 
+Here's where you'll see your friends' tips, step counts, and comments! 
+
+
+'
 Tips
 ------------
 /*
 This is the timeline for testuser1 and friends but no one has posted anything yet. Try subscribing to more people, join a group or post something yourself.
 */
 
+Here's where you'll see tips for how to get more steps!
+
+
 Me
 -------------
 /*
 This is the timeline for testuser1, but testuser1 hasn't posted anything yet. Seen anything interesting recently? You haven't posted any notices yet, now would be a good time to start :)
 */
+
+Here's where you'll see everything you've posted.
+
+'
 
 Settings
 -------------
@@ -71,6 +94,9 @@ Send me email when someone sends me an "@-reply".
 Allow friends to nudge me and send me an email.
 Publish a MicroID for my email address.
 */
+
+[Email preferences]
+Send me email when people heart my posts.
 
 Emails
 -------------
@@ -89,6 +115,17 @@ If not, just ignore this message.
 Thanks for your time,
 StepStream
 */
+
+[Welcome to StepStream! Confirm your email address.]
+Hey, andrewmatoxy,
+
+You're almost set up. Just click the link below to confirm your email address.
+
+Thanks,
+
+StepStream
+
+Note: if you didn't sign up for a StepStream account, just ignore this message.
 
 /*
 [Roger C (@testuser1) added your notice as a favorite]
@@ -112,6 +149,26 @@ StepStream.
 ----
 Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
 */
+
+[StepStream: Roger C sends good vibes!]
+Roger C hearts your status
+
+You said:
+ "Hello!"
+
+It would be nice to say thanks!
+Here's a link:
+http://127.0.0.1/~andrew/StepStream/statusnet/index.php/notice/9
+
+Thanks,
+
+StepStream
+
+----
+Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+
+'
+//type?
 
 /*
 [Roger C (@testuser1) sent a notice to your attention]
@@ -144,4 +201,19 @@ StepStream.
 Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
 */
 
-*/
+[StepStream: Roger C left you a comment!]
+Roger C left a you a comment on StepStream.
+
+It says:
+"Howdy"
+
+Here's a link:
+http://127.0.0.1/~andrew/StepStream/statusnet/index.php/notice/9
+
+Thanks,
+
+StepStream
+
+----
+Change your email address or notification options at http://127.0.0.1/~andrew/StepStream/statusnet/index.php/settings/email
+

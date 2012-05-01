@@ -63,6 +63,7 @@ class ShowstreamAction extends ProfileAction
     function title()
     {
         $base = $this->profile->getFancyName();
+        
         if (!empty($this->tag)) {
             if ($this->page == 1) {
                 // TRANS: Page title showing tagged notices in one user's timeline.
@@ -101,12 +102,14 @@ class ShowstreamAction extends ProfileAction
     function showContent()
     {
         $this->showNotices();
+        
     }
 
     function showProfileBlock()
     {
         $block = new AccountProfileBlock($this, $this->profile);
         $block->show();
+        
     }
 
     function showPageNoticeBlock()
@@ -116,7 +119,7 @@ class ShowstreamAction extends ProfileAction
 
     function getFeeds()
     {
-        if (!empty($this->tag)) {
+/*        if (!empty($this->tag)) {
             return array(new Feed(Feed::RSS1,
                                   common_local_url('userrss',
                                                    array('nickname' => $this->user->nickname,
@@ -167,6 +170,7 @@ class ShowstreamAction extends ProfileAction
                               // TRANS: Title for link to notice feed. FOAF stands for Friend of a Friend.
                               // TRANS: More information at http://www.foaf-project.org. %s is a user nickname.
                               sprintf(_('FOAF for %s'), $this->user->nickname)));
+                              */
     }
 
     function extraHead()
@@ -232,6 +236,11 @@ class ShowstreamAction extends ProfileAction
 
     function showNotices()
     {
+    $cur = common_current_user();
+    if ($cur->hasRight(Right::GRANTROLE)) {
+        $block = new AccountProfileBlock($this, $this->profile);
+        $block->show();
+    }
         $notice = empty($this->tag)
           ? $this->user->getNotices(($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1)
             : $this->user->getTaggedNotices($this->tag, ($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1, 0, 0, null);
@@ -324,6 +333,7 @@ class ProfileNoticeListItem extends DoFollowListItem
      *
      * @return void
      */
+     
     function showRepeat()
     {
         if (!empty($this->repeat)) {

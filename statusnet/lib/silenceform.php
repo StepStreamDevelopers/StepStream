@@ -73,6 +73,6 @@ class SilenceForm extends ProfileActionForm
     function description()
     {
         // TRANS: Description of form to silence a user.
-        return _('Silence this user');
+        return _("This user can't post");
     }
 }

@@ -79,7 +79,9 @@ class PersonalGroupNav extends Menu
                                  // TRANS: Menu item title in personal group navigation menu.
                                  // TRANS: %s is a username.
                                  sprintf(_('Tips for %s'), $name),
-                                 $mine && $action ==('alltips' or 'mytips' or 'todotips' or 'usedtips'), 'nav_middle');
+                                 $mine && $action ==('alltips'or 'mytips' or 'todotips' or 'usedtips'
+                                 ) && $action !=('myprofile'
+                                 ), 'nav_middle');
       
 
             $cur = common_current_user();

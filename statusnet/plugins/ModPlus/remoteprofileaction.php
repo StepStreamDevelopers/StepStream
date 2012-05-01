@@ -54,6 +54,8 @@ class RemoteProfileAction extends ShowstreamAction
      */
     function showNotices()
     {
+ 		$this->element('h1', null, _('showstream'));
+
         $url = $this->profile->profileurl;
         $host = parse_url($url, PHP_URL_HOST);
         $markdown = sprintf(

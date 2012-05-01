@@ -119,7 +119,7 @@ class AccountProfileBlock extends ProfileBlock
             if ($this->profile->hasRole(Profile_role::DELETED)) {
                 $this->out->elementStart('div', 'entity_actions');
                 // TRANS: H2 for user actions in a profile.
-                $this->out->element('h2', null, _('User actions'));
+                $this->out->element('h1', null, _('User actions'));
                 $this->out->elementStart('ul');
                 $this->out->elementStart('p', array('class' => 'profile_deleted'));
                 // TRANS: Text shown in user profile of not yet compeltely deleted users.
@@ -133,7 +133,8 @@ class AccountProfileBlock extends ProfileBlock
 				$url = local_url();
 				$cur = common_current_user();
 
-                    if ($cur->id == $this->profile->id) { // your own page
+
+if ($cur->id == $this->profile->id) { // your own page
 
 // beginning of profile block
         $this->element('h1', null, $this->title());
@@ -176,15 +177,18 @@ class AccountProfileBlock extends ProfileBlock
                 $this->out->elementEnd('iframe');
                 $this->out->elementEnd('div');
 }
-
-
+else {            $this->out->elementStart('div', 'entity_actions');
+            // TRANS: H2 for entity actions in a profile.
+            $this->out->element('h1', null, _('User actions'));
+    }
 
             $this->out->elementStart('div', 'entity_actions');
             // TRANS: H2 for entity actions in a profile.
-            $this->out->element('h2', null, _('User actions'));
+//            $this->out->element('h1', null, _('User actions'));
             $this->out->elementStart('ul');
 
-            if (Event::handle('StartProfilePageActionsElements', array($this->out, $this->profile))) {
+//            if (Event::handle('StartProfilePageActionsElements', array($this->out, $this->profile))) 
+//            {
                 if (empty($cur)) { // not logged in
                     if (Event::handle('StartProfileRemoteSubscribe', array($this->out, $this->profile))) {
                         $this->out->elementStart('li', 'entity_subscribe');
@@ -194,9 +198,11 @@ class AccountProfileBlock extends ProfileBlock
                     }
                 } else {
                     if ($cur->id == $this->profile->id) { // your own page
-
                         $this->out->elementEnd('div');
                     } else { // someone else's page
+            $this->out->elementStart('div', 'entity_actions');
+
+                        $this->out->elementEnd('div');
 
                         // subscribe/unsubscribe button
 
@@ -316,8 +322,8 @@ class AccountProfileBlock extends ProfileBlock
                     }
                 }
 
-                Event::handle('EndProfilePageActionsElements', array($this->out, $this->profile));
-            }
+//                Event::handle('EndProfilePageActionsElements', array($this->out, $this->profile));
+//            }
 
             $this->out->elementEnd('ul');
             $this->out->elementEnd('div');
