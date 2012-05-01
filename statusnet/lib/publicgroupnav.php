@@ -62,6 +62,7 @@ class PublicGroupNav extends Menu
         $this->action->elementStart('ul', array('class' => 'nav'));
 
         if (Event::handle('StartPublicGroupNav', array($this))) {
+  /*
             // TRANS: Menu item in search group navigation panel.
             $this->out->menuItem(common_local_url('public'), _m('MENU','Public'),
                 // TRANS: Menu item title in search group navigation panel.
@@ -88,7 +89,7 @@ class PublicGroupNav extends Menu
             $this->out->menuItem(common_local_url('favorited'), _m('MENU','Popular'),
                 // TRANS: Menu item title in search group navigation panel.
                 _('Popular notices'), $this->actionName == 'favorited', 'nav_timeline_favorited');
-
+*/
             Event::handle('EndPublicGroupNav', array($this));
         }
         $this->action->elementEnd('ul');
