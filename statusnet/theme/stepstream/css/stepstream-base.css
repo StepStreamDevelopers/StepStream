@@ -1081,7 +1081,7 @@ display:none;
 /* secondary elements */
 
 .error, .success, .notice-status {
-    background-color: #EF6B68;
+    background-color: #F7E8E8;
     padding: 4px 10px;
 }
 .success, .notice-status {

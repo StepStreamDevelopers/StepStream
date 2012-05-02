@@ -67,7 +67,7 @@ class SettingsNav extends Menu
         $this->action->elementStart('ul', 'nav');
                $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
                // TRANS: Menu item title in search group navigation panel.
-                _('Stream'), $this->actionName == 'public', 'nav_left');
+                _('Public timeline'), $this->actionName == 'public', 'nav_left');
        
             $this->out->menuItem(common_local_url('replies', array('nickname' =>
                                                                    $nickname)),
