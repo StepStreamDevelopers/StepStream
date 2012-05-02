@@ -87,7 +87,7 @@ class UsedtipsAction extends ProfileAction
         $user = common_current_user();
         if ($user->id == $this->user->id) {
             // TRANS: Title of a user's own start page.
-            return _('Tips timeline');
+            return _('Tips I have used');
         } else {
             $profile = $this->user->getProfile();
             // TRANS: Title of another user's start page.

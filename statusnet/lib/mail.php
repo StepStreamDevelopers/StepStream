@@ -178,7 +178,7 @@ function mail_confirm_address($user, $code, $nickname, $address, $url=null)
                       "You're almost set up. Just click the link below to confirm your email address." .
                       "\n\n\t%3\$s\n\n" .
                       "Thanks, \n%2\$s\n\n\n".
-                      "Note: If you didn't sign up for a %2$s account, just ignore this message.\n\n"
+                      "Note: If you didn't sign up for a %2\$s account, just ignore this message.\n\n"
                       ),
                     $nickname,
                     common_config('site', 'name'),
@@ -673,21 +673,23 @@ function mail_notify_fave($other, $user, $notice)
 
     // TRANS: Subject for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, %2$s is the adding user's nickname.
-    $subject = sprintf(_('%1$s (@%2$s) added your notice as a favorite'), $bestname, $user->nickname);
+    $subject = sprintf(_('%1$s: (@%2$s) Roger C sends good vibes!'), $bestname, $user->nickname);
 
     // TRANS: Body for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, $2$s is the date the notice was created,
     // TRANS: %3$s is a URL to the faved notice, %4$s is the faved notice text,
     // TRANS: %5$s is a URL to all faves of the adding user, %6$s is the StatusNet sitename,
     // TRANS: %7$s is the adding user's nickname.
-    $body = sprintf(_("%1\$s (@%7\$s) just added your notice from %2\$s".
+    $body = sprintf(_("%1\$s (@%7\$s) hearts a post you made!".
                       " as one of their favorites.\n\n" .
-                      "The URL of your notice is:\n\n" .
-                      "%3\$s\n\n" .
-                      "The text of your notice is:\n\n" .
+                      "You said:\n\n" .
                       "%4\$s\n\n" .
-                      "You can see the list of %1\$s's favorites here:\n\n" .
-                      "%5\$s"),
+                      "It would be nice to say thanks!\n\n".
+                      "Here's a link:\n\n" .
+                      "%3\$s\n\n" .
+                      "Thanks,\n".
+                      "%6\$s".
+                      ),
                     $bestname,
                     common_exact_date($notice->created),
                     common_local_url('shownotice',
@@ -745,23 +747,21 @@ function mail_notify_attn($user, $notice)
 
     // TRANS: E-mail subject for notice notification.
     // TRANS: %1$s is the sending user's long name, %2$s is the adding user's nickname.
-    $subject = sprintf(_('%1$s (@%2$s) sent a notice to your attention'), $bestname, $sender->nickname);
+    $subject = sprintf(_('%1$s left you a comment!'), $bestname, $sender->nickname);
 
         // TRANS: Body of @-reply notification e-mail.
         // TRANS: %1$s is the sending user's name, $2$s is the StatusNet sitename,
         // TRANS: %3$s is a URL to the notice, %4$s is the notice text,
         // TRANS: %5$s is the text "The full conversation can be read here:" and a URL to the full conversion if it exists (otherwise empty),
         // TRANS: %6$s is a URL to reply to the notice, %7$s is a URL to all @-replies for the addressed user,
-        $body = sprintf(_("%1\$s just sent a notice to your attention (an '@-reply') on %2\$s.\n\n".
-                      "The notice is here:\n\n".
+        $body = sprintf(_("%1\$s left you a comment on %2\$s.\n\n".
+                      "Here's a link:\n\n".
                       "\t%3\$s\n\n" .
-                      "It reads:\n\n".
+                      "It says:\n\n".
                       "\t%4\$s\n\n" .
-                      "%5\$s" .
-                      "You can reply back here:\n\n".
-                      "\t%6\$s\n\n" .
-                      "The list of all @-replies for you here:\n\n" .
-                      "%7\$s"),
+                      "Thanks,\n\n".
+					  "%2\$s"
+                      ),
                     $sender->getFancyName(),//%1
                     common_config('site', 'name'),//%2
                     common_local_url('shownotice',
