@@ -368,18 +368,12 @@ behavior: url(/PIE.htc);
 	margin-right: auto;
 	margin-bottom: 20px;
 	background-color:#000000;
-	/* Fallback for web browsers that don't support RGBa */
-	background-color: rgb(0, 0, 0);
-	/* RGBa with 0.6 opacity */
+	/* RGBa with 0.4 opacity */
 	background-color: rgba(0, 0, 0, 0.4);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	-pie-background: rgba(0,0,0,.9);
--webkit-border-radius: 0px 8px 0px 8px;
--moz-border-radius: 0px 8px 0px 8px;
-border-radius: 0px 8px 0px 8px;
+	-pie-background: rgba(0,0,0,.4);
+-webkit-border-radius: 0px 0px 8px 8px;
+-moz-border-radius: 0px 0px 8px 8px;
+border-radius: 0px 0px 8px 8px;
 	clear:both;
 	behavior: url(/PIE.php);
 }
