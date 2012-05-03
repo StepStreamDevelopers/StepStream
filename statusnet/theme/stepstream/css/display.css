@@ -523,26 +523,19 @@ border-radius: 0px 0px 8px 8px;
 }
 
 .welcome{
-border: 1px solid #696;
-padding: 60px 0;
-text-align: center; width: 200px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
--webkit-box-shadow: #666 0px 2px 3px;
--moz-box-shadow: #666 0px 2px 3px;
-box-shadow: #666 0px 2px 3px;
-background: #EEFF99;
-background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEFF99), to(#66EE33));
-background: -webkit-linear-gradient(#EEFF99, #66EE33);
-background: -moz-linear-gradient(#EEFF99, #66EE33);
-background: -ms-linear-gradient(#EEFF99, #66EE33);
-background: -o-linear-gradient(#EEFF99, #66EE33);
-background: linear-gradient(#EEFF99, #66EE33);
--pie-background: linear-gradient(#EEFF99, #66EE33);
-behavior: url(/PIE.php);
-}
+	width:580px;
+	float:left;
+	padding: 5px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.4);
+	-pie-background: rgba(0, 0, 0, 0.4);
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	color: #DDDDDD;
+	behavior: url(/PIE.php);
 
+}
 /* ========================= hidden ========================= */
 
 
