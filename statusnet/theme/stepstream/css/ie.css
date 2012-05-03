@@ -4,20 +4,25 @@
 .form_login fieldset {
 	position:relative;
 	background-color:#ffffff;
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 1);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	padding-left: 15px;
 	padding-right:15px;
 	padding-top: 45px;
 	padding-bottom:15px;
 }
+#content_inner fieldset {
+	position:relative;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
 
  legend {
 	position:relative;
 	clear:both;
-	top:10px;
+	top:-40px;
 	padding-bottom:10px;
 }
 

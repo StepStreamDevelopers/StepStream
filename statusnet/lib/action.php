@@ -245,7 +245,12 @@ class Action extends HTMLOutputter // lawsuit
 
             // Use old name for StatusNet for compatibility on events
 
-
+            if (Event::handle('StartShowStatusNetStyles', array($this)) &&
+                Event::handle('StartShowLaconicaStyles', array($this))) {
+                $this->primaryCssLink(null, 'screen, projection, tv, print');
+                Event::handle('EndShowStatusNetStyles', array($this));
+                Event::handle('EndShowLaconicaStyles', array($this));
+            }
 
             $this->cssLink(common_path('js/css/smoothness/jquery-ui.css'));
 
@@ -262,13 +267,6 @@ class Action extends HTMLOutputter // lawsuit
                 $this->comment('[if IE]><link rel="stylesheet" type="text/css" '.
                                'href="'.Theme::path('css/ie.css', null).'?version='.STATUSNET_VERSION.'" /><![endif]');
                 Event::handle('EndShowUAStyles', array($this));
-            }
-            
-                        if (Event::handle('StartShowStatusNetStyles', array($this)) &&
-                Event::handle('StartShowLaconicaStyles', array($this))) {
-                $this->primaryCssLink(null, 'screen, projection, tv, print');
-                Event::handle('EndShowStatusNetStyles', array($this));
-                Event::handle('EndShowLaconicaStyles', array($this));
             }
 
             Event::handle('EndShowStyles', array($this));
