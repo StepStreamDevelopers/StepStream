@@ -55,7 +55,7 @@ class LoginGroupNav extends Menu
     {
         $action_name = $this->action->trimmed('action');
 
-        $this->action->elementStart('ul', array('class' => 'nav'));
+        $this->action->elementStart('ul', array('class' => 'nav', 'behavior'=>'url('.INSTALLDIR.'/theme/stepstream/pie/PIE.php)'));
 
         if (Event::handle('StartLoginGroupNav', array($this->action))) {
 
