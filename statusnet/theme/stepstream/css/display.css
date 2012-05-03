@@ -132,7 +132,7 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
     -moz-border-radius: 8px 0px 0px 8px;
 	border-radius: 8px 0px 0px 8px;  
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 }
 
 
@@ -153,7 +153,7 @@ a {
 	border-style: none solid none none;
 	border-width:2px;
 	border-color:#888888;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 
 }
 
@@ -196,7 +196,7 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
     -moz-border-radius: 0px 8px 8px 0px;
 	border-radius: 0px 8px 8px 0px;  
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 }
 
 #nav_right a {
@@ -213,7 +213,7 @@ a {
 	border-radius: 0px 8px 8px 0px;  
 	padding-right:10px;
 	padding-left:10px;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 }
 
 
@@ -227,7 +227,7 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
     -moz-border-radius: 8px 8px 8px 8px;
 	border-radius: 8px 8px 8px 8px;  
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 }
 
 
@@ -248,7 +248,7 @@ a {
 	border-style: none solid none none;
 	border-width:2px;
 	border-color:#888888;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 
 }
 
@@ -347,7 +347,7 @@ a {
     -moz-border-radius: 0px 0px 8px 8px;
 	border-radius: 0px 0px 8px 8px;  
 	clear:both;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 }
 
 .system_notice {
@@ -372,7 +372,7 @@ a {
 	border-radius: 8px 8px 8px 8px;
 	clear:both;
 	color: #333333;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 
 }
 
@@ -530,7 +530,7 @@ a {
 	border-radius: 8px 8px 8px 8px;
 	clear:both;
 	color: #DDDDDD;
-	behavior: url(../pie/PIE.htc);
+	behavior: url(theme/stepstream/pie/pie.htc);
 
 }
 
