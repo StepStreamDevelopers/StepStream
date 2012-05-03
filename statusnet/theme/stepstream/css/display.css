@@ -135,13 +135,13 @@ background: -ms-linear-gradient(#BBBBBB, #eeeeee);
 background: -o-linear-gradient(#BBBBBB, #eeeeee);
 background: linear-gradient(#BBBBBB, #eeeeee);
 -pie-background: linear-gradient(#BBBBBB, #eeeeee);
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
+-webkit-border-radius: 8px 0px 0px 8px;
+-moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
-	behavior: url(/PIE.php);
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
 }
 
 
@@ -157,8 +157,8 @@ background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
 background: -o-linear-gradient(#EEEEEE, #BBBBBB);
 background: linear-gradient(#EEEEEE, #BBBBBB);
 -pie-background: linear-gradient(#EEEEEE, #BBBBBB);
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
+-webkit-border-radius: 8px 0px 0px 8px;
+-moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
 	border-style: none solid none none;
 	border-width:2px;
@@ -168,62 +168,83 @@ border-radius: 8px 0px 0px 8px;
 }
 
 /*middle buttons*/
-#nav_middle a:hover, #nav_middle.current a {
-    color: #333333;
-    text-decoration: none;
-    background: #EAEAEA;
-    background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-	padding-right:10px;
-	padding-left:10px;
+#nav_middle a:hover, #nav_middle.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
 }
 
-#nav_middle a {
-    color: #333333;
-    text-decoration: none;
-    background: #CCCCCC;
-    background: -moz-linear-gradient(top, #EAEAEA , #CCCCCC);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
-    word-wrap: break-word;
-    padding-top:3px;
-    padding-bottom:3px;
-	padding-right:10px;
-	padding-left:10px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
+
+#nav_middle a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #EEEEEE;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEEEEE), to(#BBBBBB));
+background: -webkit-linear-gradient(#EEEEEE, #BBBBBB);
+background: -moz-linear-gradient(#EEEEEE, #BBBBBB);
+background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
+background: -o-linear-gradient(#EEEEEE, #BBBBBB);
+background: linear-gradient(#EEEEEE, #BBBBBB);
+-pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
+
 }
 
 /* right button*/
-#nav_right a:hover, #nav_right.current a {
-    color: #333333;
-    text-decoration: none;
-    background: #EAEAEA;
-    background: -moz-linear-gradient(top, #CCCCCC , #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCCCC), color-stop(100%,#EAEAEA));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCCCCC', endColorstr='#EAEAEA',GradientType=0 );
-    -moz-border-radius: 0px 8px 8px 0px;
-	border-radius: 0px 8px 8px 0px;  
-	behavior: url(/PIE.php);
+#nav_right a:hover, #nav_right.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+-webkit-border-radius: 0px 8px 8px 0px;
+-moz-border-radius: 0px 8px 8px 0px;
+border-radius: 0px 8px 8px 0px;
+behavior: url(/PIE.php);
 }
 
-#nav_right a {
-    color: #333333;
-    text-decoration: none;
-    background: #CCCCCC;
-    background: -moz-linear-gradient(top, #EAEAEA , #CCCCCC);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EAEAEA), color-stop(100%,#CCCCCC));
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAEAEA', endColorstr='#CCCCCC',GradientType=0 );
-    word-wrap: break-word;
-    padding-top:3px;
-    padding-bottom:3px;
-    -moz-border-radius: 0px 8px 8px 0px;
-	border-radius: 0px 8px 8px 0px;  
-	padding-right:10px;
-	padding-left:10px;
-	behavior: url(/PIE.php);
+
+#nav_right a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #EEEEEE;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEEEEE), to(#BBBBBB));
+background: -webkit-linear-gradient(#EEEEEE, #BBBBBB);
+background: -moz-linear-gradient(#EEEEEE, #BBBBBB);
+background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
+background: -o-linear-gradient(#EEEEEE, #BBBBBB);
+background: linear-gradient(#EEEEEE, #BBBBBB);
+-pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+-webkit-border-radius: 0px 8px 8px 0px;
+-moz-border-radius: 0px 8px 8px 0px;
+border-radius: 8px 0px 0px 8px;
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
+
 }
 
 
