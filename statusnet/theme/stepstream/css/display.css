@@ -414,7 +414,17 @@ border-radius: 0px 0px 8px 8px;
  legend {
 	position:relative;
 	clear:both;
+<!--[if !IE]> -->
 	top:30px;
+<![endif]-->
+<!--[if gt IE 8]> -->
+	top:30px;
+<![endif]-->
+
+<!--[if IE 8]>
+top:2px;
+<![endif]-->
+
 	padding-bottom:10px;
 }
 
