@@ -545,7 +545,7 @@ background: -ms-linear-gradient(#EEFF99, #66EE33);
 background: -o-linear-gradient(#EEFF99, #66EE33);
 background: linear-gradient(#EEFF99, #66EE33);
 -pie-background: linear-gradient(#EEFF99, #66EE33);
-behavior: url(PIE.php);
+behavior: url(/PIE.php);
 
 }
 
