@@ -410,8 +410,7 @@ border-radius: 0px 0px 8px 8px;
 }
 
 legend {
-	position:relative;
-	clear:both;
+	display:block;
 	padding: 30px 0px 0px 0px;
 	behavior: url(/PIE.php);
 }

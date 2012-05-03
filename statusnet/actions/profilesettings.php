@@ -523,7 +523,7 @@ class ProfilesettingsAction extends SettingsAction
                                _('Backup account'));
                 $this->elementEnd('li');
             }
-            if ($user->hasRight(Right::DELETEACCOUNT)) {
+            if ($user->hasRight(Right::GRANTROLE)) {
                 $this->elementStart('li');
                 $this->element('a',
                                array('href' => common_local_url('deleteaccount')),
