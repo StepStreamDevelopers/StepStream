@@ -376,8 +376,10 @@ behavior: url(/PIE.htc);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-    -moz-border-radius: 0px 0px 8px 8px;
-	border-radius: 0px 0px 8px 8px;  
+	-pie-background: rgba(0,0,0,.9);
+-webkit-border-radius: 0px 8px 0px 8px;
+-moz-border-radius: 0px 8px 0px 8px;
+border-radius: 0px 8px 0px 8px;
 	clear:both;
 	behavior: url(/PIE.php);
 }
