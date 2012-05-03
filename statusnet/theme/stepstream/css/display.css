@@ -199,6 +199,7 @@ background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
 background: -o-linear-gradient(#EEEEEE, #BBBBBB);
 background: linear-gradient(#EEEEEE, #BBBBBB);
 -pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+border-style: none solid none none;
 border-width:2px;
 border-color:#888888;
 behavior: url(/PIE.php);
@@ -239,10 +240,7 @@ background: linear-gradient(#EEEEEE, #BBBBBB);
 -pie-background: linear-gradient(#EEEEEE, #BBBBBB);
 -webkit-border-radius: 0px 8px 8px 0px;
 -moz-border-radius: 0px 8px 8px 0px;
-border-radius: 8px 0px 0px 8px;
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-radius: 0px 8px 8px 0px;
 behavior: url(/PIE.php);
 
 }
