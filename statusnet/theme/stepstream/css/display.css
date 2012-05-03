@@ -411,13 +411,16 @@ border-radius: 0px 0px 8px 8px;
 	padding:0px;
 }
 
- legend {
+.legend {
 	position:relative;
 	clear:both;
 	top:30px;
-    top: -40px\8;  
-
+    top: -40px\9;  
 	padding-bottom:10px;
+}
+
+:root .legend {
+    top: 30px\9;  
 }
 
 /* plugins details */
