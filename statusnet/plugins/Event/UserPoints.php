@@ -100,5 +100,6 @@ class UserPoints extends Managed_DataObject
         return UserPoints::staticGet('profile_id', $profile_id);
     }
 
-  
+
+
 }
