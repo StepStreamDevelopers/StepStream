@@ -50,10 +50,13 @@ class EventListItem extends NoticeListItemAdapter
     {
         if($this->nli->notice->object_type == Happening::OBJECT_TYPE)
         {
-		$this->nli->out->elementStart('div', 'entry-title');
-		$this->nli->showAuthor();
-		$this->showContent();
-		$this->nli->out->elementEnd('div');
+	        if (!empty($event))
+	        {
+				$this->nli->out->elementStart('div', 'entry-title');
+				$this->nli->showAuthor();
+				$this->showContent();
+				$this->nli->out->elementEnd('div');
+			}
         }
     }
 
