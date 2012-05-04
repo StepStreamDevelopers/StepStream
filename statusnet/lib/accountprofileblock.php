@@ -159,8 +159,9 @@ class AccountProfileBlock extends ProfileBlock
         $this->element('br');          
         $this->element('br');
         $points_obj = UserPoints::getPoints($this->profile->id); 
-        $points_exploded = implode(',',$points_obj);     
-        $this->element('span', array('class' => 'statnum'), $points_exploded);
+		if($points_obj == null) {       
+			$this->element('span', array('class' => 'statnum'), 'null points');
+		};
         $this->element('span', array('class' => 'stats'), 'Total points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
