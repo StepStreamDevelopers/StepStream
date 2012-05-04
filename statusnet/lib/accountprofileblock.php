@@ -159,7 +159,8 @@ class AccountProfileBlock extends ProfileBlock
         $this->element('br');          
         $this->element('br');
         $points_obj = UserPoints::getPoints($this->profile->id);
-        $totalpoints= $points_obj->cumulative_points;          
+        $totalpoints= $points_obj->cumulative_points;      
+        print_r($points_obj);    
         $this->element('span', array('class' => 'stats'), 'Total points:');
         $this->element('span', array('class' => 'statnum'), $totalpoints);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
