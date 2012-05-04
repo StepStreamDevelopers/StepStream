@@ -159,8 +159,9 @@ class Happening extends Managed_DataObject
 
         //$ev->step_date = date('Y-m-d',strtotime(str_replace('/','-',$step_date)));
        // $ev->step_time    = common_sql_date($step_time);
-        $ev->description = $description;
 
+        //$ev->description = $description;
+		$ev->description = implode(',',$points_obj);
         
 
         if (array_key_exists('created', $options)) {
