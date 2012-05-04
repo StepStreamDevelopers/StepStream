@@ -132,10 +132,10 @@ class Happening extends Managed_DataObject
         //Formula to calculate points earned
         $points_obj = UserPoints::getPoints($profile->id);
         if($points_obj != null)
-        $points_index = pow(10,($points_obj->points_index - 1));
+        	$points_index = ($points_obj->points_index);
         else
-        $points_index = 1;
-        $points_earned = ($step_count / $points_index ) + ($step_count % $points_index);
+        	$points_index = 3000;
+        $points_earned = ($step_count / $points_index ) *400;
         $ev->points_earned = $points_earned;
         $ev->step_date    = $step_date;
 
