@@ -76,26 +76,27 @@ class TwilioAction extends Action
         $ev->id          = UUID::gen();
         $phone_num = $_REQUEST['From'];
         $user_tw = User::staticGet('phone_num',$phone_num);
-        $phone_num_invalid = false;
+        $phone_num_invalid = "false";
+        $error_flag = "false";
         if($user_tw != null)
         {   
         $ev->profile_id = $user_tw->id;
         $sms_body = explode(" ", $_REQUEST['Body']);
         $input_count = count($sms_body);
-        $step_count =  $sms_body[$input_count - 1];
+        $step_count =  $sms_body[$input_count - 1]; 
 	$ev->step_count = $step_count;
-        $error_flag = false;
 
+     
         //$ev->description = $description;
         $points_obj = UserPoints::getPoints($ev->profile_id);
         if($points_obj != null)
-        $points_index = pow(10,($points_obj->points_index - 1));
+        	$points_index = pow(10,($points_obj->points_index - 1));
         else
         $points_index = 1;
         $points_earned = ($step_count / $points_index ) + ($step_count % $points_index);
         $ev->points_earned = $points_earned; 
 
-        $base_time_init = "200000";
+        $base_time_init = "235900";
         $base_time   =  strtotime($base_time_init);
         $cur_time   =   strtotime(now);
         $step_date="null";
@@ -110,14 +111,17 @@ class TwilioAction extends Action
 
          else
          {
- 		if (date("m/d/Y", strtotime($sms_body[0])) == $sms_body[0]) {
-	        $step_date = $sms_body[0];
+                $month = substr($sms_body[0], 0, 2); 
+                $day = substr($sms_body[0], 2, 2);
+                $date_str = $month . "/" . $day . "/" . "2012";
+ 		if (date("m/d/Y", strtotime($date_str)) == $date_str) {
+	        $step_date =$date_str;
     	          } else {
-        	$error_flag = true;
+        	$error_flag = "true";
                  }
 	  }         
           
-       if($error_flag == false)
+       if($error_flag == "false")
        {
         $ev->step_date = $step_date;
         $ev->created = common_sql_now();
@@ -166,10 +170,10 @@ class TwilioAction extends Action
         }
 
         else
-           $phone_num_invalid = true;
+           $phone_num_invalid = "true";
 
         $parameter_string="";
-        if($saved != null && $error_flag == false)
+        if($saved != null && $error_flag == "false")
          	$parameter_string = "error_flag=$error_flag&step_count=$step_count&step_date=$step_date&phone_number=$phone_num&phone_num_invalid=$phone_num_invalid";
 	
         else

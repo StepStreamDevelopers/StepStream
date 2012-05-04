@@ -58,12 +58,17 @@ class User extends Managed_DataObject
     public $smsemail;                        // varchar(255)
     public $uri;                             // varchar(255)  unique_key
     public $autosubscribe;                   // tinyint(1)
+    public $dailyreminder;                   // tinyint(1)
     public $subscribe_policy;                // tinyint(1)
     public $urlshorteningservice;            // varchar(50)   default_ur1.ca
     public $inboxed;                         // tinyint(1)
     public $private_stream;                  // tinyint(1)   default_0
     public $created;                         // datetime()   not_null
     public $modified;                        // timestamp()   not_null default_CURRENT_TIMESTAMP
+    
+    /* Added by GP */
+    public $phone_num;                        // varchar(64) 
+    /* Added by GP */
 
     /* Static get */
     function staticGet($k,$v=NULL) { return Memcached_DataObject::staticGet('User',$k,$v); }
@@ -79,6 +84,7 @@ class User extends Managed_DataObject
                 'id' => array('type' => 'int', 'not null' => true, 'description' => 'foreign key to profile table'),
                 'nickname' => array('type' => 'varchar', 'length' => 64, 'description' => 'nickname or username, duped in profile'),
                 'password' => array('type' => 'varchar', 'length' => 255, 'description' => 'salted password, can be null for OpenID users'),
+                'phone_num' => array('type' => 'varchar', 'length' => 64, 'description' => 'Phone Number'),
                 'email' => array('type' => 'varchar', 'length' => 255, 'description' => 'email address for password recovery etc.'),
                 'incomingemail' => array('type' => 'varchar', 'length' => 255, 'description' => 'email address for post-by-email'),
                 'emailnotifysub' => array('type' => 'int', 'size' => 'tiny', 'default' => 1, 'description' => 'Notify by email of subscriptions'),
@@ -97,6 +103,7 @@ class User extends Managed_DataObject
                 'smsemail' => array('type' => 'varchar', 'length' => 255, 'description' => 'built from sms and carrier'),
                 'uri' => array('type' => 'varchar', 'length' => 255, 'description' => 'universally unique identifier, usually a tag URI'),
                 'autosubscribe' => array('type' => 'int', 'size' => 'tiny', 'default' => 0, 'description' => 'automatically subscribe to users who subscribe to us'),
+                'dailyreminder' => array('type' => 'int', 'size' => 'tiny', 'default' => 0, 'description' => 'send daily reminders'),
                 'subscribe_policy' => array('type' => 'int', 'size' => 'tiny', 'default' => 0, 'description' => '0 = anybody can subscribe; 1 = require approval'),
                 'urlshorteningservice' => array('type' => 'varchar', 'length' => 50, 'default' => 'internal', 'description' => 'service to use for auto-shortening URLs'),
                 'inboxed' => array('type' => 'int', 'size' => 'tiny', 'default' => 0, 'description' => 'has an inbox been created for this user?'),
@@ -140,6 +147,21 @@ class User extends Managed_DataObject
         return $this->_profile;
     }
 
+//Start function added by Gayathri
+//Start function added by Gayathri
+    function getPhoneNums()
+{
+   $user = new User();
+     $user->_connect();
+      $table = common_database_tablename($user->tableName());
+        $qry = 'SELECT * from user where dailyreminder = 1';
+
+        $result = $user->query($qry);
+        return mysql_fetch_array($result);
+}
+//End function added by Gayathri
+//End function added by Gayathri
+
     function isSubscribed($other)
     {
         $profile = $this->getProfile();
@@ -152,13 +174,18 @@ class User extends Managed_DataObject
         return $profile->hasPendingSubscription($other);
     }
 
+    function multiGet($keyCol, $keyVals, $skipNulls=true)
+	{
+	    return parent::multiGet('User', $keyCol, $keyVals, $skipNulls);
+	}
+
     // 'update' won't write key columns, so we have to do it ourselves.
 
     function updateKeys(&$orig)
     {
         $this->_connect();
         $parts = array();
-        foreach (array('nickname', 'email', 'incomingemail', 'sms', 'carrier', 'smsemail', 'language', 'timezone') as $k) {
+        foreach (array('nickname', 'email', 'incomingemail', 'sms', 'carrier', 'smsemail', 'language', 'timezone', 'phone_num' ) as $k) {
             if (strcmp($this->$k, $orig->$k) != 0) {
                 $parts[] = $k . ' = ' . $this->_quote($this->$k);
             }

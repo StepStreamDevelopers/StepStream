@@ -1,6 +1,6 @@
 <?php
-  include 'jpgraph.php';
-  include 'jpgraph_bar.php';
+  include 'jpgraph/jpgraph.php';
+  include 'jpgraph/jpgraph_bar.php';
   require_once 'PEAR.php';
   $param = array();
   $paramsFile = fopen('config.php','r');
@@ -23,10 +23,14 @@
 		$temp2 = explode(":" , $temp1[1]);
 		$username = str_replace(";" ,"",$temp2[0]);
 
-		$temp3 = explode("@" , $temp2[1]);
-		$password = str_replace(";" ,"",$temp3[0]);
-		$temp4 = explode("/" , $temp3[1]);
-		$dbname = str_replace(";" ,"",$temp4[1]);
+                $int_pos = strrpos($temp2[1], '@');
+                $password = substr($temp2[1],0,$int_pos);
+
+ 
+		$temp4 = explode("/" , substr($temp2[1],$int_pos + 1));
+                $servername = str_replace(";" ,"",$temp4[0]);  
+		$dbname = str_replace(";" ,"",$temp4[1]); 
+
 
    }
 
@@ -34,15 +38,15 @@
 	fclose ($paramsFile);
 
 
-	$my_conn = mysql_connect("statusnet", "statusnet", "PASSWORD") or die(mysql_error());
-	mysql_select_db("statusnet", $my_conn ) or die(mysql_error());
+	$my_conn = mysql_connect($servername,$username, $password) or die(mysql_error());
+	mysql_select_db($dbname, $my_conn ) or die(mysql_error());
 
 	$profile_id = $_GET['profile_id'];
 
  	$points_array = array();
     	$labels_array = array();
 	$query = "SELECT * FROM stepcount where profile_id = " . $profile_id; 
-		 
+	
 	$result = mysql_query($query) or die(mysql_error());
 
 

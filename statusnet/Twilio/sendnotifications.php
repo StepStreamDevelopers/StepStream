@@ -27,30 +27,32 @@ $step_count = $_GET['step_count'];
 $step_date = $_GET['step_date'];
 $phone_number = $_GET['phone_number'];
 $phone_num_invalid = $_GET['phone_num_invalid'];
-if($phone_num_invalid == "1")
+if($phone_num_invalid == "true")
 {
-  $message_string = "Whoops! We don't recognize this phone number. Log in to stephealth.org and set this as your number in SMS settings.";
+  $message_string = "Whoops! We don't recognize this phone number. Log in to stepstream.us and set this as your number in SMS settings.";
 }
 else
-if($error_flag == "1")
-       $message_string = "Whoops! Try it this way: If you took $step_count steps on $step_date, send '0402 10000' -stephealth.org";
+if($error_flag == "true")
+       $message_string = "Whoops! Try it this way: If you took $step_count steps on $step_date, send '0402 10000' -stepstream.us";
 else
 {
        
-       $message_string = "Got it." .$step_count. " steps on " . $step_date. " Visit stephealth.org to see how your friends are doing!";
+       $message_string = "Got it." .$step_count. " steps on " . $step_date. " Visit stepstream.us to see how your friends are doing!";
 }
 
-echo $message_string;
+//echo $message_string;
 // iterate over all our friends. $number is a phone number above, and $name
 // is the name next to it
 
-/*$sms = $client->account->sms_messages->create(
+$sms = $client->account->sms_messages->create(
 // the number we are sending from, must be a valid Twilio number
-"415-599-2671",
+"678-929-6385",
 // the number we are sending to - Any phone number
-"6788605254",
+$phone_number,
 // the sms body
-$message_string */
+$message_string); 
+
+
 
 
 

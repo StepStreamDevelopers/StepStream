@@ -117,7 +117,7 @@ class ProfilesettingsAction extends SettingsAction
 	    $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('phone_num', _('Phone Number'),
-                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $profile->phone_num);
+                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num);
             $this->elementEnd('li');
 
             $this->elementStart('li');
@@ -347,7 +347,7 @@ class ProfilesettingsAction extends SettingsAction
 
             if ($user->nickname != $nickname ||
                 $user->language != $language ||
-                $user->timezone != $timezone) {
+                $user->timezone != $timezone || $user->phone_num != $phone_num) {
 
                 common_debug('Updating user nickname from ' . $user->nickname . ' to ' . $nickname,
                              __FILE__);
@@ -355,13 +355,14 @@ class ProfilesettingsAction extends SettingsAction
                              __FILE__);
                 common_debug('Updating user timezone from ' . $user->timezone . ' to ' . $timezone,
                              __FILE__);
-
+		common_debug('Updating phone number from ' . $user->phone_num . ' to ' . $phone_num,
+                             __FILE__);
                 $original = clone($user);
 
                 $user->nickname = $nickname;
                 $user->language = $language;
                 $user->timezone = $timezone;
-
+                $user->phone_num = $phone_num;
                 $result = $user->updateKeys($original);
 
                 if ($result === false) {
@@ -523,7 +524,7 @@ class ProfilesettingsAction extends SettingsAction
                                _('Backup account'));
                 $this->elementEnd('li');
             }
-            if ($user->hasRight(Right::GRANTROLE)) {
+            if ($user->hasRight(Right::DELETEACCOUNT)) {
                 $this->elementStart('li');
                 $this->element('a',
                                array('href' => common_local_url('deleteaccount')),
