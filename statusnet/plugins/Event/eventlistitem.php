@@ -50,7 +50,7 @@ class EventListItem extends NoticeListItemAdapter
     {
         if($this->nli->notice->object_type == Happening::OBJECT_TYPE)
         {
-	        if (!empty($event))
+	        if (!empty(Happening::fromNotice($notice)))
 	        {
 				$this->nli->out->elementStart('div', 'entry-title');
 				$this->nli->showAuthor();
