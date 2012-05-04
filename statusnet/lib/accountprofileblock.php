@@ -160,8 +160,9 @@ class AccountProfileBlock extends ProfileBlock
         $this->element('br');
         $points_obj = UserPoints::getPoints($this->profile->id); 
 		if($points_obj == null) {       
-			$this->element('span', array('class' => 'statnum'), 'null points');
-		};
+			$this->element('span', array('class' => 'statnum'), ' ');
+		} else 
+		{
         $this->element('span', array('class' => 'stats'), 'Total points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
@@ -170,7 +171,7 @@ class AccountProfileBlock extends ProfileBlock
         $this->element('span', array('class' => 'statnum'), '1212');
         $this->element('span', array('class' => 'stats'), 'Baseline:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
-    
+    	}
         $this->out->elementEnd('div');
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
