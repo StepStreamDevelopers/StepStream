@@ -158,11 +158,11 @@ class AccountProfileBlock extends ProfileBlock
                                        'Edit profile');
         $this->element('br');          
         $this->element('br');
-        $points_obj = UserPoints::getPoints($this->profile->id);
-        $totalpoints= $points_obj->cumulative_points;      
-        print_r($points_obj);    
+        $points_obj = UserPoints::getPoints($this->profile->id); 
+        $points_exploded = implode(',',$points_obj);     
+        $this->element('span', array('class' => 'statnum'), $points_exploded);
         $this->element('span', array('class' => 'stats'), 'Total points:');
-        $this->element('span', array('class' => 'statnum'), $totalpoints);          
+        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Average steps/day:');
