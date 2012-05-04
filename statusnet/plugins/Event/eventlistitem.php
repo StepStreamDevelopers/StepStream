@@ -52,17 +52,17 @@ class EventListItem extends NoticeListItemAdapter
         {
 	        $event   = Happening::fromNotice($notice);
 	        
-	        if (empty($event))
-	        {
-	        	return;
-	        }
-	        else
-	        {
-				$this->nli->out->elementStart('div', 'entry-title');
-				$this->nli->showAuthor();
-				$this->showContent();
-				$this->nli->out->elementEnd('div');
-			}
+        if (empty($event)) {
+            // TRANS: Content for a deleted RSVP list item (RSVP stands for "please respond").
+            $out->element('p', null, _m('Deleted.'));
+            return;
+        }
+
+			$this->nli->out->elementStart('div', 'entry-title');
+			$this->nli->showAuthor();
+			$this->showContent();
+			$this->nli->out->elementEnd('div');
+			
         }
     }
 
