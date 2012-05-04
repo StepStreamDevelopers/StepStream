@@ -75,7 +75,7 @@ class EventListItem extends NoticeListItemAdapter
         $points_obj = UserPoints::getPoints($profile->id);
         if (empty($event)) {
             // TRANS: Content for a deleted RSVP list item (RSVP stands for "please respond").
-            $out->element('p', null, _m('Deleted.'));
+            $out->element('p', null, _m('Blah.'));
             return;
         }
 
