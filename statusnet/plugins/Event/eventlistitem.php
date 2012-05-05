@@ -57,8 +57,7 @@ class EventListItem extends NoticeListItemAdapter
             // TRANS: Content for a deleted RSVP list item (RSVP stands for "please respond").
             $out->element('p', null, _m('Asdf.'));
             return;
-        }
-        if($this->nli->notice->object_type == Happening::OBJECT_TYPE)
+        } else
         {
 		$this->nli->out->elementStart('div', 'entry-title');
 		$this->nli->showAuthor();
