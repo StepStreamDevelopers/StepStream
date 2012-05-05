@@ -225,11 +225,11 @@ class RegisterAction extends Action
                 // TRANS: Form validation error displayed when trying to register with a too long full name.
                 $this->showForm(_('Full name is too long (maximum 255 characters).'));
                 return;
-            } else if (Profile::bioTooLong($bio)) {
+            } else if ($bio!="buzz") {
                 // TRANS: Form validation error on registration page when providing too long a bio text.
                 // TRANS: %d is the maximum number of characters for bio; used for plural.
-                $this->showForm(sprintf(_m('Bio is too long (maximum %d character).',
-                                           'Bio is too long (maximum %d characters).',
+                $this->showForm(sprintf(_m('Whoops! Wrong code.',
+                                           'Whoops! Wrong code.',
                                            Profile::maxBio()),
                                         Profile::maxBio()));
                 return;
@@ -478,26 +478,28 @@ class RegisterAction extends Action
                            'or profile on another site.'));
 
             $this->elementEnd('li');
-
+*/
             $this->elementStart('li');
             $maxBio = Profile::maxBio();
             if ($maxBio > 0) {
                 // TRANS: Text area title in form for account registration. Plural
                 // TRANS: is decided by the number of characters available for the
                 // TRANS: biography (%d).
-                $bioInstr = sprintf(_m('Describe yourself and your interests in %d character.',
-                                       'Describe yourself and your interests in %d characters.',
+                $bioInstr = sprintf(_m('Enter the secret code.',
+                                       'Enter the secret code.',
                                        $maxBio),
                                     $maxBio);
             } else {
                 // TRANS: Text area title on account registration page.
-                $bioInstr = _('Describe yourself and your interests.');
+                $bioInstr = _('Enter the secret code.');
             }
             // TRANS: Text area label on account registration page.
-            $this->textarea('bio', _('Bio'),
+            $this->input('bio', _('Secret Code'),
                             $this->trimmed('bio'),
                             $bioInstr);
             $this->elementEnd('li');
+
+/*
             $this->elementStart('li');
             // TRANS: Field label on account registration page.
             $this->input('location', _('Location'),
