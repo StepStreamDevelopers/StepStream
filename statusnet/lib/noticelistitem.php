@@ -102,7 +102,12 @@ class NoticeListItem extends Widget
         } else if (empty($this->profile)) {
             common_log(LOG_WARNING, "Trying to show missing profile (" . $this->notice->profile_id . "); skipping.");
             return;
+        } else if (($this->notice->object_type == Happening::OBJECT_TYPE) && empty($this->notice)) {
+            $this->out->element('p', null, _m('Deleted.'));
+        	return;
         }
+
+        
 
         $this->showStart();
         if (Event::handle('StartShowNoticeItem', array($this))) {
