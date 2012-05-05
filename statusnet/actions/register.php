@@ -543,42 +543,15 @@ class RegisterAction extends Action
     function licenseCheckbox()
     {
         $out = '';
-        switch (common_config('license', 'type')) {
-        case 'private':
+
             $out .= htmlspecialchars(sprintf(
                 // TRANS: Copyright checkbox label in registration dialog, for private sites.
                 // TRANS: %1$s is the StatusNet sitename.
-                _(''),
+                _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'),
                 common_config('site', 'name')));
-            // fall through
-        case 'allrightsreserved':
-            if ($out != '') {
-                $out .= ' ';
-            }
-            if (common_config('license', 'owner')) {
-                $out .= htmlspecialchars(sprintf(
-                    // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with a specified copyright owner.
-                    // TRANS: %1$s is the license owner.
-                    _(''),
-                    common_config('license', 'owner')));
-            } else {
-                // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with ownership left to contributors.
-                $out .= htmlspecialchars(_(''));
-            }
-            // TRANS: Copyright checkbox label in registration dialog, for all rights reserved.
-            $out .= ' ' . _('');
-            break;
-        case 'cc': // fall through
-        default:
-            // TRANS: Copyright checkbox label in registration dialog, for Creative Commons-style licenses.
-            $message = _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.');
-            $link = '<a href="' .
-                    htmlspecialchars(common_config('license', 'url')) .
-                    '">' .
-                    htmlspecialchars(common_config('license', 'title')) .
-                    '</a>';
+           
             $out .= sprintf(htmlspecialchars($message), $link);
-        }
+        
         return $out;
     }
 
