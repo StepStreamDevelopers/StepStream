@@ -548,7 +548,7 @@ class RegisterAction extends Action
             $out .= htmlspecialchars(sprintf(
                 // TRANS: Copyright checkbox label in registration dialog, for private sites.
                 // TRANS: %1$s is the StatusNet sitename.
-                _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'),
+                _(''),
                 common_config('site', 'name')));
             // fall through
         case 'allrightsreserved':
@@ -559,14 +559,14 @@ class RegisterAction extends Action
                 $out .= htmlspecialchars(sprintf(
                     // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with a specified copyright owner.
                     // TRANS: %1$s is the license owner.
-                    _('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'),
+                    _(''),
                     common_config('license', 'owner')));
             } else {
                 // TRANS: Copyright checkbox label in registration dialog, for all rights reserved with ownership left to contributors.
-                $out .= htmlspecialchars(_('I promise to keep my password secret, and to respect the privacy of other users. I understand that StepStream is a place for support and encouragement. I promise to keep things positive and never be mean.'));
+                $out .= htmlspecialchars(_(''));
             }
             // TRANS: Copyright checkbox label in registration dialog, for all rights reserved.
-            $out .= ' ' . _('All rights reserved.');
+            $out .= ' ' . _('');
             break;
         case 'cc': // fall through
         default:
