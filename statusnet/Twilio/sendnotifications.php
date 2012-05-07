@@ -37,7 +37,7 @@ if($error_flag == "true")
 else
 {
        
-       $message_string = "Got it." .$step_count. " steps on " . $step_date. " Visit stepstream.us to see how your friends are doing!";
+       $message_string = "Got it. " .$step_count. " steps on " . $step_date. " Visit stepstream.us to see how your friends are doing!";
 }
 
 //echo $message_string;
