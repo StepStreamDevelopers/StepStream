@@ -29,15 +29,15 @@ $phone_number = $_GET['phone_number'];
 $phone_num_invalid = $_GET['phone_num_invalid'];
 if($phone_num_invalid == "true")
 {
-  $message_string = "Whoops! We don't recognize this phone number. Log in to stepstream.us and set this as your number in SMS settings.";
+  $message_string = "Whoops! We don't recognize this phone number. Log in to stepstream.us and set this as your number in Settings.";
 }
 else
 if($error_flag == "true")
-       $message_string = "Whoops! Try it this way: If you took $step_count steps on $step_date, send '0402 10000' -stepstream.us";
+       $message_string = "Whoops! Try it this way: If you took 10,000 steps on April 2nd, send '0402 10000' -stepstream.us";
 else
 {
        
-       $message_string = "Got it." .$step_count. " steps on " . $step_date. " Visit stepstream.us to see how your friends are doing!";
+       $message_string = "Got it. " .$step_count. " steps on " . $step_date. " Visit stepstream.us to see how your friends are doing!";
 }
 
 //echo $message_string;
