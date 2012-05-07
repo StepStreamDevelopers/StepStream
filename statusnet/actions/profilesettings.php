@@ -128,7 +128,7 @@ class ProfilesettingsAction extends SettingsAction
                             $this->boolean('dailyreminder') : $user->dailyreminder);
             $this->elementEnd('li');
             /* Added by GP */
-
+/*
             $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('homepage', _('Homepage'),
@@ -156,6 +156,7 @@ class ProfilesettingsAction extends SettingsAction
                             ($this->arg('bio')) ? $this->arg('bio') : $profile->bio,
                             $bioInstr);
             $this->elementEnd('li');
+*/
             $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('location', _('Location'),
