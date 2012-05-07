@@ -79,7 +79,7 @@ $sms = $client->account->sms_messages->create(
 // the number we are sending to - Any phone number
 $row['phone_num'],
 // the sms body
-"How many steps did you get today? -stepstream.us"
+"How many steps did you get today? -stephealth.org"
 ); 
 
 
