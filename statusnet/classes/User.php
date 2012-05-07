@@ -149,9 +149,9 @@ class User extends Managed_DataObject
 
 //Start function added by Gayathri
 //Start function added by Gayathri
-    function getPhoneNums() 
+    function getPhoneNums()
 {
-
+   $user = new User();
      $user->_connect();
       $table = common_database_tablename($user->tableName());
         $qry = 'SELECT * from user where dailyreminder = 1';
@@ -209,9 +209,9 @@ class User extends Managed_DataObject
 //Start function added by Gayathri
     function getProfileIds()
 {
-     this->_connect();
+     $this->_connect();
       $table = common_database_tablename($this->tableName());
-        $qry = 'SELECT * from user';
+        $qry = 'SELECT id from user';
 
         $result = $this->query($qry);
         return mysql_fetch_array($result);
