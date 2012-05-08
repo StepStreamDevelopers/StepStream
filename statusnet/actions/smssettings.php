@@ -130,8 +130,9 @@ class SmssettingsAction extends SettingsAction
         $this->elementStart('fieldset', array('id' => 'settings_email_address'));
         // TRANS: Form legend for e-mail settings form.
         $this->element('legend', null, _('Email address'));
+*/
         $this->hidden('token', common_session_token());
-
+/*
         if ($user->email) {
             $this->element('p', array('id' => 'form_confirmed'), $user->email);
             // TRANS: Form note in e-mail settings form.
