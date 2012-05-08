@@ -434,13 +434,37 @@ legend {
     display: none;
 }
 
-/* Settings */
+/* Settings  area*/
 #fieldset_email {
 	padding-top:0px;
+	width:100%;
+	padding-bottom: 20px;
+}
+
+#fieldset_email h2 {
+	padding-left:20px;
+	padding-top:10px;
+}
+
+#fieldset_email h4 {
+	float:left;
+	clear:left;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	line-height:1em;
+	margin-bottom:5px;
 }
 
 #fieldset_email input.checkbox, #fieldset_email input.radio {
 	margin-left:20px;
+}
+
+.smsinstructions {
+	float:left;
+	padding-left:20px;
+	clear:both;
+	width:500px;
 }
 
 #fieldset_email label.checkbox, #fieldset_email label.radio {
@@ -455,6 +479,11 @@ legend {
 	width:500px;
 	margin-left:20px;
 	margin-bottom:0px;
+	margin-top:0px;
+}
+
+#form_settings_email  {
+	width:800px;
 }
 
 

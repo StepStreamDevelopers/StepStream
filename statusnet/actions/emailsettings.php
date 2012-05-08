@@ -57,7 +57,7 @@ class EmailsettingsAction extends SettingsAction
     function title()
     {
         // TRANS: Title for e-mail settings.
-        return _('SMS & Email settings');
+        return _('Email settings');
     }
 
     /**
@@ -101,24 +101,7 @@ class EmailsettingsAction extends SettingsAction
 
         $this->elementStart('fieldset', array('id' => 'fieldset_email'));
         
-            /* Added by ADM */
-        $this->elementStart('fieldset', array('id' => 'settings_sms'));
-        // TRANS: Form legend for e-mail settings form.
-        $this->element('legend', null, _('SMS settings'));
-            // TRANS: Field label in form for profile settings.
-            $this->input('phone_num', _('Phone Number'),
-                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num, _('Format: +14045551212'));
 
-            $this->checkbox('dailyreminder',
-                            // TRANS: Checkbox label in form for profile settings.
-                            _('Send me daily reminders for step updates'),
-                            ($this->arg('dailyreminder')) ?
-                            $this->boolean('dailyreminder') : $user->dailyreminder);
-            $this->element('p');
-                    $this->submit('save', _m('BUTTON','Save'));
-        $this->elementEnd('fieldset');
-            /* Added by ADM */
-            
         $this->elementStart('fieldset', array('id' => 'settings_email_address'));
         // TRANS: Form legend for e-mail settings form.
         $this->element('legend', null, _('Email address'));
@@ -358,10 +341,7 @@ class EmailsettingsAction extends SettingsAction
             $emailnotifyattn  = $this->boolean('emailnotifyattn');
             $emailmicroid     = $this->boolean('emailmicroid');
             $emailpost        = $this->boolean('emailpost');
-            /* Added by GP */
-            $phone_num = $this->trimmed('phone_num');
-            $dailyreminder = $this->boolean('dailyreminder');
-            /* Added by GP */
+
 
             assert(!is_null($user)); // should already be checked
 
@@ -377,10 +357,6 @@ class EmailsettingsAction extends SettingsAction
             $user->emailmicroid     = $emailmicroid;
             $user->emailpost        = $emailpost;
 
-        	/* Added by ADM */
-        	$user->phone_num = $phone_num;
-        	$user->dailyreminder = $dailyreminder;
-        	/* Added by ADM */
 
             $result = $user->update($original);
 

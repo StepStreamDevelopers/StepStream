@@ -132,6 +132,19 @@ class SettingsSubNav extends Menu
                                     _('Change your profile settings'),
                                     $actionName == 'profilesettings');
 
+            $this->action->menuItem(common_local_url('emailsettings'),
+                                    // TRANS: Menu item in settings navigation panel.
+                                    _m('MENU','Email'),
+                                    // TRANS: Menu item title in settings navigation panel.
+                                    _('Change email handling'),
+                                    $actionName == 'emailsettings');
+ 
+            $this->action->menuItem(common_local_url('smssettings'),
+                                    // TRANS: Menu item in settings navigation panel.
+                                    _m('MENU','SMS'),
+                                    // TRANS: Menu item title in settings navigation panel.
+                                    _('Change SMS handling'),
+                                    $actionName == 'smssettings');
             $this->action->menuItem(common_local_url('avatarsettings'),
                                     // TRANS: Menu item in settings navigation panel.
                                     _m('MENU','Your Picture'),
@@ -145,13 +158,6 @@ class SettingsSubNav extends Menu
                                     // TRANS: Menu item title in settings navigation panel.
                                     _('Change your password'),
                                     $actionName == 'passwordsettings');
-
-            $this->action->menuItem(common_local_url('emailsettings'),
-                                    // TRANS: Menu item in settings navigation panel.
-                                    _m('MENU','SMS & Email'),
-                                    // TRANS: Menu item title in settings navigation panel.
-                                    _('Change SMS & email handling'),
-                                    $actionName == 'emailsettings');
 
 /*            $this->action->menuItem(common_local_url('urlsettings'),
                                     // TRANS: Menu item in settings navigation panel.

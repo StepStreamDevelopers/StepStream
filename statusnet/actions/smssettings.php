@@ -67,152 +67,240 @@ class SmssettingsAction extends SettingsAction
         //      regular parameters, replaced with sprintf().
         // TRANS: SMS settings page instructions.
         // TRANS: %%site.name%% is the name of the site.
-        return _('You can receive SMS messages through email from %%site.name%%.');
+        return _('You can text your steps to %%site.name%% and get daily reminders.');
     }
 
     function showScripts()
     {
         parent::showScripts();
-        $this->autofocus('sms');
+        $this->script('emailsettings.js');
+        $this->autofocus('email');
     }
 
     /**
      * Content area of the page
      *
-     * Shows a form for adding and removing SMS phone numbers and setting
-     * SMS preferences.
+     * Shows a form for adding and removing email addresses and setting
+     * email preferences.
      *
      * @return void
      */
     function showContent()
     {
-        if (!common_config('sms', 'enabled')) {
-            $this->element('div', array('class' => 'error'),
-                           // TRANS: Message given in the SMS settings if SMS is not enabled on the site.
-                           _('SMS is not available.'));
-            return;
-        }
-
         $user = common_current_user();
 
         $this->elementStart('form', array('method' => 'post',
-                                          'id' => 'form_settings_sms',
+                                          'id' => 'form_settings_email',
                                           'class' => 'form_settings',
                                           'action' =>
                                           common_local_url('smssettings')));
 
-        $this->elementStart('fieldset', array('id' => 'settings_sms_address'));
-        // TRANS: Form legend for SMS settings form.
-        $this->element('legend', null, _('SMS address'));
+        $this->elementStart('fieldset', array('id' => 'fieldset_email'));
+        
+            /* Added by ADM */
+        $this->element('h2', null, _('SMS your steps to StepStream!'));
+        $this->element('span', 'smsinstructions', '
+                You might not be able to visit StepStream every day, but that doesn\'t mean you can\'t 
+                enter your steps! Just enter your cellphone number in the form below, and then you can send 
+                your daily step reports from anywhere. Just send a text like \'0402 3000\' and StepStream will record 3,000 steps on April 2nd. You can also sign up to get daily reminders! Once you get the reminder, just reply with the number of steps and you\'ll be all set.');
+
+		$this->element('br');
+        $this->element('h4', null, _("SMS (678) 929-6385"));
+        $this->element('span', 'smsinstructions', '');
+		
+		
+        $this->elementStart('fieldset', array('id' => 'settings_sms'));
+        // TRANS: Form legend for e-mail settings form.
+        $this->element('legend', null, _('Your SMS settings'));
+            // TRANS: Field label in form for profile settings.
+            $this->input('phone_num', _('Phone Number'),
+                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num, _('Format: +14045551212'));
+
+            $this->checkbox('dailyreminder',
+                            // TRANS: Checkbox label in form for profile settings.
+                            _('Send me daily reminders for step updates'),
+                            ($this->arg('dailyreminder')) ?
+                            $this->boolean('dailyreminder') : $user->dailyreminder);
+            $this->element('p');
+                    $this->submit('save', _m('BUTTON','Save'));
+        $this->elementEnd('fieldset');
+            /* Added by ADM */
+
+/*            
+        $this->elementStart('fieldset', array('id' => 'settings_email_address'));
+        // TRANS: Form legend for e-mail settings form.
+        $this->element('legend', null, _('Email address'));
         $this->hidden('token', common_session_token());
 
-        if ($user->sms) {
-            $carrier = $user->getCarrier();
-            $this->element('p', 'form_confirmed',
-                           $user->sms . ' (' . $carrier->name . ')');
-            $this->element('p', 'form_guide',
-                           // TRANS: Form guide in SMS settings form.
-                           _('Current confirmed SMS-enabled phone number.'));
-            $this->hidden('sms', $user->sms);
-            $this->hidden('carrier', $user->carrier);
-            // TRANS: Button label to remove a confirmed SMS address.
+        if ($user->email) {
+            $this->element('p', array('id' => 'form_confirmed'), $user->email);
+            // TRANS: Form note in e-mail settings form.
+            $this->element('p', array('class' => 'form_note'), _('Current confirmed email address.'));
+            $this->hidden('email', $user->email);
+            // TRANS: Button label to remove a confirmed e-mail address.
             $this->submit('remove', _m('BUTTON','Remove'));
         } else {
             $confirm = $this->getConfirmation();
             if ($confirm) {
-                $carrier = Sms_carrier::staticGet($confirm->address_extra);
-                $this->element('p', 'form_unconfirmed',
-                               $confirm->address . ' (' . $carrier->name . ')');
-                $this->element('p', 'form_guide',
-                               // TRANS: Form guide in IM settings form.
-                               _('Awaiting confirmation on this phone number.'));
-                $this->hidden('sms', $confirm->address);
-                $this->hidden('carrier', $confirm->address_extra);
-                // TRANS: Button label to cancel a SMS address confirmation procedure.
+                $this->element('p', array('id' => 'form_unconfirmed'), $confirm->address);
+                $this->element('p', array('class' => 'form_note'),
+                                        // TRANS: Form note in e-mail settings form.
+                                        _('Awaiting confirmation on this address. '.
+                                        'Check your inbox (and spam box!) for a message '.
+                                        'with further instructions.'));
+                $this->hidden('email', $confirm->address);
+                // TRANS: Button label to cancel an e-mail address confirmation procedure.
                 $this->submit('cancel', _m('BUTTON','Cancel'));
-
-                $this->elementStart('ul', 'form_data');
-                $this->elementStart('li');
-                // TRANS: Field label for SMS address input in SMS settings form.
-                $this->input('code', _('Confirmation code'), null,
-                             // TRANS: Form field instructions in SMS settings form.
-                             _('Enter the code you received on your phone.'));
-                $this->elementEnd('li');
-                $this->elementEnd('ul');
-                // TRANS: Button label to confirm SMS confirmation code in SMS settings.
-                $this->submit('confirm', _m('BUTTON','Confirm'));
             } else {
                 $this->elementStart('ul', 'form_data');
                 $this->elementStart('li');
-                // TRANS: Field label for SMS phone number input in SMS settings form.
-                $this->input('sms', _('SMS phone number'),
-                             ($this->arg('sms')) ? $this->arg('sms') : null,
-                             // TRANS: SMS phone number input field instructions in SMS settings form.
-                             _('Phone number, no punctuation or spaces, '.
-                               'with area code.'));
+                // TRANS: Field label for e-mail address input in e-mail settings form.
+                $this->input('email', _('Email address'),
+                             ($this->arg('email')) ? $this->arg('email') : null,
+                             // TRANS: Instructions for e-mail address input form. Do not translate
+                             // TRANS: "example.org". It is one of the domain names reserved for
+                             // TRANS: use in examples by http://www.rfc-editor.org/rfc/rfc2606.txt.
+                             // TRANS: Any other domain may be owned by a legitimate person or
+                             // TRANS: organization.
+                             _('Email address, like "UserName@example.org"'));
                 $this->elementEnd('li');
                 $this->elementEnd('ul');
-                $this->carrierSelect();
-                // TRANS: Button label for adding a SMS phone number in SMS settings form.
+                // TRANS: Button label for adding an e-mail address in e-mail settings form.
                 $this->submit('add', _m('BUTTON','Add'));
             }
         }
         $this->elementEnd('fieldset');
+*/
 
-        if ($user->sms) {
-        $this->elementStart('fieldset', array('id' => 'settings_sms_incoming_email'));
-            // XXX: Confused! This is about SMS. Should this message be updated?
-            // TRANS: Form legend for incoming SMS settings form.
+/*
+       if (common_config('emailpost', 'enabled') && $user->email) {
+            $this->elementStart('fieldset', array('id' => 'settings_email_incoming'));
+            // TRANS: Form legend for incoming e-mail settings form.
             $this->element('legend', null, _('Incoming email'));
 
+            $this->elementStart('ul', 'form_data');
+            $this->elementStart('li');
+            $this->checkbox('emailpost',
+                    // TRANS: Checkbox label in e-mail preferences form.
+                    _('I want to post notices by email.'),
+                    $user->emailpost);
+            $this->elementEnd('li');
+            $this->elementEnd('ul');
+
+            // Our stylesheets make the form_data list items all floats, which
+            // creates lots of problems with trying to wrap divs around things.
+            // This should force a break before the next section, which needs
+            // to be separate so we can disable the things in it when the
+            // checkbox is off.
+            $this->elementStart('div', array('style' => 'clear: both'));
+            $this->elementEnd('div');
+
+            $this->elementStart('div', array('id' => 'emailincoming'));
+
             if ($user->incomingemail) {
-                $this->element('p', 'form_unconfirmed', $user->incomingemail);
-                $this->element('p', 'form_note',
-                               // XXX: Confused! This is about SMS. Should this message be updated?
-                               // TRANS: Form instructions for incoming SMS e-mail address form in SMS settings.
+                $this->elementStart('p');
+                $this->element('span', 'address', $user->incomingemail);
+                // @todo XXX: Looks a little awkward in the UI.
+                //      Something like "xxxx@identi.ca  Send email ..". Needs improvement.
+                $this->element('span', 'input_instructions',
+                               // TRANS: Form instructions for incoming e-mail form in e-mail settings.
                                _('Send email to this address to post new notices.'));
-                // TRANS: Button label for removing a set sender SMS e-mail address to post notices from.
+                $this->elementEnd('p');
+                // TRANS: Button label for removing a set sender e-mail address to post notices from.
                 $this->submit('removeincoming', _m('BUTTON','Remove'));
             }
 
-            $this->element('p', 'form_guide',
-                           // XXX: Confused! This is about SMS. Should this message be updated?
-                           // TRANS: Instructions for incoming SMS e-mail address input form.
-                           _('Make a new email address for posting to; '.
-                             'cancels the old one.'));
-            // TRANS: Button label for adding an SMS e-mail address to send notices from.
+            $this->elementStart('p');
+            if ($user->incomingemail) {
+                // TRANS: Instructions for incoming e-mail address input form, when an address has already been assigned.
+                $msg = _('Make a new email address for posting to; '.
+                         'cancels the old one.');
+            } else {
+                // TRANS: Instructions for incoming e-mail address input form.
+                $msg = _('To send notices via email, we need to create a unique email address for you on this server:');
+            }
+            $this->element('span', 'input_instructions', $msg);
+            $this->elementEnd('p');
+
+            // TRANS: Button label for adding an e-mail address to send notices from.
             $this->submit('newincoming', _m('BUTTON','New'));
+
+            $this->elementEnd('div'); // div#emailincoming
+
             $this->elementEnd('fieldset');
         }
+*/
 
-        $this->elementStart('fieldset', array('id' => 'settings_sms_preferences'));
-        // TRANS: Form legend for SMS preferences form.
-        $this->element('legend', null, _('SMS preferences'));
+/*
+        $this->elementStart('fieldset', array('id' => 'settings_email_preferences'));
+        // TRANS: Form legend for e-mail preferences form.
+        $this->element('legend', null, _('Email preferences'));
 
         $this->elementStart('ul', 'form_data');
-        $this->elementStart('li');
-        $this->checkbox('smsnotify',
-                        // TRANS: Checkbox label in SMS preferences form.
-                        _('Send me notices through SMS; '.
-                          'I understand I may incur '.
-                          'exorbitant charges from my carrier.'),
-                        $user->smsnotify);
-        $this->elementEnd('li');
+
+        if (Event::handle('StartEmailFormData', array($this))) {
+            $this->elementStart('li');
+            $this->checkbox('emailnotifysub',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Send me notices of new subscriptions through email.'),
+                            $user->emailnotifysub);
+            $this->elementEnd('li');
+
+
+            $this->elementStart('li');
+            $this->checkbox('emailnotifyfav',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Send me email when people heart my posts.'),
+                            $user->emailnotifyfav);
+            $this->elementEnd('li');
+            
+
+            $this->elementStart('li');
+            $this->checkbox('emailnotifymsg',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Send me email when someone sends me a private message.'),
+                            $user->emailnotifymsg);
+            $this->elementEnd('li');
+
+
+            $this->elementStart('li');
+            $this->checkbox('emailnotifyattn',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Send me email when people reply to my posts.'),
+                            $user->emailnotifyattn);
+            $this->elementEnd('li');
+
+
+            $this->elementStart('li');
+            $this->checkbox('emailnotifynudge',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Allow friends to nudge me and send me an email.'),
+                            $user->emailnotifynudge);
+            $this->elementEnd('li');
+            $this->elementStart('li');
+            $this->checkbox('emailmicroid',
+                            // TRANS: Checkbox label in e-mail preferences form.
+                            _('Publish a MicroID for my email address.'),
+                            $user->emailmicroid);
+            $this->elementEnd('li');
+
+            Event::handle('EndEmailFormData', array($this));
+        }
         $this->elementEnd('ul');
 
-        // TRANS: Button label to save SMS preferences.
+        // TRANS: Button label to save e-mail preferences.
         $this->submit('save', _m('BUTTON','Save'));
+        $this->elementEnd('fieldset');
 
         $this->elementEnd('fieldset');
+*/
         $this->elementEnd('form');
     }
 
     /**
-     * Get a pending confirmation, if any, for this user
+     * Gets any existing email address confirmations we're waiting for
      *
-     * @return void
-     *
-     * @todo very similar to EmailsettingsAction::getConfirmation(); refactor?
+     * @return Confirm_address Email address confirmation for user, or null
      */
     function getConfirmation()
     {
@@ -221,7 +309,7 @@ class SmssettingsAction extends SettingsAction
         $confirm = new Confirm_address();
 
         $confirm->user_id      = $user->id;
-        $confirm->address_type = 'sms';
+        $confirm->address_type = 'email';
 
         if ($confirm->find(true)) {
             return $confirm;
@@ -231,24 +319,22 @@ class SmssettingsAction extends SettingsAction
     }
 
     /**
-     * Handle posts to this form
+     * Handle posts
      *
-     * Based on the button that was pressed, muxes out to other functions
-     * to do the actual task requested.
-     *
-     * All sub-functions reload the form with a message -- success or failure.
+     * Since there are a lot of different options on the page, we
+     * figure out what we're supposed to do based on which button was
+     * pushed
      *
      * @return void
      */
     function handlePost()
     {
         // CSRF protection
-
         $token = $this->trimmed('token');
         if (!$token || $token != common_session_token()) {
             // TRANS: Client error displayed when the session token does not match or is not given.
-            $this->showForm(_('There was a problem with your session token. '.
-                              'Try again, please.'));
+            $this->show_form(_('There was a problem with your session token. '.
+                               'Try again, please.'));
             return;
         }
 
@@ -264,55 +350,73 @@ class SmssettingsAction extends SettingsAction
             $this->removeIncoming();
         } else if ($this->arg('newincoming')) {
             $this->newIncoming();
-        } else if ($this->arg('confirm')) {
-            $this->confirmCode();
         } else {
-            // TRANS: Message given submitting a form with an unknown action in SMS settings.
+            // TRANS: Message given submitting a form with an unknown action in e-mail settings.
             $this->showForm(_('Unexpected form submission.'));
         }
     }
 
     /**
-     * Handle a request to save preferences
-     *
-     * Sets the user's SMS preferences in the DB.
+     * Save email preferences
      *
      * @return void
      */
     function savePreferences()
     {
-        $smsnotify = $this->boolean('smsnotify');
-
         $user = common_current_user();
 
-        assert(!is_null($user)); // should already be checked
+        if (Event::handle('StartEmailSaveForm', array($this, &$user))) {
+            $emailnotifysub   = $this->boolean('emailnotifysub');
+            $emailnotifyfav   = $this->boolean('emailnotifyfav');
+            $emailnotifymsg   = $this->boolean('emailnotifymsg');
+            $emailnotifynudge = $this->boolean('emailnotifynudge');
+            $emailnotifyattn  = $this->boolean('emailnotifyattn');
+            $emailmicroid     = $this->boolean('emailmicroid');
+            $emailpost        = $this->boolean('emailpost');
+            /* Added by GP */
+            $phone_num = $this->trimmed('phone_num');
+            $dailyreminder = $this->boolean('dailyreminder');
+            /* Added by GP */
 
-        $user->query('BEGIN');
+            assert(!is_null($user)); // should already be checked
 
-        $original = clone($user);
+            $user->query('BEGIN');
 
-        $user->smsnotify = $smsnotify;
+            $original = clone($user);
 
-        $result = $user->update($original);
+            $user->emailnotifysub   = $emailnotifysub;
+            $user->emailnotifyfav   = $emailnotifyfav;
+            $user->emailnotifymsg   = $emailnotifymsg;
+            $user->emailnotifynudge = $emailnotifynudge;
+            $user->emailnotifyattn  = $emailnotifyattn;
+            $user->emailmicroid     = $emailmicroid;
+            $user->emailpost        = $emailpost;
 
-        if ($result === false) {
-            common_log_db_error($user, 'UPDATE', __FILE__);
-            // TRANS: Server error thrown on database error updating SMS preferences.
-            $this->serverError(_('Could not update user.'));
-            return;
+        	/* Added by ADM */
+        	$user->phone_num = $phone_num;
+        	$user->dailyreminder = $dailyreminder;
+        	/* Added by ADM */
+
+            $result = $user->update($original);
+
+            if ($result === false) {
+                common_log_db_error($user, 'UPDATE', __FILE__);
+                // TRANS: Server error thrown on database error updating e-mail preferences.
+                $this->serverError(_('Could not update user.'));
+                return;
+            }
+
+            $user->query('COMMIT');
+
+            Event::handle('EndEmailSaveForm', array($this));
+
+            // TRANS: Confirmation message for successful e-mail preferences save.
+            $this->showForm(_('Preferences saved.'), true);
         }
-
-        $user->query('COMMIT');
-
-        // TRANS: Confirmation message for successful SMS preferences save.
-        $this->showForm(_('SMS preferences saved.'), true);
     }
 
     /**
-     * Add a new SMS number for confirmation
-     *
-     * When the user requests a new SMS number, sends a confirmation
-     * message.
+     * Add the address passed in by the user
      *
      * @return void
      */
@@ -320,88 +424,88 @@ class SmssettingsAction extends SettingsAction
     {
         $user = common_current_user();
 
-        $sms        = $this->trimmed('sms');
-        $carrier_id = $this->trimmed('carrier');
+        $email = $this->trimmed('email');
 
         // Some validation
 
-        if (!$sms) {
-            // TRANS: Message given saving SMS phone number without having provided one.
-            $this->showForm(_('No phone number.'));
+        if (!$email) {
+            // TRANS: Message given saving e-mail address without having provided one.
+            $this->showForm(_('No email address.'));
             return;
         }
 
-        if (!$carrier_id) {
-            // TRANS: Message given saving SMS phone number without having selected a carrier.
-            $this->showForm(_('No carrier selected.'));
+        $email = common_canonical_email($email);
+
+        if (!$email) {
+            // TRANS: Message given saving e-mail address that cannot be normalised.
+            $this->showForm(_('Cannot normalize that email address.'));
+            return;
+        }
+        if (!Validate::email($email, common_config('email', 'check_domain'))) {
+            // TRANS: Message given saving e-mail address that not valid.
+            $this->showForm(_('Not a valid email address.'));
+            return;
+        } else if ($user->email == $email) {
+            // TRANS: Message given saving e-mail address that is already set.
+            $this->showForm(_('That is already your email address.'));
+            return;
+        } else if ($this->emailExists($email)) {
+            // TRANS: Message given saving e-mail address that is already set for another user.
+            $this->showForm(_('That email address already belongs '.
+                              'to another user.'));
             return;
         }
 
-        $sms = common_canonical_sms($sms);
+        if (Event::handle('StartAddEmailAddress', array($user, $email))) {
 
-        if ($user->sms == $sms) {
-            // TRANS: Message given saving SMS phone number that is already set.
-            $this->showForm(_('That is already your phone number.'));
-            return;
-        } else if ($this->smsExists($sms)) {
-            // TRANS: Message given saving SMS phone number that is already set for another user.
-            $this->showForm(_('That phone number already belongs to another user.'));
-            return;
+            $confirm = new Confirm_address();
+
+            $confirm->address      = $email;
+            $confirm->address_type = 'email';
+            $confirm->user_id      = $user->id;
+            $confirm->code         = common_confirmation_code(64);
+
+            $result = $confirm->insert();
+
+            if ($result === false) {
+                common_log_db_error($confirm, 'INSERT', __FILE__);
+                // TRANS: Server error thrown on database error adding e-mail confirmation code.
+                $this->serverError(_('Could not insert confirmation code.'));
+                return;
+            }
+
+            mail_confirm_address($user, $confirm->code, $user->nickname, $email);
+
+            Event::handle('EndAddEmailAddress', array($user, $email));
         }
 
-        $confirm = new Confirm_address();
-
-        $confirm->address       = $sms;
-        $confirm->address_extra = $carrier_id;
-        $confirm->address_type  = 'sms';
-        $confirm->user_id       = $user->id;
-        $confirm->code          = common_confirmation_code(40);
-
-        $result = $confirm->insert();
-
-        if ($result === false) {
-            common_log_db_error($confirm, 'INSERT', __FILE__);
-            // TRANS: Server error thrown on database error adding SMS confirmation code.
-            $this->serverError(_('Could not insert confirmation code.'));
-            return;
-        }
-
-        $carrier = Sms_carrier::staticGet($carrier_id);
-
-        mail_confirm_sms($confirm->code,
-                         $user->nickname,
-                         $carrier->toEmailAddress($sms));
-
-        // TRANS: Message given saving valid SMS phone number that is to be confirmed.
-        $msg = _('A confirmation code was sent to the phone number you added. '.
-                 'Check your phone for the code and instructions '.
+        // TRANS: Message given saving valid e-mail address that is to be confirmed.
+        $msg = _('A confirmation code was sent to the email address you added. '.
+                 'Check your inbox (and spam box!) for the code and instructions '.
                  'on how to use it.');
 
         $this->showForm($msg, true);
     }
 
     /**
-     * Cancel a pending confirmation
-     *
-     * Cancels the confirmation.
+     * Handle a request to cancel email confirmation
      *
      * @return void
      */
     function cancelConfirmation()
     {
-        $sms     = $this->trimmed('sms');
-        $carrier = $this->trimmed('carrier');
+        $email = $this->arg('email');
 
         $confirm = $this->getConfirmation();
 
         if (!$confirm) {
-            // TRANS: Message given canceling SMS phone number confirmation that is not pending.
+            // TRANS: Message given canceling e-mail address confirmation that is not pending.
             $this->showForm(_('No pending confirmation to cancel.'));
             return;
         }
-        if ($confirm->address != $sms) {
-            // TRANS: Message given canceling SMS phone number confirmation for the wrong phone number.
-            $this->showForm(_('That is the wrong confirmation number.'));
+        if ($confirm->address != $email) {
+            // TRANS: Message given canceling e-mail address confirmation for the wrong e-mail address.
+            $this->showForm(_('That is the wrong email address.'));
             return;
         }
 
@@ -409,17 +513,17 @@ class SmssettingsAction extends SettingsAction
 
         if (!$result) {
             common_log_db_error($confirm, 'DELETE', __FILE__);
-            // TRANS: Server error thrown on database error canceling SMS phone number confirmation.
-            $this->serverError(_('Could not delete SMS confirmation.'));
+            // TRANS: Server error thrown on database error canceling e-mail address confirmation.
+            $this->serverError(_('Could not delete email confirmation.'));
             return;
         }
 
-        // TRANS: Message given after successfully canceling SMS phone number confirmation.
-        $this->showForm(_('SMS confirmation cancelled.'), true);
+        // TRANS: Message given after successfully canceling e-mail address confirmation.
+        $this->showForm(_('Email confirmation cancelled.'), true);
     }
 
     /**
-     * Remove a phone number from the user's account
+     * Handle a request to remove an address from the user's account
      *
      * @return void
      */
@@ -427,15 +531,14 @@ class SmssettingsAction extends SettingsAction
     {
         $user = common_current_user();
 
-        $sms     = $this->arg('sms');
-        $carrier = $this->arg('carrier');
+        $email = $this->arg('email');
 
         // Maybe an old tab open...?
 
-        if ($user->sms != $sms) {
-            // TRANS: Message given trying to remove an SMS phone number that is not
+        if ($user->email != $email) {
+            // TRANS: Message given trying to remove an e-mail address that is not
             // TRANS: registered for the active user.
-            $this->showForm(_('That is not your phone number.'));
+            $this->showForm(_('That is not your email address.'));
             return;
         }
 
@@ -443,102 +546,20 @@ class SmssettingsAction extends SettingsAction
 
         $original = clone($user);
 
-        $user->sms      = null;
-        $user->carrier  = null;
-        $user->smsemail = null;
+        $user->email = null;
 
         $result = $user->updateKeys($original);
+
         if (!$result) {
             common_log_db_error($user, 'UPDATE', __FILE__);
-            // TRANS: Server error thrown on database error removing a registered SMS phone number.
+            // TRANS: Server error thrown on database error removing a registered e-mail address.
             $this->serverError(_('Could not update user.'));
             return;
         }
         $user->query('COMMIT');
 
-        // TRANS: Message given after successfully removing a registered SMS phone number.
-        $this->showForm(_('The SMS phone number was removed.'), true);
-    }
-
-    /**
-     * Does this sms number exist in our database?
-     *
-     * Also checks if it belongs to someone else
-     *
-     * @param string $sms phone number to check
-     *
-     * @return boolean does the number exist
-     */
-    function smsExists($sms)
-    {
-        $user = common_current_user();
-
-        $other = User::staticGet('sms', $sms);
-
-        if (!$other) {
-            return false;
-        } else {
-            return $other->id != $user->id;
-        }
-    }
-
-    /**
-     * Show a drop-down box with all the SMS carriers in the DB
-     *
-     * @return void
-     */
-    function carrierSelect()
-    {
-        $carrier = new Sms_carrier();
-
-        $cnt = $carrier->find();
-
-        $this->elementStart('ul', 'form_data');
-        $this->elementStart('li');
-        // TRANS: Label for mobile carrier dropdown menu in SMS settings.
-        $this->element('label', array('for' => 'carrier'), _('Mobile carrier'));
-        $this->elementStart('select', array('name' => 'carrier',
-                                            'id' => 'carrier'));
-        $this->element('option', array('value' => 0),
-                       // TRANS: Default option for mobile carrier dropdown menu in SMS settings.
-                       _('Select a carrier'));
-        while ($carrier->fetch()) {
-            $this->element('option', array('value' => $carrier->id),
-                           $carrier->name);
-        }
-        $this->elementEnd('select');
-        $this->element('p', 'form_guide',
-                       // TRANS: Form instructions for mobile carrier dropdown menu in SMS settings.
-                       // TRANS: %s is an administrative contact's e-mail address.
-                       sprintf(_('Mobile carrier for your phone. '.
-                                 'If you know a carrier that accepts ' .
-                                 'SMS over email but isn\'t listed here, ' .
-                                 'send email to let us know at %s.'),
-                               common_config('site', 'email')));
-        $this->elementEnd('li');
-        $this->elementEnd('ul');
-    }
-
-    /**
-     * Confirm an SMS confirmation code
-     *
-     * Redirects to the confirmaddress page for this code
-     *
-     * @return void
-     */
-    function confirmCode()
-    {
-        $code = $this->trimmed('code');
-
-        if (!$code) {
-            // TRANS: Message given saving SMS phone number confirmation code without having provided one.
-            $this->showForm(_('No code entered.'));
-            return;
-        }
-
-        common_redirect(common_local_url('confirmaddress',
-                                         array('code' => $code)),
-                        303);
+        // TRANS: Message given after successfully removing a registered e-mail address.
+        $this->showForm(_('The email address was removed.'), true);
     }
 
     /**
@@ -559,14 +580,15 @@ class SmssettingsAction extends SettingsAction
         $orig = clone($user);
 
         $user->incomingemail = null;
+        $user->emailpost = 0;
 
         if (!$user->updateKeys($orig)) {
             common_log_db_error($user, 'UPDATE', __FILE__);
-            // TRANS: Server error displayed when the user could not be updated in SMS settings.
+            // TRANS: Server error thrown on database error removing incoming e-mail address.
             $this->serverError(_('Could not update user record.'));
         }
 
-        // TRANS: Confirmation text after updating SMS settings.
+        // TRANS: Message given after successfully removing an incoming e-mail address.
         $this->showForm(_('Incoming email address removed.'), true);
     }
 
@@ -574,8 +596,6 @@ class SmssettingsAction extends SettingsAction
      * Generate a new incoming email address
      *
      * @return void
-     *
-     * @see Emailsettings::newIncoming
      */
     function newIncoming()
     {
@@ -584,14 +604,38 @@ class SmssettingsAction extends SettingsAction
         $orig = clone($user);
 
         $user->incomingemail = mail_new_incoming_address();
+        $user->emailpost = 1;
 
         if (!$user->updateKeys($orig)) {
             common_log_db_error($user, 'UPDATE', __FILE__);
-            // TRANS: Server error displayed when the user could not be updated in SMS settings.
+            // TRANS: Server error thrown on database error adding incoming e-mail address.
             $this->serverError(_('Could not update user record.'));
         }
 
-        // TRANS: Confirmation text after updating SMS settings.
+        // TRANS: Message given after successfully adding an incoming e-mail address.
         $this->showForm(_('New incoming email address added.'), true);
+    }
+
+    /**
+     * Does another user already have this email address?
+     *
+     * Email addresses are unique for users.
+     *
+     * @param string $email Address to check
+     *
+     * @return boolean Whether the email already exists.
+     */
+
+    function emailExists($email)
+    {
+        $user = common_current_user();
+
+        $other = User::staticGet('email', $email);
+
+        if (!$other) {
+            return false;
+        } else {
+            return $other->id != $user->id;
+        }
     }
 }
