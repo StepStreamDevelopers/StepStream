@@ -356,6 +356,10 @@ class EmailsettingsAction extends SettingsAction
             $emailnotifyattn  = $this->boolean('emailnotifyattn');
             $emailmicroid     = $this->boolean('emailmicroid');
             $emailpost        = $this->boolean('emailpost');
+            /* Added by GP */
+            $phone_num = $this->trimmed('phone_num');
+            $dailyreminder = $this->boolean('dailyreminder');
+            /* Added by GP */
 
             assert(!is_null($user)); // should already be checked
 
@@ -370,6 +374,11 @@ class EmailsettingsAction extends SettingsAction
             $user->emailnotifyattn  = $emailnotifyattn;
             $user->emailmicroid     = $emailmicroid;
             $user->emailpost        = $emailpost;
+
+        	/* Added by ADM */
+        	$user->phone_num = $phone_num;
+        	$user->dailyreminder = $dailyreminder;
+        	/* Added by ADM */
 
             $result = $user->update($original);
 
