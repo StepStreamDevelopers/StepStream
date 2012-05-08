@@ -98,7 +98,25 @@ class EmailsettingsAction extends SettingsAction
                                           'class' => 'form_settings',
                                           'action' =>
                                           common_local_url('emailsettings')));
-        $this->elementStart('fieldset');
+
+        $this->elementStart('fieldset', array('id' => 'fieldset_email'));
+        
+            /* Added by ADM */
+        $this->elementStart('fieldset', array('id' => 'settings_sms'));
+        // TRANS: Form legend for e-mail settings form.
+        $this->element('legend', null, _('SMS settings'));
+            // TRANS: Field label in form for profile settings.
+            $this->input('phone_num', _('Phone Number'),
+                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num, _('Format: +14045551212'));
+
+            $this->checkbox('dailyreminder',
+                            // TRANS: Checkbox label in form for profile settings.
+                            _('Send me daily reminders for step updates'),
+                            ($this->arg('dailyreminder')) ?
+                            $this->boolean('dailyreminder') : $user->dailyreminder);
+        $this->elementEnd('fieldset');
+            /* Added by ADM */
+            
         $this->elementStart('fieldset', array('id' => 'settings_email_address'));
         // TRANS: Form legend for e-mail settings form.
         $this->element('legend', null, _('Email address'));

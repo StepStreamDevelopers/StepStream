@@ -409,6 +409,8 @@ border-radius: 0px 0px 8px 8px;
 	padding:0px;
 }
 
+
+
 legend {
 	display:block;
 	padding: 30px 0px 0px 0px;
@@ -430,6 +432,29 @@ legend {
     width: 520px;
     padding-bottom: 10px;
     display: none;
+}
+
+/* Settings */
+#fieldset_email {
+	padding-top:0px;
+}
+
+#fieldset_email input.checkbox, #fieldset_email input.radio {
+	margin-left:20px;
+}
+
+#fieldset_email label.checkbox, #fieldset_email label.radio {
+	max-width:90%;
+}
+
+#fieldset_email li {
+	margin-bottom: .3em;
+}
+
+#settings_sms, #settings_email_preferences, #settings_email_address {
+	width:500px;
+	margin-left:20px;
+	margin-bottom:0px;
 }
 
 
@@ -532,6 +557,10 @@ legend {
 
 
 .org {
+	display:none;
+}
+
+.hiddenform {
 	display:none;
 }
 /*
