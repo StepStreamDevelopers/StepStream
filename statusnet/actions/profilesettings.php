@@ -109,7 +109,7 @@ class ProfilesettingsAction extends SettingsAction
             $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('fullname', _('Full name'),
-                         ($this->arg('fullname')) ? $this->arg('fullname') : $profile->fullname);
+                         ($this->arg('fullname')) ? $this->arg('fullname') : $profile->fullname, _('The name your friends call you'));
             $this->elementEnd('li');
 
 	    
@@ -117,7 +117,7 @@ class ProfilesettingsAction extends SettingsAction
 	    $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('phone_num', _('Phone Number'),
-                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num);
+                         ($this->arg('phone_num')) ? $this->arg('phone_num') : $user->phone_num, _('Format: +14045551212'));
             $this->elementEnd('li');
 
             $this->elementStart('li');
@@ -157,6 +157,8 @@ class ProfilesettingsAction extends SettingsAction
                             $bioInstr);
             $this->elementEnd('li');
 */
+
+/*
             $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('location', _('Location'),
@@ -172,7 +174,9 @@ class ProfilesettingsAction extends SettingsAction
                                 $this->arg('sharelocation') : $user->shareLocation());
                 $this->elementEnd('li');
             }
+*/
             Event::handle('EndProfileFormData', array($this));
+/*
             $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('tags', _('Tags'),
@@ -193,14 +197,15 @@ class ProfilesettingsAction extends SettingsAction
             foreach(DateTimeZone::listIdentifiers() as $k => $v) {
                 $timezones[$v] = $v;
             }
-            $this->elementStart('li');
+*/
+            $this->elementStart('li', array('class' => 'hiddenform'));
             // TRANS: Dropdownlist label in form for profile settings.
             $this->dropdown('timezone', _('Timezone'),
                          // TRANS: Tooltip for dropdown list label in form for profile settings.
                             $timezones, _('What timezone are you normally in?'),
                             true, $timezone);
             $this->elementEnd('li');
-            $this->elementStart('li');
+            $this->elementStart('li', array('class' => 'hiddenform'));
             $this->checkbox('autosubscribe',
                             // TRANS: Checkbox label in form for profile settings.
                             _('Automatically subscribe to whoever '.
@@ -208,7 +213,8 @@ class ProfilesettingsAction extends SettingsAction
                             ($this->arg('autosubscribe')) ?
                             $this->boolean('autosubscribe') : $user->autosubscribe);
             $this->elementEnd('li');
-            $this->elementStart('li');
+            
+            $this->elementStart('li', array('class' => 'hiddenform'));
             $this->dropdown('subscribe_policy',
                             // TRANS: Dropdown field label on profile settings, for what policies to apply when someone else tries to subscribe to your updates.
                             _('Subscription policy'),
@@ -221,14 +227,18 @@ class ProfilesettingsAction extends SettingsAction
                             false,
                             (empty($user->subscribe_policy)) ? User::SUBSCRIBE_POLICY_OPEN : $user->subscribe_policy);
             $this->elementEnd('li');
+
         }
+
         $this->elementStart('li');
-        $this->checkbox('private_stream',
+/*        $this->checkbox('private_stream',
                         // TRANS: Checkbox label in profile settings.
                         _('Make updates visible only to my followers'),
                         ($this->arg('private_stream')) ?
                         $this->boolean('private_stream') : $user->private_stream);
+*/
         $this->elementEnd('li');
+
         $this->elementEnd('ul');
         // TRANS: Button to save input in profile settings.
         $this->submit('save', _m('BUTTON','Save'));
@@ -307,11 +317,15 @@ class ProfilesettingsAction extends SettingsAction
                 // TRANS: Validation error in form for profile settings.
                 $this->showForm(_('Location is too long (maximum 255 characters).'));
                 return;
-            }  else if (is_null($timezone) || !in_array($timezone, DateTimeZone::listIdentifiers())) {
+            }  
+            
+/*else if (is_null($timezone) || !in_array($timezone, DateTimeZone::listIdentifiers())) {
                 // TRANS: Validation error in form for profile settings.
                 $this->showForm(_('Timezone not selected.'));
                 return;
-            } else if ($this->nicknameExists($nickname)) {
+            }
+*/
+            else if ($this->nicknameExists($nickname)) {
                 // TRANS: Validation error in form for profile settings.
                 $this->showForm(_('Nickname already in use. Try another one.'));
                 return;
@@ -508,6 +522,7 @@ class ProfilesettingsAction extends SettingsAction
     }
 
     function showAside() {
+/*
         $user = common_current_user();
 
         $this->elementStart('div', array('id' => 'aside_primary',
@@ -546,5 +561,6 @@ class ProfilesettingsAction extends SettingsAction
         $this->elementEnd('ul');
         $this->elementEnd('div');
         $this->elementEnd('div');
+    */
     }
 }
