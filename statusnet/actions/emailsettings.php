@@ -114,6 +114,8 @@ class EmailsettingsAction extends SettingsAction
                             _('Send me daily reminders for step updates'),
                             ($this->arg('dailyreminder')) ?
                             $this->boolean('dailyreminder') : $user->dailyreminder);
+            $this->element('p');
+                    $this->submit('save', _m('BUTTON','Save'));
         $this->elementEnd('fieldset');
             /* Added by ADM */
             
@@ -394,7 +396,7 @@ class EmailsettingsAction extends SettingsAction
             Event::handle('EndEmailSaveForm', array($this));
 
             // TRANS: Confirmation message for successful e-mail preferences save.
-            $this->showForm(_('Email preferences saved.'), true);
+            $this->showForm(_('Preferences saved.'), true);
         }
     }
 

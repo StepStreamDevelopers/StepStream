@@ -114,6 +114,7 @@ class ProfilesettingsAction extends SettingsAction
 
 	    
             /* Added by GP */
+/*
 	    $this->elementStart('li');
             // TRANS: Field label in form for profile settings.
             $this->input('phone_num', _('Phone Number'),
@@ -127,6 +128,7 @@ class ProfilesettingsAction extends SettingsAction
                             ($this->arg('dailyreminder')) ?
                             $this->boolean('dailyreminder') : $user->dailyreminder);
             $this->elementEnd('li');
+*/
             /* Added by GP */
 /*
             $this->elementStart('li');
@@ -286,8 +288,8 @@ class ProfilesettingsAction extends SettingsAction
             $timezone = $this->trimmed('timezone');
             $tagstring = $this->trimmed('tags');
             /* Added by GP */
-            $phone_num = $this->trimmed('phone_num');
-            $dailyreminder = $this->boolean('dailyreminder');
+//            $phone_num = $this->trimmed('phone_num');
+//            $dailyreminder = $this->boolean('dailyreminder');
             /* Added by GP */
 
             // Some validation
@@ -362,7 +364,9 @@ class ProfilesettingsAction extends SettingsAction
 
             if ($user->nickname != $nickname ||
                 $user->language != $language ||
-                $user->timezone != $timezone || $user->phone_num != $phone_num) {
+                $user->timezone != $timezone 
+//                || $user->phone_num != $phone_num
+                ) {
 
                 common_debug('Updating user nickname from ' . $user->nickname . ' to ' . $nickname,
                              __FILE__);
@@ -370,14 +374,14 @@ class ProfilesettingsAction extends SettingsAction
                              __FILE__);
                 common_debug('Updating user timezone from ' . $user->timezone . ' to ' . $timezone,
                              __FILE__);
-		common_debug('Updating phone number from ' . $user->phone_num . ' to ' . $phone_num,
-                             __FILE__);
+//		common_debug('Updating phone number from ' . $user->phone_num . ' to ' . $phone_num,
+//                             __FILE__);
                 $original = clone($user);
 
                 $user->nickname = $nickname;
                 $user->language = $language;
                 $user->timezone = $timezone;
-                $user->phone_num = $phone_num;
+//                $user->phone_num = $phone_num;
                 $result = $user->updateKeys($original);
 
                 if ($result === false) {
@@ -397,7 +401,7 @@ class ProfilesettingsAction extends SettingsAction
 
             // XXX: XOR
             if (($user->autosubscribe ^ $autosubscribe) ||
-                ($user->dailyreminder ^ $dailyreminder) ||
+//                ($user->dailyreminder ^ $dailyreminder) ||
                 ($user->private_stream ^ $private_stream) ||
                 ($user->subscribe_policy != $subscribe_policy)) {
 
@@ -406,7 +410,7 @@ class ProfilesettingsAction extends SettingsAction
                 $user->autosubscribe    = $autosubscribe;
                 $user->private_stream   = $private_stream;
                 $user->subscribe_policy = $subscribe_policy;
-                $user->dailyreminder = $dailyreminder;
+//                $user->dailyreminder = $dailyreminder;
                 $result = $user->update($original);
 
                 if ($result === false) {
