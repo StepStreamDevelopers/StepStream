@@ -71,6 +71,6 @@
 	  $graph->Stroke(); 
 	}
 	else {
-	echo '<p class=\"entry-content\">no steps yet... but this is where you will see them!</p>';
+	echo '<p style=\"font-family:sans-serif;\">no steps yet... but this is where you will see them!</p>';
 	}
 ?> 
