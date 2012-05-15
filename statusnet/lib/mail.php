@@ -680,7 +680,7 @@ function mail_notify_fave($other, $user, $notice)
     // TRANS: %3$s is a URL to the faved notice, %4$s is the faved notice text,
     // TRANS: %5$s is a URL to all faves of the adding user, %6$s is the StatusNet sitename,
     // TRANS: %7$s is the adding user's nickname.
-    $body = sprintf(_("%1\$s (@%7\$s) hearts your post from %2\$s".
+    $body = sprintf(_("%1\$s hearts your post from %2\$s\n\n".
                       "Here is a link:\n\n" .
                       "%3\$s\n\n" .
                       "Here is what you said:\n\n" .
@@ -742,23 +742,21 @@ function mail_notify_attn($user, $notice)
 
     // TRANS: E-mail subject for notice notification.
     // TRANS: %1$s is the sending user's long name, %2$s is the adding user's nickname.
-    $subject = sprintf(_('%1$s (@%2$s) sent a notice to your attention'), $bestname, $sender->nickname);
+    $subject = sprintf(_('%1$s replied to you on StepStream'), $bestname, $sender->nickname);
 
         // TRANS: Body of @-reply notification e-mail.
         // TRANS: %1$s is the sending user's name, $2$s is the StatusNet sitename,
         // TRANS: %3$s is a URL to the notice, %4$s is the notice text,
         // TRANS: %5$s is the text "The full conversation can be read here:" and a URL to the full conversion if it exists (otherwise empty),
         // TRANS: %6$s is a URL to reply to the notice, %7$s is a URL to all @-replies for the addressed user,
-        $body = sprintf(_("%1\$s just sent a notice to your attention (an '@-reply') on %2\$s.\n\n".
-                      "The notice is here:\n\n".
+        $body = sprintf(_("%1\$s replied to you on StepStream.\n\n".
+                      "The reply is here:\n\n".
                       "\t%3\$s\n\n" .
                       "It reads:\n\n".
                       "\t%4\$s\n\n" .
                       "%5\$s" .
                       "You can reply back here:\n\n".
-                      "\t%6\$s\n\n" .
-                      "The list of all @-replies for you here:\n\n" .
-                      "%7\$s"),
+                      "\t%6\$s\n\n"),
                     $sender->getFancyName(),//%1
                     common_config('site', 'name'),//%2
                     common_local_url('shownotice',
