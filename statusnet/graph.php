@@ -70,4 +70,7 @@
 	  $graph->Add($plot);
 	  $graph->Stroke(); 
 	}
+	else {
+            $this->out->element('h4', null, _('This is where your steps will show up'));
+	}
 ?> 
