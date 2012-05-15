@@ -49,24 +49,25 @@
 	
 	$result = mysql_query($query) or die(mysql_error());
 
-	if ($result != null) {
-		while($row = mysql_fetch_array($result)){
-			 array_push($points_array,$row['points_earned']);
-	       $dt = strtotime($row['step_date']); //make timestamp with datetime string
-	       $dt_fmt = date("m-d-y", $dt); //echo the year of the datestamp just created 
+	
+	while($row = mysql_fetch_array($result)){
+		 array_push($points_array,$row['points_earned']);
+       $dt = strtotime($row['step_date']); //make timestamp with datetime string
+       $dt_fmt = date("m-d-y", $dt); //echo the year of the datestamp just created 
 	       array_push($labels_array,$dt_fmt);
-		}
-
-
-		  $graph = new Graph(500, 300);
+	}
+	
+	if ($dt != null) {
+	
+	  $graph = new Graph(500, 300);
           $graph->SetScale('textint');
-		  $graph->xaxis->SetTickLabels($labels_array);
-		  $plot = new BarPlot($points_array );
+	  $graph->xaxis->SetTickLabels($labels_array);
+	  $plot = new BarPlot($points_array );
 
 
-		  $graph->xaxis->title->Set('(Date)');
-		  $graph->yaxis->title->Set('(Points)');
-		  $graph->Add($plot);
-		  $graph->Stroke(); 
+	  $graph->xaxis->title->Set('(Date)');
+	  $graph->yaxis->title->Set('(Points)');
+	  $graph->Add($plot);
+	  $graph->Stroke(); 
 	}
 ?> 
