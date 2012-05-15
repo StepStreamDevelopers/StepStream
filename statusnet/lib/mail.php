@@ -673,21 +673,18 @@ function mail_notify_fave($other, $user, $notice)
 
     // TRANS: Subject for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, %2$s is the adding user's nickname.
-    $subject = sprintf(_('%1$s (@%2$s) added your notice as a favorite'), $bestname, $user->nickname);
+    $subject = sprintf(_('%1$s sends good vibes!'), $bestname, $user->nickname);
 
     // TRANS: Body for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, $2$s is the date the notice was created,
     // TRANS: %3$s is a URL to the faved notice, %4$s is the faved notice text,
     // TRANS: %5$s is a URL to all faves of the adding user, %6$s is the StatusNet sitename,
     // TRANS: %7$s is the adding user's nickname.
-    $body = sprintf(_("%1\$s (@%7\$s) just added your notice from %2\$s".
-                      " as one of their favorites.\n\n" .
-                      "The URL of your notice is:\n\n" .
-                      "%3\$s\n\n" .
-                      "The text of your notice is:\n\n" .
+    $body = sprintf(_("%1\$s just hearted your post on StepStream:\n\n" .
                       "%4\$s\n\n" .
-                      "You can see the list of %1\$s's favorites here:\n\n" .
-                      "%5\$s"),
+                     "Here's a link:\n\n" .
+                     "Thanks,\n\n".
+                      "%3\$s\n\n" .),
                     $bestname,
                     common_exact_date($notice->created),
                     common_local_url('shownotice',
