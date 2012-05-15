@@ -58,7 +58,7 @@
 	}
 
 
-	  $graph = new Graph(600, 300);
+	  $graph = new Graph(500, 300);
           $graph->SetScale('textint');
 	  $graph->xaxis->SetTickLabels($labels_array);
 	  $plot = new BarPlot($points_array );
