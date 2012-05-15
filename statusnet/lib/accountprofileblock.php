@@ -266,7 +266,9 @@ class AccountProfileBlock extends ProfileBlock
 
                         if ($cur->hasRight(Right::SANDBOXUSER) ||
                             $cur->hasRight(Right::SILENCEUSER) ||
-                            $cur->hasRight(Right::DELETEUSER)) {
+                            $cur->hasRight(Right::DELETEUSER) ||
+                            $cur->hasRight(Right::CONFIGURESITE)
+                            ) {
                             $this->out->elementStart('li', 'entity_moderation');
                             // TRANS: Label text on user profile to select a user role.
                             $this->out->element('p', null, _('Moderate'));
