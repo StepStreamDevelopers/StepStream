@@ -306,7 +306,7 @@ function mail_footer_block()
     // TRANS: Common footer block for StatusNet notification emails.
     // TRANS: %1$s is the StatusNet sitename,
     // TRANS: %2$s is a link to the addressed user's e-mail settings.
-    return "\n\n" . sprintf(_('Faithfully yours,'.
+    return "\n\n" . sprintf(_('Thanks,'.
                               "\n".'%1$s.'."\n\n".
                               "----\n".
                               "Change your email address or ".
@@ -673,18 +673,18 @@ function mail_notify_fave($other, $user, $notice)
 
     // TRANS: Subject for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, %2$s is the adding user's nickname.
-    $subject = sprintf(_('%1$s sends good vibes!'), $bestname, $user->nickname);
+    $subject = sprintf(_('%1$s hearts your post on StepStream'), $bestname, $user->nickname);
 
     // TRANS: Body for favorite notification e-mail.
     // TRANS: %1$s is the adding user's long name, $2$s is the date the notice was created,
     // TRANS: %3$s is a URL to the faved notice, %4$s is the faved notice text,
     // TRANS: %5$s is a URL to all faves of the adding user, %6$s is the StatusNet sitename,
     // TRANS: %7$s is the adding user's nickname.
-    $body = sprintf(_("%1\$s just hearted your post on StepStream:\n\n" .
-                      "%4\$s\n\n" .
-                     "Here's a link:\n\n" .
-                     "Thanks,\n\n".
-                      "%3\$s\n\n" .),
+    $body = sprintf(_("%1\$s (@%7\$s) hearts your post from %2\$s".
+                      "Here is a link:\n\n" .
+                      "%3\$s\n\n" .
+                      "Here is what you said:\n\n" .
+                      "%4\$s\n\n"),
                     $bestname,
                     common_exact_date($notice->created),
                     common_local_url('shownotice',
