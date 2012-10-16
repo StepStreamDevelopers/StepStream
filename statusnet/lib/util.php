@@ -1266,19 +1266,6 @@ function local_url($action, $args=null, $params=null, $fragment=null, $addSessio
     return $url;
 }
 
-function local_server_url($action, $args=null, $params=null, $fragment=null, $addSession=true)
-{
-    if (Event::handle('StartLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url))) {
-        $r = Router::get();
-        $path = $r->build($action, $args, $params, $fragment);
-
-        $ssl = common_is_sensitive($action);
-        $url = common_server_path(mb_substr($path, 1), $ssl, $addSession);
-        Event::handle('EndLocalURL', array(&$action, &$params, &$fragment, &$addSession, &$url));
-    }
-    return $url;
-}
-
 
 function common_is_sensitive($action)
 {
@@ -1331,38 +1318,6 @@ function common_path($relative, $ssl=false, $addSession=true)
     }
 
     return $proto.'://'.$serverpart.'/'.$pathpart.$relative;
-}
-
-
-function common_server_path($relative, $ssl=false, $addSession=true)
-{
-    $pathpart = (common_config('site', 'path')) ? common_config('site', 'path')."/" : '';
-
-    if (($ssl && (common_config('site', 'ssl') === 'sometimes'))
-        || common_config('site', 'ssl') === 'always') {
-        $proto = 'https';
-        if (is_string(common_config('site', 'sslserver')) &&
-            mb_strlen(common_config('site', 'sslserver')) > 0) {
-            $serverpart = common_config('site', 'sslserver');
-        } else if (common_config('site', 'server')) {
-            $serverpart = common_config('site', 'server');
-        } else {
-            common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
-        }
-    } else {
-        $proto = 'http';
-        if (common_config('site', 'server')) {
-            $serverpart = common_config('site', 'server');
-        } else {
-            common_log(LOG_ERR, 'Site server not configured, unable to determine site name.');
-        }
-    }
-
-    if ($addSession) {
-        $relative = common_inject_session($relative, $serverpart);
-    }
-
-    return $proto.'://'.$serverpart.'/';
 }
 
 function common_inject_session($url, $serverpart = null)

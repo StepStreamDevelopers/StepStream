@@ -131,7 +131,6 @@ class GameBlock extends ProfileBlock
             }
 //				$url = str_replace ("index.php", "", common_local_url());
 				$url = local_url();
-				$serverUrl = local_server_url();
 				$cur = common_current_user();
 
                     if ($cur->id == $this->profile->id) { // your own page
@@ -168,7 +167,7 @@ class GameBlock extends ProfileBlock
                                                   'value' => $url . '/game/mario2.swf' ));
                
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'profileID=' . $this->profile->id . '&avatarSrc=' . $this->avatar() . '&serverUrl=' . $serverUrl  ));
+                                                  'value' => 'profileID=' . $this->profile->id . '&avatarSrc=' . $this->avatar() ));
                                                   
              
                                                   

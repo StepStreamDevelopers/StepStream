@@ -205,7 +205,7 @@ class Router
 
             // main stuff is repetitive
 
-            $main = array('login', 'logout', 'register', 'subscribe','twilio',
+            $main = array('login', 'logout', 'register', 'subscribe','twilio','stencyl',
                           'unsubscribe', 'cancelsubscription', 'approvesub',
                           'confirmaddress', 'recoverpassword',
                           'invite', 'favor', 'disfavor', 'sup',
@@ -251,7 +251,7 @@ class Router
 
             // these take a code
 
-            foreach (array('register', 'confirmaddress', 'recoverpassword', 'twilio') as $c) {
+            foreach (array('register', 'confirmaddress', 'recoverpassword', 'twilio','stencyl') as $c) {
                 $m->connect('main/'.$c.'/:code', array('action' => $c));
             }
 
@@ -969,7 +969,7 @@ class Router
 
  foreach (array('subscriptions', 'subscribers',
                                'nudge', 'all', 'foaf', 'replies','mytips','usedtips','todotips','alltips','dailyreminder',
-                               'inbox','myprofile', 'outbox', 'microsummary', 'hcard') as $a) {
+                               'inbox','myprofile','game', 'outbox', 'microsummary', 'hcard') as $a) {
                     $m->connect(':nickname/'.$a,
                                 array('action' => $a),
                                 array('nickname' => Nickname::DISPLAY_FMT));

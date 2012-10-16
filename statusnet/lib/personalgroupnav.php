@@ -81,6 +81,7 @@ class PersonalGroupNav extends Menu
                                  sprintf(_('Tips for %s'), $name),
                                  $mine && $action ==('alltips'or 'mytips' or 'todotips' or 'usedtips'
                                  ) && $action !=('myprofile'
+                                 ) && $action !=('game'
                                  ), 'nav_middle');
       
 
@@ -89,15 +90,23 @@ class PersonalGroupNav extends Menu
             if ($cur && $cur->id == $user->id &&
                 !common_config('singleuser', 'enabled')) {
 
-         
+           $this->out->menuItem(common_local_url('game', array('nickname' =>
+                                                                     $nickname)),
+                                     // TRANS: Menu item in personal group navigation menu.
+                                     _m('MENU','Game'),
+                                     // TRANS: Menu item title in personal group navigation menu.
+                                     _('Game!'),
+                                     $mine && $action =='game', 'nav_middle');
 
-   $this->out->menuItem(common_local_url('myprofile', array('nickname' =>
+               $this->out->menuItem(common_local_url('myprofile', array('nickname' =>
                                                                      $nickname)),
                                      // TRANS: Menu item in personal group navigation menu.
                                      _m('MENU','Me'),
                                      // TRANS: Menu item title in personal group navigation menu.
                                      _('My steps and profile'),
                                      $mine && $action =='myprofile', 'nav_right');
+                                     
+             
             }
 
             Event::handle('EndPersonalGroupNav', array($this));

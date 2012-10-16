@@ -172,6 +172,7 @@ class AccountProfileBlock extends ProfileBlock
         $this->element('span', array('class' => 'stats'), 'Baseline:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
     	}
+
         $this->out->elementEnd('div');
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
@@ -179,6 +180,11 @@ class AccountProfileBlock extends ProfileBlock
               $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '500px' , 'height' => '300px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
                 $this->out->elementEnd('iframe');
                 $this->out->elementEnd('div'); 
+                
+
+                                                                            		
+        
+                 
 }
 
 
