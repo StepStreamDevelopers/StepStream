@@ -1090,8 +1090,108 @@ class User extends Managed_DataObject
         return array_diff($vars, $skip);
     }
 
+
+    /* static function recoverPasswordFromPhone($nore)
+    {
+        $user = User::staticGet('phone_num', $nore);
+
+
+        if (!$user) {
+            // TRANS: Information on password recovery form if no known username or e-mail address was specified.
+            throw new ClientError(_('No user with that phone number.'));
+            return;
+        }
+
+     
+
+        // Success! We have a valid user and a confirmed or unconfirmed email address
+
+        $confirm = new Confirm_address();
+        $confirm->code = common_confirmation_code(128);
+        $confirm->address_type = 'recover';
+        $confirm->user_id = $user->id;
+        $confirm->address = (!empty($user->email)) ? $user->email : $confirm_email->address;
+
+        if (!$confirm->insert()) {
+            common_log_db_error($confirm, 'INSERT', __FILE__);
+            // TRANS: Server error displayed if e-mail address confirmation fails in the database on the password recovery form.
+            throw new ServerException(_('Error saving address confirmation.'));
+            return;
+        }
+
+         // @todo FIXME: needs i18n.
+        $body = "Hey, $user->nickname.";
+        $body .= "\n\n";
+        $body .= 'Someone just asked for a new password ' .
+                 'for this account on ' . common_config('site', 'name') . '.';
+        $body .= "\n\n";
+        $body .= 'If it was you, and you want to confirm, use the URL below:';
+        $body .= "\n\n";
+        $body .= "\t".common_local_url('recoverpassword',
+                                   array('code' => $confirm->code));
+        $body .= "\n\n";
+        $body .= 'If not, just ignore this message.';
+        $body .= "\n\n";
+        $body .= 'Thanks for your time, ';
+        $body .= "\n";
+        $body .= common_config('site', 'name');
+        $body .= "\n";
+
+        //$headers = _mail_prepare_headers('recoverpassword', $user->nickname, $user->nickname);
+        // TRANS: Subject for password recovery e-mail.
+       // mail_to_user($user, _('Password recovery requested'), $body, $headers, $confirm->address);
+        $parameter_string = "body=" . $body . "&phone_number=" . $nore;
+        ob_start();
+        header("Location: http://salute.cc.gt.atl.ga.us/statusnet/Twilio/sendSMS.php?$parameter_string");
+        
+    }   
+    
+    
+    } */
     static function recoverPassword($nore)
     {
+    
+        if( common_is_phoneNum($nore) ) {
+     
+        $user = User::staticGet('phone_num', $nore);
+     
+        $confirm = new Confirm_address();
+        $confirm->code = common_confirmation_code(128);
+        $confirm->address_type = 'recover';
+        $confirm->user_id = $user->id;
+        $confirm->address = (!empty($user->email)) ? $user->email : $confirm_email->address;
+
+        if (!$confirm->insert()) {
+            common_log_db_error($confirm, 'INSERT', __FILE__);
+            // TRANS: Server error displayed if e-mail address confirmation fails in the database on the password recovery form.
+            throw new ServerException(_('Error saving address confirmation.'));
+            return;
+        }
+
+         // @todo FIXME: needs i18n.
+        $body = "Hey, $user->nickname.";
+        $body .= "\n\n";
+        $body .= 'Someone just asked for a new password ' .
+                 'for this account on ' . common_config('site', 'name') . '.';
+        $body .= "\n\n";
+        $body .= 'If it was you, and you want to confirm, use the URL below:';
+        $body .= "\n\n";
+        $body .= "\t".common_local_url('recoverpassword',
+                                   array('code' => $confirm->code));
+        $body .= "\n\n";
+        $body .= 'If not, just ignore this message.';
+        $body .= "\n\n";
+        $body .= 'Thanks for your time, ';
+        $body .= "\n";
+        $body .= common_config('site', 'name');
+        $body .= "\n"; 
+
+        
+        $parameter_string = "messageBody=$body&phone_number=$nore";
+        ob_start();
+        header("Location: http://salute.cc.gt.atl.ga.us/stepstream/Twilio/sendSMS.php?$parameter_string");
+        return;
+        }
         $user = User::staticGet('email', common_canonical_email($nore));
 
         if (!$user) {

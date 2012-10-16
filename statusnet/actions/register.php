@@ -225,7 +225,7 @@ class RegisterAction extends Action
                 // TRANS: Form validation error displayed when trying to register with a too long full name.
                 $this->showForm(_('Full name is too long (maximum 255 characters).'));
                 return;
-            } else if ($bio!="buzz") {
+            } /*else if ($bio!="buzz") {
                 // TRANS: Form validation error on registration page when providing too long a bio text.
                 // TRANS: %d is the maximum number of characters for bio; used for plural.
                 $this->showForm(sprintf(_m('Whoops! Wrong code.',
@@ -233,7 +233,7 @@ class RegisterAction extends Action
                                            Profile::maxBio()),
                                         Profile::maxBio()));
                 return;
-            } else if (!is_null($location) && mb_strlen($location) > 255) {
+            } */ else if (!is_null($location) && mb_strlen($location) > 255) {
                 // TRANS: Form validation error displayed when trying to register with a too long location.
                 $this->showForm(_('Location is too long (maximum 255 characters).'));
                 return;

@@ -199,10 +199,10 @@ class RecoverpasswordAction extends Action
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on password recovery page.
-        $this->input('nicknameoremail', _('Nickname or email address'),
-                     $this->trimmed('nicknameoremail'),
+        $this->input('nicknameoremailorphonenum', _('Nickname or email address or phone number'),
+                     $this->trimmed('nicknameoremailorphonenum'),
                      // TRANS: Title for field label on password recovery page.
-                     _('Your nickname on this server, ' .
+                     _('Your nickname on this server, phone number ' .
                         'or your registered email address.'));
         $this->elementEnd('li');
         $this->elementEnd('ul');
@@ -272,20 +272,26 @@ class RecoverpasswordAction extends Action
 
     function recoverPassword()
     {
-        $nore = $this->trimmed('nicknameoremail');
+        $nore = $this->trimmed('nicknameoremailorphonenum');
 
         if (!$nore) {
             // TRANS: Form instructions for password recovery form.
-            $this->showForm(_('Enter a nickname or email address.'));
+            $this->showForm(_('Enter a nickname , phone number or email address.'));
             return;
         }
 
+    
         try {
+           
             User::recoverPassword($nore);
+            if( common_is_phoneNum($nore))
+              $carrier = "phone number";
+            else $carrier = "email address";
             $this->mode = 'sent';
+            
             // TRANS: User notification after an e-mail with instructions was sent from the password recovery form.
             $this->msg = _('Instructions for recovering your password ' .
-                           'have been sent to the email address registered to your ' .
+                           'have been sent to the ' . $carrier .' registered to your ' .
                            'account.');
             $this->success = true;
             $this->showPage();
