@@ -47,11 +47,13 @@ if (!defined('STATUSNET')) {
 class EmailRegistrationForm extends Form
 {
     protected $email;
+    protected $phoneNum;
 
-    function __construct($out, $email)
+    function __construct($out, $email , $phoneNum)
     {
         parent::__construct($out);
         $this->email = $email;
+        $this->phoneNum = $phoneNum;
     }
 
     function formData()
@@ -68,6 +70,13 @@ class EmailRegistrationForm extends Form
                           // TRANS: Field label on form for registering an account.
                           _m('LABEL','E-mail address'),
                           $this->email);
+        $this->unli();
+        
+        $this->li();
+        $this->out->input('phoneNum',
+                          // TRANS: Field label on form for registering an account.
+                          _m('LABEL','Phone Number'),
+                          $this->phoneNum);
         $this->unli();
 
         $this->out->elementEnd('ul');

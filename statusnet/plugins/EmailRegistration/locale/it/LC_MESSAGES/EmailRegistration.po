@@ -1,7 +1,9 @@
-# Translation of StatusNet - EmailRegistration to Tagalog (Tagalog)
+# Translation of StatusNet - EmailRegistration to Italian (italiano)
 # Exported from translatewiki.net
 #
-# Author: AnakngAraw
+# Author: Od1n
+# Author: Ximo17
+# Author: 1009
 # --
 # This file is distributed under the same license as the StatusNet package.
 #
@@ -10,46 +12,43 @@ msgstr ""
 "Project-Id-Version: StatusNet - EmailRegistration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-30 11:07+0000\n"
-"PO-Revision-Date: 2012-06-30 11:08:25+0000\n"
-"Language-Team: Tagalog <https://translatewiki.net/wiki/Portal:tl>\n"
+"PO-Revision-Date: 2012-06-30 11:08:24+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2011-06-18 16:19:42+0000\n"
-"X-Generator: MediaWiki 1.20alpha (233fc08); Translate 2012-06-21\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
-"X-Language-Code: tl\n"
-"X-Message-Group: #out-statusnet-plugin-emailregistration\n"
+"X-Generator: MediaWiki 1.20alpha (233fc08); Translate 2012-06-21\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANS: Client exception trown when registration by e-mail is not allowed.
 msgid "Registration not allowed."
-msgstr "Hindi pinapayagan ang pagpapatala."
+msgstr "Registrazione non consentita."
 
 #. TRANS: Client exception trown when trying to register without an invitation.
 msgid "Sorry, only invited people can register."
-msgstr "Paumanhin, tanging inanyayahang mga tao lamang ang makakapagpatala."
+msgstr "Siamo spiacenti, solo le persone invitate possono registrarsi."
 
 #. TRANS: Client exception thrown when no confirmation code was provided.
 msgid "No confirmation code."
-msgstr "Walang kodigo ng pagtitiyak."
+msgstr "Nessun codice di conferma."
 
 #. TRANS: Client exception trown when using an invitation multiple times.
 msgid "Invitation already used."
-msgstr "Nagamit na ang paanyaya."
+msgstr "L'invito è già stato utilizzato."
 
 #. TRANS: Client exception thrown when given confirmation code was not issued.
 msgid "No such confirmation code."
-msgstr "Walang ganyang kodigo ng pagtitiyak."
+msgstr "Questo codice di conferma non esiste."
 
 #. TRANS: Title for registration page.
 msgctxt "TITLE"
 msgid "Register"
-msgstr "Magpatala"
+msgstr "Registrati"
 
 #. TRANS: Title for page where to register with a confirmation code.
 msgctxt "TITLE"
 msgid "Complete registration"
-msgstr "Buuin ang pagpapatala"
+msgstr "Completare la registrazione"
 
 #. TRANS: Confirmation text after initial registration.
 #. TRANS: %s an e-mail address.
@@ -58,40 +57,40 @@ msgid ""
 "An email was sent to %s to confirm that address. Check your email inbox for "
 "instructions."
 msgstr ""
-"Isang e-liham ang ipinadala sa %s upang tiyakin ang tirahang iyon. Suriin "
-"ang kahong-tanggapan ng e-lliham para sa mga panuto."
+"È stata inviata un'email a  %s  per confermare l'indirizzo. Controlla la tua "
+"casella di posta per le istruzioni."
 
 #. TRANS: Client exception trown when trying to set password with an invalid confirmation code.
 msgid "No confirmation thing."
-msgstr "Walang bagay ng pagtitiyak."
+msgstr "Nessuna conferma."
 
 #. TRANS: Error text when trying to register without agreeing to the terms.
 msgid "You must accept the terms of service and privacy policy to register."
 msgstr ""
-"Kailangan mong tanggapin ang mga tuntunin ng palingkuran at patakaran sa "
-"paglilihim upang makapagpatala."
+"Per registrarsi è necessario accettare i termini di servizio e le norme "
+"sulla privacy."
 
 #. TRANS: Error text when trying to register without a password.
 msgid "You must set a password"
-msgstr "Kailangan mong magtakda ng isang hudyat"
+msgstr "È necessario impostare una password"
 
 #. TRANS: Error text when trying to register with too short a password.
 msgid "Password must be 6 or more characters."
-msgstr "Ang hudyat ay dapat na 6 o mahigit pang mga panitik."
+msgstr "La password deve essere di 6 caratteri o più."
 
 #. TRANS: Error text when trying to register without providing the same password twice.
 msgid "Passwords do not match."
-msgstr "Hindi magkatugma ang mga hudyat."
+msgstr "Le password non corrispondono."
 
 #. TRANS: Exception trown when using an invitation multiple times.
 msgid "Failed to register user."
-msgstr "Nabigo sa pagtatala ng tagagamit."
+msgstr "Impossibile eseguire la registrazione utente."
 
 #. TRANS: Subject for confirmation e-mail.
 #. TRANS: %s is the StatusNet sitename.
 #, php-format
 msgid "Confirm your registration on %s"
-msgstr "Tiyakin ang pagpapatala mo sa %s"
+msgstr "Confermare la registrazione su %s"
 
 #. TRANS: Body for confirmation e-mail.
 #. TRANS: %1$s is the StatusNet sitename, %2$s is the confirmation URL.
@@ -104,58 +103,57 @@ msgid ""
 "%2$s\n"
 "If it was not you, you can safely ignore this message."
 msgstr ""
-"May isang tao (marahil ay ikaw) ang humiling ng isang akawnt sa %1$s na "
-"ginagamit ang tirahang ito ng e-liham.\n"
-"Upang tiyakin ang tirahan, pindutin ang sumusunod na URL o kopyahin itong "
-"papaloob sa halang ng tirahan ng pantingin-tingin mo.\n"
+"Qualcuno (probabilmente tu) ha richiesto un account su %1$s utilizzando "
+"questo indirizzo email.\n"
+"Per confermare l'indirizzo, clicca il seguente URL o copiarlo nella barra "
+"degli indirizzi del tuo browser.\n"
 "%2$s\n"
-"Kung hindi ikaw ito, maaari mong ligtas na hindi pansinin ang mensaheng ito."
+"Se non lo hai richiesto tu, ignora tranquillamente questo messaggio."
 
 #. TRANS: Form instructions.
 msgid "Enter your email address to register for an account."
-msgstr ""
-"Ipasok ang iyong tirahan ng e-liham upang magpatala para sa isang akawnt."
+msgstr "Inserisci il tuo indirizzo email per registrare un account."
 
 #. TRANS: Field label on form for registering an account.
 msgctxt "LABEL"
 msgid "E-mail address"
-msgstr "Tirahan ng e-liham"
+msgstr "Indirizzo e-mail"
 
 #. TRANS: Button text for registering an account.
 #. TRANS: Button text for action to register.
 msgctxt "BUTTON"
 msgid "Register"
-msgstr "Magpatala"
+msgstr "Registrati"
 
 #. TRANS: Form instructions.
 msgid "Enter a password to confirm your new account."
-msgstr "Magpasok ng isang hudyat upang tiyakin ang bagong akawnt mo."
+msgstr "Immettere una password per confermare il tuo nuovo account."
 
 #. TRANS: Field label in e-mail registration form.
 msgctxt "LABEL"
 msgid "User name"
-msgstr "Pangalan ng tagagamit"
+msgstr "Nome dell'utente"
 
 #. TRANS: Field label.
 msgid "Email address"
-msgstr "Tirahan ng e-liham"
+msgstr "Indirizzo email"
 
 #. TRANS: Field label on account registration page.
 msgid "Password"
-msgstr "Hudyat"
+msgstr "Password"
 
 #. TRANS: Field title on account registration page.
 msgid "6 or more characters."
-msgstr "6 o mahigit pang mga panitik."
+msgstr "6 caratteri o più."
 
 #. TRANS: Field label on account registration page. In this field the password has to be entered a second time.
 msgctxt "PASSWORD"
 msgid "Confirm"
-msgstr "Tiyakin"
+msgstr "Conferma"
 
 #. TRANS: Field title on account registration page.
 msgid "Same as password above."
-msgstr "Katulad ng hudyat na nasa itaas."
+msgstr "La stessa password di sopra."
 
 #. TRANS: Checkbox title for terms of service and privacy policy.
 #, php-format
@@ -163,8 +161,8 @@ msgid ""
 "I agree to the <a href=\"%1$s\">Terms of service</a> and <a href=\"%1$s"
 "\">Privacy policy</a> of this site."
 msgstr ""
-"Sumasang-ayon ako sa <a href=\"%1$s\">Mga tuntunin ng palingkuran</a> at <a "
-"href=\"%1$s\">Patakaran sa paglilihim</a> ng pook na ito."
+"Sono d'accordo con i <a href=\"%1$s\">Termini di utilizzo</a> e le <a href="
+"\"%1$s\">Norme sulla privacy</a> di questo sito."
 
 #. TRANS: Error text when trying to register with an already registered e-mail address.
 #. TRANS: %s is the URL to recover password at.
@@ -173,20 +171,20 @@ msgid ""
 "A user with that email address already exists. You can use the <a href=\"%s"
 "\">password recovery</a> tool to recover a missing password."
 msgstr ""
-"Umiiral na ang isang tagagamit na may ganyang tirahan ng e-liham. Maaari "
-"mong gamitin ang kasangkapang <a href=\"%s\">muling pagpapanumbalik ng "
-"hudyat</a> upang muling mapanumbalik ang isang nawawalang hudyat."
+"Esiste già un utente con quell'indirizzo email. Probabilmente sei già "
+"registrato e non ricordi la password, per recuperarla puoi utilizzare lo "
+"strumento <a href=\"%s\">recupero password</a>."
 
 #. TRANS: Error text when trying to register with an invalid e-mail address.
 msgid "Not a valid email address."
-msgstr "Hindi isang katanggap-tanggap na tirahan ng e-liham."
+msgstr "Non è un indirizzo email valido."
 
 #. TRANS: Subject for confirmation e-mail.
 #. TRANS: %s is the StatusNet sitename.
 #, php-format
 msgid "Welcome to %s"
-msgstr "Maligayang pagdating sa %s"
+msgstr "Benvenuto su %s"
 
 #. TRANS: Plugin description.
 msgid "Use email only for registration."
-msgstr "Gamitin lamang ang e-liham para sa pagpapatala."
+msgstr "Utilizza l'email solo per la registrazione."

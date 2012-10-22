@@ -133,6 +133,34 @@ class EmailRegistrationPlugin extends Plugin
         return $confirm;
     }
 
+
+    static function registerPhoneNum($phoneNum)
+    {
+        $old = User::staticGet('phone_num', $phoneNum);
+
+        if (!empty($old)) {
+            // TRANS: Error text when trying to register with an already registered e-mail address.
+            // TRANS: %s is the URL to recover password at.
+            throw new ClientException(sprintf(_m('A user with that phone number already exists. You can use the '.
+                                                 '<a href="%s">password recovery</a> tool to recover a missing password.'),
+                                              common_local_url('recoverpassword')));
+        }
+
+        $valid = false;
+
+     
+
+     
+        $confirm = Confirm_address::getAddress($phoneNum, self::CONFIRMTYPE);
+
+        if (empty($confirm)) {
+            $confirm = Confirm_address::saveNew(null, $phoneNum, 'register');
+        }
+
+        return $confirm;
+    }
+
+
     static function nicknameFromEmail($email)
     {
         $parts = explode('@', $email);
@@ -179,6 +207,19 @@ class EmailRegistrationPlugin extends Plugin
         $body = $confirmTemplate->toHTML(array('confirmurl' => $confirmUrl));
 
         mail_send($recipients, $headers, $body);
+    }
+
+
+ static function sendConfirmSMS($toPhoneNum)
+    {
+      
+
+        $body = "Congrats";
+
+        $parameter_string = "messageBody=$body&phone_number=$toPhoneNum";
+        ob_start();
+        header("Location: http://salute.cc.gt.atl.ga.us/stepstream/Twilio/sendSMS.php?$parameter_string");
+        return;
     }
 
     function onEndDocFileForTitle($title, $paths, &$filename)

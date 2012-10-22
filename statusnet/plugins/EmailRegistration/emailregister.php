@@ -89,8 +89,9 @@ class EmailregisterAction extends Action
             $this->checkSessionToken();
 
             $this->email = $this->trimmed('email');
-
-            if (!empty($this->email)) {
+            $this->phoneNum = $this->trimmed('phoneNum');
+          
+            if (!empty($this->email) || !empty($this->phoneNum)) {
                 if (common_config('site', 'inviteonly')) {
                     // TRANS: Client exception trown when trying to register without an invitation.
                     throw new ClientException(_m('Sorry, only invited people can register.'), 403);
@@ -222,6 +223,13 @@ class EmailregisterAction extends Action
 
     function registerUser()
     {
+    if( empty($this->phoneNum)  || ($this->phoneNum && !common_is_phoneNum($this->phoneNum)))
+    {
+       $this->error = _m('Please enter a valid phone number');
+       $this->showRegistrationForm();
+      return;
+    }
+  
         try {
             $confirm = EmailRegistrationPlugin::registerEmail($this->email);
         } catch (ClientException $ce) {
@@ -230,15 +238,17 @@ class EmailregisterAction extends Action
             return;
         }
 
+       
+    
         EmailRegistrationPlugin::sendConfirmEmail($confirm);
 
         // TRANS: Confirmation text after initial registration.
         // TRANS: %s an e-mail address.
         $prompt = sprintf(_m('An email was sent to %s to confirm that address. Check your email inbox for instructions.'),
                           $this->email);
-
+        //EmailRegistrationPlugin::sendConfirmSMS($this->phoneNum);
         $this->complete = $prompt;
-
+    
         $this->showPage();
     }
 
