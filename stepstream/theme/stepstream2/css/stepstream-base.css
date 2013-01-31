@@ -940,16 +940,16 @@ content: ":";
 .aside {
 	width:270px;
 	position:fixed;
-	top:130px;
+	top:120px;
 	left:10px;
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
 	background-color:#000000;
 	background-color: rgba(0, 0, 0, 0.3);
 	-pie-background: rgba(0,0,0,.3);
--webkit-border-radius: 8px 8px 8px 8px;
--moz-border-radius: 8px 8px 8px 8px;
-border-radius: 8px 8px 8px 8px;
+-webkit-border-radius: 0px 0px 8px 8px;
+-moz-border-radius: 0px 0px 8px 8px;
+border-radius: 0px 0px 8px 8px;
 	clear:both;
 	behavior: url(/PIE.php);
 }

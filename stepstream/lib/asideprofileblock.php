@@ -140,8 +140,8 @@ class AsideProfileBlock extends ProfileBlock
 
         $this->elementStart('div', array('id' => 'aside-profile-section',
                                             'class' => 'aside-profile-section'));
-        $this->elementStart('div', array('id' => 'avatarbig',
-                                            'class' => 'avatarbig'));		
+        $this->elementStart('div', array('id' => 'asideprofile',
+                                            'class' => 'asideprofile'));		
         $size = $this->avatarSize();
         $this->out->element(
             'img',
