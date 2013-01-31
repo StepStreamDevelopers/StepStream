@@ -93,9 +93,9 @@ class PersonalGroupNav extends Menu
            $this->out->menuItem(common_local_url('game', array('nickname' =>
                                                                      $nickname)),
                                      // TRANS: Menu item in personal group navigation menu.
-                                     _m('MENU','Play River Run!'),
+                                     _m('MENU','Play Puddle Jumper!'),
                                      // TRANS: Menu item title in personal group navigation menu.
-                                     _('Play River Run!'),
+                                     _('Play Puddle Jumper!'),
                                      $mine && $action =='game', 'nav_middle');
 
                $this->out->menuItem(common_local_url('myprofile', array('nickname' =>
