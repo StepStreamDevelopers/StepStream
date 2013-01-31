@@ -1,0 +1,642 @@
+/** theme: StepStream (extends Neo & Base)
+ *
+ * @author    Andrew Miller
+ * @copyright 2012 Andrew Miller
+ * @license   http://creativecommons.org/licenses/by/3.0/ Creative Commons Attribution 3.0 Unported
+ * @link      http://stephealth.org/
+ */
+
+
+/* all the tangled wires from StatusNet */
+@import url("stepstream-base.css");
+
+/* major StepStream styles */
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	background-color:#8CD6EA;
+	background-image:url('../images/hill-trees_smaller.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-attachment:fixed;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+a {
+	text-decoration:none;
+	}
+
+#wrap {
+}
+
+#header {
+	position:fixed;
+	width: 270px;
+	height:110px;
+	background-color:#333333;
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+	z-index:0;
+	background-color: rgba(0, 0, 0, 0.6);
+	-pie-background: rgba(0,0,0,.6);
+	-webkit-border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	behavior: url(/PIE.php);
+}
+
+/* logo */
+#site_contact {
+	position:fixed;
+	margin-left:2px;
+	margin-top:5px;
+}
+
+/* login logout settings etc. */
+#site_nav_global_primary {
+	color: #CCCCCC;
+	position:fixed;
+	top:90px;
+	left:20px;
+	font-size:.95em;
+}
+
+#site_nav_global_primary li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 5px;
+}
+
+#site_nav_global_primary a {
+	color:#CCCCCC;
+}
+
+/* main content wrapper */
+#core{
+	width: 400px;
+	margin-left: 0px;
+	margin-right: auto;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+/* site nav */
+#site_nav_local_views {
+	position:fixed;
+	left:300px;
+	top:10px;
+	margin-left:0px; 
+	float:left;
+	z-index:100;
+	margin-right:0px;
+	font-size:1.6em;
+}
+
+#site_nav_local_views li{
+	margin:0px;
+	padding:0px;
+	display: inline;
+	list-style-type: none;
+	text-decoration:none;
+}
+
+#site_nav_local_views a{
+	text-decoration:none;
+	float:left;
+}
+
+
+.current a{
+	font-weight:bold;
+}
+
+.me_block {
+	float:left;
+	width:770px;
+	background-color:#ffffff;
+	background-color: rgba(255, 255, 255, 0.6);
+	-pie-background: rgba(255, 255, 255, 0.6);
+	padding: 45px 15px 15px 15px;
+	behavior: url(/PIE.php);
+}
+
+
+/* left button */
+#nav_left a:hover, #nav_left.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+-webkit-border-radius: 8px 0px 0px 8px;
+-moz-border-radius: 8px 0px 0px 8px;
+border-radius: 8px 0px 0px 8px;
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
+}
+
+
+#nav_left a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #EEEEEE;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEEEEE), to(#BBBBBB));
+background: -webkit-linear-gradient(#EEEEEE, #BBBBBB);
+background: -moz-linear-gradient(#EEEEEE, #BBBBBB);
+background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
+background: -o-linear-gradient(#EEEEEE, #BBBBBB);
+background: linear-gradient(#EEEEEE, #BBBBBB);
+-pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+-webkit-border-radius: 8px 0px 0px 8px;
+-moz-border-radius: 8px 0px 0px 8px;
+border-radius: 8px 0px 0px 8px;
+	border-style: none solid none none;
+	border-width:2px;
+	border-color:#888888;
+	behavior: url(/PIE.php);
+
+}
+
+/*middle buttons*/
+#nav_middle a:hover, #nav_middle.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
+}
+
+
+#nav_middle a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #EEEEEE;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEEEEE), to(#BBBBBB));
+background: -webkit-linear-gradient(#EEEEEE, #BBBBBB);
+background: -moz-linear-gradient(#EEEEEE, #BBBBBB);
+background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
+background: -o-linear-gradient(#EEEEEE, #BBBBBB);
+background: linear-gradient(#EEEEEE, #BBBBBB);
+-pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+border-style: none solid none none;
+border-width:2px;
+border-color:#888888;
+behavior: url(/PIE.php);
+
+}
+
+/* right button*/
+#nav_right a:hover, #nav_right.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+-webkit-border-radius: 0px 8px 8px 0px;
+-moz-border-radius: 0px 8px 8px 0px;
+border-radius: 0px 8px 8px 0px;
+behavior: url(/PIE.php);
+}
+
+
+#nav_right a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #EEEEEE;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#EEEEEE), to(#BBBBBB));
+background: -webkit-linear-gradient(#EEEEEE, #BBBBBB);
+background: -moz-linear-gradient(#EEEEEE, #BBBBBB);
+background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
+background: -o-linear-gradient(#EEEEEE, #BBBBBB);
+background: linear-gradient(#EEEEEE, #BBBBBB);
+-pie-background: linear-gradient(#EEEEEE, #BBBBBB);
+-webkit-border-radius: 0px 8px 8px 0px;
+-moz-border-radius: 0px 8px 8px 0px;
+border-radius: 0px 8px 8px 0px;
+behavior: url(/PIE.php);
+
+}
+
+
+/* only button */
+#nav_only a:hover, #nav_only.current a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+behavior: url(/PIE.php);
+}
+
+
+#nav_only a{
+color: #333333;
+text-decoration: none;
+padding: 3px 10px 3px 10px;
+background: #BBBBBB;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#BBBBBB), to(#eeeeee));
+background: -webkit-linear-gradient(#BBBBBB, #eeeeee);
+background: -moz-linear-gradient(#BBBBBB, #eeeeee);
+background: -ms-linear-gradient(#BBBBBB, #eeeeee);
+background: -o-linear-gradient(#BBBBBB, #eeeeee);
+background: linear-gradient(#BBBBBB, #eeeeee);
+-pie-background: linear-gradient(#BBBBBB, #eeeeee);
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+behavior: url(/PIE.php);
+}
+
+
+#site_nav_local_views ul{
+	margin:0px;
+	display: inline;
+	list-style-type: none;
+}
+
+.nav {
+	padding:0px 0px 5px 0px;
+	behavior: url(/PIE.php);
+
+}
+
+.navitalics {
+	padding-right:10px;
+}
+
+#navtop {
+	text-align:right;
+
+}
+
+.subnav {
+	margin:0px;
+	padding: 0px 0px 80px 60px;
+	
+}
+
+.subnav li{
+	display: inline;
+	list-style-type: none;
+	padding:0px;
+	margin:0px;
+	float:left;
+}
+
+.closebutton {
+	color:#DDDDDD;
+	clear:none;
+	text-decoration:underline;
+	float:left;
+	padding-left:5px;
+}
+
+.settingsnav {
+	margin:0px;
+	padding: 0px;
+	display:block;
+	position:absolute;
+	width:700px;
+	top:60px;
+	left:150px;
+	height:100px;
+	
+}
+
+.settingsnav ul{
+	padding:0px;
+	float:left;
+	margin:0px;
+}
+
+.settingsnav li{
+	display: inline;
+	list-style-type: none;
+	padding:5px;
+	margin:0px;
+	float:left;
+}
+
+.settingsnav a {
+	color:black;
+	text-decoration:underline;
+	font-size:1.5em;
+}
+
+.nav li{
+	display: inline;
+	list-style-type: none;
+}
+
+/* plugins wrapper */
+.input_forms {
+	width:470px;
+	position:absolute;
+	top:60px;
+	left:300px;
+	padding: 5px 0px 0px 0px;
+	margin-bottom: 20px;
+	background-color:#FFFFFF;
+	box-shadow: #666 1px 1px 5px;
+	-moz-box-shadow: 1px 1px 5px #666;
+	clear:both;
+	behavior: url(../pie/PIE.htc);
+}
+
+#input_form_status {
+	margin-left:10px;
+}
+
+#input_form_status, #input_form_status textarea{
+	width:350px;
+	padding:0px;
+}
+
+
+
+.system_notice {
+	width:400px;
+	position:absolute;
+	top:50px;
+	left:300px;
+	padding:5px;
+
+	margin-bottom: 10px;
+	margin-top:10px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.4);
+	-pie-background: rgba(0,0,0,.4);
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	color: #333333;
+	behavior: url(/PIE.php);
+
+}
+
+
+.system_notice a{
+	color: #DDDDDD;
+}
+
+
+#content_inner fieldset {
+	position:relative;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	-pie-background: rgba(255,255,255,.6);
+	behavior: url(/PIE.php);
+}
+
+.notice-options fieldset {
+	margin:0px;
+	padding:0px;
+}
+
+
+
+legend {
+	display:block;
+	padding: 30px 0px 0px 0px;
+	behavior: url(/PIE.php);
+}
+
+
+/* plugins details */
+.input_forms li {
+	display:inline;
+	list-style-type: none;
+	padding-right:10px;
+}
+
+
+.input_form { 
+    position: relative;
+	clear:both;
+    width: 520px;
+    padding-bottom: 10px;
+    display: none;
+}
+
+/* Settings  area*/
+#fieldset_email {
+	padding-top:0px;
+	width:100%;
+	padding-bottom: 20px;
+}
+
+#fieldset_email h2 {
+	padding-left:20px;
+	padding-top:10px;
+}
+
+#fieldset_email h4 {
+	float:left;
+	clear:left;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	line-height:1em;
+	margin-bottom:5px;
+}
+
+#fieldset_email input.checkbox, #fieldset_email input.radio {
+	margin-left:20px;
+}
+
+.smsinstructions {
+	float:left;
+	padding-left:20px;
+	clear:both;
+	width:500px;
+}
+
+#fieldset_email label.checkbox, #fieldset_email label.radio {
+	max-width:90%;
+}
+
+#fieldset_email li {
+	margin-bottom: .3em;
+}
+
+#settings_sms, #settings_email_preferences, #settings_email_address {
+	width:500px;
+	margin-left:20px;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+#form_settings_email  {
+	width:600px;
+}
+
+
+/* Profile Stuff */
+.profile-section {
+	position:relative;
+	float:left;
+	width:770px;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	-pie-background: rgba(255, 255, 255, 0.6);
+	padding: 15px 15px 5px 15px;
+	margin: 0px 0px 10px 0px;
+	behavior: url(/PIE.php);
+}
+.stats {
+	font-weight:bold;
+	font-size:.95em;
+	line-height:1em;
+}
+
+.statnum {
+	font-size:.95em;
+	display:block;
+	line-height:1.2em;
+}
+
+.profilesub {
+	font-size:1.2em;
+	display:block;
+	font-weight:bold;
+}
+
+.ur_face {
+	display:block;
+}
+.avatarbig {
+
+ 	width:150px;
+ 	padding-right:10px;
+	float:left;
+}
+
+.stepgraph {
+	float:left;
+	padding-left:10px;
+	border-left-width:1px;
+    border-left-style:solid;
+    border-left-color:#444444;
+}
+
+
+/* Login Stuff */
+.form_login {
+    line-height: 1em;
+	width:220px;
+	float:right;
+	margin-top:-12px;
+	margin-right:10px;
+}
+
+.form_login legend {
+//	top:0px;
+}
+
+.form_login fieldset {
+	position:relative;
+	background-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.6);
+	-pie-background: rgba(255, 255, 255, 0.6);
+	padding: 45px 15px 15px 15px;
+	behavior: url(/PIE.php);
+}
+
+
+.welcome_content {
+	width:900px;
+	float:left;
+	clear:both;
+	margin-top:20px;
+}
+
+.welcome{
+	width:580px;
+	float:left;
+	padding: 5px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.4);
+	-pie-background: rgba(0, 0, 0, 0.4);
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	color: #DDDDDD;
+	behavior: url(/PIE.php);
+
+}
+/* ========================= hidden ========================= */
+
+
+.org {
+	display:none;
+}
+
+.hiddenform {
+	display:none;
+}
+/*
+#header-search {
+	display:none;
+}
+
+#content h1 {
+	display:none;
+}
+
+.aside {
+	display:none;
+	clear:both;
+}
+
+.form_notice_placeholder {
+	display:none;
+}
+*/
+#footer {
+	clear:both;
+	display:none;
+}
+	
+	

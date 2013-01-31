@@ -698,7 +698,7 @@ $this->script('graphs.js');
 			$attrs_stream = array('id' => 'input_form_nav_event',
                                'class' => 'input_form_nav_tab');
 
-		    $this->elementStart('li', $attrs_stream);
+/*		    $this->elementStart('li', $attrs_stream);
 
             $this->element('a',
                                array('href' => 'javascript:SN.U.switchInputFormTab("event")'),
@@ -717,12 +717,12 @@ $this->script('graphs.js');
 
 			$attrs_status = array('id' => 'input_form_nav_status',
                                'class' => 'input_form_nav_tab');
-
+*/
 			$this->elementStart('li', $attrs_status);
 
             $this->element('a',
                                array('href' => 'javascript:SN.U.switchInputFormTab("status")'),
-                               "Say something");
+                               "How's it going?");
             $this->elementEnd('li');
 		       
         $this->elementEnd('ul');
@@ -938,6 +938,20 @@ $this->script('graphs.js');
     }
 
     /**
+     * If there's a logged-in user, show aside profile block
+     *
+     * @return nothing
+     */
+    function showAsideProfileBlock()
+    {
+        if (common_logged_in()) {
+            $block = new DefaultAsideProfileBlock($this);
+            $block->show();
+        }
+    }
+
+
+    /**
      * Show local navigation.
      *
      * SHOULD overload
@@ -1120,22 +1134,23 @@ $this->script('graphs.js');
      */
     function showAside()
     {
-        /*$this->elementStart('div', array('id' => 'aside_primary',
+        $this->elementStart('div', array('id' => 'aside_primary',
                                          'class' => 'aside'));
-        $this->showProfileBlock();
+        $this->showAsideProfileBlock();
         if (Event::handle('StartShowObjectNavBlock', array($this))) {
             $this->showObjectNavBlock();
             Event::handle('EndShowObjectNavBlock', array($this));
         }
-        if (Event::handle('StartShowSections', array($this))) {
+ /*       if (Event::handle('StartShowSections', array($this))) {
             $this->showSections();
             Event::handle('EndShowSections', array($this));
         }
         if (Event::handle('StartShowExportData', array($this))) {
             $this->showExportData();
             Event::handle('EndShowExportData', array($this));
-        } 
-        $this->elementEnd('div');*/
+        }
+*/
+        $this->elementEnd('div');
     }
 
     /**

@@ -73,7 +73,7 @@ class ThreadedNoticeList extends NoticeList
     {
         $this->out->elementStart('div', array('id' =>'notices_primary'));
         // TRANS: Header for Notices section.
-        $this->out->element('h2', null, _m('HEADER','Notices'));
+        //$this->out->element('h2', null, _m('HEADER','Latest updates'));
         $this->out->elementStart('ol', array('class' => 'notices threaded-notices xoxo'));
 
 		$notices = $this->notice->fetchAll();

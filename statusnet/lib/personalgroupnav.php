@@ -68,11 +68,11 @@ class PersonalGroupNav extends Menu
         $this->out->elementStart('ul', array('class' => 'nav')); 
 
        if (Event::handle('StartPersonalGroupNav', array($this))) {
-               $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
+               $this->out->menuItem(common_local_url('public'), _m('MENU','Home'), 
                // TRANS: Menu item title in search group navigation panel.
-                _('Stream'), $this->actionName == 'public', 'nav_left');
+                _('Home'), $this->actionName == 'public', 'nav_left');
        
-            $this->out->menuItem(common_local_url('alltips', array('nickname' =>
+/*            $this->out->menuItem(common_local_url('alltips', array('nickname' =>
                                                                    $nickname)),
                                  // TRANS: Menu item in personal group navigation menu.
                                  _m('MENU','Tips'),
@@ -84,7 +84,7 @@ class PersonalGroupNav extends Menu
                                  ) && $action !=('game'
                                  ), 'nav_middle');
       
-
+*/
             $cur = common_current_user();
 
             if ($cur && $cur->id == $user->id &&
@@ -93,17 +93,17 @@ class PersonalGroupNav extends Menu
            $this->out->menuItem(common_local_url('game', array('nickname' =>
                                                                      $nickname)),
                                      // TRANS: Menu item in personal group navigation menu.
-                                     _m('MENU','Game'),
+                                     _m('MENU','Play River Run!'),
                                      // TRANS: Menu item title in personal group navigation menu.
-                                     _('Game!'),
+                                     _('Play River Run!'),
                                      $mine && $action =='game', 'nav_middle');
 
                $this->out->menuItem(common_local_url('myprofile', array('nickname' =>
                                                                      $nickname)),
                                      // TRANS: Menu item in personal group navigation menu.
-                                     _m('MENU','Me'),
+                                     _m('MENU','Your Steps'),
                                      // TRANS: Menu item title in personal group navigation menu.
-                                     _('My steps and profile'),
+                                     _('Your steps and profile'),
                                      $mine && $action =='myprofile', 'nav_right');
                                      
              

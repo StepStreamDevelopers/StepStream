@@ -78,11 +78,11 @@ class PrimaryNav extends Menu
                                 'nav_logout');
                                 $this->out->element('br');
                 $name = $user->getProfile()->getBestName();
-                $this->out->elementStart('i');
+/*                $this->out->elementStart('i');
                 $this->out->element('span',array('class' => 'navitalics'),
                             'Hello, ' . $name . '!');
                 $this->out->elementEnd('i');
-            } else {
+ */           } else {
                 $this->action->menuItem(common_local_url('login'),
                                 // TRANS: Menu item in primary navigation panel.
                                 _m('MENU','Login'),

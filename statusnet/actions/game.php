@@ -235,7 +235,7 @@ class GameAction extends ProfileAction
 
     function showNotices()
     {
-        $notice = empty($this->tag)
+/*        $notice = empty($this->tag)
           ? $this->user->getNotices(($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1)
             : $this->user->getTaggedNotices($this->tag, ($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1, 0, 0, null);
 
@@ -255,6 +255,7 @@ class GameAction extends ProfileAction
         }
         $this->pagination($this->page>1, $cnt>NOTICES_PER_PAGE, $this->page,
                           'showstream', $args);
+*/
     }
 
     function showAnonymousMessage()

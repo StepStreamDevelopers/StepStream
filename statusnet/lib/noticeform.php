@@ -209,7 +209,7 @@ class NoticeForm extends Form
             // XXX: vary by defined max size
             $this->out->element('textarea', array('class' => 'notice_data-text',
                                                   'cols' => 35,
-                                                  'rows' => 4,
+                                                  'rows' => 1,
                                                   'name' => 'status_textarea'),
                                 ($this->content) ? $this->content : '');
 
@@ -303,7 +303,7 @@ class NoticeForm extends Form
                                            'type' => 'submit',
                                            // TRANS: Button text for sending notice.
                                            'value' => _m('BUTTON', 'Submit')));
-                $this->out->element('a',array('href' => 'javascript:SN.U.switchInputFormTab("null")', 'id' => 'closestatus' ,'class' => 'closebutton'),
-                            'Close');
+/*                $this->out->element('a',array('href' => 'javascript:SN.U.switchInputFormTab("null")', 'id' => 'closestatus' ,'class' => 'closebutton'),
+                            'Close'); */
     }
 }

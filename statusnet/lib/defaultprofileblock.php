@@ -45,7 +45,7 @@ if (!defined('STATUSNET')) {
  * @link      http://status.net/
  */
 
-class DefaultProfileBlock extends AccountProfileBlock
+class DefaultProfileBlock extends AsideProfileBlock
 {
     function __construct($out)
     {
