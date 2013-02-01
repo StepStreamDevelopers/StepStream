@@ -938,9 +938,9 @@ content: ":";
 /* aside primary specific styles */
 
 .aside {
-	width:240px;
+	width:270px;
 	position:fixed;
-	top:100px;
+	top:120px;
 	left:10px;
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
@@ -2173,7 +2173,7 @@ body.realtime-popup {
 #content_inner {
 	position:absolute;
 	top:170px;
-	left:250px;
+	left:290px;
 	}
 
 
