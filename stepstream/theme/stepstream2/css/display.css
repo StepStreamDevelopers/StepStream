@@ -32,8 +32,8 @@ a {
 
 #header {
 	position:fixed;
-	width: 270px;
-	height:110px;
+	width: 240px;
+	height:90px;
 	background-color:#333333;
 	margin-top:10px;
 	margin-left:10px;
@@ -64,7 +64,7 @@ a {
 #site_nav_global_primary {
 	color: #CCCCCC;
 	position:fixed;
-	top:90px;
+	top:75px;
 	left:20px;
 	font-size:.95em;
 }
@@ -91,13 +91,13 @@ a {
 /* site nav */
 #site_nav_local_views {
 	position:fixed;
-	left:300px;
+	left:260px;
 	top:10px;
 	margin-left:0px; 
 	float:left;
 	z-index:100;
 	margin-right:0px;
-	font-size:1.6em;
+	font-size:1.4em;
 }
 
 #site_nav_local_views li{
@@ -145,9 +145,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px 0px 0px 8px;
 -moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -167,9 +167,9 @@ background: linear-gradient(#EEEEEE, #BBBBBB);
 -webkit-border-radius: 8px 0px 0px 8px;
 -moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
+	border-style: solid solid solid solid;
+	border-width:1px;
+	border-color:#666666;
 	behavior: url(/PIE.php);
 
 }
@@ -187,9 +187,9 @@ background: -ms-linear-gradient(#BBBBBB, #eeeeee);
 background: -o-linear-gradient(#BBBBBB, #eeeeee);
 background: linear-gradient(#BBBBBB, #eeeeee);
 -pie-background: linear-gradient(#BBBBBB, #eeeeee);
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -206,9 +206,9 @@ background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
 background: -o-linear-gradient(#EEEEEE, #BBBBBB);
 background: linear-gradient(#EEEEEE, #BBBBBB);
 -pie-background: linear-gradient(#EEEEEE, #BBBBBB);
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 
 }
@@ -229,6 +229,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 0px 8px 8px 0px;
 -moz-border-radius: 0px 8px 8px 0px;
 border-radius: 0px 8px 8px 0px;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -248,6 +251,9 @@ background: linear-gradient(#EEEEEE, #BBBBBB);
 -webkit-border-radius: 0px 8px 8px 0px;
 -moz-border-radius: 0px 8px 8px 0px;
 border-radius: 0px 8px 8px 0px;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 
 }
@@ -269,6 +275,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
+border-style: solid solid solid solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -288,6 +297,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
+border-style: solid solid solid solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -377,7 +389,7 @@ behavior: url(/PIE.php);
 	width:470px;
 	position:absolute;
 	top:60px;
-	left:300px;
+	left:260px;
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
 	background-color:#FFFFFF;
