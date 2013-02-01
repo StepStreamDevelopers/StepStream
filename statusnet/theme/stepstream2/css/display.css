@@ -145,9 +145,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px 0px 0px 8px;
 -moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid solid solid solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -167,9 +167,9 @@ background: linear-gradient(#EEEEEE, #BBBBBB);
 -webkit-border-radius: 8px 0px 0px 8px;
 -moz-border-radius: 8px 0px 0px 8px;
 border-radius: 8px 0px 0px 8px;
-	border-style: none solid none none;
-	border-width:2px;
-	border-color:#888888;
+	border-style: solid solid solid solid;
+	border-width:1px;
+	border-color:#666666;
 	behavior: url(/PIE.php);
 
 }
@@ -187,9 +187,9 @@ background: -ms-linear-gradient(#BBBBBB, #eeeeee);
 background: -o-linear-gradient(#BBBBBB, #eeeeee);
 background: linear-gradient(#BBBBBB, #eeeeee);
 -pie-background: linear-gradient(#BBBBBB, #eeeeee);
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -206,9 +206,9 @@ background: -ms-linear-gradient(#EEEEEE, #BBBBBB);
 background: -o-linear-gradient(#EEEEEE, #BBBBBB);
 background: linear-gradient(#EEEEEE, #BBBBBB);
 -pie-background: linear-gradient(#EEEEEE, #BBBBBB);
-border-style: none solid none none;
-border-width:2px;
-border-color:#888888;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 
 }
@@ -229,6 +229,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 0px 8px 8px 0px;
 -moz-border-radius: 0px 8px 8px 0px;
 border-radius: 0px 8px 8px 0px;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -248,6 +251,9 @@ background: linear-gradient(#EEEEEE, #BBBBBB);
 -webkit-border-radius: 0px 8px 8px 0px;
 -moz-border-radius: 0px 8px 8px 0px;
 border-radius: 0px 8px 8px 0px;
+border-style: solid solid solid none;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 
 }
@@ -269,6 +275,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
+border-style: solid solid solid solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
@@ -288,6 +297,9 @@ background: linear-gradient(#BBBBBB, #eeeeee);
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
+border-style: solid solid solid solid;
+border-width:1px;
+border-color:#666666;
 behavior: url(/PIE.php);
 }
 
