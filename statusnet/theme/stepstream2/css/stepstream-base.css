@@ -469,7 +469,7 @@ behavior: url(/PIE.php);
     padding-top: 10px;
     clear: both;
     margin-left:10px;
-    width:500px;
+    width:400px;
 }
 
 #notices_primary h2 {
@@ -938,7 +938,7 @@ content: ":";
 /* aside primary specific styles */
 
 .aside {
-	width:270px;
+	width:235px;
 	position:fixed;
 	top:120px;
 	left:10px;
@@ -2173,7 +2173,7 @@ body.realtime-popup {
 #content_inner {
 	position:absolute;
 	top:170px;
-	left:290px;
+	left:250px;
 	}
 
 

@@ -32,7 +32,7 @@ a {
 
 #header {
 	position:fixed;
-	width: 270px;
+	width: 235px;
 	height:110px;
 	background-color:#333333;
 	margin-top:10px;
@@ -91,13 +91,13 @@ a {
 /* site nav */
 #site_nav_local_views {
 	position:fixed;
-	left:300px;
+	left:260px;
 	top:10px;
 	margin-left:0px; 
 	float:left;
 	z-index:100;
 	margin-right:0px;
-	font-size:1.4em;
+	font-size:1.2em;
 }
 
 #site_nav_local_views li{
@@ -386,10 +386,10 @@ behavior: url(/PIE.php);
 
 /* plugins wrapper */
 .input_forms {
-	width:470px;
+	width:380px;
 	position:absolute;
 	top:60px;
-	left:300px;
+	left:260px;
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
 	background-color:#FFFFFF;
