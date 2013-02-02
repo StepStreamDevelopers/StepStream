@@ -272,6 +272,7 @@ class ProfileListItem extends Widget
 
     function startActions()
     {
+
         $this->out->elementStart('div', 'entity_actions');
         $this->out->elementStart('ul');
     }

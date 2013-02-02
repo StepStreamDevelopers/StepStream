@@ -67,11 +67,11 @@ class GameAction extends ProfileAction
             if ($this->page == 1) {
                 // TRANS: Page title showing tagged notices in one user's timeline.
                 // TRANS: %1$s is the username, %2$s is the hash tag.
-                return sprintf(_('Notices by %1$s tagged %2$s'), $base, $this->tag);
+                return sprintf(_('Game'), $base, $this->tag);
             } else {
                 // TRANS: Page title showing tagged notices in one user's timeline.
                 // TRANS: %1$s is the username, %2$s is the hash tag, %3$d is the page number.
-                return sprintf(_('Notices by %1$s tagged %2$s, page %3$d'), $base, $this->tag, $this->page);
+                return sprintf(_('Game'), $base, $this->tag, $this->page);
             }
         } else {
             if ($this->page == 1) {
@@ -101,6 +101,7 @@ class GameAction extends ProfileAction
     function showContent()
     {
         $this->showNotices();
+        
     }
 
     function showProfileBlock()
@@ -108,6 +109,7 @@ class GameAction extends ProfileAction
         $block = new GameBlock($this, $this->profile);
 
         $block->show();
+        
     }
 
     function showPageNoticeBlock()

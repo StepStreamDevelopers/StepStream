@@ -278,8 +278,8 @@ class ShownoticeAction extends Action
      *
      * @return void
      */
-    function showAside() {
-    }
+//    function showAside() {
+//    }
 
     /**
      * Extra <head> content

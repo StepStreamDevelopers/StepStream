@@ -48,6 +48,10 @@ a {
 	behavior: url(/PIE.php);
 }
 
+#login #header {
+	height:80px;
+}
+
 .asideprofile {
 	padding-left:10px;
 	padding-top:5px;
@@ -581,26 +585,31 @@ legend {
 /* Login Stuff */
 .form_login {
     line-height: 1em;
-	width:220px;
-	float:right;
+	width:235px;
+	position:fixed;
 	margin-top:-12px;
 	margin-right:10px;
+	top:79px;
+	left:10px;
 }
 
-.form_login legend {
-//	top:0px;
-}
-
-.form_login fieldset {
+#login fieldset {
 	position:relative;
-	background-color:#ffffff;
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0.6);
-	-pie-background: rgba(255, 255, 255, 0.6);
-	padding: 45px 15px 15px 15px;
+	padding: 25px 15px 15px 15px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.15);
+	-pie-background: rgba(0,0,0,.15);
+-webkit-border-radius: 0px 0px 8px 8px;
+-moz-border-radius: 0px 0px 8px 8px;
+border-radius: 0px 0px 8px 8px;
+	clear:both;
+	behavior: url(/PIE.php);
 	behavior: url(/PIE.php);
 }
 
+#login legend {
+
+}
 
 .welcome_content {
 	width:900px;
@@ -613,16 +622,19 @@ legend {
 	width:580px;
 	float:left;
 	padding: 5px;
-	background-color:#000000;
-	background-color: rgba(0, 0, 0, 0.4);
-	-pie-background: rgba(0, 0, 0, 0.4);
-	-moz-border-radius: 8px 8px 8px 8px;
-	border-radius: 8px 8px 8px 8px;
+	background-color:#FFFFFF;
+	box-shadow: #666 1px 1px 5px;
+	-moz-box-shadow: 1px 1px 5px #666;
 	clear:both;
-	color: #DDDDDD;
-	behavior: url(/PIE.php);
+	behavior: url(../pie/PIE.htc);
 
 }
+	
+#login #content_inner {
+	top:0px;
+	left:280px;
+}
+
 /* ========================= hidden ========================= */
 
 
@@ -653,6 +665,18 @@ legend {
 */
 #footer {
 	clear:both;
+	display:none;
+}
+
+#login #aside_primary {
+	display:none;
+}
+
+#login #site_nav_global_primary {
+	display:none;
+}
+
+#login #site_nav_local_views {
 	display:none;
 }
 	

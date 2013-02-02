@@ -136,7 +136,7 @@ class PublicAction extends Action
             return sprintf(_('Public timeline, page %d'), $this->page);
         } else {
             // TRANS: Title for the first public timeline page.
-            return _('Public timeline');
+            return _('Home');
         }
     }
 
@@ -223,6 +223,8 @@ class PublicAction extends Action
 
         $this->pagination($this->page > 1, $cnt > NOTICES_PER_PAGE,
                           $this->page, 'public');
+                          
+        
     }
 
     function showSections()

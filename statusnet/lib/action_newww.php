@@ -739,11 +739,11 @@ $this->showProfileBlock();
             $this->flush();
             Event::handle('EndShowContentBlock', array($this));
         }
-       // if (Event::handle('StartShowAside', array($this))) {
-          // $this->showAside();
-         //   $this->flush();
-          //  Event::handle('EndShowAside', array($this));
-      //  }
+        if (Event::handle('StartShowAside', array($this))) {
+           $this->showAside();
+            $this->flush();
+          Event::handle('EndShowAside', array($this));
+        }
         $this->elementEnd('div');
         $this->elementEnd('div');
         $this->elementEnd('div');

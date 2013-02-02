@@ -945,8 +945,8 @@ content: ":";
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
 	background-color:#000000;
-	background-color: rgba(0, 0, 0, 0.3);
-	-pie-background: rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, 0.15);
+	-pie-background: rgba(0,0,0,.15);
 -webkit-border-radius: 0px 0px 8px 8px;
 -moz-border-radius: 0px 0px 8px 8px;
 border-radius: 0px 0px 8px 8px;
@@ -2179,7 +2179,7 @@ body.realtime-popup {
 
 #profilesettings #content_inner, #emailsettings #content_inner, #smssettings #content_inner, #avatarsettings #content_inner, #passwordsettings #content_inner {
 	position:absolute;
-	top:140px;
+	top:180px;
 	left:290px;
 	margin-top:0px;
 	}

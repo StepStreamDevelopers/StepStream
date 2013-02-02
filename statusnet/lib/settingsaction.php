@@ -31,6 +31,9 @@ if (!defined('STATUSNET') && !defined('LACONICA')) {
     exit(1);
 }
 
+require_once INSTALLDIR.'/lib/publicgroupnav.php';
+
+
 /**
  * Base class for settings group of actions
  *
@@ -176,6 +179,7 @@ class SettingsAction extends Action
     {
         $menu = new SettingsSubNav($this);
         $menu->show();
+        
         return;
     }
 
