@@ -46,7 +46,7 @@ require_once INSTALLDIR.'/lib/peopletags.php';
  * @license   http://www.fsf.org/licensing/licenses/agpl-3.0.html AGPL 3.0
  * @link      http://status.net/
  */
-class AsideProfileBlock extends ProfileBlock
+class AsideProfileBlock extends Widget
 {
     protected $profile = null;
     protected $user    = null;
@@ -114,21 +114,8 @@ class AsideProfileBlock extends ProfileBlock
 
     function showActions()
     {
-        if (Event::handle('StartProfilePageActionsSection', array($this->out, $this->profile))) {
 
-            if ($this->profile->hasRole(Profile_role::DELETED)) {
-                $this->out->elementStart('div', 'entity_actions');
-                // TRANS: H2 for user actions in a profile.
-                $this->out->element('h2', null, _('User actions'));
-                $this->out->elementStart('ul');
-                $this->out->elementStart('p', array('class' => 'profile_deleted'));
-                // TRANS: Text shown in user profile of not yet compeltely deleted users.
-                $this->out->text(_('User deletion in progress...'));
-                $this->out->elementEnd('p');
-                $this->out->elementEnd('ul');
-                $this->out->elementEnd('div');
-                return;
-            }
+
 //				$url = str_replace ("index.php", "", common_local_url());
 				$url = local_url();
 				$cur = common_current_user();
@@ -174,163 +161,10 @@ class AsideProfileBlock extends ProfileBlock
     	}
 
         $this->out->elementEnd('div');
-                
-                
-
-                                                                            		
-        
-                 
-}
-
-
-
-            $this->out->elementStart('div', 'entity_actions');
-            // TRANS: H2 for entity actions in a profile.
-            $this->out->element('h2', null, _('User actions'));
-            $this->out->elementStart('ul');
-
-            if (Event::handle('StartProfilePageActionsElements', array($this->out, $this->profile))) {
-                if (empty($cur)) { // not logged in
-                    if (Event::handle('StartProfileRemoteSubscribe', array($this->out, $this->profile))) {
-                        $this->out->elementStart('li', 'entity_subscribe');
-                        $this->showRemoteSubscribeLink();
-                        $this->out->elementEnd('li');
-                        Event::handle('EndProfileRemoteSubscribe', array($this->out, $this->profile));
-                    }
-                } else {
-                    if ($cur->id == $this->profile->id) { // your own page
-
-                        $this->out->elementEnd('div');
-                    } else { // someone else's page
-
-                        // subscribe/unsubscribe button
-
-                        $this->out->elementStart('li', 'entity_subscribe');
-
-                        if ($cur->isSubscribed($this->profile)) {
-                            $usf = new UnsubscribeForm($this->out, $this->profile);
-                            $usf->show();
-                        } else if ($cur->hasPendingSubscription($this->profile)) {
-                            $sf = new CancelSubscriptionForm($this->out, $this->profile);
-                            $sf->show();
-                        } else {
-                            $sf = new SubscribeForm($this->out, $this->profile);
-                            $sf->show();
-                        }
-                        $this->out->elementEnd('li');
-
-                        if ($cur->mutuallySubscribed($this->profile)) {
-
-                            // message
-
-                            $this->out->elementStart('li', 'entity_send-a-message');
-                            $this->out->element('a', array('href' => common_local_url('newmessage', array('to' => $this->user->id)),
-                                                      // TRANS: Link title for link on user profile.
-                                                      'title' => _('Send a direct message to this user.')),
-                                           // TRANS: Link text for link on user profile.
-                                           _m('BUTTON','Message'));
-                            $this->out->elementEnd('li');
-
-                            // nudge
-
-                            if ($this->user && $this->user->email && $this->user->emailnotifynudge) {
-                                $this->out->elementStart('li', 'entity_nudge');
-                                $nf = new NudgeForm($this->out, $this->user);
-                                $nf->show();
-                                $this->out->elementEnd('li');
-                            }
-                        }
-
-                        // return-to args, so we don't have to keep re-writing them
-
-                        list($action, $r2args) = $this->out->returnToArgs();
-
-                        // push the action into the list
-
-                        $r2args['action'] = $action;
-
-                        // block/unblock
-
-                        $blocked = $cur->hasBlocked($this->profile);
-                        $this->out->elementStart('li', 'entity_block');
-                        if ($blocked) {
-                            $ubf = new UnblockForm($this->out, $this->profile, $r2args);
-                            $ubf->show();
-                        } else {
-                            $bf = new BlockForm($this->out, $this->profile, $r2args);
-                            $bf->show();
-                        }
-                        $this->out->elementEnd('li');
-
-                        // Some actions won't be applicable to non-local users.
-                        $isLocal = !empty($this->user);
-
-                        if ($cur->hasRight(Right::SANDBOXUSER) ||
-                            $cur->hasRight(Right::SILENCEUSER) ||
-                            $cur->hasRight(Right::DELETEUSER) ||
-                            $cur->hasRight(Right::CONFIGURESITE)
-                            ) {
-                            $this->out->elementStart('li', 'entity_moderation');
-                            // TRANS: Label text on user profile to select a user role.
-                            $this->out->element('p', null, _('Moderate'));
-                            $this->out->elementStart('ul');
-                            if ($cur->hasRight(Right::SANDBOXUSER)) {
-                                $this->out->elementStart('li', 'entity_sandbox');
-                                if ($this->profile->isSandboxed()) {
-                                    $usf = new UnSandboxForm($this->out, $this->profile, $r2args);
-                                    $usf->show();
-                                } else {
-                                    $sf = new SandboxForm($this->out, $this->profile, $r2args);
-                                    $sf->show();
-                                }
-                                $this->out->elementEnd('li');
-                            }
-
-                            if ($cur->hasRight(Right::SILENCEUSER)) {
-                                $this->out->elementStart('li', 'entity_silence');
-                                if ($this->profile->isSilenced()) {
-                                    $usf = new UnSilenceForm($this->out, $this->profile, $r2args);
-                                    $usf->show();
-                                } else {
-                                    $sf = new SilenceForm($this->out, $this->profile, $r2args);
-                                    $sf->show();
-                                }
-                                $this->out->elementEnd('li');
-                            }
-
-                            if ($isLocal && $cur->hasRight(Right::DELETEUSER)) {
-                                $this->out->elementStart('li', 'entity_delete');
-                                $df = new DeleteUserForm($this->out, $this->profile, $r2args);
-                                $df->show();
-                                $this->out->elementEnd('li');
-                            }
-                            $this->out->elementEnd('ul');
-                            $this->out->elementEnd('li');
-                        }
-
-                        if ($isLocal && $cur->hasRight(Right::GRANTROLE)) {
-                            $this->out->elementStart('li', 'entity_role');
-                            // TRANS: Label text on user profile to select a user role.
-                            $this->out->element('p', null, _('User role'));
-                            $this->out->elementStart('ul');
-                            // TRANS: Role that can be set for a user profile.
-                            $this->roleButton('administrator', _m('role', 'Administrator'));
-                            // TRANS: Role that can be set for a user profile.
-                            $this->roleButton('moderator', _m('role', 'Moderator'));
-                            $this->out->elementEnd('ul');
-                            $this->out->elementEnd('li');
-                        }
-                    }
-                }
-
-                Event::handle('EndProfilePageActionsElements', array($this->out, $this->profile));
-            }
-
-            $this->out->elementEnd('ul');
-            $this->out->elementEnd('div');
-
-            Event::handle('EndProfilePageActionsSection', array($this->out, $this->profile));
         }
+		  $this->out->elementEnd('ul');
+            $this->out->elementEnd('div');
+        
     }
 
     function roleButton($role, $label)
@@ -361,17 +195,16 @@ class AsideProfileBlock extends ProfileBlock
 
     function show()
     {
-        $this->out->elementStart('div', 'profile_block account_profile_block section');
-        if (Event::handle('StartShowAccountProfileBlock', array($this->out, $this->profile))) {
 
        $this->showActions();
 
-            Event::handle('EndShowAccountProfileBlock', array($this->out, $this->profile));
+        $this->out->elementStart('div', 'profile_block account_profile_block section');
+        if (Event::handle('StartShowAsideProfileBlock', array($this->out, $this->profile))) {
+
+
+            Event::handle('EndShowAsideProfileBlock', array($this->out, $this->profile));
         }
         $this->out->elementEnd('div');
     }
 }
-    function showAvatar()
-    {
 
-    }

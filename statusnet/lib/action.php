@@ -624,55 +624,9 @@ $this->script('graphs.js');
             $this->elementEnd('a');
 
             Event::handle('EndAddressData', array($this));
-
-            
-            
         }
-        
-//hacking aside to logo.png
-
         $this->elementEnd('address');
-                            $this->elementStart('div', array('id' => 'aside_primary',
-                                         'class' => 'aside'));
-
-        $this->elementStart('div', array('id' => 'aside-profile-section',
-                                            'class' => 'aside-profile-section'));
-        $this->elementStart('div', array('id' => 'asideprofile',
-                                            'class' => 'asideprofile'));
-        $avatarlink = $this->avatar;                                  		
-        $this->element(
-            'img',
-            array(
-                'src'  => $avatarlink,
-                'class'  => 'ur_face',
-                'alt'    => 'hello',
-                'width'  => '48',
-                'height' => '48'
-            )
-        );
-		$this->element('a', array( 'class' => 'stats', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
-                                       // TRANS: Link text for link on user profile.
-                                       'Edit profile');
-        $this->element('br');          
-        $this->element('br');
-        $points_obj = UserPoints::getPoints($this->profile->id); 
-		if($points_obj != null) {       
-			$this->element('span', array('class' => 'statnum'), 'No steps yet! ');
-		} else 
-		{
-        $this->element('span', array('class' => 'stats'), 'Total points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
-        $this->element('span', array('class' => 'stats'), 'Available points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
-        $this->element('span', array('class' => 'stats'), 'Average steps/day:');
-        $this->element('span', array('class' => 'statnum'), '1212');
-        $this->element('span', array('class' => 'stats'), 'Baseline:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
-    	}
-
-        $this->elementEnd('div');
-                
-        $this->elementEnd('div');
+        $this->showAside;
     }
 
     /**
@@ -694,6 +648,7 @@ $this->script('graphs.js');
         $pn = new PrimaryNav($this);
         $pn->show();
         $this->elementEnd('div');
+        
     }
 
     /**
@@ -906,8 +861,8 @@ $this->script('graphs.js');
             Event::handle('EndShowContentBlock', array($this));
         }
         if (Event::handle('StartShowAside', array($this))) {
-        //    $this->showAside();
-       //     $this->flush();
+            $this->showAside();
+            $this->flush();
             Event::handle('EndShowAside', array($this));
         }
         $this->elementEnd('div');

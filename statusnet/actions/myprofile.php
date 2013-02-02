@@ -63,27 +63,9 @@ class MyProfileAction extends ProfileAction
     function title()
     {
         $base = $this->profile->getFancyName();
-        if (!empty($this->tag)) {
-            if ($this->page == 1) {
-                // TRANS: Page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$s is the hash tag.
-                return sprintf(_('Notices by %1$s tagged %2$s'), $base, $this->tag);
-            } else {
-                // TRANS: Page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$s is the hash tag, %3$d is the page number.
-                return sprintf(_('Notices by %1$s tagged %2$s, page %3$d'), $base, $this->tag, $this->page);
-            }
-        } else {
-            if ($this->page == 1) {
-                return $base;
-            } else {
-                // TRANS: Extended page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$d is the page number.
-                return sprintf(_('Notices by %1$s, page %2$d'),
-                               $base,
-                               $this->page);
-            }
-        }
+
+                return sprintf(_('Your Steps'), $base, $this->tag);
+
     }
 
     function handle($args)

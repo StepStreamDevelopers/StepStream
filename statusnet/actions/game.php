@@ -63,27 +63,9 @@ class GameAction extends ProfileAction
     function title()
     {
         $base = $this->profile->getFancyName();
-        if (!empty($this->tag)) {
-            if ($this->page == 1) {
-                // TRANS: Page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$s is the hash tag.
+
                 return sprintf(_('Game'), $base, $this->tag);
-            } else {
-                // TRANS: Page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$s is the hash tag, %3$d is the page number.
-                return sprintf(_('Game'), $base, $this->tag, $this->page);
-            }
-        } else {
-            if ($this->page == 1) {
-                return $base;
-            } else {
-                // TRANS: Extended page title showing tagged notices in one user's timeline.
-                // TRANS: %1$s is the username, %2$d is the page number.
-                return sprintf(_('Notices by %1$s, page %2$d'),
-                               $base,
-                               $this->page);
-            }
-        }
+ 
     }
 
     function handle($args)
@@ -98,22 +80,19 @@ class GameAction extends ProfileAction
         $this->showPageMe("Me");
     }
 
-    function showContent()
-    {
-        $this->showNotices();
-        
-    }
+
 
     function showProfileBlock()
     {
         $block = new GameBlock($this, $this->profile);
-
         $block->show();
+
         
     }
 
     function showPageNoticeBlock()
     {
+
         return;
     }
 
@@ -237,7 +216,7 @@ class GameAction extends ProfileAction
 
     function showNotices()
     {
-/*        $notice = empty($this->tag)
+/*       $notice = empty($this->tag)
           ? $this->user->getNotices(($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1)
             : $this->user->getTaggedNotices($this->tag, ($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1, 0, 0, null);
 
@@ -258,6 +237,7 @@ class GameAction extends ProfileAction
         $this->pagination($this->page>1, $cnt>NOTICES_PER_PAGE, $this->page,
                           'showstream', $args);
 */
+
     }
 
     function showAnonymousMessage()

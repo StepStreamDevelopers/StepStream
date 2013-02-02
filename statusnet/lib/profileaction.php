@@ -32,8 +32,6 @@ if (!defined('STATUSNET') && !defined('LACONICA')) {
     exit(1);
 }
 
-require_once INSTALLDIR.'/lib/profileminilist.php';
-require_once INSTALLDIR.'/lib/groupminilist.php';
 
 /**
  * Profile action common superclass
@@ -120,6 +118,7 @@ class ProfileAction extends Action
 
     function showSubscriptions()
     {
+
         $profile = $this->profile->getSubscriptions(0, PROFILES_PER_MINILIST + 1);
 
         $this->elementStart('div', array('id' => 'entity_subscriptions',
