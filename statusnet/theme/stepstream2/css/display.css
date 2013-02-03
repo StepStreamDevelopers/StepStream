@@ -635,6 +635,11 @@ border-radius: 0px 0px 8px 8px;
 	left:280px;
 }
 
+#game #content_inner {
+	top:50px;
+	left:260px;
+}
+
 /* ========================= hidden ========================= */
 
 
@@ -677,6 +682,10 @@ border-radius: 0px 0px 8px 8px;
 }
 
 #login #site_nav_local_views {
+	display:none;
+}
+
+#game .input_forms {
 	display:none;
 }
 	
