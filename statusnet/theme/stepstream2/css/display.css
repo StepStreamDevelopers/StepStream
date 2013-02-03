@@ -635,7 +635,7 @@ border-radius: 0px 0px 8px 8px;
 	left:280px;
 }
 
-#game #content_inner {
+#game #content_inner, #myprofile #content_inner {
 	top:50px;
 	left:260px;
 }
@@ -689,4 +689,7 @@ border-radius: 0px 0px 8px 8px;
 	display:none;
 }
 	
+#myprofile .input_forms {
+	display:none;
+}
 	
