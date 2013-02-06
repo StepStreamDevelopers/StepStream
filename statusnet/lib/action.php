@@ -582,8 +582,15 @@ $this->script('graphs.js');
                 $url = common_local_url('showstream',
                                         array('nickname' => $user->nickname));
             } else if (common_logged_in()) {
-                $cur = common_current_user();
-                $url = common_local_url('public');
+            	if (common_config('site','social')){
+                	$cur = common_current_user();
+ 	                $url = common_local_url('public');
+                }
+                else {
+                	$cur = common_current_user();
+                	$url = common_local_url('myprofile', array('nickname' => $cur->nickname));                	
+                }
+
             } else {
                 $url = common_local_url('public');
             }

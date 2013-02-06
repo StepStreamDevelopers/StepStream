@@ -318,8 +318,15 @@ function main()
     $action = $args['action'];
 
     if (!$action || !preg_match('/^[a-zA-Z0-9_-]*$/', $action)) {
-        common_redirect(common_local_url('public'));
-        return;
+        if (common_config('site', 'social')) {
+	        common_redirect(common_local_url('public'));
+	        return;
+	    }
+	    else {
+            $cur = common_current_user();
+            common_redirect('myprofile', array('nickname' => $cur->nickname));
+            return;
+        }
     }
 
     // If the site is private, and they're not on one of the "public"

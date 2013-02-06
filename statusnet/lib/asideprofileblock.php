@@ -146,6 +146,7 @@ class AsideProfileBlock extends Widget
         $this->element('br');          
         $this->element('br');
         $points_obj = UserPoints::getPoints($this->profile->id); 
+
 		if($points_obj == null) {       
 			$this->element('span', array('class' => 'statnum'), 'No steps yet! ');
 		} else 
@@ -162,8 +163,22 @@ class AsideProfileBlock extends Widget
 
         $this->out->elementEnd('div');
         }
-		  $this->out->elementEnd('ul');
-            $this->out->elementEnd('div');
+		$this->out->elementEnd('ul');
+        $this->out->elementEnd('div');
+        
+        if (common_config('site', 'social')) {
+        	$this->elementStart('div', array('id' => 'socialflag',
+                                            'class' => 'socialflag'));
+	        $this->element('span', array('class' => 'stats'), 'Social v2');    
+	        $this->out->elementEnd('div');
+        }
+        else {
+        	$this->elementStart('div', array('id' => 'socialflag',
+                                            'class' => 'socialflag'));
+	        $this->element('span', array('class' => 'stats'), 'Individual v2');    
+	        $this->out->elementEnd('div');
+        }
+        
         
     }
 

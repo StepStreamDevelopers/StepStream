@@ -143,16 +143,24 @@ class LoginAction extends Action
             common_rememberme($user);
         }
 
-        $url = common_get_returnto();
+//        $url = common_get_returnto();
 
         if ($url) {
             // We don't have to return to it again
             common_set_returnto(null);
-	    $url = common_inject_session($url);
+		    $url = common_inject_session($url);
         } else {
-            $url = common_local_url('all',
+        
+    		if (common_config('site','social')){
+            	$url = common_local_url('all',
                                     array('nickname' =>
                                           $user->nickname));
+            }
+            else {
+            	$url = common_local_url('myprofile',
+                                    array('nickname' =>
+                                          $user->nickname));            
+            }
         }
 
         common_redirect($url, 303);
