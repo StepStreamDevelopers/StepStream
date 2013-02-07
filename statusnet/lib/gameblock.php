@@ -149,7 +149,7 @@ class GameBlock extends ProfileBlock
                 
         $this->out->elementEnd('div');
           $this->out->elementStart('object', array('classid' => 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
-                                            'width' => '1000' , 'height' => '400' , 'id' => 'myFlashMovie' , 'align' => 'middle' ));
+                                            'width' => '600' , 'height' => '400' , 'id' => 'myFlashMovie' , 'align' => 'middle' ));
                                             
                 $this->out->element('param', array('name' => 'movie',
                                                   'value' => $url . '/game/mario2.swf' ));
