@@ -83,6 +83,9 @@ class EventPlugin extends MicroappPlugin
         case 'TwilioAction':
             include_once $dir . '/' . strtolower(mb_substr($cls, 0, -6)) . '.php';
             return false;
+        case 'FitbitAction':
+            include_once $dir . '/' . strtolower(mb_substr($cls, 0, -6)) . '.php';
+            return false;
         
         case 'EventListItem':
 
@@ -116,8 +119,14 @@ class EventPlugin extends MicroappPlugin
         $m->connect('main/stepcount/new',
                     array('action' => 'newevent'));
 
-		$m->connect('test/twilio',
+		    $m->connect('test/twilio',
                     array('action' => 'twilio'));
+        $m->connect('test/fitbit',
+                    array('action' => 'fitbit'));                    
+                    
+                    
+        $m->connect('test/stencyl',
+                    array('action' => 'stencyl'));
         $m->connect('main/stepcount/rsvp',
                     array('action' => 'newrsvp'));
         $m->connect('main/stepcount/rsvp/cancel',

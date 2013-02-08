@@ -205,7 +205,7 @@ class Router
 
             // main stuff is repetitive
 
-            $main = array('login', 'logout', 'register', 'subscribe','twilio','stencyl',
+            $main = array('login', 'logout', 'register', 'subscribe','twilio','fitbit','stencyl',
                           'unsubscribe', 'cancelsubscription', 'approvesub',
                           'confirmaddress', 'recoverpassword',
                           'invite', 'favor', 'disfavor', 'sup',
@@ -251,7 +251,7 @@ class Router
 
             // these take a code
 
-            foreach (array('register', 'confirmaddress', 'recoverpassword', 'twilio','stencyl') as $c) {
+            foreach (array('register', 'confirmaddress', 'recoverpassword', 'twilio','fitbit','stencyl') as $c) {
                 $m->connect('main/'.$c.'/:code', array('action' => $c));
             }
 

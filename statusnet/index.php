@@ -223,7 +223,7 @@ function checkMirror($action_obj, $args)
 
 function isLoginAction($action)
 {
-    static $loginActions =  array('login', 'recoverpassword','twilio','dailyreminder', 'api', 'doc', 'register', 'publicxrds', 'otp', 'opensearch', 'rsd', 'hostmeta');
+    static $loginActions =  array('login', 'recoverpassword','twilio', 'fitbit','stencyl','dailyreminder', 'api', 'doc', 'register', 'publicxrds', 'otp', 'opensearch', 'rsd', 'hostmeta');
 
     $login = null;
 
@@ -318,15 +318,8 @@ function main()
     $action = $args['action'];
 
     if (!$action || !preg_match('/^[a-zA-Z0-9_-]*$/', $action)) {
-        if (common_config('site', 'social')) {
-	        common_redirect(common_local_url('public'));
-	        return;
-	    }
-	    else {
-            $cur = common_current_user();
-            common_redirect('myprofile', array('nickname' => $cur->nickname));
-            return;
-        }
+        common_redirect(common_local_url('public'));
+        return;
     }
 
     // If the site is private, and they're not on one of the "public"
