@@ -7,6 +7,7 @@ $config['db']['database'] = 'mysqli://root:password@127.0.0.1/statusnet';
 $config['db']['type'] = 'mysql';
 $config['site']['profile'] = 'private';
 $config['site']['theme'] = 'stepstream';
+$config['site']['social'] = 'true';
 $config['attachments']['uploads'] = false;
 addPlugin('Tips');
 $config['location']['share'] = 'false';

@@ -99,7 +99,8 @@ class SiteadminpanelAction extends AdminPanelAction
                 'textlimit',
                 'dupelimit',
                 'logo',
-                'ssllogo'
+                'ssllogo' ,
+                'social'
             )
         );
 
@@ -271,6 +272,15 @@ class SiteAdminPanelForm extends AdminForm
                      // TRANS: Field title on site settings panel.
                      _('Contact email address for your site.'));
         $this->unli();
+        
+        $this->li();
+        $instructions = _('Is this site social? Setting this flag would limit access to users data');
+        // TRANS: Checkbox label for configuring site as invite only.
+        $this->out->checkbox('social', _('Social Flag'),
+                             (bool) $this->value('social'),
+                             $instructions);
+        $this->unli();
+        
         $this->out->elementEnd('ul');
         $this->out->elementEnd('fieldset');
 
@@ -306,6 +316,8 @@ class SiteAdminPanelForm extends AdminForm
                              false, $this->value('language'));
         $this->unli();
 
+      
+        
         $this->out->elementEnd('ul');
         $this->out->elementEnd('fieldset');
 
