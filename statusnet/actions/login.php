@@ -152,7 +152,7 @@ class LoginAction extends Action
         } else {
         
     		if (common_config('site','social')){
-            	$url = common_local_url('all',
+            	$url = common_local_url('public',
                                     array('nickname' =>
                                           $user->nickname));
             }
