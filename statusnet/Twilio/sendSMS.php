@@ -1,4 +1,3 @@
-<?php
 
 <?php
 /* Send an SMS using Twilio. You can run this file 3 different ways:
@@ -40,7 +39,5 @@ $messageBody);
 
 
 
-
-?>
 
 ?>

@@ -36,6 +36,7 @@ if (!defined('STATUSNET') && !defined('LACONICA')) {
 
 require_once 'Mail.php';
 
+
 /**
  * return the configured mail backend
  *
@@ -681,7 +682,7 @@ function mail_notify_fave($other, $user, $notice)
     // TRANS: %5$s is a URL to all faves of the adding user, %6$s is the StatusNet sitename,
     // TRANS: %7$s is the adding user's nickname.
     $body = sprintf(_("%1\$s hearts your post from %2\$s\n\n".
-                      "Here is a link:\n\n" .
+                      "Here is a link to it:\n\n" .
                       "%3\$s\n\n" .
                       "Here is what you said:\n\n" .
                       "%4\$s\n\n"),
@@ -695,11 +696,30 @@ function mail_notify_fave($other, $user, $notice)
                     common_config('site', 'name'),
                     $user->nickname) .
             mail_footer_block();
-
+				
     $headers = _mail_prepare_headers('fave', $other->nickname, $user->nickname);
 
     common_switch_locale();
     mail_to_user($other, $subject, $body, $headers);
+ 	
+ 	//Send SMS to user
+	//URL of targeted site  
+	$smsbodyencoded = urlencode($subject);
+	$parameter_string = "messageBody=$smsbodyencoded&phone_number=4049394422";
+	$url = "https://stephealth.us/stepstream/Twilio/sendSMS.php?$parameter_string";  
+	$ch = curl_init();  
+  
+	// set URL and other appropriate options  
+	curl_setopt($ch, CURLOPT_URL, $url);  
+	curl_setopt($ch, CURLOPT_HEADER, 0);  
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
+  
+	// grab URL and pass it to the browser  
+  	$output = curl_exec($ch);   
+  
+	// close curl resource, and free up system resources  
+	curl_close($ch);  
+
 }
 
 /**
@@ -888,3 +908,7 @@ function mail_notify_group_join_pending($group, $joiner)
         }
     }
 }
+
+
+
+

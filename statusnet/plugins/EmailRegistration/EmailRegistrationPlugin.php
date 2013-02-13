@@ -34,6 +34,8 @@ if (!defined('STATUSNET')) {
     exit(1);
 }
 
+
+
 /**
  * Email based registration plugin
  *
