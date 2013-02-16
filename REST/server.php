@@ -7,11 +7,11 @@ class Server {
        to identify the resource.
     */
               
-    private $dbhost = 'localhost';
+    private $dbhost = 'mysql.stephealth.us';
 
-    private $dbuser = 'root';
-    private $dbpass = 'stepstream@8903';
-    private $dbname = 'stepstream';
+    private $dbuser = 'stephealth';
+    private $dbpass = 'stepstream8903';
+    private $dbname = 'stephealth1';
     private $con;
     public function serve() {
         $this->con = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
@@ -27,12 +27,14 @@ class Server {
         $resource = array_shift($paths);
       
         
-        $nameTemp = array_shift($paths);
+        $valType = array_shift($paths);
+        
         $profileId = array_shift($paths);
+        
         if (empty($profileId)) {
-            $this->handle_base($method);
+            $this->handle_base($method , $valType);
         } else {
-            $this->handle_name($method, $profileId);
+            $this->handle_name($method, $valType, $profileId);
         }
             
         mysql_close($this->con);
@@ -40,7 +42,7 @@ class Server {
          
     }
         
-    private function handle_base($method) {
+    private function handle_base($method , $valType) {
         switch($method) {
         case 'GET':
             $this->result();
@@ -52,16 +54,23 @@ class Server {
         }
     }
 
-    private function handle_name($method, $profileId) {
+    private function handle_name($method, $valType, $profileId) {
+        
         switch($method) {
         case 'POST':
-            $this->submit_scores($profileId);
+            if($valType == "points")
+              $this->submit_scores($profileId);
+            else if($valType == "tokens")
+              $this->submit_tokens($profileId);
             break;
 
        
       
         case 'GET':
-            $this->display_scores($profileId);
+            if($valType == "points")
+              $this->display_scores($profileId);
+            else if($valType == "tokens")
+              $this->display_tokens($profileId);
             break;
 
         default:
@@ -69,14 +78,26 @@ class Server {
             header('Allow: GET, PUT, DELETE');
             break;
         }
-    }
-
+    
+   }
     private function submit_scores($profileId){
        
         $score = $_POST['score'];
        
         $dbquery = "UPDATE user_points SET available_points =  '" . $score . "' WHERE  profile_id = " . $profileId;
-        echo $dbquery;
+        
+        mysql_select_db($this->dbname, $this->con);
+
+        mysql_query($dbquery);
+    }
+    
+    
+     private function submit_tokens($profileId){
+       
+        $tokens = $_POST['tokens'];
+       
+        $dbquery = "INSERT INTO game_token (profile_id, token) VALUES ($profileId,$tokens)";
+        
         mysql_select_db($this->dbname, $this->con);
 
         mysql_query($dbquery);
@@ -93,6 +114,18 @@ class Server {
         while($row = mysql_fetch_array($result))
           {
                  echo $row['available_points'];
+                } 
+      }
+      
+      private function display_tokens($profileId) {
+        $dbquery = "SELECT SUM( token ) as tokenSum FROM game_token WHERE profile_id =$profileId";
+        mysql_select_db($this->dbname, $this->con);
+
+        $result = mysql_query($dbquery);
+
+        while($row = mysql_fetch_array($result))
+          {
+                 echo $row['tokenSum'];
                 } 
       }
     
