@@ -7,11 +7,11 @@ class Server {
        to identify the resource.
     */
               
-    private $dbhost = 'mysql.stephealth.us';
+    private $dbhost = 'host';
 
-    private $dbuser = 'stephealth';
-    private $dbpass = 'stepstream8903';
-    private $dbname = 'stephealth1';
+    private $dbuser = 'user';
+    private $dbpass = 'pass';
+    private $dbname = 'db';
     private $con;
     public function serve() {
         $this->con = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
