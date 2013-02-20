@@ -4,7 +4,7 @@
 // Suggestions/comments/improvements?  Let me know loghound@gmail.com
 //
 /**
- * Key of ScriptProperty for Firtbit consumer key.
+ * Key of ScriptProperty for Fitbit consumer key.
  * 
  * @type {String}
  * @const
@@ -104,7 +104,9 @@ function refreshTimeSeries() {
         cell.offset(index, 1 + activity * 1.0).setValue(Number(val["value"]));
         var payload = 
     {
-      "score" : Number(val["value"])
+      "stepcount" : Number(val["value"]),
+      "stepdate" : val["dateTime"],
+      "profileId" : user.displayName
     };
          var optionsStepstream = {
            
@@ -113,7 +115,7 @@ function refreshTimeSeries() {
          };
         
         try {
-          var resultStepstream = UrlFetchApp.fetch("http://salute.cc.gt.atl.ga.us/REST/user/" + user.displayName, optionsStepstream);
+          var resultStepstream = UrlFetchApp.fetch("http://www.steplab.org/stepstream/index.php/main/fitbit", optionsStepstream);
           Logger.log('URL Fetched!');
     } catch (exception) {
       Logger.log(exception);
