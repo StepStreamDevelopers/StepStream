@@ -113,13 +113,15 @@ function refreshTimeSeries() {
            "method" : "POST",
           "payload" : payload
          };
-        
+        if (Number(val["value"])>=0) {  
         try {
           var resultStepstream = UrlFetchApp.fetch("http://www.steplab.org/stepstream/index.php/main/fitbit", optionsStepstream);
           Logger.log('URL Fetched!');
     } catch (exception) {
       Logger.log(exception);
+    
     }
+        }
         // set the value index index
         index++;
       }
