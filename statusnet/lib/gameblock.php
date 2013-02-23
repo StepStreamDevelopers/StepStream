@@ -60,7 +60,7 @@ class GameBlock extends ProfileBlock
 
     function avatar()
     {
-        $avatar = $this->profile->getAvatar(AVATAR_PROFILE_SIZE);
+        $avatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
         if (empty($avatar)) {
             $avatar = $this->profile->getAvatar(73);
         }
