@@ -243,7 +243,7 @@ class LoginAction extends Action
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on login page.
-        $this->input('nickname', _('Username or email or phone number'));
+        $this->input('nickname', _('Your pedometer number'));
         $this->elementEnd('li');
         $this->elementStart('li');
         // TRANS: Field label on login page.

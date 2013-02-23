@@ -54,7 +54,7 @@ class ProfilesettingsAction extends SettingsAction
     function title()
     {
         // TRANS: Page title for profile settings.
-        return _('Profile settings');
+        return _('Your Name');
     }
 
     /**
@@ -72,7 +72,7 @@ class ProfilesettingsAction extends SettingsAction
     function showScripts()
     {
         parent::showScripts();
-        $this->autofocus('nickname');
+        $this->autofocus('fullname');
     }
 
     /**
@@ -93,22 +93,24 @@ class ProfilesettingsAction extends SettingsAction
                                           'action' => common_local_url('profilesettings')));
         $this->elementStart('fieldset');
         // TRANS: Profile settings form legend.
-        $this->element('legend', null, _('Profile information'));
+        $this->element('legend', null, _('Your name'));
         $this->hidden('token', common_session_token());
 
         // too much common patterns here... abstractable?
         $this->elementStart('ul', 'form_data');
         if (Event::handle('StartProfileFormData', array($this))) {
-            $this->elementStart('li');
+            $this->elementStart('li', array('class' => 'hiddenform'));
             // TRANS: Field label in form for profile settings.
             $this->input('nickname', _('Nickname'),
                          ($this->arg('nickname')) ? $this->arg('nickname') : $profile->nickname,
                          // TRANS: Tooltip for field label in form for profile settings.
                          _('1-64 lowercase letters or numbers, no punctuation or spaces.'));
             $this->elementEnd('li');
+
             $this->elementStart('li');
+
             // TRANS: Field label in form for profile settings.
-            $this->input('fullname', _('Full name'),
+            $this->input('fullname', _('Your name'),
                          ($this->arg('fullname')) ? $this->arg('fullname') : $profile->fullname, _('The name your friends call you'));
             $this->elementEnd('li');
 
@@ -276,6 +278,7 @@ class ProfilesettingsAction extends SettingsAction
                 $this->showForm($e->getMessage());
                 return;
             }
+
 
             $fullname = $this->trimmed('fullname');
             $homepage = $this->trimmed('homepage');

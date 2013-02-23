@@ -127,7 +127,7 @@ class SettingsSubNav extends Menu
         if (Event::handle('StartAccountSettingsNav', array(&$this->action))) {
             $this->action->menuItem(common_local_url('profilesettings'),
                                     // TRANS: Menu item in settings navigation panel.
-                                    _m('MENU','Profile'),
+                                    _m('MENU','Your Name'),
                                     // TRANS: Menu item title in settings navigation panel.
                                     _('Change your profile settings'),
                                     $actionName == 'profilesettings');
