@@ -129,6 +129,8 @@ class AsideProfileBlock extends Widget
                                             'class' => 'aside-profile-section'));
         $this->elementStart('div', array('id' => 'asideprofile',
                                             'class' => 'asideprofile'));		
+                $this->out->element('span',array('class' => 'stats'),
+                            $this->profile->getBestName());
         $size = $this->avatarSize();
         $this->out->element(
             'img',
@@ -140,6 +142,7 @@ class AsideProfileBlock extends Widget
                 'height' => $size
             )
         );
+
 		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
                                        // TRANS: Link text for link on user profile.
                                        'Edit profile');
@@ -155,9 +158,7 @@ class AsideProfileBlock extends Widget
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
-        $this->element('span', array('class' => 'stats'), 'Average steps/day:');
-        $this->element('span', array('class' => 'statnum'), '1212');
-        $this->element('span', array('class' => 'stats'), 'Baseline:');
+        $this->element('span', array('class' => 'stats'), 'Personal goal:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
     	}
 
