@@ -53,6 +53,13 @@ class PrimaryNav extends Menu
         $this->action->elementStart('ul', array('class' => 'nav'));
         if (Event::handle('StartPrimaryNav', array($this->action))) {
             if (!empty($user)) {
+                $this->action->menuItem(common_local_url('public'),
+                                // TRANS: Menu item in primary navigation panel.
+                                _m('MENU','Home'),
+                                // TRANS: Menu item title in primary navigation panel.
+                                _('Home'),
+                                false,
+                                'nav_account');
                 $this->action->menuItem(common_local_url('profilesettings'),
                                 // TRANS: Menu item in primary navigation panel.
                                 _m('MENU','Settings'),
