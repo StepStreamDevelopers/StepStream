@@ -157,10 +157,10 @@ class RecoverpasswordAction extends Action
             if ($this->mode == 'recover') {
                 $this->element('p', null,
                                // TRANS: Page notice for password recovery page.
-                               _('If you have forgotten or lost your' .
-                                 ' password, you can get a new one sent to' .
-                                 ' the email address you have stored' .
-                                 ' in your account.'));
+                               _('If you forgot your password, you can' .
+                                 ' ask your StepStream teacher.' .
+                                 ' If you gave us your email address, we can send you' .
+                                 ' a new password.'));
             } else if ($this->mode == 'reset') {
                 $this->element('p', null,
                                // TRANS: Page notice for password change page.
@@ -195,15 +195,14 @@ class RecoverpasswordAction extends Action
                                            'action' => common_local_url('recoverpassword')));
         $this->elementStart('fieldset');
         // TRANS: Fieldset legend for password recovery page.
-        $this->element('legend', null, _('Password recovery'));
+        $this->element('legend', null, _('Email me a new password'));
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on password recovery page.
-        $this->input('nicknameoremailorphonenum', _('Nickname or email address or phone number'),
+        $this->input('nicknameoremailorphonenum', _('Your email address'),
                      $this->trimmed('nicknameoremailorphonenum'),
                      // TRANS: Title for field label on password recovery page.
-                     _('Your nickname on this server, phone number ' .
-                        'or your registered email address.'));
+                     _('If you gave us your email address, we can send you a new password.'));
         $this->elementEnd('li');
         $this->elementEnd('ul');
         $this->element('input', array('name' => 'recover',

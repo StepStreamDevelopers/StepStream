@@ -391,9 +391,10 @@ behavior: url(/PIE.php);
 
 /* plugins wrapper */
 .input_forms {
-	width:380px;
-	position:absolute;
-	top:60px;
+	width:430px;
+	position:fixed;
+	z-index:99;
+	top:12px;
 	left:260px;
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 20px;
@@ -551,6 +552,17 @@ legend {
 	font-size:.95em;
 	line-height:1em;
 }
+
+.aside_name {
+	font-size:1.2em;
+	line-height:1.2em;
+}
+
+.aside_edit_profile {
+	font-size:.8em;
+	line-height:.8em;
+}
+
 
 .statnum {
 	font-size:.95em;

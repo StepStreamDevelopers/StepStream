@@ -469,7 +469,7 @@ behavior: url(/PIE.php);
     padding-top: 10px;
     clear: both;
     margin-left:10px;
-    width:400px;
+    width:456px;
 }
 
 #notices_primary h2 {
@@ -2172,7 +2172,7 @@ body.realtime-popup {
 
 #content_inner {
 	position:absolute;
-	top:170px;
+	top:130px;
 	left:250px;
 	}
 

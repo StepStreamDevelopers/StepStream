@@ -48,7 +48,7 @@ class DefaultLocalNav extends Menu
 {
     function show()
     {
-        $user = common_current_user();
+/*        $user = common_current_user();
 
         $this->action->elementStart('ul', array('id' => 'nav_local_default'));
 
@@ -87,5 +87,6 @@ class DefaultLocalNav extends Menu
         }
 
         $this->action->elementEnd('ul');
+*/
     }
 }

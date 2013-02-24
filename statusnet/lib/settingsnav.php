@@ -64,7 +64,7 @@ class SettingsNav extends Menu
         $this->action->elementStart('li');
         // TRANS: Header in settings navigation panel.
 //        $this->action->element('h3', null, _m('HEADER','Home'));
-        $this->action->elementStart('ul', 'nav');
+/*        $this->action->elementStart('ul', 'nav');
                $this->out->menuItem(common_local_url('public'), _m('MENU','Stream'), 
                // TRANS: Menu item title in search group navigation panel.
                 _('Public timeline'), $this->actionName == 'public', 'nav_left');
@@ -97,8 +97,10 @@ class SettingsNav extends Menu
 
 
         $this->action->elementEnd('ul');
+*/
         $this->action->elementEnd('li');
         $this->action->elementEnd('ul');
+
     }
 }
 

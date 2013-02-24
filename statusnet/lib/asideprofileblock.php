@@ -129,8 +129,7 @@ class AsideProfileBlock extends Widget
                                             'class' => 'aside-profile-section'));
         $this->elementStart('div', array('id' => 'asideprofile',
                                             'class' => 'asideprofile'));		
-                $this->out->element('span',array('class' => 'stats'),
-                            $this->profile->getBestName());
+
         $size = $this->avatarSize();
         $this->out->element(
             'img',
@@ -142,25 +141,39 @@ class AsideProfileBlock extends Widget
                 'height' => $size
             )
         );
+                $this->out->element('span',array('class' => 'aside_name'),
+                            $this->profile->getBestName());
+                                    $this->element('br');          
 
-		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
+		$this->out->element('a', array( 'class' => 'aside_edit_profile', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
                                        // TRANS: Link text for link on user profile.
-                                       'Edit profile');
+                                       'Edit your profile & picture');
         $this->element('br');          
         $this->element('br');
+		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$this->profile->nickname)), 'title' => _('See your steps.')),
+                                       // TRANS: Link text for link on user profile.
+                                       'See all your steps!');
+        $this->element('br');
+		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$this->profile->nickname)), 'title' => _('Play a game!')),
+                                       // TRANS: Link text for link on user profile.
+                                       'Play a game!');
+        $this->element('br');
+        $this->element('br');
+
         $points_obj = UserPoints::getPoints($this->profile->id); 
 
-		if($points_obj == null) {       
-			$this->element('span', array('class' => 'statnum'), 'No steps yet! ');
+/*		if($points_obj == null) {       
+			$this->element('span', array('class' => 'statnum'), 'No steps yet... ');
 		} else 
-		{
+		{ */
         $this->element('span', array('class' => 'stats'), 'Total points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
-    	}
+/*    	}  */
+        $this->element('br');
 
         $this->out->elementEnd('div');
         }
