@@ -729,9 +729,15 @@ $this->script('graphs.js');
 */
 			$this->elementStart('li', $attrs_status);
 
-            $this->element('a',
-                               array('href' => 'javascript:SN.U.switchInputFormTab("status")'),
-                               "How's it going?");
+			$promptarray = array("How's it going?"=>"1","Share how you're getting steps!"=>"2","Share a story about StepStream!"=>"3");
+			$prompt = array_rand($promptarray,1);
+	        $this->element('span', array('class' => 'question'), $prompt);    
+
+
+//	        $this->element('span', array('class' => 'question'), "How's it going?");    
+//	        $this->element('span', array('class' => 'question'), "Share how you're getting steps!");    
+//	        $this->element('span', array('class' => 'question'), "Share a story about StepStream!");    
+
             $this->elementEnd('li');
 		       
         $this->elementEnd('ul');
