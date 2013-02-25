@@ -150,7 +150,7 @@ class AsideProfileBlock extends Widget
                                        'Edit your profile & picture');
         $this->element('br');          
         $this->element('br');
-		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$this->profile->nickname)), 'title' => _('See your steps.')),
+		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')),
                                        // TRANS: Link text for link on user profile.
                                        'See all your steps!');
         $this->element('br');
