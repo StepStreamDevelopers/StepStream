@@ -154,10 +154,6 @@ class AsideProfileBlock extends Widget
                                        // TRANS: Link text for link on user profile.
                                        'See all your steps!');
         $this->element('br');
-		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$this->profile->nickname)), 'title' => _('Play a game!')),
-                                       // TRANS: Link text for link on user profile.
-                                       'Play a game!');
-        $this->element('br');
         $this->element('br');
 
         $points_obj = UserPoints::getPoints($this->profile->id); 
@@ -193,6 +189,25 @@ class AsideProfileBlock extends Widget
 	        $this->out->elementEnd('div');
         }
         
+        if (common_config('site', 'social') && ($this->title()=='Home')) {
+        	$this->elementStart('div', array('id' => 'top3',
+                                            'class' => 'asdf'));
+	        $this->element('span', array('class' => 'stats'), 'Your Top 3');    
+	        $this->out->elementEnd('div');
+        	$this->elementStart('div', array('id' => 'top3main',
+                                            'class' => 'asdf'));
+	        $this->element('span', array('class' => 'stats'), 'Asdf');    
+	        $this->out->elementEnd('div');
+        	$this->elementStart('div', array('id' => 'gamepromo',
+                                            'class' => 'asdf'));
+	        $this->element('span', array('class' => 'stats'), 'Info about the game');
+	                                            $this->element('br');          
+                                    $this->element('br');          
+
+	        		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$this->profile->nickname)), 'title' => _('Play a game!')),
+                                       // TRANS: Link text for link on user profile.
+                                       'Play a game!');    
+	        $this->out->elementEnd('div');        }
         
     }
 

@@ -57,6 +57,72 @@ a {
 	padding-top:5px;
 }
 
+#gamepromo {
+	position:fixed;
+	left: 697px;
+	top:1px;
+	width: 353px;
+	height:270px;
+	background-color:#333333;
+	margin-top:10px;
+	margin-left:10px;
+	padding:8px;
+	margin-bottom:10px;
+	z-index:0;
+	background-color: rgba(0, 0, 0, 0.6);
+	-pie-background: rgba(0,0,0,.6);
+	-webkit-border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	behavior: url(/PIE.php);
+	color: #CCCCCC;
+	font-weight:normal;
+}
+
+
+#top3 {
+	position:fixed;
+	left: 697px;
+	top:300px;
+	width: 353px;
+	height:20px;
+	background-color:#333333;
+	margin-top:10px;
+	margin-left:10px;
+	padding:8px;
+	margin-bottom:10px;
+	z-index:0;
+	background-color: rgba(0, 0, 0, 0.6);
+	-pie-background: rgba(0,0,0,.6);
+	-webkit-border-radius: 8px 8px 0px 0px;
+	-moz-border-radius: 8px 8px 0px 0px;
+	border-radius: 8px 8px 0px 0px;
+	clear:both;
+	behavior: url(/PIE.php);
+	color: #CCCCCC;
+	font-weight:normal;
+}
+
+#top3main {
+	position:fixed;
+	left: 697px;
+	top:346px;
+	width: 353px;
+	height:20px;
+	padding: 8px;
+	margin-left:10px;
+	margin-bottom: 20px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.15);
+	-pie-background: rgba(0,0,0,.15);
+-webkit-border-radius: 0px 0px 8px 8px;
+-moz-border-radius: 0px 0px 8px 8px;
+border-radius: 0px 0px 8px 8px;
+	clear:both;
+	behavior: url(/PIE.php);
+}
+
 /* logo */
 #site_contact {
 	position:fixed;
@@ -649,7 +715,7 @@ border-radius: 0px 0px 8px 8px;
 }
 
 #game #content_inner, #myprofile #content_inner {
-	top:50px;
+	top:10px;
 	left:260px;
 }
 
