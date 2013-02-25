@@ -149,7 +149,7 @@ class EventListItem extends NoticeListItemAdapter
             $out->element('span', 'description', $event->description);
             $out->elementEnd('div');
         }
-
+/*
  if (!empty($points_obj->cumulative_points)) {
             $out->elementStart('div', 'event-cumulative_points');
             // TRANS: Field label for event description.

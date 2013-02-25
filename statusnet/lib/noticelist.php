@@ -90,10 +90,12 @@ class NoticeList extends Widget
     	self::prefill($notices);
     	
     	foreach ($notices as $notice) {
-
             try {
                 $item = $this->newListItem($notice);
-                $item->show();
+                $event   = Happening::fromNotice($notice);
+				if (!empty($event)) {
+	                $item->show();
+	            }
             } catch (Exception $e) {
                 // we log exceptions and continue
                 common_log(LOG_ERR, $e->getMessage());
