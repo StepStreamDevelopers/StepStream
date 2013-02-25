@@ -204,7 +204,7 @@ class AsideProfileBlock extends Widget
 	                                            $this->element('br');          
                                     $this->element('br');          
 
-	        		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$this->profile->nickname)), 'title' => _('Play a game!')),
+	        		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$cur->nickname)), 'title' => _('Play a game!')),
                                        // TRANS: Link text for link on user profile.
                                        'Play a game!');    
 	        $this->out->elementEnd('div');        }
