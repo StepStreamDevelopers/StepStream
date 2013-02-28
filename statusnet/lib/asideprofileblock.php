@@ -167,7 +167,7 @@ class AsideProfileBlock extends Widget
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
+        $this->element('span', array('class' => 'statnum'), $points_obj->points_index, " steps per day");
 /*    	}  */
         $this->element('br');
 

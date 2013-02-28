@@ -1134,6 +1134,7 @@ display:none;
 }
 .guide {
 clear:both;
+width: 300px;
 }
 
 #bookmarklet address {
