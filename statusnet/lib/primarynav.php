@@ -53,6 +53,8 @@ class PrimaryNav extends Menu
         $this->action->elementStart('ul', array('class' => 'nav'));
         if (Event::handle('StartPrimaryNav', array($this->action))) {
             if (!empty($user)) {
+                $name = $user->getProfile()->getBestName();
+        if (common_config('site', 'social')) {
                 $this->action->menuItem(common_local_url('public'),
                                 // TRANS: Menu item in primary navigation panel.
                                 _m('MENU','Home'),
@@ -60,6 +62,15 @@ class PrimaryNav extends Menu
                                 _('Home'),
                                 false,
                                 'nav_account');
+        } else {
+                $this->action->menuItem(common_local_url('myprofile', array('nickname' =>$user->nickname)),
+                                // TRANS: Menu item in primary navigation panel.
+                                _m('MENU','Home'),
+                                // TRANS: Menu item title in primary navigation panel.
+                                _('Home'),
+                                false,
+                                'nav_account');        
+        }
                 $this->action->menuItem(common_local_url('profilesettings'),
                                 // TRANS: Menu item in primary navigation panel.
                                 _m('MENU','Settings'),
@@ -84,7 +95,6 @@ class PrimaryNav extends Menu
                                 false,
                                 'nav_logout');
                                 $this->out->element('br');
-                $name = $user->getProfile()->getBestName();
 /*                $this->out->elementStart('i');
                 $this->out->element('span',array('class' => 'navitalics'),
                             'Hello, ' . $name . '!');
