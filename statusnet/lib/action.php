@@ -728,8 +728,12 @@ $this->script('graphs.js');
                                'class' => 'input_form_nav_tab');
 */
 			$this->elementStart('li', $attrs_status);
-
-			$promptarray = array("How's it going?"=>"1","Share how you're getting steps!"=>"2","Share a story about StepStream!"=>"3");
+        if (common_config('site', 'social')) {
+			$promptarray = array("How's it going?"=>"1","Share how you're getting steps!"=>"2","Share a story about StepStream!"=>"3", "How can you get steps together?");
+		} else {
+			$promptarray = array("Journal: how you feel today"=>"1","Journal: how you get steps"=>"2",);
+		
+		}
 			$prompt = array_rand($promptarray,1);
 	        $this->element('span', array('class' => 'question'), $prompt);    
 

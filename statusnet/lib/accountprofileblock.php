@@ -204,7 +204,9 @@ class AccountProfileBlock extends ProfileBlock
                     }
                 } else {
                     if ($cur->id == $this->profile->id) { // your own page
-
+$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$cur->nickname)), 'title' => _('Play a game!')),
+                                       // TRANS: Link text for link on user profile.
+                                       'Play a game!'); 
                         $this->out->elementEnd('div');
                     } else { // someone else's page
 

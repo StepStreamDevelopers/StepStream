@@ -103,7 +103,21 @@ class NoticeListItem extends Widget
             common_log(LOG_WARNING, "Trying to show missing profile (" . $this->notice->profile_id . "); skipping.");
             return;
         }
-
+        $user = common_current_user();
+        $todel = (empty($this->repeat)) ? $this->notice : $this->repeat;
+		if (!common_config('site', 'social') && !empty($user) &&
+            ($todel->profile_id == $user->id)) {        
+        	$this->showStart();
+        	if (Event::handle('StartShowNoticeItem', array($this))) {
+        	    $this->showNoticeOptions();
+        	    $this->showNotice();
+        	    $this->showNoticeAttachments();
+        	    $this->showNoticeInfo();
+        	    Event::handle('EndShowNoticeItem', array($this));
+        	}
+        	$this->showEnd();
+    	}
+    	else if (common_config('site', 'social')) {
         $this->showStart();
         if (Event::handle('StartShowNoticeItem', array($this))) {
             $this->showNoticeOptions();
@@ -113,6 +127,7 @@ class NoticeListItem extends Widget
             Event::handle('EndShowNoticeItem', array($this));
         }
         $this->showEnd();
+    	}
     }
 
     function showNotice()
@@ -411,7 +426,7 @@ class NoticeListItem extends Widget
      */
     function showNoticeLocation()
     {
-        $id = $this->notice->id;
+/*        $id = $this->notice->id;
 
         $location = $this->notice->getLocation();
 
@@ -469,6 +484,7 @@ class NoticeListItem extends Widget
             $this->out->raw($xstr->getString());
         }
         $this->out->elementEnd('span');
+        */
     }
 
     /**

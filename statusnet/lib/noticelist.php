@@ -80,6 +80,7 @@ class NoticeList extends Widget
      */
     function show()
     {
+
         $this->out->elementStart('div', array('id' =>'notices_primary'));
         $this->out->elementStart('ol', array('class' => 'notices xoxo'));
 
