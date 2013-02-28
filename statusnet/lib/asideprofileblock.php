@@ -185,7 +185,7 @@ class AsideProfileBlock extends Widget
         else {
         	$this->elementStart('div', array('id' => 'socialflag',
                                             'class' => 'socialflag'));
-	        $this->element('span', array('class' => 'stats'), 'Individual v2');    
+	        $this->element('span', array('class' => 'stats'), 'v2');    
 	        $this->out->elementEnd('div');
         }
         
