@@ -729,7 +729,7 @@ $this->script('graphs.js');
 */
 			$this->elementStart('li', $attrs_status);
         if (common_config('site', 'social')) {
-			$promptarray = array("How's it going?"=>"1","Share how you're getting steps!"=>"2","Share a story about StepStream!"=>"3", "How can you get steps together?");
+			$promptarray = array("How's it going?"=>"1","Share how you're getting steps!"=>"2","Share a story about StepStream!"=>"3", "How can you get steps together?"=>"4");
 		} else {
 			$promptarray = array("Journal: how you feel today"=>"1","Journal: how you get steps"=>"2",);
 		
