@@ -104,7 +104,6 @@ class SmssettingsAction extends SettingsAction
                 stay in touch! Just enter your cellphone number in the form below, and then StepStream will send you alerts when people play a game with you, heart your posts or send you a reply. We\'ll send no more than 2 texts per day.');
 
 		$this->element('br');
-        $this->element('h4', null, _("SMS (678) 929-6385"));
         $this->element('span', 'smsinstructions', '');
 		
 		
