@@ -198,16 +198,19 @@ class AsideProfileBlock extends Widget
                                             'class' => 'asdf'));
 	        $this->element('span', array('class' => 'stats'), 'Asdf');    
 	        $this->out->elementEnd('div');
+
         	$this->elementStart('div', array('id' => 'gamepromo',
                                             'class' => 'asdf'));
-	        $this->element('span', array('class' => 'stats'), 'Info about the game');
-	                                            $this->element('br');          
-                                    $this->element('br');          
 
-	        		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$cur->nickname)), 'title' => _('Play a game!')),
-                                       // TRANS: Link text for link on user profile.
-                                       'Play a game!');    
-	        $this->out->elementEnd('div');        }
+            $this->elementStart('a', array('class' => 'stats',
+                                           'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('promo.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->out->elementEnd('a');
+    
+	        $this->out->elementEnd('div');
+        }
         
     }
 

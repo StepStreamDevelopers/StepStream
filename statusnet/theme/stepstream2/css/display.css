@@ -62,7 +62,7 @@ a {
 	left: 697px;
 	top:1px;
 	width: 353px;
-	height:270px;
+	height:330px;
 	background-color:#333333;
 	margin-top:10px;
 	margin-left:10px;
@@ -84,13 +84,13 @@ a {
 #top3 {
 	position:fixed;
 	left: 697px;
-	top:300px;
-	width: 353px;
+	top:355px;
+	width: 365px;
 	height:20px;
 	background-color:#333333;
 	margin-top:10px;
 	margin-left:10px;
-	padding:8px;
+	padding:2px;
 	margin-bottom:10px;
 	z-index:0;
 	background-color: rgba(0, 0, 0, 0.6);
@@ -107,7 +107,7 @@ a {
 #top3main {
 	position:fixed;
 	left: 697px;
-	top:346px;
+	top:388px;
 	width: 353px;
 	height:20px;
 	padding: 8px;
