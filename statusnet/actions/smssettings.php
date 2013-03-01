@@ -98,11 +98,10 @@ class SmssettingsAction extends SettingsAction
         $this->elementStart('fieldset', array('id' => 'fieldset_email'));
         
             /* Added by ADM */
-        $this->element('h2', null, _('SMS your steps to StepStream!'));
+        $this->element('h2', null, _('Get alerts from StepStream!'));
         $this->element('span', 'smsinstructions', '
                 You might not be able to visit StepStream every day, but that doesn\'t mean you can\'t 
-                enter your steps! Just enter your cellphone number in the form below, and then you can send 
-                your daily step reports from anywhere. Just send a text like \'0402 3000\' and StepStream will record 3,000 steps on April 2nd. You can also sign up to get daily reminders! Once you get the reminder, just reply with the number of steps and you\'ll be all set.');
+                stay in touch! Just enter your cellphone number in the form below, and then StepStream will send you alerts when people play a game with you, heart your posts or send you a reply. We\'ll send no more than 2 texts per day.');
 
 		$this->element('br');
         $this->element('h4', null, _("SMS (678) 929-6385"));
@@ -118,7 +117,7 @@ class SmssettingsAction extends SettingsAction
 
             $this->checkbox('dailyreminder',
                             // TRANS: Checkbox label in form for profile settings.
-                            _('Send me daily reminders for step updates'),
+                            _('Send me notifications'),
                             ($this->arg('dailyreminder')) ?
                             $this->boolean('dailyreminder') : $user->dailyreminder);
             $this->element('p');
