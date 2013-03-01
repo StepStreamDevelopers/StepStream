@@ -67,7 +67,7 @@ class SmssettingsAction extends SettingsAction
         //      regular parameters, replaced with sprintf().
         // TRANS: SMS settings page instructions.
         // TRANS: %%site.name%% is the name of the site.
-        return _('You can text your steps to %%site.name%% and get daily reminders.');
+        return _('You can get notifications from StepStream.');
     }
 
     function showScripts()
