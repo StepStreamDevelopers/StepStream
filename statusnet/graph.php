@@ -45,15 +45,16 @@
 
  	$points_array = array();
     	$labels_array = array();
-	$query = "SELECT * FROM stepcount where profile_id = " . $profile_id; 
+	$query = "SELECT * FROM stepcount where profile_id = " . $profile_id
+	. " ORDER BY step_date";  
 	
 	$result = mysql_query($query) or die(mysql_error());
 
 	
 	while($row = mysql_fetch_array($result)){
-		 array_push($points_array,$row['points_earned']);
+		 array_push($points_array,$row['step_count']);
        $dt = strtotime($row['step_date']); //make timestamp with datetime string
-       $dt_fmt = date("m-d-y", $dt); //echo the year of the datestamp just created 
+       $dt_fmt = date("m-d", $dt); //echo the year of the datestamp just created 
 	       array_push($labels_array,$dt_fmt);
 	}
 	
@@ -66,7 +67,7 @@
 
 
 	  $graph->xaxis->title->Set('(Date)');
-	  $graph->yaxis->title->Set('(Points)');
+	  $graph->yaxis->title->Set('(Steps)');
 	  $graph->Add($plot);
 	  $graph->Stroke(); 
 	}
