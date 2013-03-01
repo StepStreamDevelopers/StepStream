@@ -111,14 +111,14 @@ class FitbitAction extends Action
 	       }
         else
          {
-             $points_earned = $step_prev->step_count + ($step_count - $step_prev->step_count) / $points_index ) * 400;
+             $points_earned = $step_prev->step_count + (($step_count - $step_prev->step_count) / $points_index ) * 400;
              $ev->points_earned = $points_earned; 
              $step_prev->delete();
              $ev->insert();
          }
 
     // XXX: does this get truncated?
-``
+
         // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
 	// TRANS: %4$s is location, %5$s is a description.
         $content = sprintf(_m('"%1$s" %2$s %3$s'),$ev->step_date, $step_count,$points_earned);
