@@ -77,7 +77,7 @@ class StencylAction extends Action
        
         $ev->profile_id = $_REQUEST['profileId'];
         
-        $step_count =  $_REQUEST['stepCount']; 
+        $step_count =  $_REQUEST['pointsEarned']; 
 	      $ev->points_earned = $step_count;
 
      
@@ -92,7 +92,9 @@ class StencylAction extends Action
 
         $step_prev =  Happening::pkeyGet(array('profile_id' =>$ev->profile_id,'step_date' => $ev->step_date));
         if(empty($step_prev))
+        {
 	        $ev->insert();
+	        }
         else
          {
            $step_prev->delete();

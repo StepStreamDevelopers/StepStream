@@ -84,7 +84,7 @@ class Server {
        
         $score = $_POST['score'];
        
-        $dbquery = "UPDATE user_points SET available_points =  '" . $score . "' WHERE  profile_id = " . $profileId;
+        $dbquery = "UPDATE stepcount SET points_earned =  '" . $score . "' WHERE  profile_id = " . $profileId;
         
         mysql_select_db($this->dbname, $this->con);
 
