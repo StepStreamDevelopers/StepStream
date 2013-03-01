@@ -90,7 +90,7 @@ class FitbitAction extends Action
         if($points_obj != null)
         	$points_index = $points_obj->points_index;
         else
-        $points_index = 1;
+        $points_index = 10000;
         
         $base_time_init = "235900";
         $base_time   =  strtotime($base_time_init);
