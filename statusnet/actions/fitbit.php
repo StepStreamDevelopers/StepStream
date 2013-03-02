@@ -93,11 +93,10 @@ class FitbitAction extends Action
         $points_index = 10000;
         
         $base_time_init = "235900";
-        $base_time   =  strtotime($base_time_init);
-        $cur_time   =   strtotime(now);
+        
 
 	         
-        $ev->step_date =  $cur_time;
+        $ev->step_date =  $stepdate;
         $ev->created = common_sql_now();
         $ev->uri = common_local_url('showevent',
                                         array('id' => $ev->id));

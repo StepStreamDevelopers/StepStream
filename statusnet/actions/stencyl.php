@@ -72,47 +72,15 @@ class StencylAction extends Action
         parent::handle($argarray);
    
 
-        $ev = new Happening();
-        $ev->id          = UUID::gen();
-       
-        $ev->profile_id = $_REQUEST['profileId'];
         
-        $step_count =  $_REQUEST['pointsEarned']; 
-	      $ev->points_earned = $step_count;
-
-     
+        $profile_id = $_REQUEST['profileId'];
         
-        
-        $step_date    = date("m/d/Y");
-        
-        $ev->step_date = $step_date;
-        $ev->created = common_sql_now();
-        $ev->uri = common_local_url('showevent',
-                                        array('id' => $ev->id));
-
-        $step_prev =  Happening::pkeyGet(array('profile_id' =>$ev->profile_id,'step_date' => $ev->step_date));
-        if(empty($step_prev))
-        {
-	        $ev->insert();
-	        }
-        else
-         {
-           $step_prev->delete();
-           $ev->insert();
-         } 
-
-    // XXX: does this get truncated?
-
-        // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
-	// TRANS: %4$s is location, %5$s is a description.
-        $content = sprintf(_m('"%1$s" %2$s %3$s'),$ev->step_date, $step_count, $step_count);
-
-        // TRANS: Rendered event description. %1$s is a title, %2$s is start time, %3$s is start time,
-	// TRANS: %4$s is end time, %5$s is end time, %6$s is location, %7$s is description.
-	// TRANS: Class names should not be translated.
-        /* $rendered = sprintf(_m('<span class="vevent">'),
-                            htmlspecialchars($description)
-                            ); */
+        $pointsEarned =  $_REQUEST['pointsEarned']; 
+	      $points_obj = UserPoints::getPoints($profile_id);
+	      $newPointsObj = $points_obj;
+	      $points_obj->available_points = $pointsEarned;
+	      $points_obj->delete();
+        $newPointsObj->insert();
         
         $options=array();
         $options = array_merge(array('object_type' => Happening::OBJECT_TYPE),
@@ -124,7 +92,7 @@ class StencylAction extends Action
 
 
 
-        $saved = Notice::saveNew($ev->profile_id,
+        $saved = Notice::saveNew($profile_id,
                                  $content,
                                  array_key_exists('source', $options) ?
                                  $options['source'] : 'Game',
