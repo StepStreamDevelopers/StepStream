@@ -1,0 +1,7 @@
+DROP TRIGGER IF EXISTS `user_points_trigger`//# MySQL returned an empty result set (i.e. zero rows).
+
+CREATE TRIGGER `user_points_trigger` AFTER INSERT ON `stepcount`
+ FOR EACH ROW BEGIN
+    INSERT INTO user_points(profile_id,cumulative_points,available_points) VALUES(NEW.profile_id,NEW.points_earned,NEW.points_earned) ON DUPLICATE KEY UPDATE cumulative_points = NEW.points_earned + cumulative_points , available_points = cumulative_points;
+   END
+//# MySQL returned an empty result set (i.e. zero rows).
