@@ -119,12 +119,12 @@ class EventListItem extends NoticeListItemAdapter
 
 
     
-        if (!empty($event->points_earned)) {
+        if (!empty($event->daily_points_earned)) {
             $out->elementStart('div', 'event-points_earned');
             // TRANS: Field label for event description.
             // $out->element('strong', null, _m($profile->nickname . ' got '));
 
-            $out->element('strong', 'points_earned', $event->points_earned);
+            $out->element('strong', 'points_earned', $event->daily_points_earned);
             $out->element('span', null, _m(' points!'));
             $out->elementEnd('div');
         }

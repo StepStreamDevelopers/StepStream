@@ -105,22 +105,30 @@ class FitbitAction extends Action
         if(empty($step_prev))
         {
           $points_earned = ($step_count / $points_index ) * 400;
+          $daily_points_earned = $points_earned;
           $ev->points_earned = $points_earned; 
+          $ev->daily_points_earned = $daily_points_earned;
   	      $ev->insert();
 	       }
         else
          {
-             $points_earned = $step_prev->step_count + (($step_count - $step_prev->step_count) / $points_index ) * 400;
+             $points_earned = (($step_count - $step_prev->step_count) / $points_index ) * 400;
+             $daily_points_earned = ($step_count / $points_index ) * 400;
              $ev->points_earned = $points_earned; 
+             $ev->daily_points_earned = $daily_points_earned;
              $step_prev->delete();
              $ev->insert();
          }
-
+         
+// displaying points earned for that day, after inserting the changed points earned into the db         
+	
+	
+	
     // XXX: does this get truncated?
 
         // TRANS: Event description. %1$s is a title, %2$s is start time, %3$s is end time,
 	// TRANS: %4$s is location, %5$s is a description.
-        $content = sprintf(_m('"%1$s" %2$s %3$s'),$ev->step_date, $step_count,$points_earned);
+        $content = sprintf(_m('"%1$s" %2$s %3$s'),$ev->step_date, $step_count,$daily_points_earned);
 
         // TRANS: Rendered event description. %1$s is a title, %2$s is start time, %3$s is start time,
 	// TRANS: %4$s is end time, %5$s is end time, %6$s is location, %7$s is description.

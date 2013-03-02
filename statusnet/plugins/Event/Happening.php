@@ -56,6 +56,7 @@ class Happening extends Managed_DataObject
     public $step_count;
     public $step_date;
     public $points_earned;
+    public $daily_points_earned;
    //public $step_time;
     public $description;           // text
     public $created;               // datetime
@@ -89,6 +90,7 @@ class Happening extends Managed_DataObject
                 'profile_id' => array('type' => 'int', 'not null' => true),
                 'step_count' => array('type' => 'int', 'not null' => true),
                 'points_earned' => array('type' => 'int', 'not null' => true),
+                'daily_points_earned' => array('type' => 'int', 'not null' => true),
                 // 'step_date' => array('type' => 'date', 'not null' => true),
                 'step_date' => array('type' => 'varchar',
                                'length' => 255,
