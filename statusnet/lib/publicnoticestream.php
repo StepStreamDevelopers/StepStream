@@ -74,7 +74,7 @@ class RawPublicNoticeStream extends NoticeStream
 
         $notice->selectAdd(); // clears it
         $notice->selectAdd('id');
-
+		$notice->whereAdd('object_type != \'http://activitystrea.ms/schema/1.0/event\'');
         $notice->orderBy('created DESC, id DESC');
 
         if (!is_null($offset)) {
@@ -96,7 +96,7 @@ class RawPublicNoticeStream extends NoticeStream
 
         if ($notice->find()) {
             while ($notice->fetch()) {
-                $ids[] = $notice->id;
+                	$ids[] = $notice->id;
             }
         }
 

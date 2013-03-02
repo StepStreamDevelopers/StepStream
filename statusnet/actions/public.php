@@ -185,7 +185,7 @@ class PublicAction extends Action
     function showEmptyList()
     {
         // TRANS: Text displayed for public feed when there are no public notices.
-        $message = _("Here's where you'll see your friends' tips, step counts, and comments!") . ' ';
+        $message = _("Here's where you'll see your friends' comments!") . ' ';
 
         if (common_logged_in()) {
             // TRANS: Additional text displayed for public feed when there are no public notices for a logged in user.
