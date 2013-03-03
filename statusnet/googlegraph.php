@@ -54,7 +54,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>
-      Google Visualization API Sample
+      Google Charts Step Graph
     </title>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -80,15 +80,27 @@
         // Create and draw the visualization.
         new google.visualization.ColumnChart(document.getElementById('visualization')).
             draw(data,
-                 {title:"Your Steps",
-                  width:760, height:480,
-                  hAxis: {title: "Day"}}
+                 {width:750, height:420,
+                  hAxis: {slantedText: true, slantedTextAngle: 45},  
+                  legend: {position: "none"},
+                  chartArea:{left:50,top:10,width:"90%",height:"80%"},
+					backgroundColor: { fill:'transparent' },
+					colors:['#ff9933'],
+					fontName: 'Helvetica'
+                  }
             );
       }
       
 
       google.setOnLoadCallback(drawVisualization);
     </script>
+    <style>
+body {
+    	background-color: rgba(0, 0, 0, 0);
+		behavior: url(/PIE.php);
+		behavior: url(/PIE.php);
+	}
+    </style>
   </head>
   <body style="font-family: Arial;border: 0 none;">
     <div id="visualization" style="width: 600px; height: 400px;"></div>
