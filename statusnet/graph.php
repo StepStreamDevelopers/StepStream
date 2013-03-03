@@ -60,7 +60,7 @@
 	
 	if ($dt != null) {
 	
-	  $graph = new Graph(500, 300);
+	  $graph = new Graph(760, 480);
           $graph->SetScale('textint');
 	  $graph->xaxis->SetTickLabels($labels_array);
 	  $plot = new BarPlot($points_array );
