@@ -144,7 +144,12 @@ class AccountProfileBlock extends ProfileBlock
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
           $this->element('span', array('class' => 'profilesub'), 'My steps');
-              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '760px' , 'height' => '480px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
+//              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '760px' , 'height' => '480px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
+
+              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '760px' , 'height' => '480px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'samplegraph.html'));
+
+
+
                 $this->out->elementEnd('iframe');
                 $this->out->elementEnd('div'); 
                 
