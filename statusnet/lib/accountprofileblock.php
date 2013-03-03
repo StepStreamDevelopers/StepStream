@@ -140,44 +140,11 @@ class AccountProfileBlock extends ProfileBlock
 
         $this->elementStart('div', array('id' => 'profile-section',
                                             'class' => 'profile-section'));
-        $this->elementStart('div', array('id' => 'avatarbig',
-                                            'class' => 'avatarbig'));		
-        $size = $this->avatarSize();
-        $this->out->element(
-            'img',
-            array(
-                'src'  => $this->avatar(),
-                'class'  => 'ur_face',
-                'alt'    => $this->name(),
-                'width'  => $size,
-                'height' => $size
-            )
-        );
-		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
-                                       // TRANS: Link text for link on user profile.
-                                       'Edit profile');
-        $this->element('br');          
-        $this->element('br');
-        $points_obj = UserPoints::getPoints($this->profile->id); 
-		if($points_obj == null) {       
-			$this->element('span', array('class' => 'statnum'), ' ');
-		} else 
-		{
-        $this->element('span', array('class' => 'stats'), 'Total points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
-        $this->element('span', array('class' => 'stats'), 'Available points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
-        $this->element('span', array('class' => 'stats'), 'Average steps/day:');
-        $this->element('span', array('class' => 'statnum'), '1212');
-        $this->element('span', array('class' => 'stats'), 'Baseline:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->points_index);
-    	}
 
-        $this->out->elementEnd('div');
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
           $this->element('span', array('class' => 'profilesub'), 'My steps');
-              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '500px' , 'height' => '300px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
+              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '760px' , 'height' => '300px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
                 $this->out->elementEnd('iframe');
                 $this->out->elementEnd('div'); 
                 
