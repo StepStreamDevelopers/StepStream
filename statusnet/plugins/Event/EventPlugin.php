@@ -98,7 +98,6 @@ class EventPlugin extends MicroappPlugin
             break;
         case 'Happening':
         case 'UserPoints':
-        case 'GameToken':
         case 'WeeklyPoints':
         case 'RSVP':
             include_once $dir . '/'.$cls.'.php';
