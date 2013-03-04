@@ -146,15 +146,17 @@ class FitbitAction extends Action
         }
 
 
-
-        $saved = Notice::saveNew($user->id,
+		if ($points_earned>0)
+		{
+        	$saved = Notice::saveNew($user->id,
                                  $content,
                                  array_key_exists('source', $options) ?
                                  $options['source'] : 'fitbit',
-                                 $options);
-        
+                                 $options);     
+		}
+		
 
-        }
+    }
 
       
 
