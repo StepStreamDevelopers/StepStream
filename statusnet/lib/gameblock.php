@@ -157,17 +157,19 @@ class GameBlock extends ProfileBlock
                                                   'value' => 'profileID=' . $this->profile->id )); 
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'avatarSrc=' . $this->avatar() ));   
-                                                  
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'stepServer=' . $url ));   
+                                                                                                    
                                                   
                                                   
                 $this->out->elementStart('object', array('type' => 'application/x-shockwave-flash',
-                                                  'data' => $url . '/game/socialgame.swf' , 'width' => '590' , 'height' => '416'));
+                                                  'data' => $url . 'game/socialgame.swf' , 'width' => '590' , 'height' => '416'));
                                                 
                 $this->out->element('param', array('name' => 'movie',
-                                                  'value' => $url . '/game/socialgame.swf' ));
+                                                  'value' => $url . 'game/socialgame.swf' ));
                
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'profileID=' . $this->profile->id . '&avatarSrc=' . $this->avatar() ));
+                                                  'value' => 'profileID=' . $this->profile->id . '&avatarSrc=' . $this->avatar() . '&stepServer='.$url));
                                                   
              
                                                   
