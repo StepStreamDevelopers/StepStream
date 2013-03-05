@@ -78,6 +78,7 @@ class SubscribeAction extends Action
             return false;
         }
 
+
         // CSRF protection
 
         $token = $this->trimmed('token');
@@ -96,6 +97,13 @@ class SubscribeAction extends Action
         if (empty($this->user)) {
             // TRANS: Error message displayed when trying to perform an action that requires a logged in user.
             $this->clientError(_('Not logged in.'));
+            return false;
+        }
+        
+        // Check for number of subscriptions
+        $subscriptions = $this->user->getSubscriptions();
+        if($subscriptions->_count >= 3) {
+          $this->clientError(_('You can subscribe to only three users!' . $subscriptions->_count));
             return false;
         }
 
