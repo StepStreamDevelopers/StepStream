@@ -91,7 +91,7 @@ class StencylAction extends Action
         }
 
         $user = User::staticGet('id', $profile_id);
-        $playerName = $user->nickname;
+        $playerProfile = $user->getProfile();
         $subscriptions = $user->getSubscriptions();
         
         $i=0;
@@ -99,11 +99,12 @@ class StencylAction extends Action
            if($subscriptions->id != $profile_id )
              {
               $friend = User::staticGet('id', $subscriptions->id);
-              $friends[$i++] = $friend->nickname;
+              $friendProfile = $friend->getProfile();
+              $friends[$i++] = $friendProfile->fullname;
               }
         }
         
-        $content=$playerName . " earned " . $pointsEarned . " points with " .implode(",", $friends) . "!";
+        $content=$playerProfile->fullname . " earned " . $pointsEarned . " points with " .implode(",", $friends) . "!";
 
         $saved = Notice::saveNew($profile_id,
                                  $content,
