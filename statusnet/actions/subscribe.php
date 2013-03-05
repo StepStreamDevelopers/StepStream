@@ -137,6 +137,8 @@ class SubscribeAction extends Action
 
         $sub = Subscription::start($this->user->getProfile(),
                                    $this->other);
+                                   
+        error_log($this->user->nickname . " subscribed to " . $this->other->nickname . " on " . date('m.d.Y h:i:s') . "\n", 3, INSTALLDIR . "/logs/subscribe_info.log");
 
         if ($this->boolean('ajax')) {
             $this->startHTML('text/xml;charset=utf-8');
