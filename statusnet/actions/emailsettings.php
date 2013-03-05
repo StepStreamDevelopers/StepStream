@@ -203,6 +203,7 @@ class EmailsettingsAction extends SettingsAction
             $this->elementEnd('fieldset');
         }
 
+        if (common_config('site', 'social')) {
         $this->elementStart('fieldset', array('id' => 'settings_email_preferences'));
         // TRANS: Form legend for e-mail preferences form.
         $this->element('legend', null, _('Email preferences'));
@@ -210,13 +211,13 @@ class EmailsettingsAction extends SettingsAction
         $this->elementStart('ul', 'form_data');
 
         if (Event::handle('StartEmailFormData', array($this))) {
-/*            $this->elementStart('li');
+           $this->elementStart('li');
             $this->checkbox('emailnotifysub',
                             // TRANS: Checkbox label in e-mail preferences form.
-                            _('Send me notices of new subscriptions through email.'),
+                            _('Send me email when people friend me.'),
                             $user->emailnotifysub);
             $this->elementEnd('li');
-*/
+
 
             $this->elementStart('li');
             $this->checkbox('emailnotifyfav',
@@ -261,6 +262,7 @@ class EmailsettingsAction extends SettingsAction
         // TRANS: Button label to save e-mail preferences.
         $this->submit('save', _m('BUTTON','Save'));
         $this->elementEnd('fieldset');
+}
         $this->elementEnd('fieldset');
         $this->elementEnd('form');
     }

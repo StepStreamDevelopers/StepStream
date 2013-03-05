@@ -82,7 +82,9 @@ class MyProfileAction extends ProfileAction
 
     function showContent()
     {
-        $this->showNotices();
+ 	if (!common_config('site', 'safemode')) {
+       $this->showNotices();
+       }
     }
 
     function showProfileBlock()

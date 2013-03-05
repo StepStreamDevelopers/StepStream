@@ -99,9 +99,16 @@ class SmssettingsAction extends SettingsAction
         
             /* Added by ADM */
         $this->element('h2', null, _('Get alerts from StepStream!'));
+        if (common_config('site', 'social')) {
         $this->element('span', 'smsinstructions', '
                 You might not be able to visit StepStream every day, but that doesn\'t mean you can\'t 
                 stay in touch! Just enter your cellphone number in the form below, and then StepStream will send you alerts when people play a game with you, heart your posts or send you a reply. We\'ll send no more than 2 texts per day.');
+        }
+        else {
+                $this->element('span', 'smsinstructions', '
+                You might not be able to visit StepStream every day, but that doesn\'t mean you can\'t 
+                stay in touch! Just enter your cellphone number in the form below, and then StepStream will send you alerts. We\'ll send no more than 2 texts per day.');
+        }
 
 		$this->element('br');
         $this->element('span', 'smsinstructions', '');

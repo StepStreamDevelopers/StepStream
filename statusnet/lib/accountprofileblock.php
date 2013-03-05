@@ -140,6 +140,7 @@ class AccountProfileBlock extends ProfileBlock
 
         $this->elementStart('div', array('id' => 'profile-section',
                                             'class' => 'profile-section'));
+        if (!common_config('site', 'safemode')) {
 
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
@@ -151,7 +152,7 @@ class AccountProfileBlock extends ProfileBlock
                 $this->out->elementEnd('iframe');
                 $this->out->elementEnd('div'); 
                 
-
+		}
                                                                             		
         
                  
@@ -173,7 +174,7 @@ class AccountProfileBlock extends ProfileBlock
                         Event::handle('EndProfileRemoteSubscribe', array($this->out, $this->profile));
                     }
                 } else {
-                    if ($cur->id == $this->profile->id) { // your own page
+                    if ($cur->id == $this->profile->id && !common_config('site','safemode')) { // your own page
 $this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$cur->nickname)), 'title' => _('Play a game!')),
                                        // TRANS: Link text for link on user profile.
                                        'Play a game!'); 

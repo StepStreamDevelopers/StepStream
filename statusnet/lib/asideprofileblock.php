@@ -189,7 +189,7 @@ class AsideProfileBlock extends Widget
 	        $this->out->elementEnd('div');
         }
         
-        if (common_config('site', 'social') && ($this->title()=='Home')) {
+        if (common_config('site', 'social') && ($this->title()=='Home') && !common_config('site','safemode')	) {
         	$this->elementStart('div', array('id' => 'top3',
                                             'class' => 'asdf'));
 	        $this->element('span', array('class' => 'stats'), 'Your Top 3');    
