@@ -103,7 +103,7 @@ class SubscribeAction extends Action
         // Check for number of subscriptions
         $subscriptions = $this->user->getSubscriptions();
         if($subscriptions->_count >= 3) {
-          $this->clientError(_('You can subscribe to only three users!' . $subscriptions->_count));
+          $this->clientError(_('You can subscribe to only three users!'));
             return false;
         }
 
