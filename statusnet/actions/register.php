@@ -232,6 +232,7 @@ class RegisterAction extends Action
                                            'Whoops! Wrong code.',
                                            Profile::maxBio()),
                                         Profile::maxBio()));
+            }
                 return;
             } */ else if (!is_null($location) && mb_strlen($location) > 255) {
                 // TRANS: Form validation error displayed when trying to register with a too long location.
