@@ -32,7 +32,7 @@ class StencylAction extends Action
     protected $step_date    = null;
     //protected $step_time    = null;
     protected $description = null;
-  
+    protected $OBJECT_TYPE = 'http://activitystrea.ms/schema/1.0/game';
 
     /**
      * Returns the title of the action
@@ -41,8 +41,8 @@ class StencylAction extends Action
      */
     function title()
     {
-        // TRANS: Title for new event form.
-        return _m('TITLE','New event');
+        
+        return _m('TITLE','Stencyl Action');
     }
 
     /**
@@ -83,14 +83,27 @@ class StencylAction extends Action
         $newPointsObj->insert();
         
         $options=array();
-        $options = array_merge(array('object_type' => Happening::OBJECT_TYPE),
+        $options = array_merge(array('object_type' => $this->OBJECT_TYPE),
                                $options);
 
         if (!array_key_exists('uri', $options)) {
             $options['uri'] = $ev->uri;
         }
 
-
+        $user = User::staticGet('id', $profile_id);
+        $playerName = $user->nickname;
+        $subscriptions = $user->getSubscriptions();
+        
+        $i=0;
+        while ($subscriptions->fetch()) {
+           if($subscriptions->id != $profile_id )
+             {
+              $friend = User::staticGet('id', $subscriptions->id);
+              $friends[$i++] = $friend->nickname;
+              }
+        }
+        
+        $content=$playerName . " earned " . $pointsEarned . " points with " .implode(",", $friends) . "!";
 
         $saved = Notice::saveNew($profile_id,
                                  $content,
@@ -108,7 +121,7 @@ class StencylAction extends Action
     function showContent()
 
     {
-    
+       
 
         return;
     }
