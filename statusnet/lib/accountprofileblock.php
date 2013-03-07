@@ -179,7 +179,7 @@ $this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('
                                        // TRANS: Link text for link on user profile.
                                        'Play a game!'); 
                         $this->out->elementEnd('div');
-                    } else { // someone else's page
+                    } else if (!common_config('site','safemode')){ // someone else's page
 
                         // subscribe/unsubscribe button
 
