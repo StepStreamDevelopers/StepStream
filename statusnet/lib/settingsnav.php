@@ -133,7 +133,12 @@ class SettingsSubNav extends Menu
                                     // TRANS: Menu item title in settings navigation panel.
                                     _('Change your profile settings'),
                                     $actionName == 'profilesettings');
-
+            $this->action->menuItem(common_local_url('passwordsettings'),
+                                    // TRANS: Menu item in settings navigation panel.
+                                    _m('MENU','Password'),
+                                    // TRANS: Menu item title in settings navigation panel.
+                                    _('Change your password'),
+                                    $actionName == 'passwordsettings');
             $this->action->menuItem(common_local_url('emailsettings'),
                                     // TRANS: Menu item in settings navigation panel.
                                     _m('MENU','Email'),
@@ -154,12 +159,7 @@ class SettingsSubNav extends Menu
                                     _('Upload a picture of you'),
                                     $actionName == 'avatarsettings');
 
-            $this->action->menuItem(common_local_url('passwordsettings'),
-                                    // TRANS: Menu item in settings navigation panel.
-                                    _m('MENU','Password'),
-                                    // TRANS: Menu item title in settings navigation panel.
-                                    _('Change your password'),
-                                    $actionName == 'passwordsettings');
+
 
 /*            $this->action->menuItem(common_local_url('urlsettings'),
                                     // TRANS: Menu item in settings navigation panel.

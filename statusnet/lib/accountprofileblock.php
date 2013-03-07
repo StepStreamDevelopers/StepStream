@@ -140,6 +140,50 @@ class AccountProfileBlock extends ProfileBlock
 
         $this->elementStart('div', array('id' => 'profile-section',
                                             'class' => 'profile-section'));
+                                                                if (common_config('site','safemode')){
+                    	$this->out->elementStart('div','safewelcome');
+            			$this->out->elementStart('span', 'welcometitle');
+            			$this->out->raw("Welcome to StepStream!");
+            			$this->out->elementEnd('span');
+            			$this->element('br');
+
+            			$this->out->elementStart('span', 'welcometext');
+            			$this->out->raw("You're almost set. Just set up your account and in a week you'll be able to see your steps! We're keeping the site in 'safe mode' for this first week so we get an idea of how much you walk regularly. Then we'll open the site up next week and you can see how you're doing!");
+            			$this->out->elementEnd('span');
+            			$this->element('br');
+
+             			$this->out->elementStart('span', 'welcometext');
+            			$this->out->raw("Please enter your:");
+            			$this->element('br');
+            			$this->element('br');
+            			$this->out->elementEnd('span');
+            			
+            			$this->out->elementStart('span','welcomechoice');
+            			
+            			$this->out->element('a', array('href' => common_local_url('profilesettings')),'Name');
+            			$this->element('br');
+            			$this->element('br');
+            			
+            			$this->out->element('a', array('href' => common_local_url('passwordsettings')),'Password');
+            			$this->element('br');
+            			$this->element('br');
+            			
+            			$this->out->element('a', array('href' => common_local_url('emailsettings')),'Email');
+            			$this->element('br');
+            			$this->element('br');
+            			
+            			$this->out->element('a', array('href' => common_local_url('smssettings')),'SMS');
+            			$this->element('br');
+            			$this->element('br');            			
+
+            			$this->out->element('a', array('href' => common_local_url('avatarsettings')),'Avatar');
+            			$this->element('br');
+            			$this->element('br');
+            			
+            			$this->out->elementEnd('span');
+            			           			
+                    	$this->out->elementEnd('div');
+                    }
         if (!common_config('site', 'safemode')) {
 
                 $this->elementStart('div', array('id' => 'stepgraph',
@@ -299,6 +343,7 @@ $this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('
                             $this->out->elementEnd('li');
                         }
                     }
+
                 }
 
                 Event::handle('EndProfilePageActionsElements', array($this->out, $this->profile));

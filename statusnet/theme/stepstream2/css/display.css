@@ -657,6 +657,21 @@ legend {
 
 }
 
+.welcometitle {
+	font-size:1.8em;
+	display:block;
+}
+
+.welcometext {
+	font-size 1.1em;
+	display:block;
+	padding-top:10px;
+}
+
+.welcomechoice {
+	font-size:1.3em;
+	display:block;
+}
 
 /* Login Stuff */
 .form_login {

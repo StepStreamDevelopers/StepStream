@@ -148,8 +148,9 @@ class AsideProfileBlock extends Widget
 		$this->out->element('a', array( 'class' => 'aside_edit_profile', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
                                        // TRANS: Link text for link on user profile.
                                        'Edit your profile & picture');
-        $this->element('br');          
+        $this->element('br'); 
         $this->element('br');
+if (!common_config('site','safemode')){         
 		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')),
                                        // TRANS: Link text for link on user profile.
                                        'See all your steps!');
@@ -169,6 +170,7 @@ class AsideProfileBlock extends Widget
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index, " steps per day");
 /*    	}  */
+}
         $this->element('br');
 
         $this->out->elementEnd('div');

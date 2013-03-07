@@ -65,8 +65,7 @@ class ProfilesettingsAction extends SettingsAction
     function getInstructions()
     {
         // TRANS: Usage instructions for profile settings.
-        return _('You can update your personal profile info here '.
-                 'so people know more about you.');
+        return _('You can update your personal profile info here ');
     }
 
     function showScripts()

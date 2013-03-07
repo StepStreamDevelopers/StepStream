@@ -63,9 +63,9 @@ class MyProfileAction extends ProfileAction
     function title()
     {
         $base = $this->profile->getFancyName();
-
+		if (!common_config('site','safemode')){
                 return sprintf(_('Your Steps'), $base, $this->tag);
-
+		}
     }
 
     function handle($args)
