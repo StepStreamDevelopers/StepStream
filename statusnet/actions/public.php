@@ -184,7 +184,7 @@ class PublicAction extends Action
 
     function showEmptyList()
     {
-    	if (common_config('site','social'){
+    	if (common_config('site','social')){
         // TRANS: Text displayed for public feed when there are no public notices.
         $message = _("Here's where you'll see your friends' comments!") . ' ';
 
