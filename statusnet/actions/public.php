@@ -184,6 +184,7 @@ class PublicAction extends Action
 
     function showEmptyList()
     {
+    	if (common_config('site','social'){
         // TRANS: Text displayed for public feed when there are no public notices.
         $message = _("Here's where you'll see your friends' comments!") . ' ';
 
@@ -197,7 +198,10 @@ class PublicAction extends Action
                 $message .= _('Why not [register an account](%%action.register%%) and be the first to post!');
             }
         }
-
+		}
+		else {
+ 	       $message = _("Post any thoughts you have about your daily fitness.") . ' ';	
+		}
         $this->elementStart('div', 'guide');
         $this->raw(common_markup_to_html($message));
         $this->elementEnd('div');
