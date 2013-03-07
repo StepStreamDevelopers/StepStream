@@ -240,10 +240,14 @@ class LoginAction extends Action
         $this->elementStart('fieldset');
         // TRANS: Form legend on login page.
         $this->element('legend', null, _('Login'));
+        $this->element('img', array('class' => 'pedometerpic',
+                                            'src' => Theme::path('fitbit-green.png'),
+                                            'alt' => common_config('site', 'name'))); 
+
         $this->elementStart('ul', 'form_data');
         $this->elementStart('li');
         // TRANS: Field label on login page.
-        $this->input('nickname', _('Your pedometer number'));
+        $this->input('nickname', _('Your pedometer #'));
         $this->elementEnd('li');
         $this->elementStart('li');
         // TRANS: Field label on login page.
