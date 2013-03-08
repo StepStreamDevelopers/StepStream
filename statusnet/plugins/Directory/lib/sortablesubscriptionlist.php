@@ -62,9 +62,9 @@ class SortableSubscriptionList extends SubscriptionList
 
         $tableHeaders = array(
             // TRANS: Column header in table for user nickname.
-            'nickname'    => _m('Nickname'),
+            'nickname'    => _m('Name'),
             // TRANS: Column header in table for timestamp when user was created.
-            'created'     => _m('Created')
+//            'created'     => _m('Created')
         );
 
         foreach ($tableHeaders as $id => $label) {
@@ -111,9 +111,9 @@ class SortableSubscriptionList extends SubscriptionList
         }
 
         // TRANS: Column header for number of subscriptions.
-        $this->out->element('th', array('id' => 'subscriptions'), _m('Subscriptions'));
+//        $this->out->element('th', array('id' => 'subscriptions'), _m('Subscriptions'));
         // TRANS: Column header for number of notices.
-        $this->out->element('th', array('id' => 'notices'), _m('Notices'));
+//        $this->out->element('th', array('id' => 'notices'), _m('Notices'));
         $this->out->element('th', array('id' => 'controls'), null);
 
         $this->out->elementEnd('tr');
@@ -232,24 +232,24 @@ class SortableSubscriptionListItem extends SubscriptionListItem
 
     function showSubscriberCount()
     {
-        $this->out->elementStart('td', 'entry_subscriber_count');
+/*        $this->out->elementStart('td', 'entry_subscriber_count');
         $this->out->raw($this->profile->subscriberCount());
         $this->out->elementEnd('td');
-    }
+*/    }
 
     function showCreatedDate()
     {
-        $this->out->elementStart('td', 'entry_created');
+/*        $this->out->elementStart('td', 'entry_created');
         $this->out->raw(date('j M Y', strtotime($this->profile->created)));
         $this->out->elementEnd('td');
-    }
+*/    }
 
     function showNoticeCount()
     {
-        $this->out->elementStart('td', 'entry_notice_count');
+/*        $this->out->elementStart('td', 'entry_notice_count');
         $this->out->raw($this->profile->noticeCount());
         $this->out->elementEnd('td');
-    }
+*/    }
 
     /**
      * Overrided to truncate the bio if it's real long, because it
@@ -257,7 +257,7 @@ class SortableSubscriptionListItem extends SubscriptionListItem
      */
     function showBio()
     {
-        if (!empty($this->profile->bio)) {
+/*        if (!empty($this->profile->bio)) {
             $cutoff = 140; // XXX Should this be configurable?
             $bio    = htmlspecialchars($this->profile->bio);
 
@@ -269,7 +269,9 @@ class SortableSubscriptionListItem extends SubscriptionListItem
             $this->out->elementStart('p', 'note');
             $this->out->raw($bio);
             $this->out->elementEnd('p');
+
         }
+*/
     }
 
     /**
@@ -277,9 +279,9 @@ class SortableSubscriptionListItem extends SubscriptionListItem
      */
     function showTags()
     {
-         if (common_logged_in()) {
+/*         if (common_logged_in()) {
             parent::showTags();
         }
-
+*/
     }
 }

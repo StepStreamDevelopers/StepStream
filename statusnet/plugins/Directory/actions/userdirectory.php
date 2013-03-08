@@ -183,12 +183,12 @@ class UserdirectoryAction extends Action
      */
     function showPageNotice()
     {
-        $instr  = $this->getInstructions();
-        $output = common_markup_to_html($instr);
+//        $instr  = $this->getInstructions();
+//        $output = common_markup_to_html($instr);
 
-        $this->elementStart('div', 'instructions');
-        $this->raw($output);
-        $this->elementEnd('div');
+//        $this->elementStart('div', 'instructions');
+//        $this->raw($output);
+//        $this->elementEnd('div');
     }
 
 
@@ -205,8 +205,8 @@ class UserdirectoryAction extends Action
 
         $this->elementStart('div', array('id' => 'profile_directory'));
 
-        $alphaNav = new AlphaNav($this, false, false, array('0-9', 'All'));
-        $alphaNav->show();
+//        $alphaNav = new AlphaNav($this, false, false, array('0-9', 'All'));
+//        $alphaNav->show();
 
         $profile = null;
         $profile = $this->getUsers();
@@ -248,7 +248,7 @@ class UserdirectoryAction extends Action
 
     function showForm($error=null)
     {
-        $this->elementStart(
+/*        $this->elementStart(
             'form',
             array(
                 'method' => 'get',
@@ -274,6 +274,7 @@ class UserdirectoryAction extends Action
         $this->elementEnd('ul');
         $this->elementEnd('fieldset');
         $this->elementEnd('form');
+*/
     }
 
     /*

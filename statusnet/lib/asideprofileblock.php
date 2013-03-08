@@ -198,7 +198,9 @@ if (!common_config('site','safemode')){
 	        $this->out->elementEnd('div');
         	$this->elementStart('div', array('id' => 'top3main',
                                             'class' => 'asdf'));
-	        $this->element('span', array('class' => 'stats'), 'Asdf');    
+	        $this->element('span', array('class' => 'stats'), 'Asdf');  
+		$this->out->element('a', array( 'href' => common_local_url('userdirectory'), ), "Pick your Top 3");
+  
 	        $this->out->elementEnd('div');
 
         	$this->elementStart('div', array('id' => 'gamepromo',

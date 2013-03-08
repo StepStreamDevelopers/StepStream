@@ -100,7 +100,7 @@ class ActivityPlugin extends Plugin
                                       ActivityPlugin::SOURCE,
                                       array('rendered' => $rendered,
                                             'urls' => array(),
-                                            'replies' => array($other->getUri()),
+                                            'replies' => '',
                                       		'verb' => ActivityVerb::FOLLOW,
                                       		'object_type' => ActivityObject::PERSON,
                                       		'uri' => $sub->uri));
@@ -130,7 +130,7 @@ class ActivityPlugin extends Plugin
                             	$other->id,
                             	common_date_iso8601(common_sql_now()));
                             
-            $notice = Notice::saveNew($user->id,
+/*            $notice = Notice::saveNew($user->id,
                                       $content,
                                       ActivityPlugin::SOURCE,
                                       array('rendered' => $rendered,
@@ -139,6 +139,7 @@ class ActivityPlugin extends Plugin
                                       		'uri' => $uri,
                                       		'verb' => ActivityVerb::UNFOLLOW,
                                       		'object_type' => ActivityObject::PERSON));
+*/
         }
         return true;
     }

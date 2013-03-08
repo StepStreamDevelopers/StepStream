@@ -196,7 +196,7 @@ class ProfileListItem extends Widget
         $this->out->text(' ');
         $hasFN = (!empty($this->profile->fullname)) ? 'nickname' : 'fn nickname';
         $this->out->elementStart('span', $hasFN);
-        $this->out->raw($this->highlight($this->profile->nickname));
+        $this->out->raw($this->highlight($this->profile->fullname));
         $this->out->elementEnd('span');
         $this->out->elementEnd('a');
     }

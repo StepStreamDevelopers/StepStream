@@ -502,6 +502,9 @@ behavior: url(/PIE.php);
 
 }
 
+#userdirectory .system_notice {
+	display:none;
+}
 
 .system_notice a{
 	color: #DDDDDD;
@@ -783,6 +786,10 @@ border-radius: 0px 0px 8px 8px;
 }
 
 #game .input_forms {
+	display:none;
+}
+
+#userdirectory .input_forms {
 	display:none;
 }
 	
