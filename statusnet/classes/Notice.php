@@ -1362,11 +1362,37 @@ class Notice extends Managed_DataObject
         $reply = new Reply();
 
         $reply->notice_id  = $this->id;
+        
+        
         $reply->profile_id = $profileId;
         $reply->modified   = $this->created;
 
         $reply->insert();
 
+        $other = Profile::staticGet('id' , $profileId);
+        $otherUser = $other->getUser();
+        
+        $smsCount = SMSCount::staticGet('profile_id' , $profileId);
+        $prevCount = $smsCount->sms_count;
+        if($prevCount < 2)
+        {        
+        $profile = Profile::staticGet('id' , $this->profile_id);
+        $bestname = $profile->getBestName();
+        
+      
+        
+        $body = $bestname . " replied to your post on " . common_config('site', 'name');
+
+        $client   = new HTTPClient();
+        $response = $client->get(common_config('sms', 'url'). "?phone_number=" . $otherUser->phone_num . "&messageBody=" . urlencode($body));
+        
+        if ($response->getStatus() == 200) {
+         if(!empty($smsCount))
+                  $smsCount->delete();
+           
+            SMSCount::saveNew($profileId , $prevCount + 1);
+        }
+        }
         return $reply;
     }
 

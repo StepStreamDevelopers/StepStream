@@ -54,6 +54,8 @@ class FavorAction extends Action
      *
      * @return void
      */
+     
+     protected $OBJECT_TYPE = 'http://activitystrea.ms/schema/1.0/favorite';
     function handle($args)
     {
         parent::handle($args);
@@ -117,7 +119,34 @@ class FavorAction extends Action
      */
     function notify($notice, $user)
     {
+        $smsCount = SMSCount::staticGet('profile_id' , $notice->profile_id);
+        $prevCount = $smsCount->sms_count;
+        if(empty($smsCount) || $prevCount < 2)
+        {
         $other = User::staticGet('id', $notice->profile_id);
+        
+        $profile = $user->getProfile();
+        if ($other->hasBlocked($profile)) {
+            // If the author has blocked us, don't spam them with a notification.
+            return;
+        }
+
+        $bestname = $profile->getBestName();
+        
+        $body = $bestname . " hearts your post on " . common_config('site', 'name');
+
+        $client   = new HTTPClient();
+        $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $other->phone_num ."&messageBody=" . urlencode($body));
+        
+        if ($response->getStatus() == 200) {
+              if(!empty($smsCount))
+                  $smsCount->delete();
+              SMSCount::saveNew($notice->profile_id , $prevCount + 1);
+        }
+        
+        
+        }
+        
         if ($other && $other->id != $user->id) {
             if ($other->email && $other->emailnotifyfav) {
                 mail_notify_fave($other, $user, $notice);

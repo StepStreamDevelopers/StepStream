@@ -30,7 +30,7 @@ class StencylAction extends Action
     protected $complete    = null;
     protected $step_count  = null;
     protected $step_date    = null;
-    //protected $step_time    = null;
+
     protected $description = null;
     protected $OBJECT_TYPE = 'http://activitystrea.ms/schema/1.0/game';
 
@@ -100,6 +100,24 @@ class StencylAction extends Action
              {
               $friend = User::staticGet('id', $subscriptions->id);
               $friendProfile = $friend->getProfile();
+              $friendProfileId = $friendProfile->id;
+              
+              $smsCount = SMSCount::staticGet('profile_id' , $friendProfileId);
+              $prevCount = $smsCount->sms_count;
+              
+              if($prevCount < 2)
+              {
+                  $body = $playerProfile->fullname . " earned " . $pointsEarned . " points on ". common_config('site', 'name');
+
+                  $client   = new HTTPClient();
+                  $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $friend->phone_num ."&messageBody=" . urlencode($body));
+                  
+                  if ($response->getStatus() == 200) {
+                        if(!empty($smsCount))
+                            $smsCount->delete();
+                        SMSCount::saveNew($friendProfile->id , $prevCount + 1);
+                  }
+              }
               $friends[$i++] = $friendProfile->fullname;
               }
         }
@@ -123,7 +141,6 @@ class StencylAction extends Action
 
     {
        
-
         return;
     }
 
