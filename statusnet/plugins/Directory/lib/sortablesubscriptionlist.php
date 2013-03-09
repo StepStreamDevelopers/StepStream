@@ -56,17 +56,17 @@ class SortableSubscriptionList extends SubscriptionList
 
     function startList()
     {
-        $this->out->elementStart('table', array('class' => 'profile_list xoxo'));
-        $this->out->elementStart('thead');
-        $this->out->elementStart('tr');
+        $this->out->elementStart('div', array('class' => 'profile_list xoxo'));
+//        $this->out->elementStart('thead');
+//        $this->out->elementStart('tr');
 
-        $tableHeaders = array(
+/*        $tableHeaders = array(
             // TRANS: Column header in table for user nickname.
             'nickname'    => _m('Name'),
             // TRANS: Column header in table for timestamp when user was created.
 //            'created'     => _m('Created')
         );
-
+*/
         foreach ($tableHeaders as $id => $label) {
 
             $attrs   = array('id' => $id);
@@ -116,16 +116,16 @@ class SortableSubscriptionList extends SubscriptionList
 //        $this->out->element('th', array('id' => 'notices'), _m('Notices'));
         $this->out->element('th', array('id' => 'controls'), null);
 
-        $this->out->elementEnd('tr');
-        $this->out->elementEnd('thead');
+//        $this->out->elementEnd('tr');
+//        $this->out->elementEnd('thead');
 
-        $this->out->elementStart('tbody');
+//        $this->out->elementStart('tbody');
     }
 
     function endList()
     {
-        $this->out->elementEnd('tbody');
-        $this->out->elementEnd('table');
+//        $this->out->elementEnd('tbody');
+        $this->out->elementEnd('div');
     }
 
     function showProfiles()
@@ -177,12 +177,12 @@ class SortableSubscriptionListItem extends SubscriptionListItem
             $attr['class'] .= ' alt';
         }
 
-        $this->out->elementStart('tr', $attr);
+        $this->out->elementStart('div', $attr);
     }
 
     function endItem()
     {
-        $this->out->elementEnd('tr');
+        $this->out->elementEnd('div');
     }
 
     function startProfile()
@@ -197,19 +197,21 @@ class SortableSubscriptionListItem extends SubscriptionListItem
 
     function startActions()
     {
-        $this->out->elementStart('td', 'entity_actions');
+        $this->out->elementStart('span', 'entity_actions');
         $this->out->elementStart('ul');
     }
 
     function endActions()
     {
         $this->out->elementEnd('ul');
-        $this->out->elementEnd('td');
+        $this->out->elementEnd('span');
     }
 
     function show()
     {
         if (Event::handle('StartProfileListItem', array($this))) {
+        $user = common_current_user();		
+        if (!empty($user) && $this->profile->id != $user->id) {
             $this->startItem();
             if (Event::handle('StartProfileListItemProfile', array($this))) {
                 $this->showProfile();
@@ -222,11 +224,15 @@ class SortableSubscriptionListItem extends SubscriptionListItem
             $this->showNoticeCount();
 
             if (Event::handle('StartProfileListItemActions', array($this))) {
+        $this->out->elementStart('span', 'profilename');
+        $this->out->raw($this->highlight($this->profile->fullname));
+        $this->out->elementEnd('span');
                 $this->showActions();
                 Event::handle('EndProfileListItemActions', array($this));
             }
             $this->endItem();
             Event::handle('EndProfileListItem', array($this));
+        }
         }
     }
 

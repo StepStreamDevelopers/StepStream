@@ -506,6 +506,48 @@ behavior: url(/PIE.php);
 	display:none;
 }
 
+.profile_list {
+	width:700px;
+	display:block;
+	margin-left:5px;
+}
+
+.profile {
+	float:left;
+	clear:none;
+	width:210px;
+	margin-right:10px;
+	margin-bottom:10px;
+	background-color:#FFFFFF;
+	background-color: rgba(255, 255, 255, 0.4);
+	-pie-background: rgba(255,255,255,.4);
+	color: #333333;
+	behavior: url(/PIE.php);
+	height:70px;
+	padding:5px;
+
+}
+
+.profilename {
+	display:block;
+}
+
+.profile .avatar {
+	float:left;
+	margin-right:5px;
+}
+
+.profile .entity_actions {
+	margin-bottom: 0px;
+	float:left;
+	width:115px;
+	margin-left:0px;
+}
+
+#userdirectory #content_inner {
+	top:10px;
+}
+
 .system_notice a{
 	color: #DDDDDD;
 }
