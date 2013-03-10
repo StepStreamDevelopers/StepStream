@@ -168,7 +168,7 @@ if (!common_config('site','safemode')){
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->points_index, " steps per day");
+        $this->element('span', array('class' => 'statnum'), $points_obj->points_index." steps/day");
 /*    	}  */
 }
         $this->element('br');
@@ -194,13 +194,27 @@ if (!common_config('site','safemode')){
         if (common_config('site', 'social') && ($this->title()=='Home') && !common_config('site','safemode')	) {
         	$this->elementStart('div', array('id' => 'top3',
                                             'class' => 'asdf'));
-	        $this->element('span', array('class' => 'stats'), 'Your Top 3');    
+	        $this->element('span', array('class' => 'stats'), 'Your Game Group');    
 	        $this->out->elementEnd('div');
         	$this->elementStart('div', array('id' => 'top3main',
                                             'class' => 'asdf'));
-	        $this->element('span', array('class' => 'stats'), 'Asdf');  
-		$this->out->element('a', array( 'href' => common_local_url('userdirectory'), ), "Pick your Top 3");
-  
+
+            $user = common_current_user();
+            $subscriptions = $user->getSubscriptions();
+
+       		while ($subscriptions->fetch()) {
+           		if($subscriptions->id != $profile_id ) {
+	            	$friend = User::staticGet('id', $subscriptions->id);
+	            	$friendProfile = $friend->getProfile();
+	            	$friendProfileId = $friendProfile->id;
+	                $this->out->element('span',array('class' => 'stats'), $friendProfile->getBestName());
+	            	$this->element('br');
+	            }
+	        }
+	        $this->element('br');
+	        
+		$this->out->element('a', array( 'href' => common_local_url('userdirectory'), ), "Pick or change your game group");
+
 	        $this->out->elementEnd('div');
 
         	$this->elementStart('div', array('id' => 'gamepromo',
