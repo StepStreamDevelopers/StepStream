@@ -2,17 +2,44 @@
 
 
 
+
 class Server {
     /* The array key works as id and is used in the URL
        to identify the resource.
     */
-              
-    private $dbhost = 'mysql.steplab.org';
-
-    private $dbuser = 'steplab';
-    private $dbpass = 'stepstream8903';
-    private $dbname = 'steplab2013a';
+    private $dbuser = 'user';
+    private $dbpass = 'pass';
+    private $dbname = 'db';
+    private $dbhost = 'dbhost';
     private $con;
+  	$paramsFile = fopen('../stepstream/config.php','r');
+
+  	while(!feof($paramsFile))
+  	{
+		$buffer = fgets($paramsFile);
+		list($name,$value) = split('=',trim($buffer));
+
+        if (strlen(strstr($name,"server"))>0) {
+	 		$value = str_replace("'" ,"", $value);
+	 		$value = str_replace(" " ,"", $value);
+         	$dbhost = str_replace(";" ,"", $value) ;
+       }
+		if (strlen(strstr($name,"database"))>0) {
+			$newval = str_replace("'" ,"", $value);
+			$temp1 = explode("//" , $newval);
+			$temp2 = explode(":" , $temp1[1]);
+			$dbuser = str_replace(";" ,"",$temp2[0]);
+            $int_pos = strrpos($temp2[1], '@');
+            $dbpass = substr($temp2[1],0,$int_pos);
+			$temp4 = explode("/" , substr($temp2[1],$int_pos + 1));
+            $servername = str_replace(";" ,"",$temp4[0]);  
+			$dbname = str_replace(";" ,"",$temp4[1]); 
+   		}	
+
+  	}
+	fclose ($paramsFile);
+
+
     public function serve() {
         $this->con = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass);
         if (!$this->con)
