@@ -198,7 +198,13 @@ class GameBlock extends ProfileBlock
 	            	}
 	            }
 	        }
-  
+
+        if (common_config('site', 'social')) {
+				$social = 1;
+		}  
+		else {
+				$social = 0;
+		}
 
           $this->out->elementStart('object', array('classid' => 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
                                             'width' => '600' , 'height' => '400' , 'id' => 'myFlashMovie' , 'align' => 'middle' ));
@@ -215,7 +221,9 @@ class GameBlock extends ProfileBlock
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'userName=' . $userName ));   
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'friendcount=' . $friendcount ));                                                     
+                                                  'value' => 'friendcount=' . $friendcount ));     
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'social=' . $social ));                                                   
 		if ($friendcount>0) {
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'friend1id=' . $friend1id ));   
@@ -268,7 +276,7 @@ class GameBlock extends ProfileBlock
                 . '&friend3id=' . $friend3id   
                 . '&friend3name=' . $friend3name   
                 . '&friend3avatar=' . $friend3avatar                                                                                                                                                                                                         
-                          
+                . '&social=' . $social          
                                                  ));
                                                   
 
