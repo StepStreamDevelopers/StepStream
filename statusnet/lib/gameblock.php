@@ -215,7 +215,8 @@ class GameBlock extends ProfileBlock
                                                   'value' => 'stepServer=' . $url ));   
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'userName=' . $userName ));   
-                                                  
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friendcount=' . $friendcount ));                                                     
 		if ($friendcount>0) {
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'friend1id=' . $friend1id ));   
@@ -254,6 +255,8 @@ class GameBlock extends ProfileBlock
                                                   'value' => 'profileID=' . $userProfileId 
                                                   . '&avatarSrc=' . $userAvatar 
                                                   . '&stepServer='. $url
+                                                  . '&userName='. $userName
+                                                  . '&friendcount='. $friendcount
 
                 . '&friend1id=' . $friend1id   
                 . '&friend1name=' . $friend1name  
