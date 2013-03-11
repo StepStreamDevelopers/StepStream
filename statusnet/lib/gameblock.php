@@ -198,7 +198,6 @@ class GameBlock extends ProfileBlock
 	            	}
 	            }
 	        }
-//	        $this->profile = $user->getProfile;
   
 
           $this->out->elementStart('object', array('classid' => 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
