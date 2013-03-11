@@ -55,7 +55,7 @@ class FavorAction extends Action
      * @return void
      */
      
-     protected $OBJECT_TYPE = 'http://activitystrea.ms/schema/1.0/favorite';
+    protected $OBJECT_TYPE = 'http://activitystrea.ms/schema/1.0/favorite';
     function handle($args)
     {
         parent::handle($args);
@@ -124,7 +124,10 @@ class FavorAction extends Action
         if(empty($smsCount) || $prevCount < 2)
         {
         $other = User::staticGet('id', $notice->profile_id);
+        // Count the number of notices liked until now
         
+        $faveNotices = $user->favoriteNotices(false, 0, PHP_INT_MAX);
+        $numFavNotices = $faveNotices->_count;
         $profile = $user->getProfile();
         if ($other->hasBlocked($profile)) {
             // If the author has blocked us, don't spam them with a notification.
@@ -133,7 +136,7 @@ class FavorAction extends Action
 
         $bestname = $profile->getBestName();
         
-        $body = $bestname . " hearts your post on " . common_config('site', 'name');
+        $body = $bestname . " hearts your post on " . common_config('site', 'name') ." " . $numFavNotices;
 
         $client   = new HTTPClient();
         $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $other->phone_num ."&messageBody=" . urlencode($body));
@@ -142,9 +145,45 @@ class FavorAction extends Action
               if(!empty($smsCount))
                   $smsCount->delete();
               SMSCount::saveNew($notice->profile_id , $prevCount + 1);
+        } 
+        
+        $generateNoticeSMS = false;
+        if($numFavNotices == 5)
+         {
+             $body = "Congratulations " . $bestname . ",you have liked 5 posts on " . common_config('site', 'name') . "!";
+             $generateNoticeSMS = true;
+         }
+        else if($numFavNotices == 10)
+        {
+            $body = "Congratulations " . $bestname . ",you have liked 10 posts on ". common_config('site', 'name') . "!";
+            $generateNoticeSMS = true;
         }
         
+        else if($numFavNotices == 20)
+        {
+            $body = "Congratulations " . $bestname . ",you have liked 20 posts on ". common_config('site', 'name') . "!";
+            $generateNoticeSMS = true;
+        } 
         
+        if($generateNoticeSMS)
+        {
+        $options=array();
+        $options = array_merge(array('object_type' => $this->OBJECT_TYPE),
+                               $options);
+        $saved = Notice::saveNew(1,
+                                 $body,
+                                 array_key_exists('source', $options) ?
+                                 $options['source'] : 'Favorites',
+                                 $options);
+                                 
+        $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $other->phone_num ."&messageBody=" . urlencode($body));
+        
+        if ($response->getStatus() == 200) {
+              if(!empty($smsCount))
+                  $smsCount->delete();
+              SMSCount::saveNew($notice->profile_id , $prevCount + 1);
+        } 
+        }
         }
         
         if ($other && $other->id != $user->id) {
