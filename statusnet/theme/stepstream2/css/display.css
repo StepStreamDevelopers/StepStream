@@ -16,9 +16,9 @@ body {
 	padding:0;
 	height:100%;
 	background-color:#8CD6EA;
-	background-image:url('../images/hill-trees_smaller.jpg');
+	background-image:url('../images/hill-trees_medium.jpg');
 	background-repeat:no-repeat;
-	background-position:center;
+	background-position:left;
 	background-attachment:fixed;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
