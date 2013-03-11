@@ -66,7 +66,7 @@ class GameBlock extends ProfileBlock
         }
         return (!empty($avatar)) ?
             $avatar->displayUrl() :
-            Avatar::defaultImage(AVATAR_PROFILE_SIZE);
+            Avatar::defaultImage(AVATAR_STREAM_SIZE);
     }
 
     function name()
@@ -133,34 +133,116 @@ class GameBlock extends ProfileBlock
 				$url = local_url();
 				$cur = common_current_user();
 
-                    if ($cur->id == $this->profile->id) { // your own page
 
-
-       
-	
-    	/*
-        $this->out->elementEnd('div');
-                $this->elementStart('div', array('id' => 'stepgraph',
-                                            'class' => 'stepgraph'));		
-          $this->element('span', array('class' => 'profilesub'), 'My steps');
-              $this->out->elementStart('iframe', array('id' => 'graph_progress' , 'width' => '500px' , 'height' => '300px', 'frameborder' => '0px', 'border' => '0px', 'cellspacing' => '0px', 'src' => $url . 'graph.php?profile_id=' . $this->profile->id));
-                $this->out->elementEnd('iframe');
-                $this->out->elementEnd('div'); */
                 
         $this->out->elementEnd('div');
+                    if ($cur->id == $this->profile->id) { // your own page
+            $user = common_current_user();
+            $subscriptions = $user->getSubscriptions();
+            $friendcount = 0;
+
+
+           	$userProfileId = $this->profile->id;
+           	$userName = $this->name();
+        	$userAvatar = $this->avatar();
+
+/*
+        	$this->out->element('img', array('src'  => $userAvatar));
+	        $this->out->element('span',array('class' => 'stats'), $userProfileId);
+	        $this->out->element('span',array('class' => 'stats'), $userName);						            	
+	        $this->out->element('span',array('class' => 'stats'), $userAvatar);
+	        $this->element('br');
+	        $this->element('br');
+*/
+       		while ($subscriptions->fetch()) {
+           		if($subscriptions->id != $profile_id ) {
+           			$friendcount = $friendcount + 1;
+           			
+
+
+	            	$friend = User::staticGet('id', $subscriptions->id);
+	            	$friendProfile = $friend->getProfile();
+	            	$this->profile = $friendProfile;
+	            	$friendProfileId = $friendProfile->id;
+	            	$friendName = $friendProfile->getBestName();
+        			$friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+        			if (empty($friendAvatar)) {
+            			$friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+	        			$friendAvatarUrl = Avatar::defaultImage(AVATAR_STREAM_SIZE);
+        			}
+					else {
+						$friendAvatarUrl = $friendAvatar->displayUrl();
+					}
+/*					
+        			$this->out->element('img', array('src'  => $friendAvatarUrl));
+	                $this->out->element('span',array('class' => 'stats'), $friendProfileId);
+	            	$this->out->element('span',array('class' => 'stats'), $friendName);						            	
+	                $this->out->element('span',array('class' => 'stats'), $friendAvatarUrl);
+	            	$this->element('br');
+	            	$this->element('br');
+*/	            	
+	            	if ($friendcount == 1) {
+	            		$friend1id = $friendProfileId;
+	            		$friend1name = $friendName;
+	            		$friend1avatar = $friendAvatarUrl;
+	            	}
+	            	if ($friendcount == 2) {
+	            		$friend2id = $friendProfileId;
+	            		$friend2name = $friendName;
+	            		$friend2avatar = $friendAvatarUrl;
+	            	}
+	            	if ($friendcount == 3) {
+	            		$friend3id = $friendProfileId;
+	            		$friend3name = $friendName;
+	            		$friend3avatar = $friendAvatarUrl;
+	            	}
+	            }
+	        }
+//	        $this->profile = $user->getProfile;
+  
+
           $this->out->elementStart('object', array('classid' => 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
                                             'width' => '600' , 'height' => '400' , 'id' => 'myFlashMovie' , 'align' => 'middle' ));
                                             
                 $this->out->element('param', array('name' => 'movie',
                                                   'value' => $url . '/game/socialgame.swf' ));
+                                                  
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'profileID=' . $this->profile->id )); 
+                                                  'value' => 'profileID=' . $userProfileId )); 
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'avatarSrc=' . $this->avatar() ));   
+                                                  'value' => 'avatarSrc=' . $userAvatar ));   
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'stepServer=' . $url ));   
-                                                                                                    
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'userName=' . $userName ));   
                                                   
+		if ($friendcount>0) {
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend1id=' . $friend1id ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend1name=' . $friend1name ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend1avatar=' . $friend1avatar ));                                                                                                                                                                                                         
+                }
+                 
+		if ($friendcount>1) {
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend2id=' . $friend2id ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend2name=' . $friend2name ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend2avatar=' . $friend2avatar ));                                                                                                                                                                                                         
+                }
+
+		if ($friendcount>2) {
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend3id=' . $friend3id ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend3name=' . $friend3name ));   
+                $this->out->element('param', array('name' => 'FlashVars',
+                                                  'value' => 'friend3avatar=' . $friend3avatar ));                                                                                                                                                                                                         
+                }
+                                         
                                                   
                 $this->out->elementStart('object', array('type' => 'application/x-shockwave-flash',
                                                   'data' => $url . 'game/socialgame.swf' , 'width' => '590' , 'height' => '416'));
@@ -169,10 +251,25 @@ class GameBlock extends ProfileBlock
                                                   'value' => $url . 'game/socialgame.swf' ));
                
                 $this->out->element('param', array('name' => 'FlashVars',
-                                                  'value' => 'profileID=' . $this->profile->id . '&avatarSrc=' . $this->avatar() . '&stepServer='.$url));
+                                                  'value' => 'profileID=' . $userProfileId 
+                                                  . '&avatarSrc=' . $userAvatar 
+                                                  . '&stepServer='. $url
+
+                . '&friend1id=' . $friend1id   
+                . '&friend1name=' . $friend1name  
+                . '&friend1avatar=' . $friend1avatar                                                                                                                                                                                                         
+
+               	. '&friend2id=' . $friend2id   
+            	. '&friend2name=' . $friend2name   
+                . '&friend2avatar=' . $friend2avatar                                                                                                                                                                                                         
+
+                . '&friend3id=' . $friend3id   
+                . '&friend3name=' . $friend3name   
+                . '&friend3avatar=' . $friend3avatar                                                                                                                                                                                                         
+                          
+                                                 ));
                                                   
-             
-                                                  
+
                $this->out->elementEnd('object');
           $this->out->elementEnd('object');
                                                                             		
