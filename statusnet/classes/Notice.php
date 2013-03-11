@@ -633,7 +633,49 @@ class Notice extends Managed_DataObject
             // Prepare inbox delivery, may be queued to background.
             $notice->distribute();
         }
-
+        
+        
+        $notices = $user->getNotices(0, PHP_INT_MAX, 0,0);
+        $numNotices = $notices->_count;
+        $bestname = $profile->getBestName();
+        $generateNoticeSMS = false;
+        if($numNotices == 5)
+         {
+             $body = "Congratulations " . $bestname . ",you have 5 comments on " . common_config('site', 'name') . "!";
+             $generateNoticeSMS = true;
+         }
+        else if($numNotices == 10)
+        {
+            $body = "Congratulations " . $bestname . ",you have 10 comments on ". common_config('site', 'name') . "!";
+            $generateNoticeSMS = true;
+        }
+        
+        else if($numNotices == 20)
+        {
+            $body = "Congratulations " . $bestname . ",you have 20 comments on ". common_config('site', 'name') . "!";
+            $generateNoticeSMS = true;
+        } 
+        
+        if($generateNoticeSMS)
+        {
+        $options=array();
+        $options = array_merge(array('object_type' => 'http://activitystrea.ms/schema/1.0/note'),
+                               $options);
+        $saved = Notice::saveNew(1,
+                                 $body,
+                                 array_key_exists('source', $options) ?
+                                 $options['source'] : 'Comments',
+                                 $options);
+                       
+        $client   = new HTTPClient();          
+        $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $user->phone_num ."&messageBody=" . urlencode($body));
+        
+        if ($response->getStatus() == 200) {
+              if(!empty($smsCount))
+                  $smsCount->delete();
+              SMSCount::saveNew($notice->profile_id , $prevCount + 1);
+        } 
+       }
         return $notice;
     }
 
@@ -1383,6 +1425,7 @@ class Notice extends Managed_DataObject
         
         $body = $bestname . " replied to your post on " . common_config('site', 'name');
 
+        
         $client   = new HTTPClient();
         $response = $client->get(common_config('sms', 'url'). "?phone_number=" . $otherUser->phone_num . "&messageBody=" . urlencode($body));
         
@@ -1393,6 +1436,8 @@ class Notice extends Managed_DataObject
             SMSCount::saveNew($profileId , $prevCount + 1);
         }
         }
+        
+        
         return $reply;
     }
 
