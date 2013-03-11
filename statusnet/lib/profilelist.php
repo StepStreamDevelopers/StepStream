@@ -183,24 +183,43 @@ class ProfileListItem extends Widget
 
     function showAvatar()
     {
-        $avatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+		$friend = User::staticGet('id', $this->profile->id);
+	    $friendProfile = $friend->getProfile();
+	    $this->profile = $friendProfile;
+        $friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+    	if (empty($friendAvatar)) {
+            $friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+	        $friendAvatarUrl = Avatar::defaultImage(AVATAR_STREAM_SIZE);
+        }
+		else {
+			$friendAvatarUrl = $friendAvatar->displayUrl();
+		}
+        $this->out->element('img', array('src' => $friendAvatarUrl,
+                                         'class' => 'photo avatar',
+                                         'width' => AVATAR_STREAM_SIZE,
+                                         'height' => AVATAR_STREAM_SIZE,
+                                         'alt' => 'Photo'));
+
+
+/*        $avatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
         $aAttrs = $this->linkAttributes();
         $this->out->elementStart('a', $aAttrs);
         $this->out->element('img', array('src' => ($avatar) ? $avatar->displayUrl() : Avatar::defaultImage(AVATAR_STREAM_SIZE),
                                          'class' => 'photo avatar',
                                          'width' => AVATAR_STREAM_SIZE,
                                          'height' => AVATAR_STREAM_SIZE,
-                                         'alt' =>
+                                         'alt' => 'hello'
                                          ($this->profile->fullname) ? $this->profile->fullname :
                                          $this->profile->nickname));
         $this->out->text(' ');
         $hasFN = (!empty($this->profile->fullname)) ? 'nickname' : 'fn nickname';
-/*
+
         $this->out->elementStart('span', $hasFN);
         $this->out->raw($this->highlight($this->profile->fullname));
         $this->out->elementEnd('span');
-*/
+
         $this->out->elementEnd('a');
+*/
     }
 
     function showFullName()
