@@ -76,12 +76,12 @@ class StencylAction extends Action
         $profile_id = $_REQUEST['profileId'];
         
         $tokensEarned =  $_REQUEST['tokensEarned']; 
-	      $points_obj = UserPoints::getPoints($profile_id);
+/*	      $points_obj = UserPoints::getPoints($profile_id);
 	      $newPointsObj = $points_obj;
 	      $points_obj->available_points = $tokensEarned;
 	      $points_obj->delete();
- //       $newPointsObj->insert();
-        
+        $newPointsObj->insert();
+*/       
         $options=array();
         $options = array_merge(array('object_type' => $this->OBJECT_TYPE),
                                $options);
