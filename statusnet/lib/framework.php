@@ -32,7 +32,7 @@ define('AVATAR_STREAM_SIZE', 48);
 define('AVATAR_MINI_SIZE', 24);
 
 define('NOTICES_PER_PAGE', 20);
-define('PROFILES_PER_PAGE', 20);
+define('PROFILES_PER_PAGE', 60);
 define('MESSAGES_PER_PAGE', 20);
 
 define('FOREIGN_NOTICE_SEND', 1);
