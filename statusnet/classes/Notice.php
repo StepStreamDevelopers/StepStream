@@ -634,7 +634,7 @@ class Notice extends Managed_DataObject
             $notice->distribute();
         }
         
-        
+/*        
         $notices = $user->getNotices(0, PHP_INT_MAX, 0,0);
         $numNotices = $notices->_count;
         $bestname = $profile->getBestName();
