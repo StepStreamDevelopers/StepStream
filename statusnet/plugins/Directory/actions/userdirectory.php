@@ -92,7 +92,7 @@ class UserdirectoryAction extends Action
         if ($this->filter == 'all') {
             if ($this->page != 1) {
                 // TRANS: Page title for user directory. %d is a page number.
-                return(sprintf(_m('User Directory, page %d'), $this->page));
+                return(sprintf(_m('User Directory'), $this->page));
             }
             // TRANS: Page title for user directory.
             return _m('User directory');
@@ -205,14 +205,6 @@ class UserdirectoryAction extends Action
         $cur = common_current_user();
 
         $this->element('h1', null, "Pick your game group");
-                            $this->elementStart('a', array('class' => 'stats',
-                                           'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
-                $this->element('img', array('class' => 'promo',
-                                            'src' => Theme::path('/images/playgame.png'),
-                                            'alt' => common_config('site', 'name'))); 
-            $this->elementEnd('a');
-            $this->element('br');
-            $this->element('br');
 
 //        $alphaNav = new AlphaNav($this, false, false, array('0-9', 'All'));
 //        $alphaNav->show();

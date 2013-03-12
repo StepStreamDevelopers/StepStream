@@ -170,6 +170,17 @@ if (!common_config('site','safemode')){
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index." steps/day");
 }
         $this->element('br');
+        if ($this->title()=='User directory') {
+                                    $this->elementStart('a', array('class' => 'stats',
+                                           'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('/images/playgame.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->elementEnd('a');
+            $this->element('br');
+            $this->element('br');
+            
+        }
 
         $this->out->elementEnd('div');
         }
@@ -233,6 +244,15 @@ if (!common_config('site','safemode')){
                                             'src' => Theme::path('/images/pick.png'),
                                             'alt' => common_config('site', 'name'))); 
             $this->out->elementEnd('a');
+            $this->elementStart('a', array('class' => 'stats',
+                                           'href' =>             
+            common_local_url('game', array('nickname' =>$cur->nickname))));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('/images/playsmall.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->out->elementEnd('a');
+            $this->element('br');
+
 	        $this->out->elementEnd('div');
 
         	$this->elementStart('div', array('id' => 'gamepromo',
