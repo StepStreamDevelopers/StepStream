@@ -136,6 +136,8 @@ class GameBlock extends ProfileBlock
 
                 
         $this->out->elementEnd('div');
+        $this->element('h1', null, "PuddleJump");
+        $this->out->elementStart('div', 'gametime');
                     if ($cur->id == $this->profile->id) { // your own page
             $user = common_current_user();
             $subscriptions = $user->getSubscriptions();
@@ -283,7 +285,8 @@ class GameBlock extends ProfileBlock
                $this->out->elementEnd('object');
           $this->out->elementEnd('object');
                                                                             		
-        
+             $this->out->elementEnd('div');
+   
                  
 }
 

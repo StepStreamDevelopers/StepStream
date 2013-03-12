@@ -496,6 +496,10 @@ behavior: url(/PIE.php);
 	border-top: 8px solid #FFE01D;
 }
 
+.notice-type-game {
+	border-top: 8px solid #FF9900;
+}
+
 .notice-type-event {
 	border-top: 8px solid #9CE548;
 }
@@ -1681,7 +1685,7 @@ width:100%;
 }
 
 .entity_actions a, .entity_actions input, .entity_actions p {
-    color: #333 !important;
+/*    color: #333 !important; */
     font-weight: normal;
     line-height: 1.6em;
 }
@@ -1696,8 +1700,8 @@ display:block;
     padding: 4px 4px 4px 26px;
 }
 
+
 .entity_actions a, .entity_actions p, .entity_actions .entity_subscribe input, .entity_actions .entity_block input, .entity_actions .entity_moderation input, .entity_actions .entity_role input, .entity_actions .entity_nudge input, .entity_actions .entity_delete input, .entity_actions input.submit {
-    background-color: #ccc !important;
     border: none;
 }
 
@@ -1705,9 +1709,10 @@ display:block;
     padding: 2px 4px 4px 28px;
 }
 
+
 .entity_actions a:hover, .entity_actions p:hover, .entity_actions .entity_subscribe input:hover, .entity_actions .entity_block input:hover, .entity_actions .entity_moderation input:hover, .entity_actions .entity_role input:hover, .entity_actions .entity_nudge input:hover, .entity_actions .entity_delete input:hover, .entity_actions input.submit:hover {
-    background-color: #f2f2f2 !important;
 }
+
 
 .entity_actions #entity_remote_subscribe a {
     padding-right: 6px;
@@ -2224,6 +2229,23 @@ body.realtime-popup {
 }
 
 /* icons */
+.form_user_unsubscribe input.submit {
+background-image:url(../images/icons/swapout.png);
+width:116px;
+height:35px;
+	background-color: rgba(0, 0, 0, 0.09);
+	-pie-background: rgba(0,0,0,0.09);
+	behavior: url(/PIE.php);
+}
+
+.form_user_subscribe input.submit {
+background-image:url(../images/icons/swapin.png);
+width:116px;
+height:35px;
+	background-color: rgba(0, 0, 0, 0.09);
+	-pie-background: rgba(0,0,0,0.09);
+	behavior: url(/PIE.php);
+}
 
 .form_notice label.notice_data-attach,
 #export_data li a.rss,
@@ -2247,11 +2269,10 @@ body.realtime-popup {
 #new_group a,
 button.close,
 .form_group_leave input.submit,
-.form_user_unsubscribe input.submit,
+/*.form_user_unsubscribe input.submit,*/
 .form_group_join input.submit,
-.form_user_subscribe input.submit,
 .form_remote_authorize input.submit,
-.entity_subscribe a,
+/*.entity_subscribe a,*/
 .entity_moderation p,
 .entity_sandbox input.submit,
 .entity_silence input.submit,
@@ -2271,7 +2292,6 @@ button.minimize,
 .entity_clear input.submit,
 .entity_flag input.submit,
 .entity_flag p,
-.entity_subscribe input.submit,
 #realtime_play,
 #realtime_pause,
 #realtime_popup,
@@ -2305,13 +2325,12 @@ background-color:transparent;
 }
 
 .form_group_leave input.submit,
-.form_user_unsubscribe input.submit,
+/*.form_user_unsubscribe input.submit,*/
 .form_user_remove_peopletag input.submit,
 .form_peopletag_unsubscribe input.submit {
 background-position:5px -1246px;
 }
 .form_group_join input.submit,
-.form_user_subscribe input.submit,
 .form_remote_authorize input.submit,
 .form_user_add_peopletag input.submit,
 .form_peopletag_subscribe input.submit,

@@ -202,8 +202,17 @@ class UserdirectoryAction extends Action
     function showContent()
     {
         $this->showForm();
+        $cur = common_current_user();
 
-        $this->elementStart('div', array('id' => 'profile_directory'));
+        $this->element('h1', null, "Pick your game group");
+                            $this->elementStart('a', array('class' => 'stats',
+                                           'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('/images/playgame.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->elementEnd('a');
+            $this->element('br');
+            $this->element('br');
 
 //        $alphaNav = new AlphaNav($this, false, false, array('0-9', 'All'));
 //        $alphaNav->show();

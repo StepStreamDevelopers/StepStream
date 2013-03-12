@@ -151,25 +151,23 @@ class AsideProfileBlock extends Widget
         $this->element('br'); 
         $this->element('br');
 if (!common_config('site','safemode')){         
-		$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')),
-                                       // TRANS: Link text for link on user profile.
-                                       'See all your steps!');
+		$this->out->elementStart('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('images/stepsbutton.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->out->elementEnd('a');
         $this->element('br');
         $this->element('br');
 
         $points_obj = UserPoints::getPoints($this->profile->id); 
 
-/*		if($points_obj == null) {       
-			$this->element('span', array('class' => 'statnum'), 'No steps yet... ');
-		} else 
-		{ */
+
         $this->element('span', array('class' => 'stats'), 'Total points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
         $this->element('span', array('class' => 'stats'), 'Available points:');
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index." steps/day");
-/*    	}  */
 }
         $this->element('br');
 
@@ -204,17 +202,37 @@ if (!common_config('site','safemode')){
 
        		while ($subscriptions->fetch()) {
            		if($subscriptions->id != $profile_id ) {
-	            	$friend = User::staticGet('id', $subscriptions->id);
+			     	$friend = User::staticGet('id', $subscriptions->id);
 	            	$friendProfile = $friend->getProfile();
+	            	$this->profile = $friendProfile;
 	            	$friendProfileId = $friendProfile->id;
-	                $this->out->element('span',array('class' => 'stats'), $friendProfile->getBestName());
+	            	$friendName = $friendProfile->getBestName();
+        			$friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+        			if (empty($friendAvatar)) {
+            			$friendAvatar = $this->profile->getAvatar(AVATAR_STREAM_SIZE);
+	        			$friendAvatarUrl = Avatar::defaultImage(AVATAR_STREAM_SIZE);
+        			}
+					else {
+						$friendAvatarUrl = $friendAvatar->displayUrl();
+					}
+					
+        			$this->out->element('img', array('src'  => $friendAvatarUrl));
+	            	$this->out->element('span',array('class' => 'stats'), $friendName);						            	
 	            	$this->element('br');
-	            }
-	        }
+	            	
+				}
+			}
+			$myProfile = $user->getProfile();
+	        $this->profile = $myProfile
+	        ;
 	        $this->element('br');
 	        
-		$this->out->element('a', array( 'href' => common_local_url('userdirectory'), ), "Pick or change your game group");
-
+            $this->elementStart('a', array('class' => 'stats',
+                                           'href' => common_local_url('userdirectory')));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('/images/pick.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->out->elementEnd('a');
 	        $this->out->elementEnd('div');
 
         	$this->elementStart('div', array('id' => 'gamepromo',

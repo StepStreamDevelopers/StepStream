@@ -502,6 +502,23 @@ behavior: url(/PIE.php);
 
 }
 
+.gametime {
+	width:645px;
+	float:left;
+	top:50px;
+	left:300px;
+	padding:10px 5px 10px 55px;
+	background-color:#000000;
+	background-color: rgba(0, 0, 0, 0.4);
+	-pie-background: rgba(0,0,0,.4);
+	-moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	clear:both;
+	color: #333333;
+	behavior: url(/PIE.php);
+
+}
+
 #userdirectory .system_notice {
 	display:none;
 }

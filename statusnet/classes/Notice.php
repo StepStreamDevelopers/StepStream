@@ -676,6 +676,7 @@ class Notice extends Managed_DataObject
               SMSCount::saveNew($notice->profile_id , $prevCount + 1);
         } 
        }
+*/
         return $notice;
     }
 
