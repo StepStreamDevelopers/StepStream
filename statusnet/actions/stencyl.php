@@ -75,12 +75,12 @@ class StencylAction extends Action
         
         $profile_id = $_REQUEST['profileId'];
         
-        $pointsEarned =  $_REQUEST['pointsEarned']; 
+        $tokensEarned =  $_REQUEST['tokensEarned']; 
 	      $points_obj = UserPoints::getPoints($profile_id);
 	      $newPointsObj = $points_obj;
-	      $points_obj->available_points = $pointsEarned;
+	      $points_obj->available_points = $tokensEarned;
 	      $points_obj->delete();
-        $newPointsObj->insert();
+ //       $newPointsObj->insert();
         
         $options=array();
         $options = array_merge(array('object_type' => $this->OBJECT_TYPE),
@@ -107,7 +107,7 @@ class StencylAction extends Action
               
               if($prevCount < 2)
               {
-                  $body = $playerProfile->fullname . " earned " . $pointsEarned . " points on ". common_config('site', 'name');
+                  $body = $playerProfile->fullname . " found " . $tokensEarned . " stepping stones for you on ". common_config('site', 'name');
 
                   $client   = new HTTPClient();
                   $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $friend->phone_num ."&messageBody=" . urlencode($body));
@@ -122,7 +122,7 @@ class StencylAction extends Action
               }
         }
         
-        $content=$playerProfile->fullname . " earned " . $pointsEarned . " points with " .implode(",", $friends) . "!";
+        $content=$playerProfile->fullname . " found " . $tokensEarned . " stepping stones with " .implode(",", $friends) . "!";
 
         $saved = Notice::saveNew($profile_id,
                                  $content,
