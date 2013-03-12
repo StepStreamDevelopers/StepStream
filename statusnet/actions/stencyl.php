@@ -94,10 +94,12 @@ class StencylAction extends Action
         $playerProfile = $user->getProfile();
         $subscriptions = $user->getSubscriptions();
         
+        $hasfriends=0;
         $i=0;
         while ($subscriptions->fetch()) {
            if($subscriptions->id != $profile_id )
              {
+              $hasfriends=1;
               $friend = User::staticGet('id', $subscriptions->id);
               $friendProfile = $friend->getProfile();
               $friendProfileId = $friendProfile->id;
@@ -121,8 +123,15 @@ class StencylAction extends Action
               $friends[$i++] = $friendProfile->fullname;
               }
         }
+        if ($hasfriends==0)
+        {
+         	$steppingstoneswith = " stepping stones";
+        }
+        else {
+        	$steppingstoneswith = " stepping stones with ";
+        }
         
-        $content=$playerProfile->fullname . " found " . $tokensEarned . " stepping stones with " .implode(",", $friends) . "!";
+        $content=$playerProfile->fullname . " found " . $tokensEarned . $steppingstoneswith .implode(",", $friends) . "!";
 
         $saved = Notice::saveNew($profile_id,
                                  $content,
