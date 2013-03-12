@@ -136,7 +136,7 @@ class FavorAction extends Action
 
         $bestname = $profile->getBestName();
         
-        $body = $bestname . " hearts your post on " . common_config('site', 'name') ." " . $numFavNotices;
+        $body = $bestname . " hearts your post on " . common_config('site', 'name');
 
         $client   = new HTTPClient();
         $response = $client->get(common_config('sms', 'url') . "?phone_number=" . $other->phone_num ."&messageBody=" . urlencode($body));
