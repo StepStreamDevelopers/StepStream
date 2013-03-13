@@ -114,8 +114,8 @@ class AccountProfileBlock extends ProfileBlock
 
     function showActions()
     {
+ 
         if (Event::handle('StartProfilePageActionsSection', array($this->out, $this->profile))) {
-
             if ($this->profile->hasRole(Profile_role::DELETED)) {
                 $this->out->elementStart('div', 'entity_actions');
                 // TRANS: H2 for user actions in a profile.
@@ -184,7 +184,7 @@ class AccountProfileBlock extends ProfileBlock
             			           			
                     	$this->out->elementEnd('div');
                     }
-        if (!common_config('site', 'safemode')) {
+        if (!common_config('site', 'safemode')&&$cur->id == $this->profile->id) {
 
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
@@ -201,12 +201,40 @@ class AccountProfileBlock extends ProfileBlock
         
                  
 }
+					else {
 
+					}
 
 
             $this->out->elementStart('div', 'entity_actions');
+            
+if ($cur->id != $this->profile->id) {
             // TRANS: H2 for entity actions in a profile.
-            $this->out->element('h2', null, _('User actions'));
+					        $this->element('h4', null, $this->profile->getBestName());
+        $size = $this->avatarSize();
+        $this->out->element(
+            'img',
+            array(
+                'src'  => $this->avatar(),
+                'class'  => 'ur_face',
+                'alt'    => $this->name(),
+                'width'  => $size,
+                'height' => $size
+            )
+        );
+
+                                    $this->element('br');      
+        $points_obj = UserPoints::getPoints($this->profile->id); 
+
+        $this->element('span', array('class' => 'stats'), 'Available points:');
+        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
+
+        $this->element('span', array('class' => 'stats'), 'All-time points earned:');
+        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points); 
+        $this->element('br'); 
+
+}
+
             $this->out->elementStart('ul');
 
             if (Event::handle('StartProfilePageActionsElements', array($this->out, $this->profile))) {
@@ -232,7 +260,7 @@ class AccountProfileBlock extends ProfileBlock
 
                         $this->out->elementStart('li', 'entity_subscribe');
 
-                        if ($cur->isSubscribed($this->profile)) {
+                        if ($cur->isSubscribed($this->profile) && !($cur==$this->profile)) {
                             $usf = new UnsubscribeForm($this->out, $this->profile);
                             $usf->show();
                         } else if ($cur->hasPendingSubscription($this->profile)) {
@@ -373,6 +401,7 @@ class AccountProfileBlock extends ProfileBlock
             $rf->show();
         }
         $this->out->elementEnd('li');
+        
     }
 
     function showRemoteSubscribeLink()
@@ -387,6 +416,7 @@ class AccountProfileBlock extends ProfileBlock
 
     function show()
     {
+
         $this->out->elementStart('div', 'profile_block account_profile_block section');
         if (Event::handle('StartShowAccountProfileBlock', array($this->out, $this->profile))) {
 

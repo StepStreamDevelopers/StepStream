@@ -110,6 +110,7 @@ class ShowstreamAction extends ProfileAction
         $block = new AccountProfileBlock($this, $this->profile);
         $block->show();
         
+        
     }
 
     function showPageNoticeBlock()
@@ -216,11 +217,11 @@ class ShowstreamAction extends ProfileAction
             $current_user = common_current_user();
             if ($this->user->id === $current_user->id) {
                 // TRANS: Second sentence of empty list message for a stream for the user themselves.
-                $message .= _('Seen anything interesting recently? You haven\'t posted any notices yet, now would be a good time to start :)');
+                $message .= _('Seen anything interesting recently? You haven\'t posted anything yet. Now would be a good time to start :)');
             } else {
                 // TRANS: Second sentence of empty  list message for a non-self timeline. %1$s is a user nickname, %2$s is a part of a URL.
                 // TRANS: This message contains a Markdown link. Keep "](" together.
-                $message .= sprintf(_('You can try to nudge %1$s or [post something to them](%%%%action.newnotice%%%%?status_textarea=%2$s).'), $this->user->nickname, '@' . $this->user->nickname);
+ //               $message .= sprintf(_('You can try to nudge %1$s or [post something to them](%%%%action.newnotice%%%%?status_textarea=%2$s).'), $this->user->nickname, '@' . $this->user->nickname);
             }
         }
         else {
@@ -237,10 +238,10 @@ class ShowstreamAction extends ProfileAction
     function showNotices()
     {
     $cur = common_current_user();
-    if ($cur->hasRight(Right::GRANTROLE)) {
+//    if ($cur->hasRight(Right::GRANTROLE)) {
         $block = new AccountProfileBlock($this, $this->profile);
         $block->show();
-    }
+//    }
         $notice = empty($this->tag)
           ? $this->user->getNotices(($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1)
             : $this->user->getTaggedNotices($this->tag, ($this->page-1)*NOTICES_PER_PAGE, NOTICES_PER_PAGE + 1, 0, 0, null);
@@ -355,6 +356,7 @@ class ProfileNoticeListItem extends DoFollowListItem
             $this->out->raw(sprintf(_('Repeat of %s'), $text_link));
 
             $this->out->elementEnd('span');
+            
         }
     }
 }
