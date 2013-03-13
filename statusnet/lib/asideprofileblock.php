@@ -165,6 +165,17 @@ if (!common_config('site','safemode')){
         $this->element('span', array('class' => 'stats'), 'All-time points earned:');
         $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points); 
         $this->element('br'); 
+        $this->element('span', array('class' => 'stats'), 'Stepping stones found:');
+        $url = ("http://".common_config('site', 'server')."/REST/tokens/".$cur->id);
+		$ch = curl_init();  
+		curl_setopt($ch, CURLOPT_URL, $url);  
+		curl_setopt($ch, CURLOPT_HEADER, 0);  
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
+		$output = intval(curl_exec($ch));   
+		curl_close($ch);  
+		
+
+        $this->element('span', array('class' => 'statnum'), $output);
 
 		$this->out->elementStart('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')));
                 $this->element('img', array('class' => 'promo',
