@@ -161,13 +161,16 @@ if (!common_config('site','safemode')){
 
         $points_obj = UserPoints::getPoints($this->profile->id); 
 
-
-        $this->element('span', array('class' => 'stats'), 'Total points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);          
-        $this->element('span', array('class' => 'stats'), 'Available points:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
         $this->element('span', array('class' => 'stats'), 'Personal goal:');
         $this->element('span', array('class' => 'statnum'), $points_obj->points_index." steps/day");
+        $this->element('span', array('class' => 'statsmaller'), "(You get 400 points");
+        $this->element('span', array('class' => 'statsmaller'), "when you meet this goal)");
+            
+        $this->element('span', array('class' => 'stats'), 'Available points:');
+        $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
+
+        $this->element('span', array('class' => 'stats'), 'All-time points earned:');
+        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);  
 }
         $this->element('br');
         if ($this->title()=='User directory') {
@@ -187,7 +190,7 @@ if (!common_config('site','safemode')){
 		$this->out->elementEnd('ul');
         $this->out->elementEnd('div');
         
-        if (common_config('site', 'social')) {
+/*        if (common_config('site', 'social')) {
         	$this->elementStart('div', array('id' => 'socialflag',
                                             'class' => 'socialflag'));
 	        $this->element('span', array('class' => 'stats'), 'Social v2');    
@@ -199,7 +202,7 @@ if (!common_config('site','safemode')){
 	        $this->element('span', array('class' => 'stats'), 'v2');    
 	        $this->out->elementEnd('div');
         }
-        
+*/        
         if (common_config('site', 'social') && ($this->title()=='Home') && !common_config('site','safemode')	) {
         	$this->elementStart('div', array('id' => 'top3',
                                             'class' => 'asdf'));
@@ -207,7 +210,7 @@ if (!common_config('site','safemode')){
 	        $this->out->elementEnd('div');
         	$this->elementStart('div', array('id' => 'top3main',
                                             'class' => 'asdf'));
-
+	        $this->element('span', array('class' => 'top3text'), 'Pick up to 3 friends to race with you! When you find stepping stones, your friends will get them too. ');    
             $user = common_current_user();
             $subscriptions = $user->getSubscriptions();
 

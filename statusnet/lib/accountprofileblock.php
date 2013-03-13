@@ -219,9 +219,12 @@ class AccountProfileBlock extends ProfileBlock
                     }
                 } else {
                     if ($cur->id == $this->profile->id && !common_config('site','safemode')) { // your own page
-$this->out->element('a', array( 'class' => 'stats', 'href' => common_local_url('game', array('nickname' =>$cur->nickname)), 'title' => _('Play a game!')),
-                                       // TRANS: Link text for link on user profile.
-                                       'Play a game!'); 
+                                    $this->elementStart('a', array('class' => 'stats',
+                                           'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('/images/playgame.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->elementEnd('a');
                         $this->out->elementEnd('div');
                     } else if (!common_config('site','safemode')){ // someone else's page
 

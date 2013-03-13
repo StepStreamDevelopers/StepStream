@@ -62,7 +62,7 @@ a {
 	left: 697px;
 	top:1px;
 	width: 353px;
-	height:330px;
+	height:250px;
 	background-color:#333333;
 	margin-top:10px;
 	margin-left:10px;
@@ -84,7 +84,7 @@ a {
 #top3 {
 	position:fixed;
 	left: 697px;
-	top:355px;
+	top:276px;
 	width: 365px;
 	height:20px;
 	background-color:#333333;
@@ -107,7 +107,7 @@ a {
 #top3main {
 	position:fixed;
 	left: 697px;
-	top:388px;
+	top:310px;
 	width: 353px;
 	min-height:20px;
 	padding: 8px;
@@ -697,6 +697,23 @@ legend {
 	display:block;
 	line-height:1.2em;
 }
+
+.statsmaller {
+	font-size:.82em;
+	display:block;
+	line-height:.7em;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
+.top3text {
+	font-size:.82em;
+	display:block;
+	line-height:1em;
+	clear:both;
+	margin-bottom:8px;
+}
+
 
 .profilesub {
 	font-size:1.2em;

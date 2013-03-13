@@ -1652,7 +1652,7 @@ font-style:italic;
 }
 
 .entity_actions {
-float:right;
+float:left;
 margin-left:2%;
     margin-bottom: 28px;
 min-width:21%;
