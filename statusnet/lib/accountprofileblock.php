@@ -133,7 +133,7 @@ class AccountProfileBlock extends ProfileBlock
 				$url = local_url();
 				$cur = common_current_user();
 
-                    if ($cur->id == $this->profile->id) { // your own page
+                    if (($cur->id == $this->profile->id)||$cur->hasRight(Right::DELETEOTHERSNOTICE)) { // your own page
 
 // beginning of profile block
         $this->element('h1', null, $this->title());
@@ -184,7 +184,7 @@ class AccountProfileBlock extends ProfileBlock
             			           			
                     	$this->out->elementEnd('div');
                     }
-        if ((!common_config('site', 'safemode')&&$cur->id == $this->profile->id)||$cur->profile->hasRole(Profile_role::ADMINISTRATOR)) {
+        if (!common_config('site', 'safemode')&&$cur->id == $this->profile->id){
 
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
