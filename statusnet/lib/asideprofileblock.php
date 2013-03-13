@@ -148,16 +148,9 @@ class AsideProfileBlock extends Widget
 		$this->out->element('a', array( 'class' => 'aside_edit_profile', 'href' => common_local_url('profilesettings'), 'title' => _('Edit profile settings.')),
                                        // TRANS: Link text for link on user profile.
                                        'Edit your profile & picture');
-        $this->element('br'); 
         $this->element('br');
 if (!common_config('site','safemode')){         
-		$this->out->elementStart('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')));
-                $this->element('img', array('class' => 'promo',
-                                            'src' => Theme::path('images/stepsbutton.png'),
-                                            'alt' => common_config('site', 'name'))); 
-            $this->out->elementEnd('a');
-        $this->element('br');
-        $this->element('br');
+
 
         $points_obj = UserPoints::getPoints($this->profile->id); 
 
@@ -170,10 +163,18 @@ if (!common_config('site','safemode')){
         $this->element('span', array('class' => 'statnum'), $points_obj->available_points);
 
         $this->element('span', array('class' => 'stats'), 'All-time points earned:');
-        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points);  
+        $this->element('span', array('class' => 'statnum'), $points_obj->cumulative_points); 
+        $this->element('br'); 
+
+		$this->out->elementStart('a', array( 'class' => 'stats', 'href' => common_local_url('myprofile', array('nickname' =>$cur->nickname)), 'title' => _('See your steps.')));
+                $this->element('img', array('class' => 'promo',
+                                            'src' => Theme::path('images/stepsbutton.png'),
+                                            'alt' => common_config('site', 'name'))); 
+            $this->out->elementEnd('a');
 }
         $this->element('br');
-        if ($this->title()=='User directory') {
+         $this->element('br');
+       if ($this->title()=='User directory') {
                                     $this->elementStart('a', array('class' => 'stats',
                                            'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
                 $this->element('img', array('class' => 'promo',
