@@ -211,7 +211,7 @@ class SortableSubscriptionListItem extends SubscriptionListItem
     {
         if (Event::handle('StartProfileListItem', array($this))) {
         $user = common_current_user();		
-        if (!empty($user) && $this->profile->id != $user->id) {
+        if (!empty($user) && $this->profile->id != $user->id && !$this->profile->isSandboxed()) {
             $this->startItem();
             if (Event::handle('StartProfileListItemProfile', array($this))) {
                 $this->showProfile();
