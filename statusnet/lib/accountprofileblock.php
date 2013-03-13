@@ -184,7 +184,7 @@ class AccountProfileBlock extends ProfileBlock
             			           			
                     	$this->out->elementEnd('div');
                     }
-        if (!common_config('site', 'safemode')&&$cur->id == $this->profile->id){
+        if (!common_config('site', 'safemode')&&($cur->id == $this->profile->id || $cur->hasRight(Right::DELETEOTHERSNOTICE)){
 
                 $this->elementStart('div', array('id' => 'stepgraph',
                                             'class' => 'stepgraph'));		
