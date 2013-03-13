@@ -204,7 +204,7 @@ class UserdirectoryAction extends Action
         $this->showForm();
         $cur = common_current_user();
 
-        $this->element('h1', null, "Pick your game group");
+        $this->element('h1', null, "Pick your game group (3 people max)");
 
 //        $alphaNav = new AlphaNav($this, false, false, array('0-9', 'All'));
 //        $alphaNav->show();
