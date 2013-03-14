@@ -47,6 +47,8 @@ class UnsubscribeAction extends Action
     function handle($args)
     {
         parent::handle($args);
+
+
         if (!common_logged_in()) {
             // TRANS: Error message displayed when trying to perform an action that requires a logged in user.
             $this->clientError(_('Not logged in.'));
@@ -89,6 +91,8 @@ class UnsubscribeAction extends Action
         }
 
         $result = subs_unsubscribe_to($user, $other);
+        error_log($user->nickname . " unsubscribed from " . $other->nickname . " on " . date('m.d.Y h:i:s') . "\n", 3, INSTALLDIR . "/logs/unsubscribe_info.log");
+
 
         if (is_string($result)) {
             $this->clientError($result);
