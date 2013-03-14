@@ -104,7 +104,7 @@ class StencylAction extends Action
               $friendProfile = $friend->getProfile();
               $friendProfileId = $friendProfile->id;
               
-              $smsCount = SMSCount::staticGet('profile_id' , $friendProfileId);
+/*              $smsCount = SMSCount::staticGet('profile_id' , $friendProfileId);
               $prevCount = $smsCount->sms_count;
               
               if($prevCount < 2)
@@ -120,6 +120,7 @@ class StencylAction extends Action
                         SMSCount::saveNew($friendProfile->id , $prevCount + 1);
                   }
               }
+*/
               $friends[$i++] = $friendProfile->fullname;
               }
         }
