@@ -276,7 +276,7 @@ if (!common_config('site','safemode')){
             $this->elementStart('a', array('class' => 'stats',
                                            'href' => common_local_url('game', array('nickname' =>$cur->nickname))));
                 $this->element('img', array('class' => 'promo',
-                                            'src' => Theme::path('promo3.png'),
+                                            'src' => Theme::path('promo4.png'),
                                             'alt' => common_config('site', 'name'))); 
             $this->out->elementEnd('a');
     
