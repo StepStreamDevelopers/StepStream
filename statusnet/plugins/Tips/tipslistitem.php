@@ -33,6 +33,26 @@ class TipsListItem extends NoticeListItemAdapter
         $profile = $notice->getProfile();
         $tip   = Tips::fromNotice($notice);
 
+        // FIXME: URL, image, video, audio
+        $this->nli->out->elementStart('p', array('class' => 'entry-content'));
+        if ($this->nli->notice->rendered) {
+            $this->nli->out->raw($this->nli->notice->rendered);
+        } else {
+            // XXX: may be some uncooked notices in the DB,
+            // we cook them right now. This should probably disappear in future
+            // versions (>> 0.4.x)
+            $this->nli->out->raw(common_render_content($this->nli->notice->content, $this->nli->notice));
+        }
+        $this->nli->out->elementEnd('p');
+    }
+
+    function showNoticeAttachments() {
+        if (common_config('attachments', 'show_thumbs')) {
+            $al = new InlineAttachmentList($this->notice, $this->out);
+            $al->show();
+        }
+
+/*
         if (empty($tip)) {
             // TRANS: Content for a deleted tip list item 
             $out->element('p', null, _m('Deleted.'));
@@ -78,6 +98,6 @@ class TipsListItem extends NoticeListItemAdapter
         }
 
         $out->elementEnd('div'); // vevent out
-  
+*/  
 }
 }

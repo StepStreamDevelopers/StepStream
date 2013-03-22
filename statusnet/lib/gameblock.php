@@ -212,7 +212,7 @@ class GameBlock extends ProfileBlock
                                             'width' => '600' , 'height' => '400' , 'id' => 'myFlashMovie' , 'align' => 'middle' ));
                                             
                 $this->out->element('param', array('name' => 'movie',
-                                                  'value' => $url . '/game/socialgame.swf' ));
+                                                  'value' => $url . '/game/socialgame-forest.swf' ));
                                                   
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'profileID=' . $userProfileId )); 
@@ -255,10 +255,10 @@ class GameBlock extends ProfileBlock
                                          
                                                   
                 $this->out->elementStart('object', array('type' => 'application/x-shockwave-flash',
-                                                  'data' => $url . 'game/socialgame.swf' , 'width' => '590' , 'height' => '416'));
+                                                  'data' => $url . 'game/socialgame-forest.swf' , 'width' => '590' , 'height' => '416'));
                                                 
                 $this->out->element('param', array('name' => 'movie',
-                                                  'value' => $url . 'game/socialgame.swf' ));
+                                                  'value' => $url . 'game/socialgame-forest.swf' ));
                
                 $this->out->element('param', array('name' => 'FlashVars',
                                                   'value' => 'profileID=' . $userProfileId 
