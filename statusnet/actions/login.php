@@ -128,9 +128,6 @@ class LoginAction extends Action
             return;
         }
 
-        if (!($user->hasRight(Right::CONFIGURESITE))) {
-            $this->serverError(_('StepStream is closed.'));
-		}
         // success!
         if (!common_set_user($user)) {
             // TRANS: Server error displayed when during login a server error occurs.
@@ -164,7 +161,6 @@ class LoginAction extends Action
                                     array('nickname' =>
                                           $user->nickname));            
             }
-        	
         }
 
         common_redirect($url, 303);
